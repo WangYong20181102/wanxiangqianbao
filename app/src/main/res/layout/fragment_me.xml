@@ -29,11 +29,11 @@
                 android:textSize="@dimen/iv_18" />
 
             <TextView
-                android:text="0.0%"
                 android:id="@+id/tv_acceleration_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/iv_10"
+                android:text="0.0%"
                 android:textColor="@color/white"
                 android:textSize="@dimen/iv_24" />
         </LinearLayout>
@@ -185,6 +185,18 @@
                 android:layout_height="@dimen/iv_178"
                 android:orientation="horizontal">
 
+                <!--<com.meetsl.scardview.SCardView-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="@dimen/iv_150"-->
+                <!--android:layout_weight="1"-->
+                <!--app:cardLightDirection="none"-->
+                <!--app:cardBackgroundColor="@color/color_style"-->
+                <!--app:cardCornerRadius="@dimen/iv_8"-->
+                <!--app:cardShadowStartColor="#144d6a"-->
+                <!--app:cardElevation="@dimen/iv_5"-->
+                <!--app:cardShadowEndColor="#144d6a">-->
+
+
                 <LinearLayout
                     android:id="@+id/ll_userinfo"
                     android:layout_width="0dp"
@@ -206,6 +218,7 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/iv_28" />
                 </LinearLayout>
+                <!--</com.meetsl.scardview.SCardView>-->
 
 
                 <LinearLayout
@@ -474,10 +487,10 @@
                 android:id="@+id/tv_out_login"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/iv_68"
-                android:layout_marginBottom="@dimen/iv_22"
                 android:layout_marginLeft="@dimen/iv_154"
-                android:layout_marginRight="@dimen/iv_154"
                 android:layout_marginTop="@dimen/iv_32"
+                android:layout_marginRight="@dimen/iv_154"
+                android:layout_marginBottom="@dimen/iv_22"
                 android:background="@drawable/shape_out_login"
                 android:gravity="center"
                 android:text="@string/out_login"
