@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_style"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.jh.wxqb.ui.me.UdpPwdActivity">
+
+    <com.jh.wxqb.customview.CustomTitle
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_120"
+        android:layout_marginLeft="@dimen/iv_45"
+        android:layout_marginRight="@dimen/iv_45">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="哈哈"
+            android:textColor="@color/white"
+            android:textSize="@dimen/iv_26" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/iv_1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_1b2a3e" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_120"
+        android:layout_marginLeft="@dimen/iv_45"
+        android:layout_marginRight="@dimen/iv_45">
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="15624875458"
+            android:textColor="@color/white"
+            android:textSize="@dimen/iv_26" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/iv_1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_1b2a3e" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_120"
+        android:layout_marginLeft="@dimen/iv_45"
+        android:layout_marginRight="@dimen/iv_45">
+
+        <EditText
+            android:id="@+id/ed_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/ll_is_show_pwd"
+            android:background="@android:color/transparent"
+            android:hint="@string/new_pwd"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="@dimen/iv_26"
+            tools:ignore="NotSibling" />
+
+        <RelativeLayout
+            android:id="@+id/ll_new_pwd"
+            android:layout_width="@dimen/iv_100"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_new_pwd"
+                android:layout_width="@dimen/iv_36"
+                android:layout_height="@dimen/iv_30"
+                android:src="@drawable/iv_no_pwd" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/iv_1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_1b2a3e" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_120"
+        android:layout_marginLeft="@dimen/iv_45"
+        android:layout_marginRight="@dimen/iv_45">
+
+        <EditText
+            android:id="@+id/ed_confirm_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:hint="@string/confirm_new_pwd"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="@dimen/iv_26"
+            android:layout_above="@+id/view"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <RelativeLayout
+            android:id="@+id/ll_confirm_new_pwd"
+            android:layout_width="@dimen/iv_100"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_confirm_new_pwd"
+                android:layout_width="@dimen/iv_36"
+                android:layout_height="@dimen/iv_30"
+                android:src="@drawable/iv_no_pwd" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/iv_1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_1b2a3e"
+            android:id="@+id/view" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_120"
+        android:layout_marginLeft="@dimen/iv_45"
+        android:layout_marginRight="@dimen/iv_45">
+
+        <EditText
+            android:id="@+id/ed_code"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:hint="@string/enter_code"
+            android:inputType="number"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="@dimen/iv_26" />
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:id="@+id/tv_get_code"
+            android:layout_width="@dimen/iv_150"
+            android:layout_height="@dimen/iv_90"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:background="@drawable/shape_btn_rig_bg"
+            android:text="@string/get_code"
+            android:textColor="@color/white"
+            android:textSize="@dimen/iv_26" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/iv_1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_1b2a3e" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_90"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginRight="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_100"
+        android:background="@color/color_2686d8"
+        android:gravity="center"
+        android:text="@string/determine"
+        android:textColor="@color/white"
+        android:textSize="@dimen/iv_30" />
+
+</LinearLayout>

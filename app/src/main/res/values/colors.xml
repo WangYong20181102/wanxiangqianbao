@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--主色调-->
+    <color name="main_color">#0C92FF</color>
+    <!--白色-->
+    <color name="white">#FFFFFF</color>
+    <!--黑色-->
+    <color name="black">#000000</color>
+    <!--正常黑色文字-->
+    <color name="black_text">#333333</color>
+    <color name="black_xml_bg">#131617</color>
+    <!--正常灰色文字-->
+    <color name="gray_text">#666666</color>
+    <color name="gray_home_item">#232627</color>
+    <!--正常灰色文字-->
+    <color name="light_text">#4D4D4D</color>
+    <color name="light_gray_text">#999999</color>
+    <color name="tv_no_click">#a2a6a5</color>
+    <color name="light_miner">#838383</color>
+    <color name="light_rest">#262730</color>
+    <!--透明色-->
+    <color name="transparent">#00000000</color>
+    <!--状态栏颜色-->
+    <color name="tint_bg">#383A3B</color>
+    <color name="light_bg">#0C0F10</color>
+    <color name="light_text_bg">#181B1B</color>
+    <!--背景色-->
+    <color name="app_bg">#F2F2F2</color>
+    <color name="layout_bg">#F3F3F3</color>
+    <!--灰色线-->
+    <color name="line">#DDDDDD</color>
+    <!--红色-->
+    <color name="red">#F23535</color>
+    <color name="red_bg">#F9233C</color>
+    <color name="red_text">#CC0000</color>
+    <!--绿色-->
+    <color name="greed">#178d1c</color>
+    <color name="greed_text">#17B03E</color>
+
+    <color name="btn_gray">#646f88</color>
+
+    <color name="colorRed">#FF5A30</color>
+
+    <color name="blue">#00AAEE</color>
+    <color name="blue_text">#298FFF</color>
+
+    <color name="envelopes">#ECA04F</color>
+
+    <color name="envelopes_light">#F7D1A2</color>
+
+    <color name="transparent40">#66000000</color>
+    <color name="orange">#FC892D</color>
+    <color name="yellow">#F4EA2A</color>
+    <color name="yellow_bg">#F9D423</color>
+
+
+
+    <color name="home_text_color">#1881d2</color>
+    <color name="me_bg_color">#2b2f31</color>
+    <color name="me_red_color">#b32424</color>
+    <color name="me_blue_color">#296acc</color>
+    <color name="app_blue_color">#29a0cc</color>
+    <color name="me_green_color">#1f995c</color>
+    <color name="me_deep_green_color">#29cc67</color>
+    <color name="me_withdraw_color">#2b3545</color>
+    <color name="me_code_color">#CCCCCC</color>
+    <color name="withdraw_money_color">#37C0F5</color>
+    <color name="transfer_to_color">#5BC2FD</color>
+    <color name="out_app_color">#A8E7FF</color>
+    <color name="out_app">#D8D8D8</color>
+    <color name="my_dividend_color">#00CC66</color>
+    <color name="market_line">#D2D2D2</color>
+    <!--主题色-->
+    <color name="color_style">#102030</color>
+    <color name="color_0f2441">#0f2441</color>
+    <color name="color_16263e">#16263e</color>
+    <color name="color_172841">#172841</color>
+    <!--标题色-->
+    <color name="color_title">#061623</color>
+    <!--边线-->
+    <color name="color_1b2a3e">#1b2a3e</color>
+    <color name="color_02c289">#02c289</color>
+    <color name="color_6f88aa">#6f88aa</color>
+    <color name="color_2686d8">#2686d8</color>
+    <color name="color_d6734b">#d6734b</color>
+
+</resources>

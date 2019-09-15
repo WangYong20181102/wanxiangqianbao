@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="@dimen/iv_180"
+        android:layout_height="@dimen/iv_240"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_activity_eth"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/iv_80"
+            android:gravity="center"
+            android:text="@string/activity_eth"
+            android:textColor="@color/gray_text"
+            android:textSize="@dimen/iv_26" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/iv_1"
+            android:background="@color/light_gray_text" />
+
+        <TextView
+            android:id="@+id/tv_repurchase_pkb"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/iv_80"
+            android:gravity="center"
+            android:text="@string/repurchase_pkb"
+            android:textColor="@color/gray_text"
+            android:textSize="@dimen/iv_26" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/iv_1"
+            android:background="@color/light_gray_text" />
+
+        <TextView
+            android:visibility="visible"
+            android:id="@+id/tv_dividend_pkb"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/iv_80"
+            android:gravity="center"
+            android:text="@string/dividend_pkb"
+            android:textColor="@color/gray_text"
+            android:textSize="@dimen/iv_26" />
+    </LinearLayout>
+
+</RelativeLayout>

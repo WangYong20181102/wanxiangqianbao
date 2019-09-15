@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.jh.wxqb.ui.me.feedback.FeedbackInfoActivity">
+
+    <com.jh.wxqb.customview.CustomTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:titleText="@string/feedback" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/iv_30"
+        android:layout_marginTop="@dimen/iv_30"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.jh.wxqb.customview.CircleImageView
+            android:id="@+id/iv_user_img"
+            android:layout_width="@dimen/iv_90"
+            android:layout_height="@dimen/iv_90"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/iv_35"
+            android:text="我"
+            android:textColor="@color/gray_text"
+            android:textSize="@dimen/iv_32" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/iv_30"
+        android:layout_marginTop="@dimen/iv_22"
+        android:text="提问内容"
+        android:textColor="@color/gray_text"
+        android:textSize="@dimen/iv_26" />
+
+
+    <com.jh.wxqb.customview.NoScrollGridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/iv_60"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_40"
+        android:columnWidth="@dimen/iv_30"
+        android:horizontalSpacing="10dp"
+        android:numColumns="4"
+        android:verticalSpacing="10dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_1"
+        android:background="@color/layout_bg" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_120">
+
+        <TextView
+            android:id="@+id/tv_square"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/iv_32"
+            android:layout_marginTop="@dimen/iv_20"
+            android:text="客服"
+            android:textColor="@color/home_text_color"
+            android:textSize="@dimen/iv_30" />
+
+        <TextView
+            android:id="@+id/tv_reply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/iv_110"
+            android:layout_marginTop="@dimen/iv_22"
+            android:text="現已更新版本，請重新下載。"
+            android:textColor="@color/light_gray_text"
+            android:textSize="@dimen/iv_26" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_reply"
+            android:layout_marginLeft="@dimen/iv_110"
+            android:layout_marginTop="@dimen/iv_20"
+            android:text="2018-08-16 17:45"
+            android:textColor="@color/gray_text"
+            android:textSize="@dimen/iv_24" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

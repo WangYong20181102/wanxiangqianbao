@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_start_bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.jh.wxqb.ui.home.login.StartActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/iv_238"
+                android:layout_height="@dimen/iv_238"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/iv_232"
+                android:src="@drawable/start_logo" />
+
+
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_width="@dimen/iv_300"
+                android:layout_height="@dimen/iv_100"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/iv_400"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="@string/login"
+                android:textColor="@color/home_text_color"
+                android:textSize="@dimen/iv_32" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

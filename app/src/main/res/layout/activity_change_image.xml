@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.jh.wxqb.ui.me.ChangeImageActivity">
+
+    <com.jh.wxqb.customview.CustomTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:titleText="@string/replace_the_head" />
+
+    <com.jh.wxqb.customview.CircleImageView
+        android:id="@+id/iv_user_img"
+        android:layout_width="@dimen/iv_302"
+        android:layout_height="@dimen/iv_302"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/iv_170"
+        android:src="@drawable/iv_changr_img" />
+
+    <TextView
+        android:text="@string/setting_up_avatars_and_chatting_more"
+        android:layout_marginTop="@dimen/iv_40"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/iv_26"
+        android:textColor="@color/light_gray_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_sel_img"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_90"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginRight="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_170"
+        android:background="@color/home_text_color"
+        android:gravity="center"
+        android:text="@string/choose_one_from_the_album"
+        android:textColor="@color/white"
+        android:textSize="@dimen/iv_30" />
+
+</LinearLayout>

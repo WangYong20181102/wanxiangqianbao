@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_350"
+        android:layout_marginLeft="@dimen/iv_85"
+        android:layout_marginRight="@dimen/iv_85">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/iv_30"
+            android:text="@string/prompt"
+            android:textColor="@color/gray_text"
+            android:textSize="@dimen/iv_32"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/iv_136"
+            android:text="@string/are_you_sure_to_log_out"
+            android:textColor="@color/gray_text"
+            android:textSize="@dimen/iv_30" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/iv_100"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/home_text_color"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textColor="@color/white"
+                android:textSize="@dimen/iv_30" />
+
+            <TextView
+                android:id="@+id/tv_determine"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/out_app"
+                android:gravity="center"
+                android:text="@string/determine"
+                android:textColor="@color/gray_text"
+                android:textSize="@dimen/iv_30" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

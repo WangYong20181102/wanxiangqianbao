@@ -1,0 +1,108 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_style"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.jh.wxqb.ui.assets.AssetsFragment">
+
+    <com.jh.wxqb.customview.CustomTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="@string/asset_management" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_110"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/ll_active_assets"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_active_assets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/active_assets"
+                android:textColor="@color/white"
+                android:textSize="@dimen/iv_28" />
+
+            <View
+                android:id="@+id/view_active_assets"
+                android:layout_width="@dimen/iv_26"
+                android:layout_height="@dimen/iv_6"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/iv_20"
+                android:background="@color/home_text_color"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/ll_repurchase_assets"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_repurchase_assets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/repurchase_assets"
+                android:textColor="@color/home_text_color"
+                android:textSize="@dimen/iv_28" />
+
+            <View
+                android:id="@+id/view_repurchase_assets"
+                android:layout_width="@dimen/iv_26"
+                android:layout_height="@dimen/iv_6"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/iv_20"
+                android:background="@color/home_text_color" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_dividend_assets"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_dividend_assets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/dividend_assets"
+                android:textColor="@color/white"
+                android:textSize="@dimen/iv_28" />
+
+            <View
+                android:id="@+id/view_dividend_assets"
+                android:layout_width="@dimen/iv_26"
+                android:layout_height="@dimen/iv_6"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/iv_20"
+                android:background="@color/home_text_color"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/layout_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

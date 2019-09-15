@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.jh.wxqb.ui.assets.TurnInActivity">
+
+
+    <com.jh.wxqb.customview.CustomTitle
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:moreImg="@drawable/nav_bill"
+        app:titleText="@string/transfer_to" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_90"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginRight="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_20">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/iv_200"
+            android:background="@color/layout_bg"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/iv_28"
+                android:text="@string/transfer_quantity"
+                android:textColor="@color/gray_text"
+                android:textSize="@dimen/iv_26" />
+
+            <EditText
+                android:layout_marginLeft="@dimen/iv_20"
+                android:id="@+id/ed_transfer_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:hint="@string/please_input_transfer_quantity"
+                android:inputType="numberDecimal"
+                android:textColor="@color/black"
+                android:textColorHint="@color/me_code_color"
+                android:textSize="@dimen/iv_24" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_create"
+            android:layout_width="@dimen/iv_160"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@color/home_text_color"
+            android:gravity="center"
+            android:text="@string/create"
+            android:textColor="@color/white"
+            android:textSize="@dimen/iv_26" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_650"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginRight="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_20"
+        android:background="@color/layout_bg"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_qr"
+            android:layout_width="@dimen/iv_350"
+            android:layout_height="@dimen/iv_350" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/iv_60"
+            android:textColor="@color/light_gray_text"
+            android:textSize="@dimen/iv_26" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_copy"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_90"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginRight="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_20"
+        android:background="@color/home_text_color"
+        android:gravity="center"
+        android:text="@string/copy_wallet_address"
+        android:textColor="@color/white"
+        android:textSize="@dimen/iv_30" />
+
+</LinearLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <RelativeLayout
+        android:layout_width="@dimen/iv_500"
+        android:background="@android:color/transparent"
+        android:layout_height="@dimen/iv_500">
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="@dimen/iv_90"
+            android:layout_marginBottom="-8dp"
+            android:layout_height="@dimen/iv_134"
+            android:layout_above="@+id/ll_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/iv_withdraw_close" />
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/iv_400"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <com.jh.wxqb.customview.CircleImageView
+                android:id="@+id/iv_img"
+                android:layout_width="@dimen/iv_100"
+                android:layout_height="@dimen/iv_100"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/iv_70"/>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/iv_28"
+                android:textColor="@color/my_dividend_color"
+                android:textSize="@dimen/iv_32" />
+
+            <TextView
+                android:id="@+id/tv_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/iv_20"
+                android:layout_marginRight="@dimen/iv_20"
+                android:layout_marginTop="@dimen/iv_28"
+                android:textColor="@color/light_gray_text"
+                android:textSize="@dimen/iv_32" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_style"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.jh.wxqb.ui.me.FinancialDetailsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_98"
+        android:background="@drawable/shape_state_bg">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="@dimen/iv_80"
+            android:layout_height="@dimen/iv_98"
+            android:paddingBottom="@dimen/iv_28"
+            android:paddingLeft="@dimen/iv_26"
+            android:paddingRight="@dimen/iv_36"
+            android:paddingTop="@dimen/iv_28"
+            android:src="@drawable/iv_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/financial_details"
+            android:textColor="@color/white"
+            android:textSize="@dimen/iv_32" />
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="@dimen/iv_200"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="全部"
+            android:textColor="@color/white"
+            android:textSize="@dimen/iv_24" />
+    </RelativeLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/sw_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/iv_50"
+        android:layout_marginRight="@dimen/iv_50"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+            android:id="@+id/shop_recy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_style">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_80"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="15:54:55"
+            android:textColor="@color/color_6f88aa"
+            android:textSize="@dimen/iv_26" />
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="賣出"
+            android:textColor="@color/color_d6734b"
+            android:textSize="@dimen/iv_26" />
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0.0"
+            android:textColor="@color/color_6f88aa"
+            android:textSize="@dimen/iv_26" />
+
+        <TextView
+            android:id="@+id/tv_turnover"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0.0"
+            android:textColor="@color/color_6f88aa"
+            android:textSize="@dimen/iv_26" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_purchase"
+                android:layout_width="@dimen/iv_88"
+                android:layout_height="@dimen/iv_44"
+                android:background="@drawable/shape_detailed"
+                android:gravity="center"
+                android:text="@string/purchase"
+                android:textColor="@color/white"
+                android:textSize="@dimen/iv_22"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:textColor="@color/color_6f88aa"
+                android:textSize="@dimen/iv_26"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

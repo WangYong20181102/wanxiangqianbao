@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_style"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.jh.wxqb.ui.me.feedback.FeedbackActivity">
+
+    <com.jh.wxqb.customview.CustomTitle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        android:id="@+id/tv_title"
+        app:moreImg="@drawable/nav_news"
+        app:titleText="@string/user_feedback" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_40"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="@dimen/iv_6"
+            android:layout_height="@dimen/iv_26"
+            android:background="@color/home_text_color" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/iv_20"
+            android:text="@string/feedback_feedback"
+            android:textColor="@color/white"
+            android:textSize="@dimen/iv_28" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_436"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginRight="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_20"
+        android:background="@color/layout_bg">
+
+        <EditText
+            android:id="@+id/ed_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/iv_30"
+            android:layout_marginRight="@dimen/iv_30"
+            android:layout_marginTop="@dimen/iv_30"
+            android:background="@android:color/transparent"
+            android:gravity="start"
+            android:hint="@string/please_input_your_valuable_opinions"
+            android:maxLength="800"
+            android:textColor="@color/home_text_color"
+            android:textColorHint="@color/light_gray_text"
+            android:textSize="@dimen/iv_26" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_40"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="@dimen/iv_6"
+            android:layout_height="@dimen/iv_26"
+            android:background="@color/home_text_color" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/iv_20"
+            android:text="@string/add_image"
+            android:textColor="@color/white"
+            android:textSize="@dimen/iv_28" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_add_img"
+        android:layout_width="@dimen/iv_110"
+        android:layout_height="@dimen/iv_110"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_40"
+        android:src="@drawable/iv_add" />
+
+    <com.jh.wxqb.customview.NoScrollGridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/iv_60"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_40"
+        android:columnWidth="@dimen/iv_30"
+        android:horizontalSpacing="10dp"
+        android:numColumns="4"
+        android:verticalSpacing="10dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_commit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_90"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginRight="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_100"
+        android:background="@color/color_2686d8"
+        android:gravity="center"
+        android:text="@string/commit_feedback"
+        android:textColor="@color/white"
+        android:textSize="@dimen/iv_30" />
+
+</LinearLayout>

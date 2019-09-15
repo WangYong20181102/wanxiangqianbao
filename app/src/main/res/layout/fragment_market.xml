@@ -1,0 +1,126 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_style"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.jh.wxqb.ui.market.MarketFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_98"
+        android:background="@drawable/shape_state_bg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/dividend_market"
+            android:textColor="@color/white"
+            android:textSize="@dimen/iv_32" />
+
+        <RelativeLayout
+            android:id="@+id/ll_current_entrustment"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/iv_50"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_entrust"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/current_entrustment"
+                android:textColor="@color/white"
+                android:textSize="@dimen/iv_24" />
+
+            <View
+                android:layout_width="@dimen/iv_100"
+                android:layout_height="@dimen/iv_1"
+                android:layout_below="@+id/tv_entrust"
+                android:layout_centerHorizontal="true"
+                android:background="@color/white" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_110"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/ll_active_assets"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_dividend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/dividend"
+                android:textColor="@color/color_02c289"
+                android:textSize="@dimen/iv_28" />
+
+            <View
+                android:id="@+id/view_dividend"
+                android:layout_width="@dimen/iv_56"
+                android:layout_height="@dimen/iv_6"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/iv_20"
+                android:background="@color/color_02c289"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/ll_repurchase_assets"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_sell"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/sell"
+                android:textColor="@color/white"
+                android:textSize="@dimen/iv_28" />
+
+            <View
+                android:id="@+id/view_sell"
+                android:layout_width="@dimen/iv_56"
+                android:layout_height="@dimen/iv_6"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/iv_20"
+                android:background="@color/color_d6734b"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/sw_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+            android:id="@+id/shop_recy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

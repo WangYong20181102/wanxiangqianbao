@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_style"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.jh.wxqb.ui.me.BindingAccountActivity">
+
+    <com.jh.wxqb.customview.CustomTitle
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:titleText="@string/binding_account" />
+
+    <RelativeLayout
+        android:layout_marginRight="@dimen/iv_50"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_90"
+        android:layout_marginLeft="@dimen/iv_50">
+
+        <EditText
+            android:id="@+id/ed_email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:hint="@string/please_input_the_email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="@dimen/iv_26" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/iv_1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/me_withdraw_color" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_code"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_90"
+        android:layout_marginLeft="@dimen/iv_45"
+        android:layout_marginRight="@dimen/iv_45">
+
+        <EditText
+            android:id="@+id/ed_code"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:hint="@string/enter_code"
+            android:inputType="number"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="@dimen/iv_26" />
+
+        <TextView
+            android:id="@+id/tv_get_code"
+            android:layout_width="@dimen/iv_150"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="@string/get_code"
+            android:background="@drawable/shape_btn_rig_bg"
+            android:textColor="@color/white"
+            android:textSize="@dimen/iv_26" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/iv_1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/me_withdraw_color" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/iv_50"
+        android:layout_marginTop="@dimen/iv_20"
+        android:text="@string/modified_after_binding"
+        android:textColor="@color/home_text_color"
+        android:textSize="@dimen/iv_22" />
+
+
+    <TextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_90"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginRight="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_100"
+        android:background="@color/color_2686d8"
+        android:gravity="center"
+        android:text="@string/determine"
+        android:textColor="@color/white"
+        android:textSize="@dimen/iv_30" />
+</LinearLayout>

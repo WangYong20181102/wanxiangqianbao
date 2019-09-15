@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.jh.wxqb.ui.assets.TurnOutActivity">
+
+    <com.jh.wxqb.customview.CustomTitle
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:canBack="true"
+        app:moreImg="@drawable/nav_bill"
+        app:titleText="@string/turn_out" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_150"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginRight="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_20"
+        android:background="@drawable/shape_assets_bg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/iv_30"
+            android:layout_marginTop="@dimen/iv_30"
+            android:text="@string/currency_assets"
+            android:textColor="@color/white"
+            android:textSize="@dimen/iv_30" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/iv_32"
+            android:layout_marginLeft="@dimen/iv_30"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/available_assets"
+                android:textColor="@color/white"
+                android:textSize="@dimen/iv_30" />
+
+            <TextView
+                android:id="@+id/tv_available_assets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/iv_20"
+                android:text="0.0"
+                android:textColor="@color/white"
+                android:textSize="@dimen/iv_30" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/iv_20"
+                android:text="pkb"
+                android:textColor="@color/white"
+                android:textSize="@dimen/iv_26" />
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="@dimen/iv_142"
+            android:layout_height="@dimen/iv_115"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/iv_38"
+            android:layout_marginTop="@dimen/iv_18"
+            android:src="@drawable/iv_assets" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_90"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginRight="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_40"
+        android:background="@color/layout_bg">
+
+        <TextView
+            android:id="@+id/tv_target_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/iv_30"
+            android:text="@string/target_address"
+            android:textColor="@color/gray_text"
+            android:textSize="@dimen/iv_26" />
+
+        <EditText
+            android:id="@+id/ed_target_address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/iv_150"
+            android:layout_toLeftOf="@+id/ll_scan"
+            android:background="@android:color/transparent"
+            android:hint="@string/please_input_target_address"
+            android:inputType="textVisiblePassword"
+            android:textColor="@color/black_text"
+            android:textColorHint="@color/me_code_color"
+            android:textSize="@dimen/iv_26" />
+
+        <RelativeLayout
+            android:id="@+id/ll_scan"
+            android:layout_width="@dimen/iv_100"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/iv_40"
+                android:layout_height="@dimen/iv_40"
+                android:src="@drawable/iv_scan" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_90"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginRight="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_20"
+        android:background="@color/layout_bg">
+
+        <TextView
+            android:id="@+id/tv_amount_of_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/iv_30"
+            android:text="@string/amount_of_money"
+            android:textColor="@color/gray_text"
+            android:textSize="@dimen/iv_26" />
+
+        <EditText
+            android:id="@+id/ed_amount_of_money"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/iv_150"
+            android:background="@android:color/transparent"
+            android:hint="@string/please_input_amount_of_money"
+            android:inputType="number"
+            android:textColor="@color/black_text"
+            android:textColorHint="@color/me_code_color"
+            android:textSize="@dimen/iv_26" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_90"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginRight="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_20"
+        android:background="@color/layout_bg">
+
+        <TextView
+            android:id="@+id/tv_pay_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/iv_30"
+            android:text="@string/pay_pwd"
+            android:textColor="@color/gray_text"
+            android:textSize="@dimen/iv_26" />
+
+        <EditText
+            android:id="@+id/ed_pay_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/iv_150"
+            android:background="@android:color/transparent"
+            android:hint="@string/please_input_pay_pwd"
+            android:inputType="numberPassword"
+            android:textColor="@color/black_text"
+            android:textColorHint="@color/me_code_color"
+            android:textSize="@dimen/iv_26" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_90"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginRight="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_20"
+        android:background="@color/layout_bg">
+
+        <TextView
+            android:id="@+id/tv_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/iv_30"
+            android:text="@string/mobile_verification_code"
+            android:textColor="@color/gray_text"
+            android:textSize="@dimen/iv_26" />
+
+        <EditText
+            android:id="@+id/ed_code"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/iv_180"
+            android:layout_toLeftOf="@+id/tv_get_code"
+            android:background="@android:color/transparent"
+            android:hint="@string/please_input_code"
+            android:inputType="number"
+            android:textColor="@color/black_text"
+            android:textColorHint="@color/me_code_color"
+            android:textSize="@dimen/iv_26" />
+
+        <TextView
+            android:id="@+id/tv_get_code"
+            android:layout_width="@dimen/iv_150"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@color/home_text_color"
+            android:gravity="center"
+            android:text="@string/get_code"
+            android:textColor="@color/white"
+            android:textSize="@dimen/iv_26" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_90"
+        android:layout_marginLeft="@dimen/iv_20"
+        android:layout_marginRight="@dimen/iv_20"
+        android:layout_marginTop="@dimen/iv_50"
+        android:background="@color/home_text_color"
+        android:gravity="center"
+        android:text="@string/check_out"
+        android:textColor="@color/white"
+        android:textSize="@dimen/iv_32" />
+</LinearLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 不可用的背景图片-->
+    <item android:drawable="@drawable/base_bottom_btn_pressed" android:state_enabled="false" />
+
+    <!-- 非触摸模式下获得焦点并单击时的背景图片 -->
+    <item android:drawable="@drawable/base_bottom_btn_pressed" android:state_focused="true" android:state_pressed="true" />
+    <!-- 触摸模式下单击时的背景图片-->
+    <item android:drawable="@drawable/base_bottom_btn_pressed" android:state_focused="false" android:state_pressed="true" />
+    <!--选中时的图片背景-->
+    <item android:drawable="@drawable/base_bottom_button_nomal" android:state_selected="true" />
+    <!--获得焦点时的图片背景-->
+    <item android:drawable="@drawable/base_bottom_btn_pressed" android:state_focused="true" />
+
+    <!-- 默认时的背景图片-->
+    <item android:drawable="@drawable/base_bottom_button_nomal" />
+    <!-- 没有焦点时的背景图片 -->
+    <item android:drawable="@drawable/base_bottom_button_nomal" android:state_window_focused="false" />
+    <item android:drawable="@drawable/base_bottom_button_nomal" android:state_enabled="true" />
+    <!-- <item android:state_pressed="true">
+
+         &lt;!&ndash; 定义当button 处于pressed 状态时的形态。&ndash;&gt;
+
+         <shape>
+
+             <gradient android:startColor="#8600ff" />
+
+             <stroke android:width="2dp" android:color="#000000" />
+
+             <corners android:radius="5dp" />
+
+             <padding android:left="10dp" android:top="10dp"
+
+                 android:bottom="10dp" android:right="10dp" />
+
+         </shape>
+
+     </item>
+
+     <item android:state_focused="true">
+
+         &lt;!&ndash; 定义当button获得focus时的形态&ndash;&gt;
+
+         <shape>
+
+             <gradient android:startColor="#eac100" />
+
+             <stroke android:width="2dp" android:color="#333333" />
+
+             <corners android:radius="8dp" />
+
+             <padding android:left="10dp" android:top="10dp"
+
+                 android:bottom="10dp" android:right="10dp" />
+
+         </shape>
+
+     </item>
+
+     <item android:state_enabled="true">
+
+         &lt;!&ndash; 定义当button获得的形态&ndash;&gt;
+
+         <shape>
+
+             <gradient android:startColor="#00E5EE" android:endColor="#00688B" />
+
+             <stroke android:width="1dp" android:color="#0000CD" />
+
+             <corners android:radius="8dp" />
+
+             <padding android:left="10dp" android:top="10dp"
+
+                 android:bottom="10dp" android:right="10dp" />
+
+         </shape>
+
+     </item>-->
+
+</selector>

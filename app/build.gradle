@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+
+android {
+    //noinspection GradleCompatible
+    compileSdkVersion 27
+    buildToolsVersion "28.0.3"
+    defaultConfig {
+        applicationId "com.jh.wxqb"
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "2.1"
+        resValue "string", "tray__authority", "com.koala.sendletter.tray"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation project(':zxinglite')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'net.grandcentrix.tray:tray:0.10.0'
+    implementation 'com.youth.banner:banner:1.4.9'
+    implementation 'com.zhy:autolayout:1.4.5'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    implementation 'org.litepal.android:core:1.6.0'
+    implementation 'com.github.bumptech.glide:glide:4.5.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.yanzhenjie:recyclerview-swipe:1.1.3'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
+    implementation 'io.github.meetsl:SCardView:1.1'
+}
