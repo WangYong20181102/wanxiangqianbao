@@ -86,14 +86,21 @@ public class MeDividend extends BaseValue{
             private int id;
             private BigDecimal acountTransaction;
             private BigDecimal accountCommission;
+            private BigDecimal volume;
             private String interestRatio;
             private BigDecimal dailyInterest;
             private int direction;
             private long createDate;
             private int status;
-            private double amountPrice;
+            private BigDecimal amountPrice;
             private int assetTypeId;
+            public BigDecimal getVolume() {
+                return volume;
+            }
 
+            public void setVolume(BigDecimal volume) {
+                this.volume = volume;
+            }
             public int getAssetTypeId() {
                 return assetTypeId;
             }
@@ -184,11 +191,11 @@ public class MeDividend extends BaseValue{
                 this.status = status;
             }
 
-            public double getAmountPrice() {
+            public BigDecimal getAmountPrice() {
                 return amountPrice;
             }
 
-            public void setAmountPrice(double amountPrice) {
+            public void setAmountPrice(BigDecimal amountPrice) {
                 this.amountPrice = amountPrice;
             }
 

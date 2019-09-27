@@ -72,11 +72,12 @@ public class StringUtil {
 
     /**
      * 判断时间是否在时间段内
+     *
      * @param startTimes
      * @param endTimes
      * @return
      */
-    public static boolean isBelong(String currentTime,String startTimes,String endTimes) {
+    public static boolean isBelong(String currentTime, String startTimes, String endTimes) {
 
         SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");//设置日期格式
         Date now = null;
@@ -96,6 +97,7 @@ public class StringUtil {
 
     /**
      * 判断时间是否在时间段内
+     *
      * @param nowTime
      * @param beginTime
      * @param endTime
@@ -203,7 +205,7 @@ public class StringUtil {
      */
     public static String ellipsisString(String s, int i) {
         return s.substring(0, i) + "***" + s.
-                substring(s.length() - i, s.length());
+                substring(s.length() - (i - 10), s.length());
     }
 
     /**
@@ -240,6 +242,27 @@ public class StringUtil {
             isValid = true;
         }
         return isValid;
+    }
+
+    /**
+     * 隐藏手机号中间位数
+     *
+     * @param phoneNum
+     * @return
+     */
+    public static String makePhoneNum(String phoneNum) {
+        StringBuilder sb = new StringBuilder();
+        if (!TextUtils.isEmpty(phoneNum) && phoneNum.length() > 6) {
+            for (int i = 0; i < phoneNum.length(); i++) {
+                char c = phoneNum.charAt(i);
+                if (i >= 3 && i <= 6) {
+                    sb.append('*');
+                } else {
+                    sb.append(c);
+                }
+            }
+        }
+        return sb.toString();
     }
 
     /**
@@ -464,11 +487,11 @@ public class StringUtil {
         boolean isValid = false;
         /*
          * 可接受的电话格式有：
-		 */
+         */
         String expression = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{5})$";
         /*
          * 可接受的电话格式有：
-		 */
+         */
         String expression2 = "^\\(?(\\d{3})\\)?[- ]?(\\d{4})[- ]?(\\d{4})$";
         CharSequence inputStr = phoneNumber;
         Pattern pattern = Pattern.compile(expression);
@@ -716,7 +739,7 @@ public class StringUtil {
     }
 
     /**
-     * 获取屏幕宽度(px)
+     * 获取屏幕宽度(px)15158995943
      */
     public static int getScreenWidth(Context context) {
         return context.getResources().getDisplayMetrics().widthPixels;

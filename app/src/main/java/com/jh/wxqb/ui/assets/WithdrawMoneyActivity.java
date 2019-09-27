@@ -1,8 +1,10 @@
 package com.jh.wxqb.ui.assets;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -10,6 +12,7 @@ import com.jh.wxqb.R;
 import com.jh.wxqb.base.BaseActivity;
 import com.jh.wxqb.base.CoreKeys;
 import com.jh.wxqb.base.MyApplication;
+import com.jh.wxqb.bean.AssetManagementBean;
 import com.jh.wxqb.bean.BaseBean;
 import com.jh.wxqb.bean.FinancialDetailsBean;
 import com.jh.wxqb.bean.SafetyMarkingBean;
@@ -36,6 +39,7 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.HashMap;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
@@ -58,11 +62,18 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
     TextView tvAssets;
     @BindView(R.id.tv_get_code)
     TextView tvGetCode;
+    @BindView(R.id.image_icon)
+    ImageView imageIcon;
+    @BindView(R.id.tv_currency)
+    TextView tvCurrency;
+    @BindView(R.id.image_right)
+    ImageView imageRight;
 
     private PopupWindow contentWindow;
     private AssestPresenter assestPresenter;
     private MessagePresenter messagePresenter;
     private String ident;
+    private AssetManagementBean.DataBean.AccountAssetsBean assetsBean;
 
     @Override
     protected int getLayout() {
@@ -71,6 +82,7 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
 
     @Override
     protected void init() {
+        initIntent();
         EventBus.getDefault().register(this);
         messagePresenter = new MessagePresenter(this);
         assestPresenter = new AssestPresenter(this);
@@ -79,10 +91,33 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
         assestPresenter.safetyMarking();
     }
 
+    private void initIntent() {
+        assetsBean = (AssetManagementBean.DataBean.AccountAssetsBean) getIntent().getSerializableExtra(AssetManagementBean.class.getName());
+    }
+
     private void initView() {
-        if (MyApplication.getUserBean() != null) {
-            tvAssets.setText(StringUtil.subZeroAndDot(MyApplication.getUserBean().getActiveAssets().toPlainString()));
+//        if (MyApplication.getUserBean() != null) {
+//            tvAssets.setText(StringUtil.subZeroAndDot(MyApplication.getUserBean().getActiveAssets().toPlainString()));
+//        }
+        tvAssets.setText(assetsBean.getActiveAssets() + "");
+        switch (assetsBean.getBizCurrencyTypeId()) {
+            case 1:
+                tvCurrency.setText("ETH");
+                imageIcon.setImageResource(R.drawable.icon_small_eth);
+                imageRight.setImageResource(R.drawable.icon_eth_right);
+                break;
+            case 2:
+                tvCurrency.setText("TGM");
+                imageIcon.setImageResource(R.drawable.iv_small_tgm);
+                imageRight.setImageResource(R.drawable.iv_tgm_right);
+                break;
+            case 3:
+                tvCurrency.setText("USDT");
+                imageIcon.setImageResource(R.drawable.icon_small_usdt);
+                imageRight.setImageResource(R.drawable.icon_usdt_right);
+                break;
         }
+
     }
 
     @Override
@@ -288,4 +323,8 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
 
     }
 
+    @Override
+    public void getAssetManagementSuccess(AssetManagementBean result) {
+
+    }
 }

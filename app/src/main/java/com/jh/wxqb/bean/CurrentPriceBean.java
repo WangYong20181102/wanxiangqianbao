@@ -9,10 +9,11 @@ import java.math.BigDecimal;
 
 public class CurrentPriceBean {
 
+
     /**
      * code : 8008
      * message : 查询成功！
-     * data : {"resultMap":{"todayPrice":0.1,"balance":30.86,"currentPrice":275.510871758}}
+     * data : {"resultMap":{"id":38,"configKey":"usdt_price","configName":"USDT价格(人民币)","configValue":"7"},"usdtAccount":30}
      */
 
     private int code;
@@ -45,10 +46,21 @@ public class CurrentPriceBean {
 
     public static class DataBean {
         /**
-         * resultMap : {"todayPrice":0.1,"balance":30.86,"currentPrice":275.510871758}
+         * resultMap : {"id":38,"configKey":"usdt_price","configName":"USDT价格(人民币)","configValue":"7"}
+         * usdtAccount : 30.0
          */
 
         private ResultMapBean resultMap;
+        private BigDecimal usdtAccount;
+        private BigDecimal tgmAccount;
+
+        public BigDecimal getTgmAccount() {
+            return tgmAccount;
+        }
+
+        public void setTgmAccount(BigDecimal tgmAccount) {
+            this.tgmAccount = tgmAccount;
+        }
 
         public ResultMapBean getResultMap() {
             return resultMap;
@@ -58,39 +70,57 @@ public class CurrentPriceBean {
             this.resultMap = resultMap;
         }
 
+        public BigDecimal getUsdtAccount() {
+            return usdtAccount;
+        }
+
+        public void setUsdtAccount(BigDecimal usdtAccount) {
+            this.usdtAccount = usdtAccount;
+        }
+
         public static class ResultMapBean {
             /**
-             * todayPrice : 0.1
-             * balance : 30.86
-             * currentPrice : 275.510871758
+             * id : 38
+             * configKey : usdt_price
+             * configName : USDT价格(人民币)
+             * configValue : 7
              */
 
-            private BigDecimal todayPrice;
-            private BigDecimal balance;
-            private BigDecimal currentPrice;
+            private int id;
+            private String configKey;
+            private String configName;
+            private String configValue;
 
-            public BigDecimal getTodayPrice() {
-                return todayPrice;
+            public int getId() {
+                return id;
             }
 
-            public void setTodayPrice(BigDecimal todayPrice) {
-                this.todayPrice = todayPrice;
+            public void setId(int id) {
+                this.id = id;
             }
 
-            public BigDecimal getBalance() {
-                return balance;
+            public String getConfigKey() {
+                return configKey;
             }
 
-            public void setBalance(BigDecimal balance) {
-                this.balance = balance;
+            public void setConfigKey(String configKey) {
+                this.configKey = configKey;
             }
 
-            public BigDecimal getCurrentPrice() {
-                return currentPrice;
+            public String getConfigName() {
+                return configName;
             }
 
-            public void setCurrentPrice(BigDecimal currentPrice) {
-                this.currentPrice = currentPrice;
+            public void setConfigName(String configName) {
+                this.configName = configName;
+            }
+
+            public String getConfigValue() {
+                return configValue;
+            }
+
+            public void setConfigValue(String configValue) {
+                this.configValue = configValue;
             }
         }
     }

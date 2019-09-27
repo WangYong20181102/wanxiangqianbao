@@ -83,7 +83,7 @@ public class DividendFragment extends BaseFragment implements MyClicker, MySendL
         shop_recy.loadMoreFinish(false, true);
         //设置布局管理器
         shop_recy.setLayoutManager(new LinearLayoutManager(mContext));
-        shop_recy.setSwipeItemClickListener(itemClickListener);   //每项Item点击事件
+//        shop_recy.setSwipeItemClickListener(itemClickListener);   //每项Item点击事件
 
         // 自定义的核心就是DefineLoadMoreView类。
         DefineLoadMoreView loadMoreView = new DefineLoadMoreView(mContext);
@@ -178,7 +178,7 @@ public class DividendFragment extends BaseFragment implements MyClicker, MySendL
                             public void ok() {
                                 super.ok();
                                 ((MySendLetterActivity) mContext).showWaitDialog();
-                                presenter.stopDividend(map);
+                                presenter.stopQueuing(map);
                                 dismiss();
                             }
                         };

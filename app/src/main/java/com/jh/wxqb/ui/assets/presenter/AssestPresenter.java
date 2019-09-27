@@ -1,10 +1,12 @@
 package com.jh.wxqb.ui.assets.presenter;
 
 
+import com.jh.wxqb.adapter.AssetManagementAdapter;
 import com.jh.wxqb.api.ServerInterface;
 import com.jh.wxqb.api.biz.Biz;
 import com.jh.wxqb.api.biz.bizImpl.BizImpl;
 import com.jh.wxqb.base.OnBaseListener;
+import com.jh.wxqb.bean.AssetManagementBean;
 import com.jh.wxqb.bean.BaseBean;
 import com.jh.wxqb.bean.FinancialDetailsBean;
 import com.jh.wxqb.bean.SafetyMarkingBean;
@@ -41,6 +43,36 @@ public class AssestPresenter {
                     FinancialDetailsBean financialDetailsBean = GsonUtil.GsonToBean(result, FinancialDetailsBean.class);
                     if (financialDetailsBean.getCode() == ServerInterface.SUCCESS) {
                         assetsView.getFinancialDetailsSuccess(financialDetailsBean);
+                    } else {
+                        assetsView.onViewFailureString(financialDetailsBean.getCode(), financialDetailsBean.getMessage());
+                    }
+                } else {
+                    assetsView.onServerFailure("服务器繁忙", 0);
+                }
+            }
+
+            @Override
+            public void onFailure(String e, int code) {
+                assetsView.onServerFailure(e, code);
+            }
+        });
+    }
+
+    /**
+     * 資產管理
+     *
+     * @param pageNum
+     * @param type
+     */
+    public void getQueryaccountassets(int pageNum, int type) {
+        biz.getQueryaccountassets(pageNum, type, new OnBaseListener() {
+            @Override
+            public void onResponse(String result) {
+                if (GsonUtil.isJson(result)) {
+                    LogUtils.e("getQueryaccountassets==>" + GsonUtil.GsonString(result));
+                    AssetManagementBean financialDetailsBean = GsonUtil.GsonToBean(result, AssetManagementBean.class);
+                    if (financialDetailsBean.getCode() == ServerInterface.SUCCESS) {
+                        assetsView.getAssetManagementSuccess(financialDetailsBean);
                     } else {
                         assetsView.onViewFailureString(financialDetailsBean.getCode(), financialDetailsBean.getMessage());
                     }

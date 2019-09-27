@@ -47,9 +47,9 @@ public class RecommendActivity extends BaseActivity {
     }
 
     private void initView() {
-        if (PreferencesLoader.getObject(CoreKeys.USER_IMG, String.class) != null) {
-            ivUserImg.setImageBitmap(BitmapUtil.compressImage(BitmapUtil.ratio(BitmapUtil.stringtoBitmap(MyApplication.getUserImg()), 200, 200)));
-        }
+//        if (PreferencesLoader.getObject(CoreKeys.USER_IMG, String.class) != null) {
+//            ivUserImg.setImageBitmap(BitmapUtil.compressImage(BitmapUtil.ratio(BitmapUtil.stringtoBitmap(MyApplication.getUserImg()), 200, 200)));
+//        }
         if (MyApplication.getUserBean() != null) {
             tvName.setText(MyApplication.getUserBean().getUserName());
             tvCode.setText(MyApplication.getUserBean().getUserId());

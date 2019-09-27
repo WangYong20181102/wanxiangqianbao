@@ -17,6 +17,7 @@ import com.jh.wxqb.adapter.FinancialDetailsAdapter;
 import com.jh.wxqb.base.BaseFragment;
 import com.jh.wxqb.base.MainActivity;
 import com.jh.wxqb.base.MyApplication;
+import com.jh.wxqb.bean.AssetManagementBean;
 import com.jh.wxqb.bean.BaseBean;
 import com.jh.wxqb.bean.FinancialDetailsBean;
 import com.jh.wxqb.bean.SafetyMarkingBean;
@@ -141,6 +142,11 @@ public class RepurchaseAssetsFragment extends BaseFragment implements AssetsView
     }
 
     @Override
+    public void getAssetManagementSuccess(AssetManagementBean result) {
+
+    }
+
+    @Override
     public void withdrawMoneySuccess(BaseBean result) {
 
     }
@@ -181,20 +187,20 @@ public class RepurchaseAssetsFragment extends BaseFragment implements AssetsView
 
     @Subscribe
     public void selAssets(String selAssets) {
-        switch (selAssets) {
-            case "udpAssestData":
-                assestPresenter.getFinancialDetails(pageIndex, 8);
-                break;
-            case "selAssets":
-                assestPresenter.getFinancialDetails(pageIndex, 8);
-                break;
-            case "udpAssestNum":
-                if (MyApplication.getUserBean() != null) {
-                    BigDecimal one=new BigDecimal("1");
-                    tvAssets.setText(String.valueOf(MyApplication.getUserBean().getRepurchaseAssets().divide(one,8,BigDecimal.ROUND_HALF_UP).doubleValue()));
-                }
-                break;
-        }
+//        switch (selAssets) {
+//            case "udpAssestData":
+//                assestPresenter.getFinancialDetails(pageIndex, 8);
+//                break;
+//            case "selAssets":
+//                assestPresenter.getFinancialDetails(pageIndex, 8);
+//                break;
+//            case "udpAssestNum":
+//                if (MyApplication.getUserBean() != null) {
+//                    BigDecimal one=new BigDecimal("1");
+//                    tvAssets.setText(String.valueOf(MyApplication.getUserBean().getRepurchaseAssets().divide(one,8,BigDecimal.ROUND_HALF_UP).doubleValue()));
+//                }
+//                break;
+//        }
     }
 
     @Override

@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/iv_80"
             android:gravity="center"
-            android:text="@string/repurchase_pkb"
+            android:text="@string/repurchase_usdt"
             android:textColor="@color/gray_text"
             android:textSize="@dimen/iv_26" />
         <View
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/iv_80"
             android:gravity="center"
-            android:text="@string/dividend_pkb"
+            android:text="@string/dividend_tgm"
             android:textColor="@color/gray_text"
             android:textSize="@dimen/iv_26" />
     </LinearLayout>

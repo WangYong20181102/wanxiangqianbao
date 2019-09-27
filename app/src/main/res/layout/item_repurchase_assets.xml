@@ -84,7 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/iv_5"
-                android:text="PKB"
+                android:text="USDT"
                 android:textColor="@color/light_gray_text"
                 android:textSize="@dimen/iv_22" />
         </LinearLayout>

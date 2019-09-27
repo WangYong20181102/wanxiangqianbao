@@ -98,7 +98,7 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
                 intent = new Intent(mContext, UserInfoActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.ll_my_dividend:
+            case R.id.ll_my_dividend://當前委托
                 intent = new Intent(mContext, MySendLetterActivity.class);
                 startActivity(intent);
                 break;
@@ -193,25 +193,25 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
                 if (MyApplication.getUserBean() != null) {
 //                    BigDecimal one = new BigDecimal("1");
                     tvName.setText(MyApplication.getUserBean().getUserName());
-                    tvPhone.setText(MyApplication.getUserBean().getPhone());
-                    if (MyApplication.getUserBean().getActiveAssets() != null) {
-                        tvActiveAssets.setText(StringUtil.checkDoubleOrInt(MyApplication.getUserBean().getActiveAssets()));
-                    }
-                    if (MyApplication.getUserBean().getDividendAssets() != null) {
-                        tvDividendAssets.setText(StringUtil.checkDoubleOrInt(MyApplication.getUserBean().getDividendAssets()));
-                    }
-                    if (MyApplication.getUserBean().getRepurchaseAssets() != null) {
-                        tvRepurchaseAssets.setText(StringUtil.checkDoubleOrInt(MyApplication.getUserBean().getRepurchaseAssets()));
-                    }
-                    if (MyApplication.getUserBean().getAccelerationValue() != null) {
-                        tvAccelerationValue.setText(StringUtil.subZeroAndDot(MyApplication.getUserBean().getAccelerationValue().toPlainString()) + "%");
-                    }
+                    tvPhone.setText(StringUtil.makePhoneNum(MyApplication.getUserBean().getPhone()));
+//                    if (MyApplication.getUserBean().getActiveAssets() != null) {
+//                        tvActiveAssets.setText(StringUtil.checkDoubleOrInt(MyApplication.getUserBean().getActiveAssets()));
+//                    }
+//                    if (MyApplication.getUserBean().getDividendAssets() != null) {
+//                        tvDividendAssets.setText(StringUtil.checkDoubleOrInt(MyApplication.getUserBean().getDividendAssets()));
+//                    }
+//                    if (MyApplication.getUserBean().getRepurchaseAssets() != null) {
+//                        tvRepurchaseAssets.setText(StringUtil.checkDoubleOrInt(MyApplication.getUserBean().getRepurchaseAssets()));
+//                    }
+//                    if (MyApplication.getUserBean().getAccelerationValue() != null) {
+//                        tvAccelerationValue.setText(StringUtil.subZeroAndDot(MyApplication.getUserBean().getAccelerationValue().toPlainString()) + "%");
+//                    }
                 }
-                mePresenter.selUserImage();
+//                mePresenter.selUserImage();
                 break;
-            case "udpUserImage":
-                mePresenter.selUserImage();
-                break;
+//            case "udpUserImage":
+//                mePresenter.selUserImage();
+//                break;
         }
     }
 
@@ -233,9 +233,9 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
             MyApplication.setUserImg(null);
             MyApplication.setUserImg(result.getData().getMeImg());
         }
-        if (PreferencesLoader.getObject(CoreKeys.USER_IMG, String.class) != null) {
-            ivUserImg.setImageBitmap(BitmapUtil.compressImage(BitmapUtil.ratio(BitmapUtil.stringtoBitmap(MyApplication.getUserImg()), 130, 130)));
-        }
+//        if (PreferencesLoader.getObject(CoreKeys.USER_IMG, String.class) != null) {
+//            ivUserImg.setImageBitmap(BitmapUtil.compressImage(BitmapUtil.ratio(BitmapUtil.stringtoBitmap(MyApplication.getUserImg()), 130, 130)));
+//        }
     }
 
     @Override

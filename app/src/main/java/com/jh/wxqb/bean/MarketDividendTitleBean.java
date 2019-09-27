@@ -111,10 +111,19 @@ public class MarketDividendTitleBean {
                 private BigDecimal amountTotal;
                 private BigDecimal accountCommission;
                 private BigDecimal acountTransaction;
+                private BigDecimal countUnfilledVolume;
                 private int orderStatus;
                 private long createDate;
                 private int assetTypeId;
                 private String updateTime;
+
+                public BigDecimal getCountUnfilledVolume() {
+                    return countUnfilledVolume;
+                }
+
+                public void setCountUnfilledVolume(BigDecimal countUnfilledVolume) {
+                    this.countUnfilledVolume = countUnfilledVolume;
+                }
 
                 public int getId() {
                     return id;
@@ -227,10 +236,19 @@ public class MarketDividendTitleBean {
                 private BigDecimal amountTotal;
                 private BigDecimal accountCommission;
                 private BigDecimal acountTransaction;
+                private BigDecimal countUnfilledVolume;
                 private int orderStatus;
                 private long createDate;
                 private int assetTypeId;
                 private String updateTime;
+
+                public BigDecimal getCountUnfilledVolume() {
+                    return countUnfilledVolume;
+                }
+
+                public void setCountUnfilledVolume(BigDecimal countUnfilledVolume) {
+                    this.countUnfilledVolume = countUnfilledVolume;
+                }
 
                 public int getId() {
                     return id;

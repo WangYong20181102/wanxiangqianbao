@@ -86,13 +86,13 @@ public class MarketDividendTitleAdapter extends RecyclerView.Adapter<MarketDivid
 
 
             if (color) {
-                tvPrice.setText(String.valueOf(item.getSellList().get(position).getAmountPrice().divide(one,2,BigDecimal.ROUND_HALF_UP).doubleValue()));
-                tvNumber.setText(String.valueOf(item.getSellList().get(position).getAccountCommission().divide(one,2,BigDecimal.ROUND_HALF_UP).doubleValue()));
+                tvPrice.setText(String.valueOf(item.getSellList().get(position).getAmountPrice().divide(one,4,BigDecimal.ROUND_HALF_UP).doubleValue()));
+                tvNumber.setText(String.valueOf(item.getSellList().get(position).getCountUnfilledVolume().divide(one,2,BigDecimal.ROUND_HALF_UP).doubleValue()));
                 tvIndex.setText(String.valueOf(item.getSellList().get(position).getId()));
                 tvIndex.setTextColor(Color.parseColor("#d6734b"));
             } else {
-                tvPrice.setText(String.valueOf(item.getBuyList().get(position).getAmountPrice().divide(one,2,BigDecimal.ROUND_HALF_UP).doubleValue()));
-                tvNumber.setText(String.valueOf(item.getBuyList().get(position).getAccountCommission().divide(one,2,BigDecimal.ROUND_HALF_UP).doubleValue()));
+                tvPrice.setText(String.valueOf(item.getBuyList().get(position).getAmountPrice().divide(one,4,BigDecimal.ROUND_HALF_UP).doubleValue()));
+                tvNumber.setText(String.valueOf(item.getBuyList().get(position).getCountUnfilledVolume().divide(one,2,BigDecimal.ROUND_HALF_UP).doubleValue()));
                 tvIndex.setText(String.valueOf(item.getBuyList().get(position).getId()));
                 tvIndex.setTextColor(Color.parseColor("#02c289"));
             }

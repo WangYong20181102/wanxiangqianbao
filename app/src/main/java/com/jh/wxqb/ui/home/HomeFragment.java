@@ -1,15 +1,11 @@
 package com.jh.wxqb.ui.home;
 
 
-import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -38,6 +34,7 @@ import com.jh.wxqb.utils.DownloadService;
 import com.jh.wxqb.utils.GetEditionCode;
 import com.jh.wxqb.utils.GsonUtil;
 import com.jh.wxqb.utils.LogUtils;
+import com.jh.wxqb.utils.SystemUtils;
 import com.jh.wxqb.utils.Toasts;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
@@ -51,8 +48,6 @@ import java.math.BigDecimal;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import static com.jh.wxqb.utils.Toasts.showLong;
 
 
 /**
@@ -77,7 +72,6 @@ public class HomeFragment extends BaseFragment implements HomeView {
             view = inflater.inflate(R.layout.fragment_home, container, false);
             ButterKnife.bind(this, view);
             EventBus.getDefault().register(this);
-//            ((MainActivity) mContext).showWaitDialog();
             initWebView();
             presenter = new HomePresenter(this);
             presenter.versionUpdate();
@@ -131,8 +125,8 @@ public class HomeFragment extends BaseFragment implements HomeView {
 
             @Override
             public void onReceivedError(WebView webView, int errorCode, String description, String s1) {
-                if (mWebView != null)
-                    mWebView.loadUrl("www.baidu.com");
+//                if (mWebView != null)
+//                    mWebView.loadUrl("www.baidu.com");
             }
         });
         //创建上面创建类的对象
@@ -213,6 +207,13 @@ public class HomeFragment extends BaseFragment implements HomeView {
             return;
         }
         LogUtils.e("versionUpdateSuccess==>" + GsonUtil.GsonString(result));
+        upDataApp(result);
+    }
+
+    /**
+     * 版本更新
+     */
+    private void upDataApp(VersionUpdateBean result) {
         String versionNameCode = GetEditionCode.getVersionNameCode(mContext);
         LogUtils.e("本地版本号versionNameCode==>" + versionNameCode);
         LogUtils.e("服务端版本号versionNameCode==>" + result.getData().getApp().getVers());
@@ -220,8 +221,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
         BigDecimal serverVer = new BigDecimal(Double.valueOf(result.getData().getApp().getVers()));
         int comparisonResult = localOverCode.compareTo(serverVer);
         LogUtils.e("比较结果==>" + comparisonResult);
-
-        if (comparisonResult == -1) {
+        if (comparisonResult < 0) {
             //进入更新弹窗
             switch (result.getData().getApp().getVersion()) {
                 case 1: //非重要版本
@@ -231,9 +231,6 @@ public class HomeFragment extends BaseFragment implements HomeView {
                     updAppDialog(mContext, result.getData().getApp().getComment(), true, result.getData().getApp().getUrl(), String.valueOf(result.getData().getApp().getVers()));
                     break;
             }
-        } else {
-            presenter.getUserInfo();
-            EventBus.getDefault().post("selAssets");
         }
     }
 
@@ -245,10 +242,6 @@ public class HomeFragment extends BaseFragment implements HomeView {
             @Override
             public void udp() {
                 super.udp();
-                if (!isGrantExternalRW(getActivity())) {
-                    showLong("当前无权限，请开启存储权限后重新下载。");
-                    return;
-                }
                 LogUtils.e("url=======>" + url);
                 DownloadService.isShow = isShow;
                 if (isShow) {
@@ -267,26 +260,10 @@ public class HomeFragment extends BaseFragment implements HomeView {
             public void close() {
                 super.close();
                 presenter.getUserInfo();
-                EventBus.getDefault().post("selAssets");
+//                EventBus.getDefault().post("selAssets");
             }
         };
         dialog.show();
-    }
-
-
-    /**
-     * 检查是否有手机存储权限
-     */
-    public static boolean isGrantExternalRW(Activity activity) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && activity.checkSelfPermission(
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            activity.requestPermissions(new String[]{
-                    Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE
-            }, REQUEST_WRITE);
-            return false;
-        }
-        return true;
     }
 
     /**
@@ -367,9 +344,11 @@ public class HomeFragment extends BaseFragment implements HomeView {
         if (((MainActivity) mContext).isFinishing()) {
             return;
         }
+
         ((MainActivity) mContext).dismissWaitDialog();
         AgainLoginUtil.againLogin(mContext, statue);
         Toasts.showShort(message);
+
     }
 
     @Override
@@ -384,6 +363,10 @@ public class HomeFragment extends BaseFragment implements HomeView {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        boolean serviceRunning = SystemUtils.isServiceRunning(getContext(), DownloadService.class.getName());
+        if (serviceRunning) {
+            mContext.stopService(download);
+        }
         EventBus.getDefault().unregister(this);
     }
 

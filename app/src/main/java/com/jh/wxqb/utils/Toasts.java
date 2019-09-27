@@ -19,6 +19,7 @@
 
 package com.jh.wxqb.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.widget.Toast;
 
@@ -60,6 +61,7 @@ public class Toasts {
     }
 
 
+    @SuppressLint("ShowToast")
     public static void showShort(String message) {
         check();
         if (toast == null) {

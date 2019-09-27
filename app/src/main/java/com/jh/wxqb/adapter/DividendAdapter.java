@@ -22,7 +22,6 @@ import butterknife.ButterKnife;
 
 /**
  * Created by Administrator on 2018/5/11 0011.
- * 派信
  */
 
 public class DividendAdapter extends RecyclerView.Adapter<DividendAdapter.ViewHolder> implements View.OnClickListener {
@@ -94,53 +93,50 @@ public class DividendAdapter extends RecyclerView.Adapter<DividendAdapter.ViewHo
         //      1買入中2.停止買入3.停止排队4.挂单中5.已成交6.已撤销7.排队中
         //tvDividendState  1：停止買入   2：停止排队
         public void refurbish(final int position) {
-            BigDecimal one=new BigDecimal("1");
+            BigDecimal one = new BigDecimal("1");
             tvTime.setText(TimeUtil.getTime(item.getCreateDate()));
-            tvDelegateQuantity.setText(String.valueOf(item.getAccountCommission().divide(one,2,BigDecimal.ROUND_HALF_UP)));
-            tvDividendIncome.setText(String.valueOf(item.getDailyInterest().divide(one,2,BigDecimal.ROUND_HALF_UP)));
-            tvTotalTurnover.setText(String.valueOf(item.getAmountTotal().divide(one,2,BigDecimal.ROUND_HALF_UP)));
-            tvVolume.setText(String.valueOf(item.getAcountTransaction().divide(one,2,BigDecimal.ROUND_HALF_UP)));
-            tvRate.setText(item.getInterestRatio());
+            tvDelegateQuantity.setText(String.valueOf(item.getAmountPrice().divide(one, 2, BigDecimal.ROUND_HALF_UP)));
+            tvDividendIncome.setText(String.valueOf(item.getAccountCommission().divide(one, 2, BigDecimal.ROUND_HALF_UP)));
+//            tvTotalTurnover.setText(String.valueOf(item.getAmountTotal().divide(one, 2, BigDecimal.ROUND_HALF_UP)));
+            tvVolume.setText(String.valueOf(item.getVolume().divide(one, 2, BigDecimal.ROUND_HALF_UP)));
+//            tvRate.setText(item.getInterestRatio());
             switch (item.getAssetTypeId()) {
                 case 1:
-                    tvCompany.setText("委托量(ETH)");
+                    tvCompany.setText("委托量(TGM)");
                     break;
                 case 2:
                 case 3:
-                    tvCompany.setText("委托量(PKB)");
+                    tvCompany.setText("委托量(USDT)");
                     break;
             }
             switch (item.getStatus()) {
                 case 1:
                     llState.setVisibility(View.VISIBLE);
-                    tvSuccess.setVisibility(View.GONE);
-                    tvDividend.setText(R.string.the_dividend);
-                    tvDividendState.setText(R.string.stop_the_dividend);
+                    tvSuccess.setVisibility(View.VISIBLE);
+                    tvSuccess.setText(R.string.in_the_pending_order);
+                    tvDividendState.setText(R.string.cancel_order);
                     tvDividendState.setOnClickListener(DividendAdapter.this);
                     tvDividendState.setTag(R.string.value1, position);
                     tvDividendState.setTag(R.string.value2, 1);
                     break;
-                case 2:
-                    llState.setVisibility(View.GONE);
-                    tvSuccess.setVisibility(View.VISIBLE);
-                    tvSuccess.setText(R.string.stop_the_dividend);
-                    break;
                 case 3:
                     llState.setVisibility(View.GONE);
                     tvSuccess.setVisibility(View.VISIBLE);
-                    tvSuccess.setText(R.string.stop_queuing);
+                    tvSuccess.setText(R.string.all_success);
                     break;
-                case 7:
+                case 4:
                     llState.setVisibility(View.GONE);
                     tvSuccess.setVisibility(View.VISIBLE);
-                    tvSuccess.setText(R.string.queuing);
-//                    llState.setVisibility(View.VISIBLE);
-//                    tvSuccess.setVisibility(View.GONE);
-//                    tvDividend.setText(R.string.queuing);
-//                    tvDividendState.setText(R.string.stop_queuing);
-//                    tvDividendState.setOnClickListener(DividendAdapter.this);
-//                    tvDividendState.setTag(R.string.value1, position);
-//                    tvDividendState.setTag(R.string.value2, 2);
+                    tvSuccess.setText(R.string.revocation);
+                    break;
+                case 5:
+                    llState.setVisibility(View.VISIBLE);
+                    tvSuccess.setVisibility(View.VISIBLE);
+                    tvSuccess.setText(R.string.partial_deal);
+                    tvDividendState.setText(R.string.cancel_order);
+                    tvDividendState.setOnClickListener(DividendAdapter.this);
+                    tvDividendState.setTag(R.string.value1, position);
+                    tvDividendState.setTag(R.string.value2, 1);
                     break;
             }
         }

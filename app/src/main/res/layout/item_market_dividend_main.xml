@@ -74,10 +74,9 @@
                 android:id="@+id/tv_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/no"
                 android:textColor="@color/color_6f88aa"
                 android:textSize="@dimen/iv_26"
-                android:visibility="gone" />
+                android:visibility="visible" />
         </RelativeLayout>
     </LinearLayout>
 

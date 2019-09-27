@@ -9,6 +9,7 @@ import com.jh.wxqb.R;
 import com.jh.wxqb.base.BaseActivity;
 import com.jh.wxqb.base.CoreKeys;
 import com.jh.wxqb.base.MyApplication;
+import com.jh.wxqb.bean.AssetManagementBean;
 import com.jh.wxqb.bean.BaseBean;
 import com.jh.wxqb.bean.FinancialDetailsBean;
 import com.jh.wxqb.bean.SafetyMarkingBean;
@@ -75,9 +76,9 @@ public class TurnOutActivity extends BaseActivity implements MessageView, Assets
     }
 
     private void initView() {
-        if (MyApplication.getUserBean() != null) {
-            tvAvailableAssets.setText(StringUtil.subZeroAndDot(MyApplication.getUserBean().getDividendAssets().toPlainString()));
-        }
+//        if (MyApplication.getUserBean() != null) {
+//            tvAvailableAssets.setText(StringUtil.subZeroAndDot(MyApplication.getUserBean().getDividendAssets().toPlainString()));
+//        }
     }
 
     @Override
@@ -295,6 +296,11 @@ public class TurnOutActivity extends BaseActivity implements MessageView, Assets
 
     @Override
     public void getFinancialDetailsSuccess(FinancialDetailsBean result) {
+
+    }
+
+    @Override
+    public void getAssetManagementSuccess(AssetManagementBean result) {
 
     }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/color_style"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.jh.wxqb.ui.home.login.ForgetPwdActivity">
@@ -27,100 +27,91 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="@dimen/iv_450"
-                android:layout_height="@dimen/iv_450"
+                android:layout_width="@dimen/d110"
+                android:layout_height="@dimen/d85"
                 android:layout_gravity="center_horizontal"
-                android:scaleType="fitXY"
+                android:layout_marginTop="@dimen/d45"
                 android:src="@drawable/login_logo" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/iv_90"
-                android:layout_marginLeft="@dimen/iv_20"
-                android:layout_marginRight="@dimen/iv_20"
-                android:layout_marginTop="@dimen/iv_50"
-                android:background="@color/layout_bg"
+                android:layout_marginLeft="@dimen/d26"
+                android:layout_marginTop="@dimen/d26"
+                android:layout_marginRight="@dimen/d26"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/iv_34"
-                    android:layout_height="@dimen/iv_32"
-                    android:layout_marginLeft="@dimen/iv_20"
-                    android:src="@drawable/iv_user_name" />
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <EditText
                     android:id="@+id/ed_account"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/iv_40"
                     android:background="@android:color/transparent"
                     android:hint="@string/account"
-                    android:textColor="@color/gray_text"
-                    android:textColorHint="@color/me_code_color"
-                    android:textSize="@dimen/iv_28" />
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/color_94AED3"
+                    android:textSize="@dimen/s15" />
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/iv_2"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/d26"
+                android:layout_marginTop="@dimen/d5"
+                android:layout_marginRight="@dimen/d26"
+                android:background="@color/color_47638A"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/iv_90"
-                android:layout_marginLeft="@dimen/iv_20"
-                android:layout_marginRight="@dimen/iv_20"
-                android:layout_marginTop="@dimen/iv_20"
-                android:background="@color/layout_bg"
+                android:layout_marginLeft="@dimen/d26"
+                android:layout_marginTop="@dimen/d26"
+                android:layout_marginRight="@dimen/d26"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/iv_26"
-                    android:layout_height="@dimen/iv_38"
-                    android:layout_marginLeft="@dimen/iv_20"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/iv_phone" />
 
                 <EditText
                     android:id="@+id/ed_phone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/iv_40"
                     android:background="@android:color/transparent"
                     android:hint="@string/mobile_phone_number"
                     android:inputType="number"
                     android:maxLength="11"
-                    android:textColor="@color/gray_text"
-                    android:textColorHint="@color/me_code_color"
-                    android:textSize="@dimen/iv_28" />
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/color_94AED3"
+                    android:textSize="@dimen/s15" />
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/iv_2"
+                android:layout_marginLeft="@dimen/d26"
+                android:layout_marginTop="@dimen/d5"
+                android:layout_marginRight="@dimen/d26"
+                android:background="@color/color_47638A"
+                android:visibility="visible" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/iv_90"
-                android:layout_marginLeft="@dimen/iv_20"
-                android:layout_marginRight="@dimen/iv_20"
-                android:layout_marginTop="@dimen/iv_20"
-                android:background="@color/layout_bg">
-
-                <ImageView
-                    android:id="@+id/iv_pwd_img"
-                    android:layout_width="@dimen/iv_28"
-                    android:layout_height="@dimen/iv_36"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_20"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/iv_user_pwd" />
+                android:layout_marginLeft="@dimen/d26"
+                android:layout_marginTop="@dimen/d15"
+                android:layout_marginRight="@dimen/d26">
 
                 <EditText
                     android:id="@+id/ed_pwd"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/iv_40"
-                    android:layout_toRightOf="@id/iv_pwd_img"
                     android:background="@android:color/transparent"
                     android:hint="@string/new_pwd"
                     android:inputType="textPassword"
-                    android:textColor="@color/gray_text"
-                    android:textColorHint="@color/me_code_color"
-                    android:textSize="@dimen/iv_28" />
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/color_94AED3"
+                    android:textSize="@dimen/s15" />
 
                 <RelativeLayout
                     android:id="@+id/ll_is_show_pwd"
@@ -139,62 +130,69 @@
 
             </RelativeLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/iv_2"
+                android:layout_marginLeft="@dimen/d26"
+                android:layout_marginTop="@dimen/d5"
+                android:layout_marginRight="@dimen/d26"
+                android:background="@color/color_47638A"
+                android:visibility="visible" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/iv_90"
-                android:layout_marginLeft="@dimen/iv_20"
-                android:layout_marginRight="@dimen/iv_20"
-                android:layout_marginTop="@dimen/iv_20"
-                android:background="@color/layout_bg">
-
-                <ImageView
-                    android:id="@+id/iv_code"
-                    android:layout_width="@dimen/iv_28"
-                    android:layout_height="@dimen/iv_32"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_20"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/iv_code" />
+                android:layout_marginLeft="@dimen/d26"
+                android:layout_marginTop="@dimen/d15"
+                android:layout_marginRight="@dimen/d26">
 
                 <EditText
                     android:id="@+id/ed_code"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/iv_40"
                     android:layout_toLeftOf="@+id/tv_code"
-                    android:layout_toRightOf="@+id/iv_code"
                     android:background="@android:color/transparent"
                     android:hint="@string/enter_code"
                     android:inputType="number"
-                    android:textColor="@color/gray_text"
-                    android:textColorHint="@color/me_code_color"
-                    android:textSize="@dimen/iv_28" />
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/color_94AED3"
+                    android:textSize="@dimen/s15" />
 
                 <TextView
                     android:id="@+id/tv_code"
-                    android:layout_width="@dimen/iv_160"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:background="@color/home_text_color"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/shape_btn_rig_bg"
                     android:gravity="center"
                     android:text="@string/get_code"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/iv_26" />
+                    android:textColor="@color/color_131E30"
+                    android:textSize="@dimen/s12" />
             </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/iv_2"
+                android:layout_marginLeft="@dimen/d26"
+                android:layout_marginTop="@dimen/d5"
+                android:layout_marginRight="@dimen/d120"
+                android:background="@color/color_47638A"
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/tv_confirm"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_80"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/d38"
+                android:layout_marginTop="@dimen/d40"
+                android:layout_marginRight="@dimen/d38"
                 android:layout_marginBottom="@dimen/iv_50"
-                android:layout_marginLeft="@dimen/iv_100"
-                android:layout_marginRight="@dimen/iv_100"
-                android:layout_marginTop="@dimen/iv_76"
-                android:background="@color/home_text_color"
+                android:background="@drawable/all_btn_bg"
                 android:gravity="center"
                 android:text="@string/confirm_the_change"
                 android:textColor="@color/white"
-                android:textSize="@dimen/iv_36" />
+                android:textSize="@dimen/s17" />
 
         </LinearLayout>
     </ScrollView>

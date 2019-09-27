@@ -37,7 +37,7 @@ public class GsonUtil {
         if (gson != null) {
             gsonString = gson.toJson(object);
         }
-        return gsonString;
+        return gsonString.replace("\\","");
     }
 
     /**

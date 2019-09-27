@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/color_style">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -29,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/number"
-                android:textColor="@color/light_gray_text"
+                android:textColor="@color/white"
                 android:textSize="@dimen/iv_24" />
 
             <TextView
@@ -49,7 +50,7 @@
             android:layout_marginTop="@dimen/iv_24"
             android:layout_toRightOf="@id/iv_user_img"
             android:text="18854695476"
-            android:textColor="@color/gray_text"
+            android:textColor="@color/white"
             android:textSize="@dimen/iv_30" />
 
         <TextView
@@ -76,7 +77,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0.0"
-                android:textColor="@color/light_gray_text"
+                android:textColor="@color/white"
                 android:textSize="@dimen/iv_28" />
 
             <TextView
@@ -84,8 +85,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/iv_5"
-                android:text="ETH"
-                android:textColor="@color/light_gray_text"
+                android:text="TGM"
+                android:textColor="@color/white"
                 android:textSize="@dimen/iv_22" />
         </LinearLayout>
 
@@ -97,7 +98,7 @@
             android:layout_below="@id/ll_num"
             android:layout_marginTop="@dimen/iv_10"
             android:text="2018-08-03 15:30:26"
-            android:textColor="@color/me_code_color"
+            android:textColor="@color/white"
             android:textSize="@dimen/iv_22" />
 
     </RelativeLayout>

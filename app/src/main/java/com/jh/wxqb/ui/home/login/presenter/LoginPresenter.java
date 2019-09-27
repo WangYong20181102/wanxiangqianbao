@@ -85,8 +85,8 @@ public class LoginPresenter {
     /**
      * 忘记密码
      */
-    public void forgetLoginPwd(String mobile, String newOnePwd, String username, String smsCode) {
-        biz.forgetLoginPwd(mobile, newOnePwd, username, smsCode, new OnBaseListener() {
+    public void forgetLoginPwd(String mobile, String newOnePwd, String smsCode) {
+        biz.forgetLoginPwd(mobile, newOnePwd, smsCode, new OnBaseListener() {
             @Override
             public void onResponse(String result) {
                 if (GsonUtil.isJson(result)) {

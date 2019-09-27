@@ -19,83 +19,60 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:layout_width="@dimen/d110"
+            android:layout_height="@dimen/d85"
             android:layout_centerHorizontal="true"
-            android:layout_width="@dimen/iv_450"
-            android:layout_height="@dimen/iv_450"
-            android:layout_gravity="center_horizontal"
-            android:scaleType="fitXY"
+            android:layout_marginTop="@dimen/d45"
             android:src="@drawable/login_logo" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_90"
-        android:layout_marginLeft="@dimen/iv_20"
-        android:layout_marginRight="@dimen/iv_20"
-        android:layout_marginTop="@dimen/iv_118"
-        android:background="@drawable/et_bg_line">
-
-        <ImageView
-            android:id="@+id/iv_user_img"
-            android:layout_width="@dimen/iv_34"
-            android:layout_height="@dimen/iv_32"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/iv_60"
-            android:src="@drawable/iv_user_name" />
+        android:layout_height="@dimen/d45"
+        android:layout_marginLeft="@dimen/d26"
+        android:layout_marginTop="@dimen/d26"
+        android:layout_marginRight="@dimen/d26">
 
         <EditText
             android:id="@+id/ed_user_name"
-            android:layout_width="@dimen/iv_400"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/iv_50"
-            android:layout_toRightOf="@+id/iv_user_img"
             android:background="@android:color/transparent"
             android:hint="@string/account"
             android:inputType="textVisiblePassword"
             android:maxLength="11"
             android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="@dimen/iv_30"
-            android:text="sunrise"/>
+            android:textColorHint="@color/color_94AED3"
+            android:textSize="@dimen/s15"/>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/iv_1"
+            android:layout_height="@dimen/iv_2"
             android:layout_alignParentBottom="true"
-            android:background="@color/white"
-            android:visibility="gone"/>
+            android:layout_marginTop="@dimen/d5"
+            android:background="@color/color_47638A"
+            android:visibility="visible" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_90"
-        android:layout_marginLeft="@dimen/iv_20"
-        android:layout_marginRight="@dimen/iv_20"
+        android:layout_height="@dimen/d45"
+        android:layout_marginLeft="@dimen/d26"
         android:layout_marginTop="@dimen/iv_24"
-        android:background="@drawable/et_bg_line">
-
-        <ImageView
-            android:id="@+id/iv_pwd_img"
-            android:layout_width="@dimen/iv_28"
-            android:layout_height="@dimen/iv_36"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/iv_60"
-            android:src="@drawable/iv_user_pwd" />
+        android:layout_marginRight="@dimen/d26">
 
         <EditText
             android:id="@+id/ed_user_pwd"
-            android:layout_width="@dimen/iv_400"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/iv_50"
-            android:layout_toRightOf="@id/iv_pwd_img"
+            android:layout_toLeftOf="@+id/ll_is_show_pwd"
             android:background="@android:color/transparent"
             android:hint="@string/login_pwd"
             android:inputType="textPassword"
             android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="@dimen/iv_30"
-            android:text="1234567"/>
+            android:textColorHint="@color/color_94AED3"
+            android:textSize="@dimen/s15" />
 
         <RelativeLayout
             android:id="@+id/ll_is_show_pwd"
@@ -114,17 +91,19 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/iv_1"
+            android:layout_height="@dimen/iv_2"
             android:layout_alignParentBottom="true"
-            android:background="@color/white"
-            android:visibility="gone"/>
+            android:layout_marginTop="@dimen/d5"
+            android:background="@color/color_47638A"
+            android:visibility="visible" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/iv_20"
-        android:layout_marginRight="@dimen/iv_20">
+        android:layout_marginLeft="@dimen/d26"
+        android:layout_marginRight="@dimen/d26"
+        android:layout_marginTop="@dimen/d13">
 
         <RelativeLayout
             android:id="@+id/ll_register"
@@ -136,8 +115,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:text="@string/register"
-                android:textColor="@color/home_text_color"
-                android:textSize="@dimen/iv_28" />
+                android:textColor="@color/color_94AED3"
+                android:textSize="@dimen/s12" />
         </RelativeLayout>
 
 
@@ -153,23 +132,23 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:text="@string/forget_pwd"
-                android:textColor="@color/home_text_color"
-                android:textSize="@dimen/iv_28" />
+                android:textColor="@color/color_94AED3"
+                android:textSize="@dimen/s12" />
         </RelativeLayout>
     </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_login"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_80"
-        android:layout_marginLeft="@dimen/iv_100"
-        android:layout_marginRight="@dimen/iv_100"
-        android:layout_marginTop="@dimen/iv_80"
-        android:background="@color/color_2686d8"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/d38"
+        android:layout_marginTop="@dimen/d40"
+        android:layout_marginRight="@dimen/d38"
+        android:background="@drawable/all_btn_bg"
         android:gravity="center"
         android:text="@string/confirm_login"
         android:textColor="@color/white"
-        android:textSize="@dimen/iv_30" />
+        android:textSize="@dimen/s17" />
 
 
 </LinearLayout>

@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/iv_20"
-                android:text="pkb"
+                android:text="USDT"
                 android:textColor="@color/white"
                 android:textSize="@dimen/iv_26" />
         </LinearLayout>

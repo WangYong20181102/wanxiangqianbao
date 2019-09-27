@@ -40,7 +40,7 @@
         android:maxLength="12"
         android:maxLines="1"
         android:textColor="@color/white"
-        android:textSize="@dimen/tv_36" />
+        android:textSize="@dimen/d18" />
 
     <LinearLayout
         android:id="@+id/btn_more"

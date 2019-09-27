@@ -284,13 +284,12 @@ public class BizImpl extends BaseBiz implements Biz {
      *
      * @param mobile
      * @param newOnePwd
-     * @param username
      * @param smsCode
      * @param listener
      */
     @Override
-    public void forgetLoginPwd(String mobile, String newOnePwd, String username, String smsCode, final OnBaseListener listener) {
-        getStringRetrofit().create(ServerApi.class).forgetLoginPwd(mobile, newOnePwd, username, smsCode).enqueue(new Callback<String>() {
+    public void forgetLoginPwd(String mobile, String newOnePwd, String smsCode, final OnBaseListener listener) {
+        getStringRetrofit().create(ServerApi.class).forgetLoginPwd(mobile, newOnePwd, smsCode).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (call != null) {
@@ -329,8 +328,8 @@ public class BizImpl extends BaseBiz implements Biz {
      * @param listener
      */
     @Override
-    public void udpLoginPwd(int type, String newOnePwd, String newTwoPwd, String smsCode,String mobile, final OnBaseListener listener) {
-        getStringRetrofit().create(ServerApi.class).udpLoginPwd(type, newOnePwd, newTwoPwd, smsCode,mobile).enqueue(new Callback<String>() {
+    public void udpLoginPwd(int type, String newOnePwd, String newTwoPwd, String smsCode, String mobile, final OnBaseListener listener) {
+        getStringRetrofit().create(ServerApi.class).udpLoginPwd(type, newOnePwd, newTwoPwd, smsCode, mobile).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (call != null) {
@@ -843,6 +842,44 @@ public class BizImpl extends BaseBiz implements Biz {
     }
 
     /**
+     * 資產管理
+     *
+     * @param pageNum
+     * @param type
+     * @param listener
+     */
+    @Override
+    public void getQueryaccountassets(int pageNum, int type, final OnBaseListener listener) {
+        getStringRetrofit().create(ServerApi.class).getQueryaccountassets(pageNum, type).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (call != null) {
+                    if (response.body() != null) {
+                        LogUtils.e("活动资产明细列表成功==>" + GsonUtil.GsonString(response.body()));
+                        if (response.isSuccessful()) {
+                            listener.onResponse(response.body());
+                        } else {
+                            listener.onFailure(response.message(), response.raw().code());
+                        }
+                    } else {
+                        LogUtils.e("code======>" + response.raw().code());
+                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                if (call.isExecuted()) {
+                    call.cancel();
+                }
+                LogUtils.e("服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
+                listener.onFailure("服务器繁忙,请稍后再试", 0);
+            }
+        });
+    }
+
+    /**
      * 提币
      *
      * @param map
@@ -880,6 +917,7 @@ public class BizImpl extends BaseBiz implements Biz {
 
     /**
      * 買入市場--買入顶部列表
+     *
      * @param type
      * @param listener
      */
@@ -915,6 +953,7 @@ public class BizImpl extends BaseBiz implements Biz {
 
     /**
      * 買入市場--買入底部列表
+     *
      * @param pageNum
      * @param type
      * @param direction
@@ -922,7 +961,7 @@ public class BizImpl extends BaseBiz implements Biz {
      */
     @Override
     public void dividendMarketTopDividend(int pageNum, int type, int direction, final OnBaseListener listener) {
-        getStringRetrofit().create(ServerApi.class).dividendMarketTopDividend(pageNum,type,direction).enqueue(new Callback<String>() {
+        getStringRetrofit().create(ServerApi.class).dividendMarketTopDividend(pageNum, type, direction).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (call != null) {
@@ -952,6 +991,7 @@ public class BizImpl extends BaseBiz implements Biz {
 
     /**
      * 购买订单
+     *
      * @param map
      * @param listener
      */
@@ -987,6 +1027,7 @@ public class BizImpl extends BaseBiz implements Biz {
 
     /**
      * 買入
+     *
      * @param map
      * @param listener
      */
@@ -1022,6 +1063,7 @@ public class BizImpl extends BaseBiz implements Biz {
 
     /**
      * 卖出
+     *
      * @param map
      * @param listener
      */
@@ -1057,6 +1099,7 @@ public class BizImpl extends BaseBiz implements Biz {
 
     /**
      * 获取以太币和子币的价格
+     *
      * @param map
      * @param listener
      */
@@ -1092,6 +1135,7 @@ public class BizImpl extends BaseBiz implements Biz {
 
     /**
      * 获取邮箱验证码
+     *
      * @param email
      * @param listener
      */
@@ -1127,6 +1171,7 @@ public class BizImpl extends BaseBiz implements Biz {
 
     /**
      * 获取安全标示
+     *
      * @param listener
      */
     @Override
@@ -1161,6 +1206,7 @@ public class BizImpl extends BaseBiz implements Biz {
 
     /**
      * 版本更新
+     *
      * @param listener
      */
     @Override
@@ -1195,6 +1241,7 @@ public class BizImpl extends BaseBiz implements Biz {
 
     /**
      * 获取token失效时间
+     *
      * @param listener
      */
     @Override
@@ -1226,7 +1273,6 @@ public class BizImpl extends BaseBiz implements Biz {
             }
         });
     }
-
 
 
 }

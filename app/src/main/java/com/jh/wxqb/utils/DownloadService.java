@@ -152,25 +152,11 @@ public class DownloadService extends Service {
                 // 放置在"正在运行"栏目中
                 mNotification.flags = Notification.FLAG_ONGOING_EVENT;
                 RemoteViews contentView = new RemoteViews(mContext.getPackageName(), R.layout.download_notification_layout);
-//                contentView.setTextViewText(R.id.fileName, "正在下载：Peik-Bo.apk");
-                contentView.setTextViewText(R.id.fileName, "正在下载：paixin.apk");
+                contentView.setTextViewText(R.id.fileName, "正在下载：wanxiangqianbao.apk");
                 mNotification.contentView = contentView;
-//                mNotification.contentView.setProgressBar(R.id.down_progress, 100,10, false);
-/*                Intent intent = new Intent(this, LoginActivity.class);
-                PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-                mNotification.contentIntent = contentIntent;*/
 
                 break;
             case NOTIFY_OK_ID:
-//                int icon2 = R.drawable.ic_launcher;
-//                CharSequence tickerText2 = "下载完毕";
-//                long when2 = System.currentTimeMillis();
-//                mNotification = new Notification(icon2, tickerText2, when2);
-//
-//                //放置在"通知形"栏目中
-//                mNotification.flags = Notification.FLAG_AUTO_CANCEL;
-//                PendingIntent contentInten2 = PendingIntent.getActivity(mContext, 0, null, 0);
-//                mNotification.setLatestEventInfo(mContext, "下载完成", "文件已下载完毕", contentInten2);
 
                 Toast.makeText(DownloadService.this, "下载完成", Toast.LENGTH_SHORT).show();
                 stopSelf();// 停掉服务自身
@@ -262,14 +248,13 @@ public class DownloadService extends Service {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         // 由于没有在Activity环境下启动Activity,设置下面的标签
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        if(Build.VERSION.SDK_INT>=24) { //判读版本是否在7.0以上
+        if (Build.VERSION.SDK_INT >= 24) { //判读版本是否在7.0以上
             //参数1 上下文, 参数2 Provider主机地址 和配置文件中保持一致   参数3  共享的文件
-            Uri apkUri =
-                    FileProvider.getUriForFile(mContext, "com.koala.sendletter.fileprovider", f);
+            Uri apkUri = FileProvider.getUriForFile(mContext, "com.jh.wxqb.fileprovider", f);
             //添加这一句表示对目标应用临时授权该Uri所代表的文件
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
-        }else{
+        } else {
             intent.setDataAndType(Uri.fromFile(f),
                     "application/vnd.android.package-archive");
         }

@@ -18,6 +18,7 @@ import com.jh.wxqb.adapter.FinancialDetailsAdapter;
 import com.jh.wxqb.base.BaseFragment;
 import com.jh.wxqb.base.MainActivity;
 import com.jh.wxqb.base.MyApplication;
+import com.jh.wxqb.bean.AssetManagementBean;
 import com.jh.wxqb.bean.BaseBean;
 import com.jh.wxqb.bean.FinancialDetailsBean;
 import com.jh.wxqb.bean.SafetyMarkingBean;
@@ -174,6 +175,11 @@ public class ActiveAssetsFragment extends BaseFragment implements MyClicker, Ass
             }
         }
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void getAssetManagementSuccess(AssetManagementBean result) {
+
     }
 
     @Override

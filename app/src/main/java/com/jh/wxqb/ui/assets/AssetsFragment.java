@@ -42,9 +42,11 @@ public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChan
     View viewDividendAssets;
     @BindView(R.id.layout_view_pager)
     ViewPager layoutAssets;
-    @BindViews({R.id.tv_active_assets, R.id.tv_repurchase_assets, R.id.tv_dividend_assets})
+//    @BindViews({R.id.tv_active_assets, R.id.tv_dividend_assets, R.id.tv_repurchase_assets})
+    @BindViews({R.id.tv_active_assets, R.id.tv_dividend_assets})
     List<TextView> allTitle;
-    @BindViews({R.id.view_active_assets, R.id.view_repurchase_assets, R.id.view_dividend_assets})
+//    @BindViews({R.id.view_active_assets, R.id.view_dividend_assets, R.id.view_repurchase_assets})
+    @BindViews({R.id.view_active_assets, R.id.view_dividend_assets})
     List<View> allView;
     private ArrayList<Fragment> fragmentList;
 
@@ -65,17 +67,19 @@ public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChan
 
     private void initListener() {
         layoutAssets.addOnPageChangeListener(this);
-        layoutAssets.setOffscreenPageLimit(3);
+        layoutAssets.setOffscreenPageLimit(2);
     }
 
     private void initFragment() {
         fragmentList = new ArrayList<>();
-        ActiveAssetsFragment activeAssetsFragment = new ActiveAssetsFragment();
-        RepurchaseAssetsFragment repurchaseAssetsFragment = new RepurchaseAssetsFragment();
-        DividendAssetsFragment dividendAssetsFragment = new DividendAssetsFragment();
+        ActiveManagementFragment activeAssetsFragment = new ActiveManagementFragment();
+        FreezeAssetsFragment freezeAssetsFragment = new FreezeAssetsFragment();
+//        ActiveAssetsFragment activeAssetsFragment = new ActiveAssetsFragment();
+//        DividendAssetsFragment dividendAssetsFragment = new DividendAssetsFragment();
+//        RepurchaseAssetsFragment repurchaseAssetsFragment = new RepurchaseAssetsFragment();
         fragmentList.add(activeAssetsFragment);
-        fragmentList.add(repurchaseAssetsFragment);
-        fragmentList.add(dividendAssetsFragment);
+        fragmentList.add(freezeAssetsFragment);
+//        fragmentList.add(repurchaseAssetsFragment);
         PagerAdapter adapter = new PagerAdapter(getActivity().getSupportFragmentManager(), fragmentList);
         layoutAssets.setAdapter(adapter);
     }
@@ -96,10 +100,10 @@ public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChan
             case R.id.ll_active_assets:
                 selectTitle(0);
                 break;
-            case R.id.ll_repurchase_assets:
+            case R.id.ll_dividend_assets:
                 selectTitle(1);
                 break;
-            case R.id.ll_dividend_assets:
+            case R.id.ll_repurchase_assets:
                 selectTitle(2);
                 break;
         }
@@ -122,7 +126,7 @@ public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChan
     }
 
     //选择标题
-    public void selectTitle(int index){
+    public void selectTitle(int index) {
         clearViewAndTitle();
         layoutAssets.setCurrentItem(index);
         allTitle.get(index).setTextColor(Color.parseColor("#1881d2"));

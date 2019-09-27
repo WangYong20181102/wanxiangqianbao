@@ -1,5 +1,6 @@
 package com.jh.wxqb.ui.market;
 
+import android.annotation.SuppressLint;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -36,7 +37,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * 当前委托
+ * 交易記錄
  */
 public class CurrentEntrustmentActivity extends BaseActivity implements View.OnClickListener, MarketView {
 
@@ -69,7 +70,7 @@ public class CurrentEntrustmentActivity extends BaseActivity implements View.OnC
     @Override
     protected void init() {
         marketPresenter = new MarketPresenter(this);
-        marketPresenter.myDividend(pageIndex, 1);
+        marketPresenter.myDividend(pageIndex, 3);
         initRecyclerView();
     }
 
@@ -216,6 +217,7 @@ public class CurrentEntrustmentActivity extends BaseActivity implements View.OnC
     /**
      * 选择买卖订单类型类型
      */
+    @SuppressLint("WrongConstant")
     private void selBusinessType(LinearLayout view) {
         ivImg.setImageResource(R.drawable.iv_up);
         View contentView = LayoutInflater.from(this).inflate(R.layout.item_business_type, null);

@@ -110,11 +110,11 @@
     <TextView
         android:id="@+id/tv_commit"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_90"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/iv_20"
         android:layout_marginRight="@dimen/iv_20"
         android:layout_marginTop="@dimen/iv_100"
-        android:background="@color/color_2686d8"
+        android:background="@drawable/all_btn_bg"
         android:gravity="center"
         android:text="@string/commit_feedback"
         android:textColor="@color/white"

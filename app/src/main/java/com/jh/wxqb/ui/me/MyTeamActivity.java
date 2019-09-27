@@ -71,9 +71,9 @@ public class MyTeamActivity extends BaseActivity implements MeView {
     }
 
     private void initView() {
-        if (PreferencesLoader.getObject(CoreKeys.USER_IMG, String.class) != null) {
-            ivUserImg.setImageBitmap(BitmapUtil.compressImage(BitmapUtil.ratio(BitmapUtil.stringtoBitmap(MyApplication.getUserImg()), 150, 150)));
-        }
+//        if (PreferencesLoader.getObject(CoreKeys.USER_IMG, String.class) != null) {
+//            ivUserImg.setImageBitmap(BitmapUtil.compressImage(BitmapUtil.ratio(BitmapUtil.stringtoBitmap(MyApplication.getUserImg()), 150, 150)));
+//        }
         if (MyApplication.getUserBean() != null) {
             tvName.setText(MyApplication.getUserBean().getUserName());
             tvPhone.setText(MyApplication.getUserBean().getPhone());

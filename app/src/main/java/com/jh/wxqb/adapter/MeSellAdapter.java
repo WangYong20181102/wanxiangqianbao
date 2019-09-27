@@ -90,27 +90,33 @@ public class MeSellAdapter extends RecyclerView.Adapter<MeSellAdapter.ViewHolder
         public void refurbish(final int position) {
             BigDecimal one=new BigDecimal("1");
             tvTime.setText(TimeUtil.getTime(item.getCreateDate()));
-            tvDelegateQuantity.setText(String.valueOf(item.getAccountCommission().divide(one,1,BigDecimal.ROUND_HALF_UP)));
-            tvVolume.setText(String.valueOf(item.getAcountTransaction().divide(one,2,BigDecimal.ROUND_HALF_UP)));
-            tvTotalTurnover.setText(String.valueOf(item.getAccountCommission().divide(one,2,BigDecimal.ROUND_HALF_UP)));
+            tvDelegateQuantity.setText(String.valueOf(item.getAmountPrice().divide(one,1,BigDecimal.ROUND_HALF_UP)));
+            tvVolume.setText(String.valueOf(item.getAccountCommission().divide(one,2,BigDecimal.ROUND_HALF_UP)));
+            tvTotalTurnover.setText(String.valueOf(item.getVolume().divide(one,2,BigDecimal.ROUND_HALF_UP)));
 
             tvCancelOrder.setOnClickListener(MeSellAdapter.this);
             tvCancelOrder.setTag(position);
 
             switch (item.getStatus()) {
-                case 4:
+                case 1://挂單中
                     llRegister.setVisibility(View.VISIBLE);
-                    tvSuccess.setVisibility(View.GONE);
+                    tvSuccess.setVisibility(View.VISIBLE);
+                    tvSuccess.setText(R.string.in_the_pending_order);
                     break;
-                case 5:
+                case 3://全部成交
                     llRegister.setVisibility(View.GONE);
                     tvSuccess.setVisibility(View.VISIBLE);
-                    tvSuccess.setText(R.string.have_done_deal);
+                    tvSuccess.setText(R.string.all_success);
                     break;
-                case 6:
+                case 4://已撤銷
                     llRegister.setVisibility(View.GONE);
                     tvSuccess.setVisibility(View.VISIBLE);
                     tvSuccess.setText(R.string.revocation);
+                    break;
+                case 5://部分成交
+                    llRegister.setVisibility(View.VISIBLE);
+                    tvSuccess.setVisibility(View.VISIBLE);
+                    tvSuccess.setText(R.string.partial_deal);
                     break;
             }
 

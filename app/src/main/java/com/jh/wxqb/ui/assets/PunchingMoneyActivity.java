@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.jh.wxqb.R;
 import com.jh.wxqb.base.BaseActivity;
 import com.jh.wxqb.base.MyApplication;
+import com.jh.wxqb.bean.AssetManagementBean;
 import com.jh.wxqb.utils.QRImageUtil;
 import com.jh.wxqb.utils.StringUtil;
 import com.jh.wxqb.utils.Toasts;

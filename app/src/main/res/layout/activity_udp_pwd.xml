@@ -111,15 +111,15 @@
             android:id="@+id/ed_confirm_pwd"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@+id/view"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
             android:background="@android:color/transparent"
             android:hint="@string/confirm_new_pwd"
             android:inputType="textPassword"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="@dimen/iv_26"
-            android:layout_above="@+id/view"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:textSize="@dimen/iv_26" />
 
         <RelativeLayout
             android:id="@+id/ll_confirm_new_pwd"
@@ -137,18 +137,18 @@
         </RelativeLayout>
 
         <View
+            android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="@dimen/iv_1"
             android:layout_alignParentBottom="true"
-            android:background="@color/color_1b2a3e"
-            android:id="@+id/view" />
+            android:background="@color/color_1b2a3e" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/iv_120"
         android:layout_marginLeft="@dimen/iv_45"
-        android:layout_marginRight="@dimen/iv_45">
+        android:layout_marginRight="@dimen/d20">
 
         <EditText
             android:id="@+id/ed_code"
@@ -163,32 +163,33 @@
             android:textSize="@dimen/iv_26" />
 
         <TextView
-            android:layout_centerVertical="true"
             android:id="@+id/tv_get_code"
-            android:layout_width="@dimen/iv_150"
-            android:layout_height="@dimen/iv_90"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:gravity="center"
+            android:layout_centerVertical="true"
             android:background="@drawable/shape_btn_rig_bg"
+            android:gravity="center"
             android:text="@string/get_code"
-            android:textColor="@color/white"
-            android:textSize="@dimen/iv_26" />
+            android:textColor="@color/color_131E30"
+            android:textSize="@dimen/s12" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/iv_1"
             android:layout_alignParentBottom="true"
+            android:layout_marginRight="@dimen/d120"
             android:background="@color/color_1b2a3e" />
     </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_confirm"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_90"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/iv_20"
-        android:layout_marginRight="@dimen/iv_20"
         android:layout_marginTop="@dimen/iv_100"
-        android:background="@color/color_2686d8"
+        android:layout_marginRight="@dimen/iv_20"
+        android:background="@drawable/all_btn_bg"
         android:gravity="center"
         android:text="@string/determine"
         android:textColor="@color/white"

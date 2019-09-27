@@ -36,7 +36,7 @@ public interface Biz {
     void stopQueuing(Map<String, String> map, OnBaseListener listener);
 
     //忘记密码
-    void forgetLoginPwd(String mobile, String newOnePwd, String username, String smsCode, OnBaseListener listener);
+    void forgetLoginPwd(String mobile, String newOnePwd, String smsCode, OnBaseListener listener);
 
     //修改登录/交易密码
     void udpLoginPwd(int type, String newOnePwd, String newTwoPwd, String smsCode,String mobile, OnBaseListener listener);
@@ -79,6 +79,8 @@ public interface Biz {
 
     //获取财务明细列表
     void getFinancialDetails(int pageNum,int type,OnBaseListener listener);
+    //資產管理
+    void getQueryaccountassets(int pageNum,int type,OnBaseListener listener);
 
     //提币
     void withdrawMoney(Map<String, String> map, OnBaseListener listener);

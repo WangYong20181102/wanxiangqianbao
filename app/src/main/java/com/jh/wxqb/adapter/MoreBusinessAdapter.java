@@ -83,35 +83,49 @@ public class MoreBusinessAdapter extends RecyclerView.Adapter<MoreBusinessAdapte
         }
 
         public void refurbish(final int position) {
-            BigDecimal one=new BigDecimal("1");
+            BigDecimal one = new BigDecimal("1");
             switch (listBeen.get(position).getDirection()) {
                 case 1:
-                    tvPurchase.setVisibility(View.GONE);
-                    tvNo.setVisibility(View.VISIBLE);
+//                    tvPurchase.setVisibility(View.GONE);
+//                    tvNo.setVisibility(View.VISIBLE);
                     tvType.setTextColor(Color.rgb(0, 204, 102));
                     tvType.setText(R.string.dividend);
-                    tvTurnover.setText(String.valueOf(listBeen.get(position).getAmountTotal().divide(one,1,BigDecimal.ROUND_DOWN).doubleValue()+"PKB"));
+                    tvTurnover.setText(String.valueOf(listBeen.get(position).getAmountPrice().divide(one, 4, BigDecimal.ROUND_HALF_UP).doubleValue() + ""));
                     break;
                 case 2:
-                    tvPurchase.setVisibility(View.VISIBLE);
-                    tvNo.setVisibility(View.GONE);
-                    tvType.setTextColor(Color.rgb(204, 0, 0));
+//                    tvPurchase.setVisibility(View.VISIBLE);
+//                    tvNo.setVisibility(View.GONE);
+                    tvType.setTextColor(Color.parseColor("#d6734b"));
                     tvType.setText(R.string.sell);
-                    tvTurnover.setText(String.valueOf(listBeen.get(position).getAcountTransaction().divide(one,1,BigDecimal.ROUND_DOWN).doubleValue()+"ETH"));
+                    tvTurnover.setText(String.valueOf(listBeen.get(position).getAmountPrice().divide(one, 4, BigDecimal.ROUND_HALF_UP).doubleValue() + ""));
                     break;
             }
-            String unit="";
+            switch (listBeen.get(position).getOrderStatus()) {
+                case 1://挂单中
+                    tvNo.setText(R.string.in_the_pending_order);
+                    break;
+                case 3://全部成交
+                    tvNo.setText(R.string.all_success);
+                    break;
+                case 4://已撤销
+                    tvNo.setText(R.string.revocation);
+                    break;
+                case 5://部分成交
+                    tvNo.setText(R.string.partial_deal);
+                    break;
+            }
+            String unit = "";
             switch (listBeen.get(position).getAssetTypeId()) {
                 case 1:
-                    unit="ETH";
+                    unit = "TGM";
                     break;
                 case 2:
                 case 3:
-                    unit="PKB";
+                    unit = "USDT";
                     break;
             }
             tvTime.setText(TimeUtil.getTime(listBeen.get(position).getCreateDate()));
-            tvNum.setText(String.valueOf(listBeen.get(position).getAccountCommission().divide(one,2,BigDecimal.ROUND_DOWN).doubleValue()+unit));
+            tvNum.setText(String.valueOf(listBeen.get(position).getAccountCommission().divide(one, 2, BigDecimal.ROUND_DOWN).doubleValue() + ""));
             tvPurchase.setOnClickListener(MoreBusinessAdapter.this);
             tvPurchase.setTag(position);
         }
@@ -122,7 +136,7 @@ public class MoreBusinessAdapter extends RecyclerView.Adapter<MoreBusinessAdapte
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_purchase:
-                myClicker.myClick(v,0);
+                myClicker.myClick(v, 0);
                 break;
         }
     }

@@ -8,9 +8,9 @@ android {
         applicationId "com.jh.wxqb"
         minSdkVersion 15
         targetSdkVersion 29
-        versionCode 1
+        versionCode 3
         versionName "2.1"
-        resValue "string", "tray__authority", "com.koala.sendletter.tray"
+        resValue "string", "tray__authority", "com.jh.wxqb.tray"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
             abiFilters "armeabi", "armeabi-v7a", "x86", "mips"

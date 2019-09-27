@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_440"
+        android:layout_height="wrap_content"
         android:background="@color/color_0f2441">
 
         <LinearLayout
@@ -19,7 +19,8 @@
             android:layout_marginTop="@dimen/iv_45"
             android:background="@drawable/shape_acceleration_bg"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -39,6 +40,105 @@
         </LinearLayout>
 
         <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/iv_30">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/iv_344"
+                android:background="@mipmap/mine_top_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.jh.wxqb.customview.CircleImageView
+                    android:id="@+id/iv_user_img"
+                    android:layout_width="@dimen/iv_130"
+                    android:layout_height="@dimen/iv_130"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/iv_60"
+                    android:src="@drawable/iv_user_logo"
+                    app:layout_auto_baseheight="width" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/iv_50"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/ll_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/mine_username"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/iv_28" />
+
+                        <TextView
+                            android:id="@+id/tv_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:maxEms="5"
+                            android:singleLine="true"
+                            android:ellipsize="end"
+                            android:textSize="@dimen/iv_28" />
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/tv_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ll_username"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/iv_25"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/iv_28" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/scard_type"
+                android:text="@string/statue"
+                android:textColor="@color/white"
+                android:layout_marginRight="@dimen/d5"
+                android:textSize="@dimen/s13" />
+
+            <com.meetsl.scardview.SCardView
+                android:id="@+id/scard_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/d30"
+                app:cardElevation="@dimen/d3"
+                app:cardCornerRadius="@dimen/d5">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/normal"
+                    android:layout_marginLeft="@dimen/d8"
+                    android:layout_marginRight="@dimen/d8"
+                    android:layout_marginTop="@dimen/d3"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/d3"
+                    android:textSize="@dimen/s15"/>
+            </com.meetsl.scardview.SCardView>
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/ll_message"
             android:layout_width="@dimen/iv_100"
             android:layout_height="@dimen/iv_100"
@@ -51,42 +151,13 @@
                 android:src="@drawable/nav_news" />
         </RelativeLayout>
 
-
-        <com.jh.wxqb.customview.CircleImageView
-            android:id="@+id/iv_user_img"
-            android:layout_width="@dimen/iv_130"
-            android:layout_height="@dimen/iv_130"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/iv_82"
-            android:src="@drawable/iv_user_logo"
-            app:layout_auto_baseheight="width" />
-
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/iv_user_img"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/iv_20"
-            android:textColor="@color/white"
-            android:textSize="@dimen/iv_32" />
-
-        <TextView
-            android:id="@+id/tv_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_name"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/iv_20"
-            android:textColor="@color/white"
-            android:textSize="@dimen/iv_24" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/iv_100"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/iv_20"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -205,18 +276,26 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="@dimen/iv_48"
-                        android:layout_height="@dimen/iv_48"
-                        android:src="@drawable/userinfo" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@mipmap/person_message_bg"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/iv_25"
-                        android:text="@string/personal_information"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/iv_28" />
+                        <ImageView
+                            android:layout_width="@dimen/iv_48"
+                            android:layout_height="@dimen/iv_48"
+                            android:src="@drawable/userinfo" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/iv_15"
+                            android:text="@string/personal_information"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/iv_28" />
+                    </LinearLayout>
                 </LinearLayout>
                 <!--</com.meetsl.scardview.SCardView>-->
 
@@ -229,18 +308,26 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="@dimen/iv_48"
-                        android:layout_height="@dimen/iv_48"
-                        android:src="@drawable/me_sendletter" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@mipmap/person_message_bg"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/iv_25"
-                        android:text="@string/my_dividend"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/iv_28" />
+                        <ImageView
+                            android:layout_width="@dimen/iv_48"
+                            android:layout_height="@dimen/iv_48"
+                            android:src="@drawable/me_sendletter" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/iv_15"
+                            android:text="@string/current_entrustment"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/iv_28" />
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -251,18 +338,26 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="@dimen/iv_48"
-                        android:layout_height="@dimen/iv_48"
-                        android:src="@drawable/my_recommendation" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@mipmap/person_message_bg"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/iv_25"
-                        android:text="@string/my_recommendation"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/iv_28" />
+                        <ImageView
+                            android:layout_width="@dimen/iv_48"
+                            android:layout_height="@dimen/iv_48"
+                            android:src="@drawable/my_recommendation" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/iv_15"
+                            android:text="@string/my_recommendation"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/iv_28" />
+                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
@@ -278,8 +373,9 @@
                 android:layout_height="@dimen/iv_100">
 
                 <ImageView
-                    android:layout_width="@dimen/iv_40"
-                    android:layout_height="@dimen/iv_50"
+                    android:id="@+id/image1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/iv_40"
                     android:src="@drawable/me_pwd" />
@@ -288,7 +384,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_100"
+                    android:layout_marginLeft="@dimen/iv_10"
+                    android:layout_toRightOf="@id/image1"
                     android:text="@string/login_pwd"
                     android:textColor="@color/white"
                     android:textSize="@dimen/iv_26" />
@@ -313,8 +410,9 @@
                 android:layout_height="@dimen/iv_100">
 
                 <ImageView
-                    android:layout_width="@dimen/iv_40"
-                    android:layout_height="@dimen/iv_40"
+                    android:id="@+id/image2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/iv_40"
                     android:src="@drawable/me_pay" />
@@ -323,7 +421,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_100"
+                    android:layout_marginLeft="@dimen/iv_10"
+                    android:layout_toRightOf="@id/image2"
                     android:text="@string/payment_password"
                     android:textColor="@color/white"
                     android:textSize="@dimen/iv_26" />
@@ -345,11 +444,13 @@
             <RelativeLayout
                 android:id="@+id/ll_binding_account"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_100">
+                android:layout_height="@dimen/iv_100"
+                android:visibility="gone">
 
                 <ImageView
-                    android:layout_width="@dimen/iv_40"
-                    android:layout_height="@dimen/iv_40"
+                    android:id="@+id/image3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/iv_40"
                     android:src="@drawable/me_binding_account" />
@@ -358,7 +459,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_100"
+                    android:layout_marginLeft="@dimen/iv_10"
+                    android:layout_toRightOf="@id/image3"
                     android:text="@string/binding_account"
                     android:textColor="@color/white"
                     android:textSize="@dimen/iv_26" />
@@ -383,8 +485,9 @@
                 android:layout_height="@dimen/iv_100">
 
                 <ImageView
-                    android:layout_width="@dimen/iv_40"
-                    android:layout_height="@dimen/iv_40"
+                    android:id="@+id/image4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/iv_40"
                     android:src="@drawable/me_my_team" />
@@ -393,7 +496,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_100"
+                    android:layout_marginLeft="@dimen/iv_10"
+                    android:layout_toRightOf="@id/image4"
                     android:text="@string/my_team"
                     android:textColor="@color/white"
                     android:textSize="@dimen/iv_26" />
@@ -419,8 +523,9 @@
                 android:layout_height="@dimen/iv_100">
 
                 <ImageView
-                    android:layout_width="@dimen/iv_40"
-                    android:layout_height="@dimen/iv_40"
+                    android:id="@+id/image5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/iv_40"
                     android:src="@drawable/me_user_feedback" />
@@ -429,7 +534,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_100"
+                    android:layout_marginLeft="@dimen/iv_10"
+                    android:layout_toRightOf="@id/image5"
                     android:text="@string/user_feedback"
                     android:textColor="@color/white"
                     android:textSize="@dimen/iv_26" />
@@ -451,11 +557,13 @@
             <RelativeLayout
                 android:id="@+id/ll_financial_details"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_100">
+                android:layout_height="@dimen/iv_100"
+                android:visibility="gone">
 
                 <ImageView
-                    android:layout_width="@dimen/iv_40"
-                    android:layout_height="@dimen/iv_40"
+                    android:id="@+id/image6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/iv_40"
                     android:src="@drawable/iv_financial" />
@@ -464,7 +572,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_100"
+                    android:layout_marginLeft="@dimen/iv_10"
+                    android:layout_toRightOf="@id/image6"
                     android:text="@string/financial_details"
                     android:textColor="@color/white"
                     android:textSize="@dimen/iv_26" />
@@ -488,10 +597,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/iv_68"
                 android:layout_marginLeft="@dimen/iv_154"
-                android:layout_marginTop="@dimen/iv_32"
+                android:layout_marginTop="@dimen/d18"
                 android:layout_marginRight="@dimen/iv_154"
                 android:layout_marginBottom="@dimen/iv_22"
-                android:background="@drawable/shape_out_login"
+                android:background="@drawable/all_btn_bg"
                 android:gravity="center"
                 android:text="@string/out_login"
                 android:textColor="@color/white"

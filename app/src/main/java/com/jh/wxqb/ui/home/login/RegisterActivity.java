@@ -33,16 +33,12 @@ public class RegisterActivity extends BaseActivity implements LoginView, Message
     EditText edUsername;
     @BindView(R.id.ed_phone)
     EditText edPhone;
-    @BindView(R.id.iv_pwd_img)
-    ImageView ivPwdImg;
     @BindView(R.id.ed_pwd)
     EditText edPwd;
     @BindView(R.id.iv_pwd)
     ImageView ivPwd;
     @BindView(R.id.ll_is_show_pwd)
     RelativeLayout llIsShowPwd;
-    @BindView(R.id.iv_code)
-    ImageView ivCode;
     @BindView(R.id.ed_code)
     EditText edCode;
     @BindView(R.id.tv_code)
@@ -88,7 +84,7 @@ public class RegisterActivity extends BaseActivity implements LoginView, Message
                 break;
             case R.id.tv_register:
                 if (!checkEdit(edUsername) || !checkEdit(edPhone) || !checkEdit(edPwd)
-                        || !checkEdit(edCode) || !checkEdit(edInvitation)) {
+                        || !checkEdit(edCode)) {
                     return;
                 }
                 StringUtil.Closekeyboard(this);

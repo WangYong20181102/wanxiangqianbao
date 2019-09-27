@@ -1,6 +1,8 @@
 package com.jh.wxqb.utils;
 
 
+import android.annotation.SuppressLint;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -190,18 +192,116 @@ public class TimeUtil {
     }
 
 
-    public static String setTimeByString(String timeStr) {
-
-        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        Date date = null;
-        try {
-            date = sdf1.parse(timeStr);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyyMMddhhmmss");
-        return sdf2.format(date);
+    /**
+     * 获取系统时间
+     *
+     * @param timeStr
+     * @return
+     */
+    public static String getTimeByLong(long timeStr) {
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return sdf1.format(new Date(timeStr));
     }
+
+    /**
+     * @param currentDate 當前時間
+     * @param oldDate     老時間
+     * @return
+     */
+    public static int daysBetween(String currentDate, String oldDate) {
+        LogUtils.e("======currentDate=====" + currentDate + "==========oldDate====" + oldDate);
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        int num = 0;
+        try {
+            Date d1 = df.parse(currentDate);
+            Date d2 = df.parse(oldDate);
+            long diff = d1.getTime() - d2.getTime();
+            long days = diff / (1000 * 60 * 60 * 24);
+            long hours = (diff - days * (1000 * 60 * 60 * 24)) / (1000 * 60 * 60);
+            long minutes = (diff - days * (1000 * 60 * 60 * 24) - hours * (1000 * 60 * 60)) / (1000 * 60);
+            LogUtils.e("======days=====" + days + "==========hours" + hours);
+            num = (int) (days * 24 + hours);
+        } catch (Exception e) {
+            LogUtils.e("======出錯=====");
+        }
+        return num;
+    }
+
+    /**
+     * @param sdate
+     * @return
+     */
+    public static int friendly_time(String sdate) {
+        Date time = toDate(sdate);
+        if (time == null) {
+            return 0;
+        }
+        int ftime = 0;
+        Calendar cal = Calendar.getInstance();
+
+        //判断是否是同一天
+        String curDate = dateFormater2.get().format(cal.getTime());
+        String paramDate = dateFormater2.get().format(time);
+        if (curDate.equals(paramDate)) {
+            int hour = (int) ((cal.getTimeInMillis() - time.getTime()) / 3600000);
+            if (hour == 0)
+                ftime = (int) Math.max((cal.getTimeInMillis() - time.getTime()) / 60000, 1);
+            else
+                ftime = hour;
+            return ftime;
+        }
+
+        long lt = time.getTime() / 86400000;
+        long ct = cal.getTimeInMillis() / 86400000;
+        int days = (int) (ct - lt);
+        if (days == 0) {
+            int hour = (int) ((cal.getTimeInMillis() - time.getTime()) / 3600000);
+            if (hour == 0)
+                ftime = (int) Math.max((cal.getTimeInMillis() - time.getTime()) / 60000, 1);
+            else
+                ftime = hour;
+        } else {
+            ftime = days * 24;
+        }
+//        else if (days == 1) {
+//            ftime = "昨天";
+//        } else if (days == 2) {
+//            ftime = "前天";
+//        } else if (days > 2 && days <= 10) {
+//            ftime = days + "天前";
+//        } else if (days > 10) {
+//            ftime = dateFormater2.get().format(time);
+//        }
+        return ftime;
+    }
+
+    /**
+     * 将字符串转位日期类型
+     *
+     * @param sdate
+     * @return
+     */
+    public static Date toDate(String sdate) {
+        try {
+            return dateFormater.get().parse(sdate);
+        } catch (ParseException e) {
+            return null;
+        }
+    }
+
+    private final static ThreadLocal<SimpleDateFormat> dateFormater = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        }
+    };
+
+    private final static ThreadLocal<SimpleDateFormat> dateFormater2 = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM-dd");
+        }
+    };
 
     // 获取上午、下午时间
     public static String getHour(Long time) {

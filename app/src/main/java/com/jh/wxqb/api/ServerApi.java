@@ -59,7 +59,7 @@ public interface ServerApi {
 
     //忘记密码
     @PUT(ServerInterface.FORGET_LOGIN_PWD)
-    Call<String> forgetLoginPwd(@Query("mobile") String mobile, @Query("newOnePwd") String newOnePwd, @Query("username") String username, @Query("smsCode") String smsCode);
+    Call<String> forgetLoginPwd(@Query("mobile") String mobile, @Query("newOnePwd") String newOnePwd,  @Query("smsCode") String smsCode);
 
     //修改登录/交易密码
     @PUT(ServerInterface.UDP_LOGIN_PWD)
@@ -120,7 +120,9 @@ public interface ServerApi {
     //获取财务明细列表
     @GET(ServerInterface.GET_FINANCIAL_DETAILS)
     Call<String> getFinancialDetails(@Query("pageNum") int pageNum, @Query("type") int type);
-
+    //資產管理
+    @GET(ServerInterface.GET_QUERYACCOUNTASSETS)
+    Call<String> getQueryaccountassets(@Query("pageNum") int pageNum, @Query("type") int type);
     //提币
     @POST(ServerInterface.WITHDRAW_MONEY)
     @FormUrlEncoded

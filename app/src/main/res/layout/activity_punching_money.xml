@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/color_style"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.jh.wxqb.ui.assets.PunchingMoneyActivity">
@@ -22,7 +22,7 @@
         android:layout_marginLeft="@dimen/iv_20"
         android:layout_marginRight="@dimen/iv_20"
         android:layout_marginTop="@dimen/iv_20"
-        android:background="@color/layout_bg"
+        android:background="@color/color_style"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -39,18 +39,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/iv_60"
-            android:textColor="@color/light_gray_text"
+            android:textColor="@color/white"
             android:textSize="@dimen/iv_26" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/iv_60"
+            android:textColor="@color/white"
+            android:textSize="@dimen/s20"
+            android:text="鏈類型：ERC20协议"/>
     </LinearLayout>
 
     <TextView
         android:id="@+id/tv_copy"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_90"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/iv_20"
         android:layout_marginRight="@dimen/iv_20"
-        android:layout_marginTop="@dimen/iv_20"
-        android:background="@color/home_text_color"
+        android:layout_marginTop="@dimen/d50"
+        android:background="@drawable/all_btn_bg"
         android:gravity="center"
         android:text="@string/copy_wallet_address"
         android:textColor="@color/white"

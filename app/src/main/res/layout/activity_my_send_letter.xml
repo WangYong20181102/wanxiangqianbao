@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:canBack="true"
-        app:titleText="@string/my_dividend" />
+        app:titleText="@string/current_entrustment" />
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,6 +1,5 @@
 package com.jh.wxqb.base;
 
-import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -17,7 +16,6 @@ import com.jh.wxqb.ui.assets.AssetsFragment;
 import com.jh.wxqb.ui.home.HomeFragment;
 import com.jh.wxqb.ui.market.MarketFragment;
 import com.jh.wxqb.ui.me.MeFragment;
-import com.jh.wxqb.utils.LogUtils;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -88,7 +86,6 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
                 break;
             case R.id.ll_market:
                 setTabSelection(1);
-//                EventBus.getDefault().post("udpMarketData");
                 break;
             case R.id.ll_assets:
                 setTabSelection(2);

@@ -7,6 +7,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jh.wxqb.R;
+import com.jh.wxqb.utils.PermissionUtils;
+
+import static com.jh.wxqb.utils.Toasts.showLong;
 
 
 public class AppUpdateProgressDialog extends Dialog {
@@ -20,6 +23,7 @@ public class AppUpdateProgressDialog extends Dialog {
     private String content;
     private String version;
     private boolean isImportant=false;  //标识是否是重要本版
+    private Context context;
 
     public AppUpdateProgressDialog(Context context) {
         super(context, R.style.Custom_Progress);
@@ -28,6 +32,7 @@ public class AppUpdateProgressDialog extends Dialog {
 
     public AppUpdateProgressDialog(Context context, String content, boolean isImportant,String version) {
         super(context, R.style.Custom_Progress);
+        this.context = context;
         this.content=content;
         this.isImportant=isImportant;
         this.version=version;
@@ -54,6 +59,10 @@ public class AppUpdateProgressDialog extends Dialog {
         tvUdp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!PermissionUtils.writerReadSDcard(context)) {
+                    showLong("请开启存储权限后重新下载!");
+                    return;
+                }
                 ivClose.setVisibility(View.GONE);
                 AppUpdateProgressDialog.this.setCancelable(false);//dialog出现时，点击back键不消失
                 tvUdp.setVisibility(View.GONE);

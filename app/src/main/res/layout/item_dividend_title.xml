@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="@dimen/d20"
+    android:background="@color/color_style">
 
     <LinearLayout
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_46"
+        android:layout_height="@dimen/d20"
         android:orientation="horizontal">
 
         <TextView
@@ -16,7 +17,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="賣7"
-            android:textSize="@dimen/iv_22" />
+            android:textSize="@dimen/s10" />
 
         <TextView
             android:id="@+id/tv_price"
@@ -26,7 +27,7 @@
             android:gravity="center"
             android:text="0.0"
             android:textColor="@color/color_6f88aa"
-            android:textSize="@dimen/iv_22" />
+            android:textSize="@dimen/s10" />
 
         <TextView
             android:id="@+id/tv_number"
@@ -36,7 +37,7 @@
             android:gravity="center"
             android:text="0.0"
             android:textColor="@color/color_6f88aa"
-            android:textSize="@dimen/iv_22" />
+            android:textSize="@dimen/s10" />
 
     </LinearLayout>
 

@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/iv_10"
-                android:text="ETH/PKB"
+                android:text="TGM/USDT"
                 android:textColor="@color/black_text"
                 android:textSize="@dimen/iv_28"
                 android:textStyle="bold" />

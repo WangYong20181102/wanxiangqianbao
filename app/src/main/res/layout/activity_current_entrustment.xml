@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:canBack="true"
-        app:titleText="@string/current_entrustment" />
+        app:titleText="@string/my_dividend" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                 android:id="@+id/tv_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/type"
+                android:text="@string/all"
                 android:textColor="@color/white"
                 android:textSize="@dimen/iv_20" />
 
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/market_number"
+            android:text="@string/transaction_number"
             android:textColor="@color/white"
             android:textSize="@dimen/iv_20" />
 
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/trade_volume"
+            android:text="@string/current_price"
             android:textColor="@color/white"
             android:textSize="@dimen/iv_20" />
 

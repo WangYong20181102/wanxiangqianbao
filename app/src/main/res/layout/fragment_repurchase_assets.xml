@@ -26,50 +26,51 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="@dimen/iv_36"
-                android:layout_height="@dimen/iv_36"
-                android:src="@drawable/iv_pkb"
+                android:layout_width="@dimen/iv_32"
+                android:layout_height="@dimen/iv_35"
+                android:src="@drawable/icon_usdt_small"
                 app:layout_auto_baseheight="width" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/iv_6"
-                android:text="PKB"
+                android:text="USDT"
                 android:textColor="@color/white"
                 android:textSize="@dimen/iv_26" />
         </LinearLayout>
 
 
         <TextView
+            android:id="@+id/tv_can_use"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_pkb"
+            android:layout_marginLeft="@dimen/iv_32"
+            android:layout_marginTop="@dimen/iv_28"
+            android:text="@string/can_use"
+            android:textColor="@color/light_gray_text"
+            android:textSize="@dimen/iv_20"
+            android:visibility="gone"/>
+
+        <TextView
             android:id="@+id/tv_assets"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ll_pkb"
+            android:layout_below="@+id/ll_pkb"
             android:layout_marginLeft="@dimen/iv_30"
             android:layout_marginTop="@dimen/iv_20"
             android:text="0.0"
-            android:textColor="@color/white"
+            android:textColor="@color/light_gray_text"
             android:textSize="@dimen/iv_40" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_assets"
-            android:layout_marginLeft="@dimen/iv_32"
-            android:layout_marginTop="@dimen/iv_20"
-            android:text="@string/repurchase_assets"
-            android:textColor="@color/white"
-            android:textSize="@dimen/iv_26" />
 
         <ImageView
             android:layout_width="@dimen/iv_142"
             android:layout_height="@dimen/iv_115"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/iv_48"
             android:layout_marginTop="@dimen/iv_42"
-            android:src="@drawable/iv_assets" />
+            android:layout_marginRight="@dimen/iv_48"
+            android:src="@drawable/icon_usdt_right" />
 
     </RelativeLayout>
 

@@ -80,17 +80,16 @@ public class ForgetPwdActivity extends BaseActivity implements MessageView, Logi
                 isShowPwd = !isShowPwd;
                 break;
             case R.id.tv_confirm:
-                if (!checkEdit(edAccount) || !checkEdit(edPhone) || !checkEdit(edPwd)
-                        || !checkEdit(edCode)) {
+                if (!checkEdit(edPhone) || !checkEdit(edPwd) || !checkEdit(edCode)) {
                     return;
                 }
                 StringUtil.Closekeyboard(this);
                 showWaitDialog();
-                String userName = edAccount.getText().toString();
+//                String userName = edAccount.getText().toString();
                 String phone = edPhone.getText().toString();
                 String code = edCode.getText().toString();
                 String pwd = edPwd.getText().toString();
-                loginPresenter.forgetLoginPwd(phone,pwd,userName,code);
+                loginPresenter.forgetLoginPwd(phone,pwd,code);
                 break;
         }
     }
@@ -129,12 +128,12 @@ public class ForgetPwdActivity extends BaseActivity implements MessageView, Logi
     private boolean checkEdit(View v) {
         String str = ((TextView) v).getText().toString();
         switch (v.getId()) {
-            case R.id.ed_account:
-                if (StringUtil.isEmpty(str)) {
-                    Toasts.showShort(R.string.please_input_user_name);
-                    return false;
-                }
-                break;
+//            case R.id.ed_account:
+//                if (StringUtil.isEmpty(str)) {
+//                    Toasts.showShort(R.string.please_input_user_name);
+//                    return false;
+//                }
+//                break;
             case R.id.ed_phone:
                 if (StringUtil.isEmpty(str)) {
                     Toasts.showShort(R.string.please_enter_mobile_number);

@@ -18,6 +18,7 @@ import com.jh.wxqb.adapter.FinancialDetailsAdapter;
 import com.jh.wxqb.base.BaseFragment;
 import com.jh.wxqb.base.MainActivity;
 import com.jh.wxqb.base.MyApplication;
+import com.jh.wxqb.bean.AssetManagementBean;
 import com.jh.wxqb.bean.BaseBean;
 import com.jh.wxqb.bean.FinancialDetailsBean;
 import com.jh.wxqb.bean.SafetyMarkingBean;
@@ -156,6 +157,11 @@ public class DividendAssetsFragment extends BaseFragment implements AssetsView {
     }
 
     @Override
+    public void getAssetManagementSuccess(AssetManagementBean result) {
+
+    }
+
+    @Override
     public void withdrawMoneySuccess(BaseBean result) {
 
     }
@@ -205,12 +211,12 @@ public class DividendAssetsFragment extends BaseFragment implements AssetsView {
             case "selAssets":
                 assestPresenter.getFinancialDetails(pageIndex, 6);
                 break;
-            case "udpAssestNum":
-                if(MyApplication.getUserBean()!=null){
-                    BigDecimal one=new BigDecimal("1");
-                    tvAssets.setText(String.valueOf(MyApplication.getUserBean().getDividendAssets().divide(one, 8, BigDecimal.ROUND_HALF_UP).doubleValue()));
-                }
-                break;
+//            case "udpAssestNum":
+//                if(MyApplication.getUserBean()!=null){
+//                    BigDecimal one=new BigDecimal("1");
+//                    tvAssets.setText(String.valueOf(MyApplication.getUserBean().getDividendAssets().divide(one, 8, BigDecimal.ROUND_HALF_UP).doubleValue()));
+//                }
+//                break;
         }
     }
 

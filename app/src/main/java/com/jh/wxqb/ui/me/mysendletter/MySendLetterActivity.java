@@ -18,7 +18,7 @@ import butterknife.BindViews;
 import butterknife.OnClick;
 
 /**
- * 我的買入
+ * 當前委托
  */
 public class MySendLetterActivity extends BaseActivity implements ViewPager.OnPageChangeListener {
 

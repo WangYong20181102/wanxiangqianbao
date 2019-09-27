@@ -23,6 +23,7 @@ import com.jh.wxqb.ui.message.MessageView;
 import com.jh.wxqb.utils.AgainLoginUtil;
 import com.jh.wxqb.utils.GsonUtil;
 import com.jh.wxqb.utils.LogUtils;
+import com.jh.wxqb.utils.SharedPreferencesUtil;
 import com.jh.wxqb.utils.StringUtil;
 import com.jh.wxqb.utils.Toasts;
 
@@ -176,9 +177,11 @@ public class UdpPwdActivity extends BaseActivity implements MessageView, MeView 
                 break;
             case 2:
                 Toasts.showLong(R.string.modify_transaction_password_successfully);
+                SharedPreferencesUtil.setPrefInt(this,"FirstVerification",0);
                 break;
             case 3:
                 Toasts.showLong(R.string.set_transaction_password_successfully);
+                SharedPreferencesUtil.setPrefInt(this,"FirstVerification",0);
                 break;
         }
         EventBus.getDefault().post("udpHome");

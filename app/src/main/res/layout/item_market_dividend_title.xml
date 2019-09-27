@@ -19,36 +19,67 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <LinearLayout
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/iv_90"
+                android:layout_marginTop="@dimen/iv_20"
+                android:background="@drawable/et_bg_line">
+
+                <EditText
+                    android:id="@+id/tv_current"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/iv_10"
+                    android:background="@null"
+                    android:hint="@string/the_current_price"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/color_6f88aa"
+                    android:textSize="@dimen/iv_24" />
+
+                <TextView
+                    android:id="@+id/tv_current_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/iv_20"
+                    android:layout_marginRight="@dimen/iv_10"
+                    android:text="USDT"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/iv_24"
+                    android:visibility="visible" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/iv_80"
-                android:gravity="center"
-                android:background="@drawable/et_bg_line"
-                android:orientation="horizontal">
+                android:layout_marginTop="@dimen/iv_20"
+                android:background="@drawable/et_bg_line">
 
                 <EditText
                     android:id="@+id/ed_entrust_num"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/iv_10"
-                    android:layout_weight="1"
+                    android:background="@null"
                     android:hint="@string/entrustment_number"
                     android:inputType="numberDecimal"
-                    android:background="@null"
-                    android:textColorHint="@color/white"
                     android:textColor="@color/my_dividend_color"
+                    android:textColorHint="@color/color_6f88aa"
                     android:textSize="@dimen/iv_24" />
 
                 <TextView
                     android:id="@+id/tv_dividend_pkb"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/dividend_pkb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/iv_10"
+                    android:text="@string/dividend_tgm"
                     android:textColor="@color/white"
                     android:textSize="@dimen/iv_24"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
                 <LinearLayout
                     android:id="@+id/ll_type"
@@ -74,7 +105,7 @@
                         android:layout_marginLeft="@dimen/iv_10"
                         android:src="@drawable/iv_down" />
                 </LinearLayout>
-            </LinearLayout>
+            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -95,10 +126,8 @@
                     android:id="@+id/tv_expected"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/iv_10"
-                    android:layout_toLeftOf="@+id/tv_company"
-                    android:text="0.0"
                     android:textColor="@color/color_02c289"
                     android:textSize="@dimen/iv_24" />
 
@@ -108,37 +137,34 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:text="PKB"
+                    android:layout_marginRight="@dimen/iv_10"
+                    android:text="@string/text_usdt"
+                    android:textSize="@dimen/iv_24" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/iv_80"
+                android:layout_marginTop="@dimen/iv_20"
+                android:background="@drawable/et_bg_line"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/ed_pwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/iv_80"
+                    android:layout_marginLeft="@dimen/iv_10"
+                    android:background="@null"
+                    android:hint="@string/pay_pwd"
+                    android:inputType="numberPassword"
+                    android:textColorHint="@color/color_6f88aa"
                     android:textSize="@dimen/iv_24" />
             </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/iv_20"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_current"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/the_current_price"
-                    android:textColor="@color/color_02c289"
-                    android:textSize="@dimen/iv_24" />
-
-                <TextView
-                    android:id="@+id/tv_current_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0.0"
-                    android:textColor="@color/color_02c289"
-                    android:textSize="@dimen/iv_24" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/iv_66"
+                android:layout_marginTop="@dimen/iv_30"
                 android:orientation="horizontal">
 
                 <TextView
@@ -158,31 +184,13 @@
                     android:textSize="@dimen/iv_24" />
             </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_80"
-                android:layout_marginTop="@dimen/iv_20"
-                android:background="@drawable/et_bg_line">
-
-                <EditText
-                    android:id="@+id/ed_pwd"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/iv_80"
-                    android:layout_marginLeft="@dimen/iv_20"
-                    android:hint="@string/pay_pwd"
-                    android:background="@null"
-                    android:inputType="numberPassword"
-                    android:textColorHint="@color/white"
-                    android:textSize="@dimen/iv_24" />
-            </RelativeLayout>
-
             <TextView
                 android:id="@+id/tv_dividends"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_80"
+                android:layout_height="@dimen/d30"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/iv_16"
-                android:background="@color/color_02c289"
+                android:layout_marginTop="@dimen/d15"
+                android:background="@drawable/market_buy_bg"
                 android:gravity="center"
                 android:text="@string/access_to_dividends"
                 android:textColor="@color/white"
@@ -233,48 +241,105 @@
                     android:textSize="@dimen/iv_20" />
             </LinearLayout>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/shop_up"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_1"
-                android:layout_marginLeft="@dimen/iv_20"
-                android:layout_marginRight="@dimen/iv_20"
-                android:background="@color/color_1b2a3e" />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/shop_up"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d100"/>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/shop_down"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/iv_1"
+                    android:layout_marginLeft="@dimen/iv_20"
+                    android:layout_marginRight="@dimen/iv_20"
+                    android:background="@color/color_1b2a3e" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/shop_down"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d100"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
-    <RelativeLayout
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/iv_1"
+        android:layout_marginTop="@dimen/iv_50"
+        android:background="@color/color_1b2a3e" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/iv_80"
-        android:layout_marginTop="@dimen/iv_50">
+        android:gravity="center_vertical">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/iv_3"
+                android:layout_alignParentBottom="true"
+                android:background="@color/greed" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="@dimen/iv_6"
+                    android:layout_height="@dimen/iv_26"
+                    android:background="@color/home_text_color"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/iv_20"
+                    android:text="@string/chengjiao"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/iv_28" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="@dimen/iv_2"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/iv_5"
+            android:layout_marginBottom="@dimen/iv_5"
+            android:background="@color/me_withdraw_color" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/linear_entrust"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/iv_20"
+            android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal">
 
             <View
                 android:layout_width="@dimen/iv_6"
                 android:layout_height="@dimen/iv_26"
-                android:background="@color/home_text_color" />
+                android:background="@color/home_text_color"
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/iv_20"
-                android:text="@string/current_business"
+                android:text="@string/my_dividend"
                 android:textColor="@color/white"
                 android:textSize="@dimen/iv_28" />
 
@@ -286,7 +351,8 @@
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/iv_50"
-            android:gravity="center">
+            android:gravity="center"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -295,7 +361,7 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/iv_20" />
         </RelativeLayout>
-    </RelativeLayout>
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
@@ -329,7 +395,7 @@
                 android:id="@+id/tv_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dividend"
+                android:text="@string/all"
                 android:textColor="@color/white"
                 android:textSize="@dimen/iv_20" />
 
@@ -338,7 +404,8 @@
                 android:layout_width="@dimen/iv_20"
                 android:layout_height="@dimen/iv_10"
                 android:layout_marginLeft="@dimen/iv_10"
-                android:src="@drawable/iv_down" />
+                android:src="@drawable/iv_down"
+                android:visibility="gone" />
         </LinearLayout>
 
         <TextView
@@ -346,7 +413,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/market_number"
+            android:text="@string/transaction_number"
             android:textColor="@color/white"
             android:textSize="@dimen/iv_20" />
 
@@ -355,7 +422,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/trade_volume"
+            android:text="@string/current_price"
             android:textColor="@color/white"
             android:textSize="@dimen/iv_20" />
 
@@ -365,7 +432,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/action"
+            android:text="@string/state"
             android:textColor="@color/white"
             android:textSize="@dimen/iv_20" />
     </LinearLayout>

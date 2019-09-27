@@ -147,11 +147,11 @@ public class FinancialDetailsAdapter extends RecyclerView.Adapter<FinancialDetai
             }
             switch (item.getAcctType()) {
                 case 1:
-                    tvUnit.setText("ETH");
+                    tvUnit.setText("TGM");
                     break;
                 case 2:
                 case 3:
-                    tvUnit.setText("PKB");
+                    tvUnit.setText("USDT");
                     break;
             }
             String type = "";

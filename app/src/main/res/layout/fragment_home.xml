@@ -8,9 +8,9 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:background="@drawable/shape_state_bg"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_98">
+        android:layout_height="@dimen/iv_98"
+        android:background="@drawable/shape_state_bg">
 
         <TextView
             android:layout_width="wrap_content"
@@ -18,7 +18,14 @@
             android:layout_centerInParent="true"
             android:text="@string/home"
             android:textColor="@color/white"
-            android:textSize="@dimen/iv_32" />
+            android:textSize="@dimen/iv_32"
+            android:visibility="gone" />
+
+        <ImageView
+            android:layout_width="@dimen/d194"
+            android:layout_height="@dimen/d26"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/home_title_logo" />
 
         <RelativeLayout
             android:id="@+id/ll_message"

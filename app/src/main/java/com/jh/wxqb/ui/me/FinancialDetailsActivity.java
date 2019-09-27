@@ -158,7 +158,7 @@ public class FinancialDetailsActivity extends BaseActivity implements MeView, My
                 finish();
                 break;
             case R.id.tv_type:
-                selType(tvType);
+//                selType(tvType);
                 break;
         }
     }

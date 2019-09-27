@@ -44,34 +44,6 @@
                 android:visibility="gone" />
 
         </RelativeLayout>
-
-
-        <RelativeLayout
-            android:id="@+id/ll_repurchase_assets"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/tv_repurchase_assets"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/repurchase_assets"
-                android:textColor="@color/home_text_color"
-                android:textSize="@dimen/iv_28" />
-
-            <View
-                android:id="@+id/view_repurchase_assets"
-                android:layout_width="@dimen/iv_26"
-                android:layout_height="@dimen/iv_6"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/iv_20"
-                android:background="@color/home_text_color" />
-
-        </RelativeLayout>
-
         <RelativeLayout
             android:id="@+id/ll_dividend_assets"
             android:layout_width="0dp"
@@ -98,6 +70,35 @@
                 android:visibility="gone" />
 
         </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/ll_repurchase_assets"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_repurchase_assets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/repurchase_assets"
+                android:textColor="@color/home_text_color"
+                android:textSize="@dimen/iv_28" />
+
+            <View
+                android:id="@+id/view_repurchase_assets"
+                android:layout_width="@dimen/iv_26"
+                android:layout_height="@dimen/iv_6"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/iv_20"
+                android:background="@color/home_text_color" />
+
+        </RelativeLayout>
+
     </LinearLayout>
 
     <android.support.v4.view.ViewPager

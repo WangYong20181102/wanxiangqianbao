@@ -10,10 +10,11 @@ import com.jh.wxqb.R;
 import com.jh.wxqb.base.BaseActivity;
 import com.jh.wxqb.base.MainActivity;
 import com.jh.wxqb.base.MyApplication;
+import com.jh.wxqb.utils.PermissionUtils;
 
 public class WelcomeActivity extends BaseActivity {
     private static final int WHAT_DELAY = 0x11;
-    private static final int DELAY_TIME = 500;// 延时时间
+    private static final int DELAY_TIME =7000;// 延时时间
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         @Override
@@ -46,5 +47,6 @@ public class WelcomeActivity extends BaseActivity {
     @Override
     protected void init() {
         handler.sendEmptyMessageDelayed(WHAT_DELAY, DELAY_TIME);
+        PermissionUtils.writerReadSDcard(this);
     }
 }

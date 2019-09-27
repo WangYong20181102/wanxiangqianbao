@@ -90,13 +90,13 @@ public class OrderInfoActivity extends BaseActivity implements MySendLetterView 
 
         switch (data.getAssetTypeId()) {
             case 1:
-                tvEntrust.setText("ETH");
+                tvEntrust.setText("TGM");
                 break;
             case 2:
-                tvEntrust.setText("PKB");
+                tvEntrust.setText("USDT");
                 break;
             case 3:
-                tvEntrust.setText("PKB");
+                tvEntrust.setText("USDT");
                 break;
         }
 

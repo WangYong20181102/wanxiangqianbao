@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/iv_48"
+                android:layout_marginTop="@dimen/d20"
                 android:text="@string/my_invitation_code"
                 android:textColor="@color/white"
                 android:textSize="@dimen/iv_30" />
@@ -59,22 +59,22 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/iv_36"
-                android:textColor="@color/color_2686d8"
+                android:textColor="@color/color_588bdd"
                 android:textSize="@dimen/iv_56"
                 android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/iv_code"
-                android:layout_width="@dimen/iv_230"
-                android:layout_height="@dimen/iv_230"
+                android:layout_width="@dimen/d120"
+                android:layout_height="@dimen/d120"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/iv_100" />
+                android:layout_marginTop="@dimen/d20" />
 
             <TextView
                 android:id="@+id/tv_address"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
                 android:layout_marginLeft="@dimen/iv_30"
                 android:layout_marginTop="@dimen/iv_20"
                 android:layout_marginRight="@dimen/iv_30"
@@ -84,11 +84,11 @@
             <TextView
                 android:id="@+id/tv_copy"
                 android:layout_width="@dimen/iv_306"
-                android:layout_height="@dimen/iv_90"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/iv_100"
+                android:layout_marginTop="@dimen/d30"
                 android:layout_marginBottom="@dimen/iv_100"
-                android:background="@color/color_2686d8"
+                android:background="@drawable/all_btn_bg"
                 android:gravity="center"
                 android:text="@string/copy"
                 android:textColor="@color/white"

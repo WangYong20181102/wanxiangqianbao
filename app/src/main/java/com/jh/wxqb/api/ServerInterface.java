@@ -10,16 +10,23 @@ public class ServerInterface {
     public static final int TOKEN_INVALID = 401;
 
     //服务器常量类
-//    public static final String BASE_URL = "http://192.168.101.26:9898/";//测试环境
-//    public static final String BASE_WEB_URL = "http://192.168.101.26:9898";   //正式环境 首页Web路径   服务器路径去掉最后
+    public static final String BASE_URL = "http://192.168.101.26:9898/";//测试环境
+    public static final String BASE_WEB_URL = "http://192.168.101.26:9898";   //测试环境 首页Web路径   服务器路径去掉最后
+    public static final String BASE_Q_CARD = "http://192.168.101.26:9898";   //推荐二维码
 
-    public static final String BASE_URL = "http://47.56.124.119:9898/";  //正式环境
-    public static final String BASE_WEB_URL = "http://47.56.124.119:9898";   //正式环境 首页Web路径   服务器路径去掉最后
+//    public static final String BASE_URL = "http://www.qbmap.com/";  //正式环境18825572827   15767847174  13714173670 13266761427
+//    public static final String BASE_WEB_URL = "http://www.qbmap.com";   //正式环境 首页Web路径   服务器路径去掉最后
+//    public static final String BASE_Q_CARD = "http://www.qbmap.com";   //推荐二维码
+
+
+//        public static final String BASE_URL = "http://47.56.124.119:9898/";  //正式环境18825572827   15767847174  13714173670 13266761427
+//    public static final String BASE_WEB_URL = "http://47.56.124.119:9898";   //正式环境 首页Web路径   服务器路径去掉最后
+//    public static final String BASE_Q_CARD = "http://47.56.124.119:9898";   //推荐二维码
 
 
     //我要推荐二维码链接路径
-    public static final String BASE_WEB_REGISTER_URL = "https://peik.club/" +
-            "index.html#/register?webpath=" + "https://peik.club" + "&lang=" + MyApplication.getLanuage() + "&tjrId=";
+    public static final String BASE_WEB_REGISTER_URL = BASE_Q_CARD +
+            "/index.html#/register?webpath=" + BASE_Q_CARD + "&lang=" + MyApplication.getLanuage() + "&tjrId=";
 
     //手机注册
     public static final String USER_REGISTER = "register.do";
@@ -28,7 +35,8 @@ public class ServerInterface {
     public static final String GET_MESSAGE_CODE = "captcha/sms";
 
     //登录
-    public static final String USER_LOGIN = "authentication/form";
+//    public static final String USER_LOGIN = "authentication/form";
+    public static final String USER_LOGIN = "authentication/mobile";
 
     //版本更新
     public static final String VERSION_UPDATE = "app/endpoint/android";
@@ -89,12 +97,15 @@ public class ServerInterface {
 
     //获取财务明细列表
     public static final String GET_FINANCIAL_DETAILS = "queryLog";
+    //資產管理
+    public static final String GET_QUERYACCOUNTASSETS = "queryAccountAssets";
 
     //提币
     public static final String WITHDRAW_MONEY = "mentionMoney";
 
     //買入市場--買入顶部列表
-    public static final String DIVIDEND_MARKET_TOP_DIVIDEND = "queryCommission";
+//    public static final String DIVIDEND_MARKET_TOP_DIVIDEND = "queryCommission";
+    public static final String DIVIDEND_MARKET_TOP_DIVIDEND = "queryLatestSaleCommission";
 
     //買入市場--買入底部列表
     public static final String DIVIDEND_MARKET_BOTTOM_DIVIDEND = "queryCommission";

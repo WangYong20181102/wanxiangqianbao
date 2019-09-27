@@ -1,5 +1,6 @@
 package com.jh.wxqb.ui.market;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -130,6 +131,7 @@ public class MoreBusinessActivity extends BaseActivity implements MarketView, My
     /**
      * 选择买卖订单类型类型
      */
+    @SuppressLint("WrongConstant")
     private void selBusinessType(LinearLayout view) {
         ivBusinessDown.setImageResource(R.drawable.iv_up);
         View contentView = LayoutInflater.from(this).inflate(R.layout.item_business_type, null);

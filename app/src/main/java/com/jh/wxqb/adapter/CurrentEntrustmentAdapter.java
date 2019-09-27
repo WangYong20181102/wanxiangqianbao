@@ -86,56 +86,57 @@ public class CurrentEntrustmentAdapter extends RecyclerView.Adapter<CurrentEntru
             switch (item.getDirection()) {
                 case 1:
                     tvType.setTextColor(Color.WHITE);
+                    tvType.setTextColor(Color.rgb(0, 204, 102));
                     tvType.setText(R.string.dividend);
-                    tvTurnover.setText(String.valueOf(item.getAmountTotal().divide(one, 1, BigDecimal.ROUND_DOWN).doubleValue() + "PKB"));
+                    tvTurnover.setText(String.valueOf(item.getAmountPrice().divide(one, 4, BigDecimal.ROUND_DOWN).doubleValue() + ""));
                     break;
                 case 2:
                     tvType.setTextColor(Color.parseColor("#d6734b"));
                     tvType.setText(R.string.sell);
-                    tvTurnover.setText(String.valueOf(item.getAcountTransaction().divide(one, 1, BigDecimal.ROUND_DOWN).doubleValue() + "ETH"));
+                    tvTurnover.setText(String.valueOf(item.getAmountPrice().divide(one, 4, BigDecimal.ROUND_DOWN).doubleValue() + ""));
                     break;
             }
             String unit = "";
             switch (item.getAssetTypeId()) {
                 case 1:
-                    unit = "ETH";
+                    unit = "TGM";
                     break;
                 case 2:
                 case 3:
-                    unit = "PKB";
+                    unit = "USDT";
                     break;
             }
-            tvNum.setText(String.valueOf(item.getAccountCommission().divide(one, 2, BigDecimal.ROUND_DOWN).doubleValue() + unit));
+            tvNum.setText(item.getAccountCommission().divide(one, 2, BigDecimal.ROUND_DOWN).doubleValue() + "");
             tvNo.setVisibility(View.VISIBLE);
             switch (item.getStatus()) {
                 case 1:
                     tvNo.setTextColor(Color.rgb(55, 105, 245));
-                    tvNo.setText(R.string.the_dividend);
+                    tvNo.setText(R.string.in_the_pending_order);
                     break;
-                case 2:
-                    tvNo.setTextColor(Color.parseColor("#d6734b"));
-                    tvNo.setText(R.string.stop_the_dividend);
-                    break;
+//                case 2:
+//                    tvNo.setTextColor(Color.parseColor("#d6734b"));
+//                    tvNo.setText(R.string.stop_the_dividend);
+//                    break;
                 case 3:
-                    tvNo.setTextColor(Color.parseColor("#d6734b"));
-                    tvNo.setText(R.string.stop_queuing);
+                    tvNo.setTextColor(Color.rgb(0, 204, 102));
+                    tvNo.setText(R.string.all_success);
                     break;
                 case 4:
                     tvNo.setTextColor(Color.parseColor("#d6734b"));
-                    tvNo.setText(R.string.in_the_list);
+                    tvNo.setText(R.string.revocation);
                     break;
                 case 5:
                     tvNo.setTextColor(Color.rgb(0, 204, 102));
-                    tvNo.setText(R.string.deal_success);
+                    tvNo.setText(R.string.partial_deal);
                     break;
-                case 6:
-                    tvNo.setTextColor(Color.parseColor("#d6734b"));
-                    tvNo.setText(R.string.revocation);
-                    break;
-                case 7:
-                    tvNo.setTextColor(Color.rgb(0, 204, 102));
-                    tvNo.setText(R.string.queuing);
-                    break;
+//                case 6:
+//                    tvNo.setTextColor(Color.parseColor("#d6734b"));
+//                    tvNo.setText(R.string.revocation);
+//                    break;
+//                case 7:
+//                    tvNo.setTextColor(Color.rgb(0, 204, 102));
+//                    tvNo.setText(R.string.queuing);
+//                    break;
             }
         }
     }
