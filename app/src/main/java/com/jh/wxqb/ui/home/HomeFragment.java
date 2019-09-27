@@ -74,6 +74,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
             EventBus.getDefault().register(this);
             initWebView();
             presenter = new HomePresenter(this);
+            presenter.getUserInfo();
             presenter.versionUpdate();
         }
         return view;

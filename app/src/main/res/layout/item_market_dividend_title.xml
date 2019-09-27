@@ -35,7 +35,7 @@
                     android:inputType="numberDecimal"
                     android:textColor="@color/white"
                     android:textColorHint="@color/color_6f88aa"
-                    android:textSize="@dimen/iv_24" />
+                    android:textSize="@dimen/iv_24"/>
 
                 <TextView
                     android:id="@+id/tv_current_price"

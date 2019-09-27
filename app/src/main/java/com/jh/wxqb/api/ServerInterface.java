@@ -6,7 +6,7 @@ import com.jh.wxqb.base.MyApplication;
 public class ServerInterface {
 
     public static final int SUCCESS = 8008;
-    public static final int LOGIN_INVALID = 9009;
+    public  static final int LOGIN_INVALID = 9009;
     public static final int TOKEN_INVALID = 401;
 
     //服务器常量类
@@ -27,7 +27,6 @@ public class ServerInterface {
     //我要推荐二维码链接路径
     public static final String BASE_WEB_REGISTER_URL = BASE_Q_CARD +
             "/index.html#/register?webpath=" + BASE_Q_CARD + "&lang=" + MyApplication.getLanuage() + "&tjrId=";
-
     //手机注册
     public static final String USER_REGISTER = "register.do";
 

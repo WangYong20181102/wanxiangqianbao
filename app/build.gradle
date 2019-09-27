@@ -9,7 +9,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 29
         versionCode 3
-        versionName "2.1"
+        versionName "2.2"
         resValue "string", "tray__authority", "com.jh.wxqb.tray"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {

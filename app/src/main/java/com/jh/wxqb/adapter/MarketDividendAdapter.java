@@ -41,6 +41,7 @@ import com.jh.wxqb.utils.TimeUtil;
 import com.jh.wxqb.utils.Toasts;
 
 import org.greenrobot.eventbus.EventBus;
+import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -67,7 +68,6 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
     private Activity mActivity;
     private String type;   //dividend:買入   sell：卖出
     private TitleHolder titleHolder;
-    private MainHolder mainHolder;
     private MarketDividendTitleBean.DataBean.ListBean buyListBean;
     private List<MarketDividendBottomBean.DataBean.ListBean> listBeen;
     private CurrentPriceBean currentPriceBean;
@@ -146,8 +146,9 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
         }
     }
 
+    @NotNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         switch (viewType) {
             case TITLE:
                 View itemTitle = inflater.inflate(R.layout.item_market_dividend_title, parent, false);
@@ -164,13 +165,13 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NotNull RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof TitleHolder) {
             setTitle((TitleHolder) holder);
         } else if (holder instanceof MainHolder) {
             setMain((MainHolder) holder, position);
         } else if (holder instanceof FootHolder) {
-            setFoot((FootHolder) holder, position);
+            setFoot((FootHolder) holder);
         }
     }
 
@@ -178,14 +179,14 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
      * 查看更多
      *
      * @param holder
-     * @param position
      */
-    private void setFoot(FootHolder holder, int position) {
+    private void setFoot(FootHolder holder) {
         holder.rlShowMore.setOnClickListener(this);
     }
 
     /**
      * 當前價格
+     *
      * @param currentPriceBean
      */
     public void setCurrentPrice(CurrentPriceBean currentPriceBean) {
@@ -363,12 +364,12 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
 //                holder.tvType.setText(R.string.sell);
                 holder.tvDividends.setText(R.string.sell);
                 holder.tvBalance.setText(R.string.current_tgm_balance);
-//                holder.tvCurrent.setText(R.string.the_current_price);
 //                titleHolder.tvCompany.setText("USDT");
 //                holder.tvCurrentPrice.setText("USDT");
                 break;
         }
         LogUtils.e("isUdpTypeText==>" + isUdpTypeText);
+        //单价 tvPrice.setText(String.valueOf(item.getSellList().get(position).getAmountPrice().divide(one,4,BigDecimal.ROUND_HALF_UP).doubleValue()));
         if (isUdpTypeText.equals("1")) {
             switch (typeText) {
                 case 0:
@@ -382,7 +383,6 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
                     break;
             }
         }
-
 
         if (currentPriceBean != null) {
             if (currentPriceBean.getData() != null) {
@@ -417,7 +417,9 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
             }
         });
 
-        holder.shopUp.setLayoutManager(new LinearLayoutManager(mContext));
+        LinearLayoutManager manager = new LinearLayoutManager(mContext);
+        manager.setStackFromEnd(true);
+        holder.shopUp.setLayoutManager(manager);
         MarketDividendTitleAdapter titleUpAdapter = new MarketDividendTitleAdapter(mContext, true, buyListBean);
         holder.shopUp.setAdapter(titleUpAdapter);
 
@@ -434,7 +436,7 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
     }
 
     private void setMain(MainHolder holder, final int position) {
-        mainHolder = holder;
+        MainHolder mainHolder = holder;
         BigDecimal one = new BigDecimal("1");
         switch (listBeen.get(position - 1).getDirection()) {
             case 1:
@@ -599,6 +601,20 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
                                         break;
                                 }
                             }
+                        }
+                    }
+                    if (type.equals("sell")) {
+                        if (buyListBean != null) {
+                            if (buyListBean.getBuyList() != null) {
+                                if (buyListBean.getBuyList().size() > 0) {
+                                    if (Double.valueOf(titleHolder.tvCurrent.getText().toString()) < buyListBean.getBuyList().get(0).getAmountPrice().doubleValue()) {
+                                        Toasts.showShort("卖出单价须大于或等于买1单价");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            return;
                         }
                     }
                     if (MyApplication.getUserBean().getIsHasTradePwd()) {
@@ -803,7 +819,6 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
 
     //计算预计获得
     public void countExpected(String strPrice, int iType) {
-        LogUtils.e("assetTypeI===>" + assetTypeId);
         if (strPrice.equals("")) {
             titleHolder.tvExpected.setText("");
             return;
@@ -926,14 +941,14 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
                                                 multiply = decimal.multiply(BigDecimal.valueOf(Double.valueOf(titleHolder.tvCurrent.getText().toString())));
                                                 break;
                                         }
-
                                         BigDecimal num = new BigDecimal(configValue);
                                         expectedAccess = String.valueOf(multiply.divide(num, 8, BigDecimal.ROUND_HALF_UP).doubleValue());
-                                        v1 = multiply.divide(one, 2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                                        v1 = BigDecimal.valueOf(Double.valueOf(titleHolder.edEntrustNum.getText().toString())).divide(one, 2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                                        double v2 = multiply.divide(one, 2, BigDecimal.ROUND_HALF_UP).doubleValue();
                                         if (v1 > currentPriceBean.getData().getTgmAccount().doubleValue()) {
                                             Toasts.showShort("餘額不足");
                                         }
-                                        titleHolder.tvExpected.setText("" + v1);
+                                        titleHolder.tvExpected.setText("" + v2);
                                     }
                                 }
                             }
@@ -944,7 +959,7 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
         }
     }
 
-    public static boolean isFastClick() {
+    private static boolean isFastClick() {
         boolean flag = false;
         long curClickTime = System.currentTimeMillis();
         if ((curClickTime - lastClickTime) >= MIN_CLICK_DELAY_TIME) {

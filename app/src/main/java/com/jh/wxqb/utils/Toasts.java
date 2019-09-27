@@ -21,7 +21,15 @@ package com.jh.wxqb.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.jh.wxqb.R;
+import com.jh.wxqb.base.MyApplication;
 
 public class Toasts {
 
@@ -53,7 +61,13 @@ public class Toasts {
             toast = Toast.makeText(sContext,
                     resId,
                     Toast.LENGTH_SHORT);
+            LinearLayout linearLayout = (LinearLayout) toast.getView();
+            TextView messageTextView = (TextView) linearLayout.getChildAt(0);
+            messageTextView.setTextSize(17);
         } else {
+            LinearLayout linearLayout = (LinearLayout) toast.getView();
+            TextView messageTextView = (TextView) linearLayout.getChildAt(0);
+            messageTextView.setTextSize(17);
             toast.setText(sContext.getResources().getString(resId));
         }
         toast.show();
@@ -68,7 +82,13 @@ public class Toasts {
             toast = Toast.makeText(sContext,
                     message,
                     Toast.LENGTH_SHORT);
+            LinearLayout linearLayout = (LinearLayout) toast.getView();
+            TextView messageTextView = (TextView) linearLayout.getChildAt(0);
+            messageTextView.setTextSize(17);
         } else {
+            LinearLayout linearLayout = (LinearLayout) toast.getView();
+            TextView messageTextView = (TextView) linearLayout.getChildAt(0);
+            messageTextView.setTextSize(17);
             toast.setText(message);
         }
         toast.show();
@@ -112,4 +132,6 @@ public class Toasts {
         showLong(message);
         showLong(message);
     }
+
+
 }

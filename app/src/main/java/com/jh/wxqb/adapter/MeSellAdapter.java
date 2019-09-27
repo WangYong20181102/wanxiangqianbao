@@ -90,7 +90,7 @@ public class MeSellAdapter extends RecyclerView.Adapter<MeSellAdapter.ViewHolder
         public void refurbish(final int position) {
             BigDecimal one=new BigDecimal("1");
             tvTime.setText(TimeUtil.getTime(item.getCreateDate()));
-            tvDelegateQuantity.setText(String.valueOf(item.getAmountPrice().divide(one,1,BigDecimal.ROUND_HALF_UP)));
+            tvDelegateQuantity.setText(String.valueOf(item.getAmountPrice().divide(one,4,BigDecimal.ROUND_HALF_UP)));
             tvVolume.setText(String.valueOf(item.getAccountCommission().divide(one,2,BigDecimal.ROUND_HALF_UP)));
             tvTotalTurnover.setText(String.valueOf(item.getVolume().divide(one,2,BigDecimal.ROUND_HALF_UP)));
 
