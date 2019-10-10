@@ -68,8 +68,24 @@ public class AssetManagementAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     ((MyViewHolder) holder).ivMoneyImg.setImageResource(R.drawable.icon_usdt_small);
                     ((MyViewHolder) holder).imageRight.setImageResource(R.drawable.icon_usdt_right);
                     break;
+                case 4:
+                    ((MyViewHolder) holder).tvCurrency.setText("HT");
+                    ((MyViewHolder) holder).ivMoneyImg.setImageResource(R.drawable.iv_ht_small);
+                    ((MyViewHolder) holder).imageRight.setImageResource(R.drawable.iv_ht_right);
+                    break;
+                case 5:
+                    ((MyViewHolder) holder).tvCurrency.setText("OKB");
+                    ((MyViewHolder) holder).ivMoneyImg.setImageResource(R.drawable.iv_okb_small);
+                    ((MyViewHolder) holder).imageRight.setImageResource(R.drawable.iv_okb_right);
+                    break;
+                case 6:
+                    ((MyViewHolder) holder).tvCurrency.setText("BNB");
+                    ((MyViewHolder) holder).ivMoneyImg.setImageResource(R.drawable.iv_bnb_small);
+                    ((MyViewHolder) holder).imageRight.setImageResource(R.drawable.iv_bnb_right);
+                    break;
             }
             ((MyViewHolder) holder).tvBalance.setText(item.getActiveAssets() + "");
+            ((MyViewHolder) holder).tvtvEquivalentAssets.setText(item.getDiscountedPrice() + "");
         }
     }
 
@@ -95,6 +111,8 @@ public class AssetManagementAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         TextView tvWithdrawMoney;
         @BindView(R.id.image_right)
         ImageView imageRight;
+        @BindView(R.id.tv_equivalent_assets)
+        TextView tvtvEquivalentAssets;
 
         public MyViewHolder(View item) {
             super(item);
@@ -107,19 +125,26 @@ public class AssetManagementAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         Intent intent;
         switch (v.getId()) {
             case R.id.tv_tran://充币
-//                AssetManagementBean.DataBean.AccountAssetsBean item = financialDetailsBeen.get((Integer) v.getTag());
-//                if (item.getBizCurrencyTypeId() == 3){
-//                    Toasts.showShort("暫未開放此功能!");
-//                }else {
-                    intent = new Intent(mContext, PunchingMoneyActivity.class);
-                    mContext.startActivity(intent);
-//                }
+                AssetManagementBean.DataBean.AccountAssetsBean item = financialDetailsBeen.get((Integer) v.getTag());
+                switch (item.getBizCurrencyTypeId()) {
+                    case 1:
+                    case 2:
+                    case 3:
+                        intent = new Intent(mContext, PunchingMoneyActivity.class);
+                        mContext.startActivity(intent);
+                        break;
+                    case 4:
+                    case 5:
+                    case 6:
+                        Toasts.showShort("暫未開放此功能!");
+                        break;
+                }
                 break;
             case R.id.tv_withdraw_money://提币
                 Toasts.showShort("暫未開放此功能!");
-//                intent = new Intent(mContext, WithdrawMoneyActivity.class);
-//                intent.putExtra(AssetManagementBean.class.getName(), financialDetailsBeen.get((Integer) v.getTag()));
-//                mContext.startActivity(intent);
+//               intent = new Intent(mContext, WithdrawMoneyActivity.class);
+//             intent.putExtra(AssetManagementBean.class.getName(), financialDetailsBeen.get((Integer) v.getTag()));
+//            mContext.startActivity(intent);
                 break;
         }
     }

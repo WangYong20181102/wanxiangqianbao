@@ -1,5 +1,7 @@
 package com.jh.wxqb.bean;
 
+import org.w3c.dom.Text;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -51,7 +53,16 @@ public class MarketDividendTitleBean {
          */
 
         private int pageSize;
-        private ListBean list;
+        private ListBean list = null;
+        private String quoteChange;
+
+        public String getQuoteChange() {
+            return quoteChange;
+        }
+
+        public void setQuoteChange(String quoteChange) {
+            this.quoteChange = quoteChange;
+        }
 
         public int getPageSize() {
             return pageSize;

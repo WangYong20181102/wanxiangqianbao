@@ -89,14 +89,14 @@ public class MySendLetterActivity extends BaseActivity implements ViewPager.OnPa
     public void selectTitle(int index) {
         clearViewAndTitle();
         viewPager.setCurrentItem(index);
-        allTitle.get(index).setTextColor(Color.rgb(0, 204, 102));
+        allTitle.get(index).setTextColor(getResources().getColor(R.color.color_16263E));
         allView.get(index).setVisibility(View.VISIBLE);
     }
 
     //初始化标题
     public void clearViewAndTitle() {
         for (TextView text : allTitle) {
-            text.setTextColor(Color.rgb(153, 153, 153));
+            text.setTextColor(getResources().getColor(R.color.color_8C9FAD));
         }
         for (View view : allView) {
             view.setVisibility(View.GONE);

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/d40"
-    android:background="@color/color_style"
+    android:background="@color/white"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/look_at_more"
-            android:textColor="@color/white"
+            android:textColor="@color/color_3E566C"
             android:layout_centerInParent="true"
             android:textSize="@dimen/iv_30" />
     </RelativeLayout>

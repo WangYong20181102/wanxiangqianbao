@@ -1,6 +1,7 @@
 package com.jh.wxqb.ui.assets;
 
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import com.jh.wxqb.R;
 import com.jh.wxqb.adapter.PagerAdapter;
 import com.jh.wxqb.base.BaseFragment;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,11 +23,12 @@ import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 /**
  * 資產管理
  */
-public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChangeListener {
+public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChangeListener, ActiveManagementFragment.OnEquivalentAssetsListener {
 
 
     @BindView(R.id.tv_active_assets)
@@ -42,26 +45,30 @@ public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChan
     View viewDividendAssets;
     @BindView(R.id.layout_view_pager)
     ViewPager layoutAssets;
-//    @BindViews({R.id.tv_active_assets, R.id.tv_dividend_assets, R.id.tv_repurchase_assets})
+    //    @BindViews({R.id.tv_active_assets, R.id.tv_dividend_assets, R.id.tv_repurchase_assets})
     @BindViews({R.id.tv_active_assets, R.id.tv_dividend_assets})
     List<TextView> allTitle;
-//    @BindViews({R.id.view_active_assets, R.id.view_dividend_assets, R.id.view_repurchase_assets})
+    //    @BindViews({R.id.view_active_assets, R.id.view_dividend_assets, R.id.view_repurchase_assets})
     @BindViews({R.id.view_active_assets, R.id.view_dividend_assets})
     List<View> allView;
+    @BindView(R.id.tv_equivalent_assets)
+    TextView tvEquivalentAssets;
+    Unbinder unbinder;
     private ArrayList<Fragment> fragmentList;
 
     private View view;
+    private ActiveManagementFragment activeAssetsFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_assets, container, false);
-            ButterKnife.bind(this, view);
-            initListener();
-            initFragment();
-            selectTitle(0);
         }
+        unbinder = ButterKnife.bind(this, view);
+        initListener();
+        initFragment();
+        selectTitle(0);
         return view;
     }
 
@@ -72,7 +79,8 @@ public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChan
 
     private void initFragment() {
         fragmentList = new ArrayList<>();
-        ActiveManagementFragment activeAssetsFragment = new ActiveManagementFragment();
+        activeAssetsFragment = new ActiveManagementFragment();
+        activeAssetsFragment.setOnEquivalentAssetsListener(this);
         FreezeAssetsFragment freezeAssetsFragment = new FreezeAssetsFragment();
 //        ActiveAssetsFragment activeAssetsFragment = new ActiveAssetsFragment();
 //        DividendAssetsFragment dividendAssetsFragment = new DividendAssetsFragment();
@@ -129,18 +137,30 @@ public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChan
     public void selectTitle(int index) {
         clearViewAndTitle();
         layoutAssets.setCurrentItem(index);
-        allTitle.get(index).setTextColor(Color.parseColor("#1881d2"));
+        allTitle.get(index).setTextColor(Color.parseColor("#16263E"));
         allView.get(index).setVisibility(View.VISIBLE);
     }
 
     //初始化标题
     public void clearViewAndTitle() {
         for (TextView text : allTitle) {
-            text.setTextColor(Color.WHITE);
+            text.setTextColor(Color.parseColor("#8c9fad"));
         }
         for (View view : allView) {
             view.setVisibility(View.GONE);
         }
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onResult(double totalAssets) {
+        double f1 = new BigDecimal(totalAssets).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        tvEquivalentAssets.setText(f1 + "");
+    }
 }

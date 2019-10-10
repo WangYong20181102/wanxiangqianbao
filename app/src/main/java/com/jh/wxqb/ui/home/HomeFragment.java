@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
+import android.widget.RelativeLayout;
 
 import com.jh.wxqb.R;
 import com.jh.wxqb.api.ServerInterface;
@@ -48,6 +49,7 @@ import java.math.BigDecimal;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 
 /**
@@ -55,10 +57,12 @@ import butterknife.OnClick;
  */
 public class HomeFragment extends BaseFragment implements HomeView {
 
+    Unbinder unbinder;
     private View view;
     @BindView(R.id.webView)
     WebView mWebView;
-    private String appUrl = ServerInterface.BASE_URL + "index.html#/home";
+    private String appUrl = ServerInterface.BASE_URL + "wxwallet/index.html#/";
+//    http://192.168.101.51/wxwallet/index.html/#/home
     private static int REQUEST_WRITE = 42;
     public static AppUpdateProgressDialog dialog;
     private int mMaxProgress = 100;//百分比
@@ -70,13 +74,13 @@ public class HomeFragment extends BaseFragment implements HomeView {
                              Bundle savedInstanceState) {
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_home, container, false);
-            ButterKnife.bind(this, view);
-            EventBus.getDefault().register(this);
-            initWebView();
-            presenter = new HomePresenter(this);
-            presenter.getUserInfo();
-            presenter.versionUpdate();
         }
+        unbinder = ButterKnife.bind(this, view);
+        EventBus.getDefault().register(this);
+        initWebView();
+        presenter = new HomePresenter(this);
+        presenter.getUserInfo();
+        presenter.versionUpdate();
         return view;
     }
 
@@ -135,8 +139,14 @@ public class HomeFragment extends BaseFragment implements HomeView {
 //        JavaScriptMethod method = new JavaScriptMethod();
 //        其实就是告诉js，我提供给哪个对象给你调用，这样js就可以调用对象里面的方法
 //        第二个参数就是该类中的字符串常量
-        HomeFragment.JavaScriptMethod method = new HomeFragment.JavaScriptMethod(mContext, mWebView);
+        JavaScriptMethod method = new JavaScriptMethod(mContext, mWebView);
         mWebView.addJavascriptInterface(method, JavaScriptMethod.JAVAINTERFACE);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
     public class JavaScriptMethod {

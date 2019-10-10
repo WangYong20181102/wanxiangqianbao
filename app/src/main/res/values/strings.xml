@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="app_name">万象·钱包</string>
+    <string name="app_name">Van Token</string>
     <string name="network_connection_timeout">当前网络差，请检查网络链接。</string>
     <string name="mobile">手机号</string>
     <string name="code">验证码</string>
@@ -80,10 +80,13 @@
     <string name="news_and_information">新闻資訊</string>
     <string name="information_list">資訊列表</string>
     <string name="can_use">可用</string>
+    <string name="equivalent_cny">折合(CNY)</string>
+    <string name="usdt_tgm">USDT/TGM</string>
     <string name="statue">狀态</string>
     <string name="active_assets">餘額資產</string>
     <string name="repurchase_assets">重購資產</string>
     <string name="dividend_assets">凍結資產</string>
+    <string name="freeze">凍結</string>
     <string name="withdraw_money">提幣</string>
     <string name="detail">明細</string>
     <string name="number">編號：</string>
@@ -111,6 +114,7 @@
     <string name="determine">確定</string>
     <string name="dividend">買入</string>
     <string name="sell">賣出</string>
+    <string name="equivalent_assets">资产折合(CNY)：</string>
     <string name="the_dividend">買入中</string>
     <string name="time">時  間</string>
     <string name="delegate_quantity">委託量(USDT)</string>

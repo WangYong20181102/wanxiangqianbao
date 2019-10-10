@@ -12,6 +12,7 @@
         <attr name="moreImg" format="reference" />
         <!-- 右侧更多功能按钮文字 -->
         <attr name="moreText" format="string" />
+        <attr name="tittle_bg" format="color"  />
     </declare-styleable>
 
     <declare-styleable name="XMarqueeView">

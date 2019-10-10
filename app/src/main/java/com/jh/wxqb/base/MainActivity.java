@@ -3,6 +3,7 @@ package com.jh.wxqb.base;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,6 +16,7 @@ import com.jh.wxqb.customview.NoScrollMainPager;
 import com.jh.wxqb.ui.assets.AssetsFragment;
 import com.jh.wxqb.ui.home.HomeFragment;
 import com.jh.wxqb.ui.market.MarketFragment;
+import com.jh.wxqb.ui.market.MarketPlaceFragment;
 import com.jh.wxqb.ui.me.MeFragment;
 
 import org.greenrobot.eventbus.EventBus;
@@ -60,14 +62,15 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     private void initListener() {
         layout_home.addOnPageChangeListener(this);
-        layout_home.setOffscreenPageLimit(5);
+        layout_home.setOffscreenPageLimit(4);
     }
 
     private void initFragment() {
         ArrayList<Fragment> fragmentList = new ArrayList<>();
         HomeFragment homeFragment = new HomeFragment();
-        MarketFragment marketFragment=new MarketFragment();
-        AssetsFragment assetsFragment=new AssetsFragment();
+//        MarketFragment marketFragment = new MarketFragment();
+        MarketPlaceFragment marketFragment = new MarketPlaceFragment();
+        AssetsFragment assetsFragment = new AssetsFragment();
         MeFragment meFragment = new MeFragment();
         fragmentList.add(homeFragment);
         fragmentList.add(marketFragment);
@@ -77,7 +80,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         layout_home.setAdapter(adapter);
     }
 
-    @OnClick({R.id.ll_home, R.id.ll_market,R.id.ll_assets, R.id.ll_me})
+    @OnClick({R.id.ll_home, R.id.ll_market, R.id.ll_assets, R.id.ll_me})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_home:
@@ -104,19 +107,19 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         switch (index) {
             case 0:
                 ivHome.setImageResource(R.drawable.home_true);
-                tvHome.setTextColor(ContextCompat.getColor(this, R.color.home_text_color));
+                tvHome.setTextColor(ContextCompat.getColor(this, R.color.new_home_text_color));
                 break;
             case 1:
                 ivMarket.setImageResource(R.drawable.market_true);
-                tvMarket.setTextColor(ContextCompat.getColor(this, R.color.home_text_color));
+                tvMarket.setTextColor(ContextCompat.getColor(this, R.color.new_home_text_color));
                 break;
             case 2:
                 ivAssets.setImageResource(R.drawable.assets_true);
-                tvAssets.setTextColor(ContextCompat.getColor(this, R.color.home_text_color));
+                tvAssets.setTextColor(ContextCompat.getColor(this, R.color.new_home_text_color));
                 break;
             case 3:
                 ivMe.setImageResource(R.drawable.me_true);
-                tvMe.setTextColor(ContextCompat.getColor(this, R.color.home_text_color));
+                tvMe.setTextColor(ContextCompat.getColor(this, R.color.new_home_text_color));
                 break;
         }
         layout_home.setCurrentItem(index);
@@ -128,10 +131,10 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         ivAssets.setImageResource(R.drawable.assets_false);
         ivMe.setImageResource(R.drawable.me_false);
 
-        tvHome.setTextColor(ContextCompat.getColor(this, R.color.tv_no_click));
-        tvMarket.setTextColor(ContextCompat.getColor(this, R.color.tv_no_click));
-        tvAssets.setTextColor(ContextCompat.getColor(this, R.color.tv_no_click));
-        tvMe.setTextColor(ContextCompat.getColor(this, R.color.tv_no_click));
+        tvHome.setTextColor(ContextCompat.getColor(this, R.color.home_tv_no_click));
+        tvMarket.setTextColor(ContextCompat.getColor(this, R.color.home_tv_no_click));
+        tvAssets.setTextColor(ContextCompat.getColor(this, R.color.home_tv_no_click));
+        tvMe.setTextColor(ContextCompat.getColor(this, R.color.home_tv_no_click));
     }
 
     @Override
@@ -167,5 +170,4 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         }
         return super.onKeyDown(keyCode, event);
     }
-
 }

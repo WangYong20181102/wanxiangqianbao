@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/color_style">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="15:54:55"
-            android:textColor="@color/color_6f88aa"
+            android:textColor="@color/color_1F3F59"
             android:textSize="@dimen/iv_26" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="0.0"
-            android:textColor="@color/color_6f88aa"
+            android:textColor="@color/color_1F3F59"
             android:textSize="@dimen/iv_26" />
 
         <TextView
@@ -50,7 +50,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="0.0"
-            android:textColor="@color/color_6f88aa"
+            android:textColor="@color/color_1F3F59"
             android:textSize="@dimen/iv_26" />
 
         <RelativeLayout
@@ -74,7 +74,7 @@
                 android:id="@+id/tv_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_6f88aa"
+                android:textColor="@color/color_1F3F59"
                 android:textSize="@dimen/iv_26"
                 android:visibility="visible" />
         </RelativeLayout>

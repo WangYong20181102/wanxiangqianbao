@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_style"
+    android:background="@color/white"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.jh.wxqb.ui.me.feedback.FeedbackActivity">
@@ -16,6 +16,10 @@
         android:id="@+id/tv_title"
         app:moreImg="@drawable/nav_news"
         app:titleText="@string/user_feedback" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d1"
+        android:background="@color/color_eff2f4"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -35,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/iv_20"
             android:text="@string/feedback_feedback"
-            android:textColor="@color/white"
+            android:textColor="@color/color_1F3F59"
             android:textSize="@dimen/iv_28" />
     </LinearLayout>
 
@@ -82,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/iv_20"
             android:text="@string/add_image"
-            android:textColor="@color/white"
+            android:textColor="@color/color_1F3F59"
             android:textSize="@dimen/iv_28" />
     </LinearLayout>
 

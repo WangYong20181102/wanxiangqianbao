@@ -12,6 +12,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.githang.statusbar.StatusBarCompat;
 import com.jaeger.library.StatusBarUtil;
 import com.jh.wxqb.R;
 import com.jh.wxqb.customview.CustomTitle;
@@ -32,9 +33,10 @@ import butterknife.Unbinder;
 public abstract class BaseActivity extends MyAutoLayoutActivity {
     /**
      * 方法体 注册添加每个 继承BaseActivity的activity 便于遍历退出
-     * */ {
-        MyApplication.getInstance().addActivity(this);
-    }
+     * */
+//    {
+//        MyApplication.getInstance().addActivity(this);
+//    }
 
     //全局等待提示
     protected ProgressDialog waitDialog;
@@ -47,16 +49,17 @@ public abstract class BaseActivity extends MyAutoLayoutActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayout());
-        mUnBinder = ButterKnife.bind(this);
         //将当前Activity添加到栈中
         AppManager.getInstance().addActivity(this);
+        setContentView(getLayout());
+        mUnBinder = ButterKnife.bind(this);
         //初始化Toasts
         Toasts.register(this);
         //设置沉浸式状态栏
 //        initChenQinShi();
         //改变状态栏颜色（不带透明度）
-        StatusBarUtil.setColorNoTranslucent(this, Color.parseColor("#061623"));
+//        StatusBarUtil.setColorNoTranslucent(this, Color.parseColor("#ffffff"));
+        StatusBarCompat.setStatusBarColor(this, Color.WHITE, true);
 
         //初始化
         init();
@@ -85,7 +88,6 @@ public abstract class BaseActivity extends MyAutoLayoutActivity {
         mUnBinder.unbind();
         //销毁当前Activity
         AppManager.getInstance().finishActivity(this);
-
     }
 
 

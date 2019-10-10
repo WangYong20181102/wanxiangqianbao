@@ -77,7 +77,7 @@ public class DefineLoadMoreView extends LinearLayout implements SwipeMenuRecycle
             } else {
                 mLoadingView.setVisibility(GONE);
                 mTvMessage.setVisibility(VISIBLE);
-                mTvMessage.setTextColor(Color.WHITE);
+                mTvMessage.setTextColor(Color.parseColor("#8C9CAE"));
                 mTvMessage.setText("没有更多数据啦");
             }
         } else {

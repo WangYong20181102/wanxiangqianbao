@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/color_style"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <LinearLayout
@@ -14,27 +14,27 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/iv_20"
+            android:layout_marginLeft="@dimen/d15"
             android:layout_marginRight="@dimen/iv_10"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_90"
-                android:layout_marginTop="@dimen/iv_20"
+                android:layout_height="@dimen/d40"
+                android:layout_marginTop="@dimen/d30"
                 android:background="@drawable/et_bg_line">
 
                 <EditText
                     android:id="@+id/tv_current"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/iv_10"
+                    android:layout_marginLeft="@dimen/d10"
                     android:background="@null"
                     android:hint="@string/the_current_price"
                     android:inputType="numberDecimal"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/color_6f88aa"
+                    android:textColor="@color/color_143652"
+                    android:textColorHint="@color/color_BFCAD1"
                     android:textSize="@dimen/iv_24"/>
 
                 <TextView
@@ -44,29 +44,29 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/iv_20"
-                    android:layout_marginRight="@dimen/iv_10"
+                    android:layout_marginRight="@dimen/d10"
                     android:text="USDT"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_7E93A2"
                     android:textSize="@dimen/iv_24"
                     android:visibility="visible" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_80"
-                android:layout_marginTop="@dimen/iv_20"
+                android:layout_height="@dimen/d40"
+                android:layout_marginTop="@dimen/d30"
                 android:background="@drawable/et_bg_line">
 
                 <EditText
                     android:id="@+id/ed_entrust_num"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/iv_10"
+                    android:layout_marginLeft="@dimen/d10"
                     android:background="@null"
                     android:hint="@string/entrustment_number"
                     android:inputType="numberDecimal"
                     android:textColor="@color/my_dividend_color"
-                    android:textColorHint="@color/color_6f88aa"
+                    android:textColorHint="@color/color_BFCAD1"
                     android:textSize="@dimen/iv_24" />
 
                 <TextView
@@ -75,9 +75,9 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/iv_10"
+                    android:layout_marginRight="@dimen/d10"
                     android:text="@string/dividend_tgm"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_7E93A2"
                     android:textSize="@dimen/iv_24"
                     android:visibility="visible" />
 
@@ -109,17 +109,17 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_90"
-                android:layout_marginTop="@dimen/iv_20"
+                android:layout_height="@dimen/d40"
+                android:layout_marginTop="@dimen/d30"
                 android:background="@drawable/et_bg_line">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_10"
+                    android:layout_marginLeft="@dimen/d10"
                     android:text="@string/expected_to_obtain"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_7E93A2"
                     android:textSize="@dimen/iv_24" />
 
                 <TextView
@@ -137,7 +137,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/iv_10"
+                    android:layout_marginRight="@dimen/d10"
                     android:text="@string/text_usdt"
                     android:textSize="@dimen/iv_24" />
             </RelativeLayout>
@@ -164,8 +164,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/iv_30"
-                android:orientation="horizontal">
+                android:layout_marginTop="@dimen/d25"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_balance"
@@ -173,15 +173,16 @@
                     android:layout_height="wrap_content"
                     android:text="@string/current_eth_balance"
                     android:textColor="@color/color_02c289"
-                    android:textSize="@dimen/iv_24" />
+                    android:textSize="@dimen/s15" />
 
                 <TextView
                     android:id="@+id/tv_current_balance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d5"
                     android:text="0.0"
                     android:textColor="@color/color_02c289"
-                    android:textSize="@dimen/iv_24" />
+                    android:textSize="@dimen/s15" />
             </LinearLayout>
 
             <TextView
@@ -189,7 +190,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/d30"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/d15"
+                android:layout_marginTop="@dimen/d25"
                 android:background="@drawable/market_buy_bg"
                 android:gravity="center"
                 android:text="@string/access_to_dividends"
@@ -204,13 +205,14 @@
             android:layout_marginLeft="@dimen/iv_10"
             android:layout_marginRight="@dimen/iv_20"
             android:layout_weight="1"
-            android:background="@color/color_style"
+            android:background="@color/white"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/iv_16"
+                android:layout_marginBottom="@dimen/d6"
                 android:orientation="horizontal">
 
                 <TextView
@@ -219,25 +221,25 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@string/pan_mouth"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_7E93A2"
                     android:textSize="@dimen/iv_20" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
+                    android:layout_weight="0.8"
+                    android:gravity="left|center_vertical"
                     android:text="@string/price"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_7E93A2"
                     android:textSize="@dimen/iv_20" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
+                    android:layout_weight="1.2"
+                    android:gravity="right|center_vertical"
                     android:text="@string/market_number"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_7E93A2"
                     android:textSize="@dimen/iv_20" />
             </LinearLayout>
 
@@ -249,19 +251,28 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/shop_up"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/d100"/>
+                    android:layout_height="@dimen/d140"/>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/iv_1"
-                    android:layout_marginLeft="@dimen/iv_20"
-                    android:layout_marginRight="@dimen/iv_20"
-                    android:background="@color/color_1b2a3e" />
+                <TextView
+                    android:id="@+id/tv_one_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/d23"
+                    android:layout_marginTop="-3dp"
+                    android:textSize="@dimen/s17"
+                    android:textColor="@color/color_03AD8F"/>
+                <TextView
+                    android:id="@+id/tv_cny"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/d23"
+                    android:textSize="@dimen/s11"
+                    android:textColor="@color/color_7E93A2"/>
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/shop_down"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/d100"/>
+                    android:layout_height="@dimen/d140"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -270,11 +281,11 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/iv_1"
         android:layout_marginTop="@dimen/iv_50"
-        android:background="@color/color_1b2a3e" />
+        android:background="@color/color_E7EBEE" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_80"
+        android:layout_height="@dimen/d37"
         android:gravity="center_vertical">
 
         <RelativeLayout
@@ -287,7 +298,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/iv_3"
                 android:layout_alignParentBottom="true"
-                android:background="@color/greed" />
+                android:background="@color/color_16263E" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -299,7 +310,7 @@
                 <View
                     android:layout_width="@dimen/iv_6"
                     android:layout_height="@dimen/iv_26"
-                    android:background="@color/home_text_color"
+                    android:background="@color/color_16263E"
                     android:visibility="gone" />
 
                 <TextView
@@ -307,18 +318,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/iv_20"
                     android:text="@string/chengjiao"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/iv_28" />
+                    android:textColor="@color/color_16263E"
+                    android:textSize="@dimen/s16" />
 
             </LinearLayout>
         </RelativeLayout>
 
         <View
             android:layout_width="@dimen/iv_2"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/iv_5"
-            android:layout_marginBottom="@dimen/iv_5"
-            android:background="@color/me_withdraw_color" />
+            android:layout_height="@dimen/d23"
+            android:background="@color/color_3E566C" />
 
         <LinearLayout
             android:id="@+id/linear_entrust"
@@ -340,8 +349,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/iv_20"
                 android:text="@string/my_dividend"
-                android:textColor="@color/white"
-                android:textSize="@dimen/iv_28" />
+                android:textColor="@color/color_8C9FAD"
+                android:textSize="@dimen/s16" />
 
         </LinearLayout>
 
@@ -366,7 +375,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/iv_1"
-        android:background="@color/color_1b2a3e" />
+        android:background="@color/color_E7EBEE" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -380,7 +389,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/time"
-            android:textColor="@color/white"
+            android:textColor="@color/color_8C9CAE"
             android:textSize="@dimen/iv_20" />
 
         <LinearLayout
@@ -395,8 +404,8 @@
                 android:id="@+id/tv_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/all"
-                android:textColor="@color/white"
+                android:text="@string/state"
+                android:textColor="@color/color_8C9CAE"
                 android:textSize="@dimen/iv_20" />
 
             <ImageView
@@ -414,7 +423,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/transaction_number"
-            android:textColor="@color/white"
+            android:textColor="@color/color_8C9CAE"
             android:textSize="@dimen/iv_20" />
 
         <TextView
@@ -423,7 +432,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/current_price"
-            android:textColor="@color/white"
+            android:textColor="@color/color_8C9CAE"
             android:textSize="@dimen/iv_20" />
 
         <TextView
@@ -432,8 +441,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/state"
-            android:textColor="@color/white"
+            android:text="@string/type"
+            android:textColor="@color/color_8C9CAE"
             android:textSize="@dimen/iv_20" />
     </LinearLayout>
 </LinearLayout>

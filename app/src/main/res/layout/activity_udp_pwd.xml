@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_style"
+    android:background="@color/white"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.jh.wxqb.ui.me.UdpPwdActivity">
@@ -14,7 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:canBack="true" />
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d1"
+        android:background="@color/color_eff2f4"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/iv_120"
@@ -27,14 +30,14 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="哈哈"
-            android:textColor="@color/white"
+            android:textColor="@color/color_1F3F59"
             android:textSize="@dimen/iv_26" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/iv_1"
             android:layout_alignParentBottom="true"
-            android:background="@color/color_1b2a3e" />
+            android:background="@color/color_E7EBEE" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -49,14 +52,14 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="15624875458"
-            android:textColor="@color/white"
+            android:textColor="@color/color_1F3F59"
             android:textSize="@dimen/iv_26" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/iv_1"
             android:layout_alignParentBottom="true"
-            android:background="@color/color_1b2a3e" />
+            android:background="@color/color_E7EBEE" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -74,8 +77,8 @@
             android:background="@android:color/transparent"
             android:hint="@string/new_pwd"
             android:inputType="textPassword"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:textColor="@color/color_1F3F59"
+            android:textColorHint="@color/color_8C9FAD"
             android:textSize="@dimen/iv_26"
             tools:ignore="NotSibling" />
 
@@ -98,7 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/iv_1"
             android:layout_alignParentBottom="true"
-            android:background="@color/color_1b2a3e" />
+            android:background="@color/color_E7EBEE" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -117,8 +120,8 @@
             android:background="@android:color/transparent"
             android:hint="@string/confirm_new_pwd"
             android:inputType="textPassword"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:textColor="@color/color_1F3F59"
+            android:textColorHint="@color/color_8C9FAD"
             android:textSize="@dimen/iv_26" />
 
         <RelativeLayout
@@ -141,7 +144,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/iv_1"
             android:layout_alignParentBottom="true"
-            android:background="@color/color_1b2a3e" />
+            android:background="@color/color_E7EBEE" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -158,8 +161,8 @@
             android:background="@android:color/transparent"
             android:hint="@string/enter_code"
             android:inputType="number"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:textColor="@color/color_1F3F59"
+            android:textColorHint="@color/color_8C9FAD"
             android:textSize="@dimen/iv_26" />
 
         <TextView
@@ -179,7 +182,7 @@
             android:layout_height="@dimen/iv_1"
             android:layout_alignParentBottom="true"
             android:layout_marginRight="@dimen/d120"
-            android:background="@color/color_1b2a3e" />
+            android:background="@color/color_E7EBEE" />
     </RelativeLayout>
 
     <TextView

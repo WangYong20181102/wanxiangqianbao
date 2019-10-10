@@ -56,6 +56,7 @@ public class ActiveManagementFragment extends BaseFragment implements MyClicker,
     private AssetManagementAdapter adapter;
     private List<AssetManagementBean.DataBean.AccountAssetsBean> financialDetailsBeen = new ArrayList<>();
     private AssestPresenter assestPresenter;
+    private OnEquivalentAssetsListener onEquivalentAssetsListener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -122,7 +123,7 @@ public class ActiveManagementFragment extends BaseFragment implements MyClicker,
             shop_recy.post(new Runnable() {
                 @Override
                 public void run() {
-                    shop_recy.loadMoreFinish(false, true);
+//                    shop_recy.loadMoreFinish(false, true);
                     pageIndex = 1;
                     isClear = true;
                     assestPresenter.getQueryaccountassets(pageIndex, 7);
@@ -168,6 +169,14 @@ public class ActiveManagementFragment extends BaseFragment implements MyClicker,
             if (result.getData() != null) {
                 if (result.getData().getAccountAssets() != null) {
                     financialDetailsBeen.addAll(result.getData().getAccountAssets());
+                    double total = 0;
+                    for (int i = 0; i < financialDetailsBeen.size(); i++) {
+                        double d = financialDetailsBeen.get(i).getDiscountedPrice();
+                        total = total + d;
+                    }
+                    if (onEquivalentAssetsListener != null) {
+                        onEquivalentAssetsListener.onResult(total);
+                    }
                 }
             }
         }
@@ -230,5 +239,13 @@ public class ActiveManagementFragment extends BaseFragment implements MyClicker,
     public void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+    }
+
+    public void setOnEquivalentAssetsListener(OnEquivalentAssetsListener onEquivalentAssetsListener) {
+        this.onEquivalentAssetsListener = onEquivalentAssetsListener;
+    }
+
+    interface OnEquivalentAssetsListener {
+        void onResult(double totalAssets);
     }
 }

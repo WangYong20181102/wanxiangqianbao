@@ -10,8 +10,8 @@ import java.util.Stack;
  */
 public class AppManager {
 
-    public static Stack<Activity> activityStack;
-    public static AppManager instance;
+    private static Stack<Activity> activityStack;
+    private static AppManager instance;
 
     private AppManager() {}
 
@@ -31,7 +31,7 @@ public class AppManager {
     /**
      * 添加Activity到堆栈
      */
-    public void addActivity(Activity activity) {
+    void addActivity(Activity activity) {
         if (activityStack == null) {
             activityStack = new Stack<>();
         }
@@ -85,6 +85,7 @@ public class AppManager {
                 activityStack.get(i).finish();
             }
         }
+        activityStack.clear();
     }
 
 }

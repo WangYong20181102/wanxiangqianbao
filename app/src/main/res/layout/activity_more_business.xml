@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_style"
+    android:background="@color/white"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.jh.wxqb.ui.market.MoreBusinessActivity">
@@ -27,7 +27,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/time"
-            android:textColor="@color/light_gray_text"
+            android:textColor="@color/color_8C9CAE"
             android:textSize="@dimen/iv_20" />
 
         <LinearLayout
@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/type"
-                android:textColor="@color/light_gray_text"
+                android:textColor="@color/color_8C9CAE"
                 android:textSize="@dimen/iv_20" />
 
             <ImageView
@@ -60,7 +60,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/transaction_number"
-            android:textColor="@color/light_gray_text"
+            android:textColor="@color/color_8C9CAE"
             android:textSize="@dimen/iv_20" />
 
         <TextView
@@ -69,7 +69,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/current_price"
-            android:textColor="@color/light_gray_text"
+            android:textColor="@color/color_8C9CAE"
             android:textSize="@dimen/iv_20" />
 
         <TextView
@@ -78,14 +78,14 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/action"
-            android:textColor="@color/light_gray_text"
+            android:textColor="@color/color_8C9CAE"
             android:textSize="@dimen/iv_20" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/iv_1"
-        android:background="@color/me_withdraw_color" />
+        android:background="@color/color_eff2f4" />
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/sw_refresh"

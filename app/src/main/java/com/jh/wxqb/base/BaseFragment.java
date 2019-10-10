@@ -1,6 +1,9 @@
 package com.jh.wxqb.base;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -27,9 +30,24 @@ public abstract class BaseFragment extends Fragment {
     private CustomTitle title;
     private static final String TAG = BaseFragment.class.getSimpleName();
 
+
+    @TargetApi(23)
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        onAttachToContext(context);
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            onAttachToContext(activity);
+        }
+    }
+    protected void onAttachToContext(Context context) {
+        //do something
         mContext = context;
     }
 

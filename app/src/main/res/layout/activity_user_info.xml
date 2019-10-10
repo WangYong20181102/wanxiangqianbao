@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    android:background="@color/color_style"
+    android:background="@color/white"
     tools:context="com.jh.wxqb.ui.me.UserInfoActivity">
 
     <com.jh.wxqb.customview.CustomTitle
@@ -14,6 +14,10 @@
         android:layout_height="wrap_content"
         app:canBack="true"
         app:titleText="@string/personal_information" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d1"
+        android:background="@color/color_eff2f4"/>
 
 
     <RelativeLayout
@@ -28,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/mobile_phone_number"
-            android:textColor="@color/white"
+            android:textColor="@color/color_1F3F59"
             android:textSize="@dimen/iv_26" />
 
         <TextView
@@ -36,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:textColor="@color/white"
+            android:textColor="@color/color_1F3F59"
             android:textSize="@dimen/iv_26" />
 
     </RelativeLayout>
@@ -44,7 +48,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/iv_1"
-        android:background="@color/color_1b2a3e" />
+        android:background="@color/color_E7EBEE" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -57,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/username"
-            android:textColor="@color/white"
+            android:textColor="@color/color_1F3F59"
             android:textSize="@dimen/iv_26" />
 
         <TextView
@@ -65,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:textColor="@color/white"
+            android:textColor="@color/color_1F3F59"
             android:textSize="@dimen/iv_26" />
 
     </RelativeLayout>
@@ -73,7 +77,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/iv_1"
-        android:background="@color/color_1b2a3e" />
+        android:background="@color/color_E7EBEE" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -86,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/recommendation_code"
-            android:textColor="@color/white"
+            android:textColor="@color/color_1F3F59"
             android:textSize="@dimen/iv_26" />
 
         <TextView
@@ -94,7 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:textColor="@color/white"
+            android:textColor="@color/color_1F3F59"
             android:textSize="@dimen/iv_26" />
 
     </RelativeLayout>
@@ -102,6 +106,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/iv_1"
-        android:background="@color/color_1b2a3e" />
+        android:background="@color/color_E7EBEE" />
 
 </LinearLayout>

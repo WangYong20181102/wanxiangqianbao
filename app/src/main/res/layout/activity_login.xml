@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_style"
+    android:background="@color/white"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.jh.wxqb.ui.home.login.LoginActivity">
@@ -42,8 +42,8 @@
             android:hint="@string/account"
             android:inputType="textVisiblePassword"
             android:maxLength="11"
-            android:textColor="@color/white"
-            android:textColorHint="@color/color_94AED3"
+            android:textColor="@color/color_1F3F59"
+            android:textColorHint="@color/color_8C9FAD"
             android:textSize="@dimen/s15"/>
 
         <View
@@ -51,7 +51,7 @@
             android:layout_height="@dimen/iv_2"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="@dimen/d5"
-            android:background="@color/color_47638A"
+            android:background="@color/color_E7EBEE"
             android:visibility="visible" />
     </RelativeLayout>
 
@@ -70,8 +70,8 @@
             android:background="@android:color/transparent"
             android:hint="@string/login_pwd"
             android:inputType="textPassword"
-            android:textColor="@color/white"
-            android:textColorHint="@color/color_94AED3"
+            android:textColor="@color/color_1F3F59"
+            android:textColorHint="@color/color_8C9FAD"
             android:textSize="@dimen/s15" />
 
         <RelativeLayout
@@ -94,7 +94,7 @@
             android:layout_height="@dimen/iv_2"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="@dimen/d5"
-            android:background="@color/color_47638A"
+            android:background="@color/color_E7EBEE"
             android:visibility="visible" />
     </RelativeLayout>
 
@@ -115,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:text="@string/register"
-                android:textColor="@color/color_94AED3"
+                android:textColor="@color/color_588bdd"
                 android:textSize="@dimen/s12" />
         </RelativeLayout>
 
@@ -132,7 +132,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:text="@string/forget_pwd"
-                android:textColor="@color/color_94AED3"
+                android:textColor="@color/color_588bdd"
                 android:textSize="@dimen/s12" />
         </RelativeLayout>
     </RelativeLayout>

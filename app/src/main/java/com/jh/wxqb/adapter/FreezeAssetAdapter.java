@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
  * 冻结资产适配器
  */
 
-public class FreezeAssetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class FreezeAssetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context mContext;
     private List<AssetManagementBean.DataBean.AccountAssetsBean> financialDetailsBeen;
@@ -63,6 +63,22 @@ public class FreezeAssetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     ((MyViewHolder) holder).imageLeftIcon.setImageResource(R.drawable.icon_usdt_small);
                     ((MyViewHolder) holder).imageRightIcon.setImageResource(R.drawable.icon_usdt_right);
                     break;
+                case 4:
+                    ((MyViewHolder) holder).tvName.setText("HT");
+                    ((MyViewHolder) holder).imageLeftIcon.setImageResource(R.drawable.iv_ht_small);
+                    ((MyViewHolder) holder).imageRightIcon.setImageResource(R.drawable.iv_ht_right);
+                    break;
+                case 5:
+                    ((MyViewHolder) holder).tvName.setText("OKB");
+                    ((MyViewHolder) holder).imageLeftIcon.setImageResource(R.drawable.iv_okb_small);
+                    ((MyViewHolder) holder).imageRightIcon.setImageResource(R.drawable.iv_okb_right);
+                    break;
+                case 6:
+                    ((MyViewHolder) holder).tvName.setText("BNB");
+                    ((MyViewHolder) holder).imageLeftIcon.setImageResource(R.drawable.iv_bnb_small);
+                    ((MyViewHolder) holder).imageRightIcon.setImageResource(R.drawable.iv_bnb_right);
+                    break;
+
             }
             ((MyViewHolder) holder).tvAssets.setText(item.getRepurchaseAssets() + "");
         }

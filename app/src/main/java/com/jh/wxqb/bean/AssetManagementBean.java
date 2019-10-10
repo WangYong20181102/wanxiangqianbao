@@ -72,6 +72,7 @@ public class AssetManagementBean implements Serializable {
             private int bizCurrencyTypeId;
             private double repurchaseAssets;
             private double activeAssets;
+            private double discountedPrice;
             private double dividendAssets;
             private int sharingRevenue;
             private int configRevenue;
@@ -108,6 +109,14 @@ public class AssetManagementBean implements Serializable {
 
             public void setRepurchaseAssets(int repurchaseAssets) {
                 this.repurchaseAssets = repurchaseAssets;
+            }
+
+            public double getDiscountedPrice() {
+                return discountedPrice;
+            }
+
+            public void setDiscountedPrice(double discountedPrice) {
+                this.discountedPrice = discountedPrice;
             }
 
             public double getActiveAssets() {

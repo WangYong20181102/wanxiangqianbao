@@ -2,13 +2,13 @@ package com.jh.wxqb.ui.market;
 
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +24,6 @@ import com.jh.wxqb.bean.CurrentPriceBean;
 import com.jh.wxqb.bean.MarketDividendBottomBean;
 import com.jh.wxqb.bean.MarketDividendTitleBean;
 import com.jh.wxqb.bean.MeDividend;
-import com.jh.wxqb.customview.DefineLoadMoreView;
 import com.jh.wxqb.customview.WithdrawMoneyDialog;
 import com.jh.wxqb.ui.market.presenter.MarketPresenter;
 import com.jh.wxqb.ui.market.view.MarketView;
@@ -38,6 +37,7 @@ import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,6 +49,7 @@ import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 /**
  * 買入市場
@@ -63,13 +64,15 @@ public class MarketFragment extends BaseFragment implements MarketView {
     TextView tvSell;
     @BindView(R.id.view_sell)
     View viewSell;
+    Unbinder unbinder;
     private View view;
     @BindViews({R.id.tv_dividend, R.id.tv_sell})
     List<TextView> allTitle;
     @BindViews({R.id.view_dividend, R.id.view_sell})
     List<View> allView;
     @BindView(R.id.shop_recy)
-    SwipeMenuRecyclerView shop_recy;
+    public SwipeMenuRecyclerView shop_recy;
+    private Context mContext;
     private MarketDividendAdapter adapter;
     private CurrentPriceBean currentPriceBean;
     private MarketDividendTitleBean.DataBean.ListBean buyListBeen;
@@ -83,12 +86,13 @@ public class MarketFragment extends BaseFragment implements MarketView {
     private String isUdpTypeText = "0";  //标识当前买卖是否修改  0不修改  1修改
     private Timer timer;
     private int count = 0;
+    private MarketPresenter marketPresenter;
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 1:
-                    updateTitle();
+                    timingHttpRequest();
                     break;
                 default:
                     break;
@@ -97,20 +101,34 @@ public class MarketFragment extends BaseFragment implements MarketView {
     };
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        if (view == null) {
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mContext = getContext();
+        EventBus.getDefault().register(this);
+        marketPresenter = new MarketPresenter(this);
+        initRecyclerView();
+        upTopBottomData(viewType);
+        startTimer();
+    }
+
+    @Override
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        if (null != view) {
+            ViewGroup parent = (ViewGroup) view.getParent();
+            if (null != parent) {
+                parent.removeView(view);
+            }
+        } else {
             view = inflater.inflate(R.layout.fragment_market, container, false);
-            ButterKnife.bind(this, view);
-            EventBus.getDefault().register(this);
-            upTopBottomData(viewType);
-            initRecyclerView();
-            startTimer();
+            unbinder = ButterKnife.bind(this, view);
         }
         return view;
     }
 
-    private void updateTitle() {
+    /**
+     * 定时网络请求
+     */
+    private void timingHttpRequest() {
         if (adapter != null) {
             upTopBottomData(viewType);
             count++;
@@ -131,9 +149,9 @@ public class MarketFragment extends BaseFragment implements MarketView {
                 map.put("transactionType", "2");
                 break;
         }
-        MarketPresenter.getMarketPresenter(this).getCurrentPrice(map);
-        MarketPresenter.getMarketPresenter(this).dividendMarketDividend(3);//盘口数据
-        MarketPresenter.getMarketPresenter(this).dividendMarketTopDividend(1, 1, type);//底部最近成交数据
+        marketPresenter.dividendMarketTopDividend(1, 1, type);//底部最近成交数据
+        marketPresenter.dividendMarketDividend(3);//盘口数据
+        marketPresenter.getCurrentPrice(map);
     }
 
     @OnClick({R.id.ll_current_entrustment, R.id.ll_active_assets, R.id.ll_repurchase_assets})
@@ -185,9 +203,7 @@ public class MarketFragment extends BaseFragment implements MarketView {
                 viewType = "sell";
                 break;
         }
-        adapter = new MarketDividendAdapter(mContext, getActivity(), viewType, buyListBeen, listBeen, currentPriceBean,
-                selActiveType, assetTypeId, type, isUdpTypeText);
-        shop_recy.setAdapter(adapter);  //设置适配器
+        adapter = null;
     }
 
     //初始化标题
@@ -208,7 +224,7 @@ public class MarketFragment extends BaseFragment implements MarketView {
                 upTopBottomData(viewType);
                 break;
             case "udpCurrentBusinessList":
-                MarketPresenter.getMarketPresenter(this).dividendMarketTopDividend(1, 1, type);
+                marketPresenter.dividendMarketTopDividend(1, 1, type);
                 break;
             case "udpPurchaseOrder":
                 map = new HashMap<>();
@@ -221,7 +237,7 @@ public class MarketFragment extends BaseFragment implements MarketView {
                         map.put("transactionType", "2");
                         break;
                 }
-                MarketPresenter.getMarketPresenter(this).getCurrentPrice(map);
+                marketPresenter.getCurrentPrice(map);
                 break;
         }
     }
@@ -234,7 +250,7 @@ public class MarketFragment extends BaseFragment implements MarketView {
             case "udpBusiness":
                 this.type = intent.getIntExtra("typeNum", 0);
                 isUdpTypeText = intent.getStringExtra("isUdpTypeText");
-                MarketPresenter.getMarketPresenter(this).dividendMarketTopDividend(1, 1, this.type);
+                marketPresenter.dividendMarketTopDividend(1, 1, this.type);
                 break;
             case "udpCurrentPrice":
                 coinType = intent.getStringExtra("coinType");
@@ -243,7 +259,7 @@ public class MarketFragment extends BaseFragment implements MarketView {
                 map = new HashMap<>();
                 map.put("coinType", coinType);
                 map.put("transactionType", transactionType);
-                MarketPresenter.getMarketPresenter(this).getCurrentPrice(map);
+                marketPresenter.getCurrentPrice(map);
                 break;
             case "openDividends":
                 LogUtils.e("当前价格==>" + intent.getStringExtra("currentPrice"));
@@ -255,7 +271,7 @@ public class MarketFragment extends BaseFragment implements MarketView {
                 map.put("pendingCurrencyId", intent.getStringExtra("pendingCurrencyId"));
                 map.put("exchangeCurrencyId", intent.getStringExtra("exchangeCurrencyId"));
                 map.put("acountTransaction", intent.getStringExtra("acountTransaction"));
-                MarketPresenter.getMarketPresenter(this).sellOut(map);
+                marketPresenter.sellOut(map);
                 break;
             case "marketSell":
                 ((MainActivity) mContext).showWaitDialog();
@@ -266,7 +282,7 @@ public class MarketFragment extends BaseFragment implements MarketView {
                 map.put("pendingCurrencyId", intent.getStringExtra("pendingCurrencyId"));
                 map.put("exchangeCurrencyId", intent.getStringExtra("exchangeCurrencyId"));
                 map.put("acountTransaction", intent.getStringExtra("acountTransaction"));
-                MarketPresenter.getMarketPresenter(this).marketSell(map);
+                marketPresenter.marketSell(map);
                 break;
         }
     }
@@ -282,22 +298,44 @@ public class MarketFragment extends BaseFragment implements MarketView {
         //初始化适配器
         shop_recy.setFocusableInTouchMode(false);
         shop_recy.setItemAnimator(null);
-        adapter = new MarketDividendAdapter(mContext, getActivity(), viewType, buyListBeen,
-                listBeen, currentPriceBean, selActiveType, assetTypeId, type, isUdpTypeText);
+        adapter = new MarketDividendAdapter(mContext, getActivity(), viewType, buyListBeen, listBeen, currentPriceBean, selActiveType, assetTypeId, type, isUdpTypeText);
         shop_recy.setAdapter(adapter);  //设置适配器
     }
 
     @Override
     public void dividendMarketDividendSuccess(MarketDividendTitleBean result) {
-        if (((MainActivity) mContext).isFinishing()) {
-            return;
-        }
+//        if (((MainActivity) mContext).isFinishing()) {
+//            return;
+//        }
         LogUtils.e("dividendMarketDividendSuccess==>" + GsonUtil.GsonString(result));
         buyListBeen = null;
         buyListBeen = result.getData().getList();
+        upDataAdapter();
+    }
+
+    @Override
+    public void dividendMarketTopDividendSuccess(MarketDividendBottomBean result) {
+//        if (((MainActivity) mContext).isFinishing()) {
+//            return;
+//        }
+        LogUtils.e("dividendMarketTopDividendSuccess==>" + GsonUtil.GsonString(result));
+        MarketDividendBottomBean.DataBean data = result.getData();
+        if (data.getList() != null) {
+            if (result.getData().getList().size() == 0) {
+                shop_recy.loadMoreFinish(false, false);
+            }
+            listBeen.clear();
+            listBeen.addAll(result.getData().getList());
+            upDataAdapter();
+        }
+    }
+
+    /**
+     * 更新数据
+     */
+    private void upDataAdapter() {
         if (adapter == null) {
-            adapter = new MarketDividendAdapter(mContext, getActivity(), viewType, buyListBeen, listBeen,
-                    currentPriceBean, selActiveType, assetTypeId, type, isUdpTypeText);
+            adapter = new MarketDividendAdapter(mContext, getActivity(), viewType, buyListBeen, listBeen, currentPriceBean, selActiveType, assetTypeId, type, isUdpTypeText);
             shop_recy.setAdapter(adapter);  //设置适配器
         } else {
             adapter.updateList(mContext, getActivity(), viewType, buyListBeen, listBeen,
@@ -314,42 +352,10 @@ public class MarketFragment extends BaseFragment implements MarketView {
     }
 
     @Override
-    public void dividendMarketTopDividendSuccess(MarketDividendBottomBean result) {
-        if (((MainActivity) mContext).isFinishing()) {
-            return;
-        }
-        LogUtils.e("dividendMarketTopDividendSuccess==>" + GsonUtil.GsonString(result));
-        MarketDividendBottomBean.DataBean data = result.getData();
-        if (data.getList() != null) {
-            if (result.getData().getList().size() == 0) {
-                shop_recy.loadMoreFinish(false, false);
-            }
-            listBeen.clear();
-            listBeen.addAll(result.getData().getList());
-            if (adapter == null) {
-                adapter = new MarketDividendAdapter(mContext, getActivity(), viewType, buyListBeen, listBeen,
-                        currentPriceBean, selActiveType, assetTypeId, type, isUdpTypeText);
-                shop_recy.setAdapter(adapter);  //设置适配器
-            } else {
-                adapter.updateList(mContext, getActivity(), viewType, buyListBeen, listBeen,
-                        currentPriceBean, selActiveType, assetTypeId, type, isUdpTypeText);
-                //指定刷新，防止輸入框失去焦點
-                int itemCount;
-                if (listBeen.size() >= 5) {
-                    itemCount = 7;
-                } else {
-                    itemCount = listBeen.size() + 1;
-                }
-                adapter.notifyItemRangeChanged(0, itemCount);
-            }
-        }
-    }
-
-    @Override
     public void getCurrentPriceSuccess(CurrentPriceBean result) {
-        if (((MainActivity) mContext).isFinishing()) {
-            return;
-        }
+//        if (((MainActivity) mContext).isFinishing()) {
+//            return;
+//        }
         LogUtils.e("getCurrentPriceSuccess==>" + GsonUtil.GsonString(result));
 
         if (result.getData() != null) {
@@ -365,7 +371,7 @@ public class MarketFragment extends BaseFragment implements MarketView {
                     map.put("transactionType", "2");
                     break;
             }
-            MarketPresenter.getMarketPresenter(this).getCurrentPrice(map);
+            marketPresenter.getCurrentPrice(map);
             return;
         }
         if (adapter != null) {
@@ -376,9 +382,9 @@ public class MarketFragment extends BaseFragment implements MarketView {
 
     @Override
     public void sellOutSuccess(BaseBean result) {
-        if (((MainActivity) mContext).isFinishing()) {
-            return;
-        }
+//        if (((MainActivity) mContext).isFinishing()) {
+//            return;
+//        }
         if (SharedPreferencesUtil.getPrefInt(mContext, "FirstVerification", 0) == 0) {//第一次输入支付密码
             SharedPreferencesUtil.setPrefInt(mContext, "FirstVerification", 1);
             SharedPreferencesUtil.setSettingLong(getActivity(), "dateTime", System.currentTimeMillis());
@@ -400,9 +406,9 @@ public class MarketFragment extends BaseFragment implements MarketView {
 
     @Override
     public void marketSellSuccess(BaseBean result) {
-        if (((MainActivity) mContext).isFinishing()) {
-            return;
-        }
+//        if (((MainActivity) mContext).isFinishing()) {
+//            return;
+//        }
         if (SharedPreferencesUtil.getPrefInt(mContext, "FirstVerification", 0) == 0) {//第一次输入支付密码
             SharedPreferencesUtil.setPrefInt(mContext, "FirstVerification", 1);
             SharedPreferencesUtil.setSettingLong(getActivity(), "dateTime", System.currentTimeMillis());
@@ -428,16 +434,10 @@ public class MarketFragment extends BaseFragment implements MarketView {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
-    }
-
-    @Override
     public void onViewFailureString(int statue, String message) {
-        if (((MainActivity) mContext).isFinishing()) {
-            return;
-        }
+//        if (((MainActivity) mContext).isFinishing()) {
+//            return;
+//        }
         ((MainActivity) mContext).dismissWaitDialog();
         AgainLoginUtil.againLogin(mContext, statue);
         if (message.contains("密码错误")) {
@@ -448,9 +448,9 @@ public class MarketFragment extends BaseFragment implements MarketView {
 
     @Override
     public void onServerFailure(String e, int code) {
-        if (((MainActivity) mContext).isFinishing()) {
-            return;
-        }
+//        if (((MainActivity) mContext).isFinishing()) {
+//            return;
+//        }
         ((MainActivity) mContext).dismissWaitDialog();
         Toasts.showShort(e);
     }
@@ -473,7 +473,15 @@ public class MarketFragment extends BaseFragment implements MarketView {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        EventBus.getDefault().unregister(this);
         stopTimer();
+        if (adapter != null) {
+            adapter = null;
+        }
+        if (unbinder != null) {
+            unbinder.unbind();
+            unbinder = null;
+        }
     }
 
     private void stopTimer() {

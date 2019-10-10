@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_style"
+    android:background="@color/white"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.jh.wxqb.ui.me.BindingAccountActivity">
@@ -29,8 +29,8 @@
             android:background="@android:color/transparent"
             android:hint="@string/please_input_the_email"
             android:inputType="textEmailAddress"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:textColor="@color/color_1F3F59"
+            android:textColorHint="@color/color_8C9FAD"
             android:textSize="@dimen/iv_26" />
 
         <View
@@ -55,8 +55,8 @@
             android:background="@android:color/transparent"
             android:hint="@string/enter_code"
             android:inputType="number"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:textColor="@color/color_1F3F59"
+            android:textColorHint="@color/color_8C9FAD"
             android:textSize="@dimen/iv_26" />
 
         <TextView

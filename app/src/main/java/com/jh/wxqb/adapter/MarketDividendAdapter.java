@@ -54,7 +54,7 @@ import butterknife.ButterKnife;
  * 買入市场--買入
  */
 
-public class MarketDividendAdapter extends RecyclerView.Adapter implements View.OnClickListener, TextWatcher {
+public class MarketDividendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener, TextWatcher {
 
     // 两次点击按钮之间的点击间隔不能少于2000毫秒
     private static final int MIN_CLICK_DELAY_TIME = 500;
@@ -280,64 +280,27 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
         titleHolder = holder;
         switch (selActiveType) {
             case "1":
-//                holder.tvCurrent.setText(R.string.the_current_price);
                 holder.tvBalance.setText(R.string.current_eth_balance);
                 holder.tvEntrustType.setText(R.string.activity_eth);
-//                if (currentPriceBean != null) {
-//                    if (currentPriceBean.getData() != null) {
-//                        if (currentPriceBean.getData().getResultMap() != null) {
-//                            if (currentPriceBean.getData().getResultMap().getCurrentPrice() != null) {
-//                                holder.tvCurrentPrice.setText(StringUtil.checkDoubleOrInt(currentPriceBean.getData().getResultMap().getCurrentPrice()));
-//                            }
-//                        }
-//                    }
-//                }
                 break;
             case "2":
-//                holder.tvCurrent.setText(R.string.the_current_pkb_price);
                 holder.tvBalance.setText(R.string.current_usdt_balance);
                 holder.tvEntrustType.setText(R.string.repurchase_usdt);
-//                if (currentPriceBean != null) {
-//                    if (currentPriceBean.getData() != null) {
-//                        if (currentPriceBean.getData().getResultMap() != null) {
-//                            if (currentPriceBean.getData().getResultMap().getCurrentPrice() != null) {
-//                                holder.tvCurrentPrice.setText(StringUtil.checkDoubleOrInt(currentPriceBean.getData().getResultMap().getTodayPrice()));
-//                            }
-//                        }
-//                    }
-//                }
                 break;
             case "3":
-//                holder.tvCurrent.setText(R.string.the_current_pkb_price);
                 holder.tvBalance.setText(R.string.current_usdt_balance);
                 holder.tvEntrustType.setText(R.string.dividend_tgm);
-//                if (currentPriceBean != null) {
-//                    if (currentPriceBean.getData() != null) {
-//                        if (currentPriceBean.getData().getResultMap() != null) {
-//                            if (currentPriceBean.getData().getResultMap().getCurrentPrice() != null) {
-//                                holder.tvCurrentPrice.setText(StringUtil.checkDoubleOrInt(currentPriceBean.getData().getResultMap().getTodayPrice()));
-//                            }
-//                        }
-//                    }
-//                }
                 break;
         }
         switch (type) {
             case "dividend":
-//                holder.tvDividendPkb.setVisibility(View.GONE);
-//                holder.llType.setVisibility(View.VISIBLE);
                 holder.tvExpected.setTextColor(Color.rgb(0, 204, 102));
-//                holder.tvCurrent.setTextColor(Color.WHITE);
-//                holder.tvCurrentPrice.setTextColor(Color.WHITE);
-//                holder.tvCurrentPrice.setVisibility(View.GONE);
                 holder.tvBalance.setTextColor(Color.rgb(0, 204, 102));
                 holder.tvCompany.setTextColor(Color.rgb(0, 204, 102));
                 holder.tvCurrentBalance.setTextColor(Color.rgb(0, 204, 102));
                 holder.tvDividends.setBackgroundResource(R.drawable.market_buy_bg);
                 holder.tvDividends.setText(R.string.access_to_dividends);
                 holder.tvBalance.setText(R.string.current_eth_balance);
-//                holder.tvType.setText(R.string.dividend);
-//                titleHolder.tvCompany.setText("USDT");
                 switch (assetTypeId) {
                     case "1":
                         holder.tvBalance.setText(R.string.current_eth_balance);
@@ -351,25 +314,17 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
                 }
                 break;
             case "sell":
-//                holder.tvDividendPkb.setVisibility(View.VISIBLE);
                 holder.llType.setVisibility(View.GONE);
                 holder.tvExpected.setTextColor(Color.parseColor("#d6734b"));
-//                holder.tvCurrent.setTextColor(Color.WHITE);
-//                holder.tvCurrentPrice.setTextColor(Color.WHITE);
-//                holder.tvCurrentPrice.setVisibility(View.VISIBLE);
                 holder.tvBalance.setTextColor(Color.parseColor("#d6734b"));
                 holder.tvCurrentBalance.setTextColor(Color.parseColor("#d6734b"));
                 holder.tvDividends.setBackgroundResource(R.drawable.market_sell_bg);
                 holder.tvCompany.setTextColor(Color.parseColor("#d6734b"));
-//                holder.tvType.setText(R.string.sell);
                 holder.tvDividends.setText(R.string.sell);
                 holder.tvBalance.setText(R.string.current_tgm_balance);
-//                titleHolder.tvCompany.setText("USDT");
-//                holder.tvCurrentPrice.setText("USDT");
                 break;
         }
         LogUtils.e("isUdpTypeText==>" + isUdpTypeText);
-        //单价 tvPrice.setText(String.valueOf(item.getSellList().get(position).getAmountPrice().divide(one,4,BigDecimal.ROUND_HALF_UP).doubleValue()));
         if (isUdpTypeText.equals("1")) {
             switch (typeText) {
                 case 0:
@@ -440,15 +395,11 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
         BigDecimal one = new BigDecimal("1");
         switch (listBeen.get(position - 1).getDirection()) {
             case 1:
-//                holder.tvPurchase.setVisibility(View.GONE);
-//                holder.tvNo.setVisibility(View.VISIBLE);
                 holder.tvType.setTextColor(Color.rgb(0, 204, 102));
                 holder.tvType.setText(R.string.dividend);
                 holder.tvTurnover.setText(listBeen.get(position - 1).getAmountPrice().divide(one, 4, BigDecimal.ROUND_HALF_UP).doubleValue() + "");
                 break;
             case 2:
-//                holder.tvPurchase.setVisibility(View.VISIBLE);
-//                holder.tvNo.setVisibility(View.GONE);
                 holder.tvType.setTextColor(Color.parseColor("#d6734b"));
                 holder.tvType.setText(R.string.sell);
                 holder.tvTurnover.setText(listBeen.get(position - 1).getAmountPrice().divide(one, 4, BigDecimal.ROUND_HALF_UP).doubleValue() + "");
@@ -515,7 +466,6 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
                 optionWindow.dismiss();
                 titleHolder.ivDown.setImageResource(R.drawable.iv_down);
                 titleHolder.tvEntrustType.setText(R.string.activity_eth);
-//                titleHolder.tvCurrent.setText(R.string.the_current_price);
                 intent = new Intent();
                 intent.putExtra("type", "udpCurrentPrice");
                 intent.putExtra("coinType", "1");
@@ -526,7 +476,6 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
                 optionWindow.dismiss();
                 titleHolder.ivDown.setImageResource(R.drawable.iv_down);
                 titleHolder.tvEntrustType.setText(R.string.repurchase_usdt);
-//                titleHolder.tvCurrent.setText(R.string.the_current_pkb_price);
                 intent = new Intent();
                 intent.putExtra("type", "udpCurrentPrice");
                 intent.putExtra("coinType", "2");
@@ -537,7 +486,6 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
                 optionWindow.dismiss();
                 titleHolder.ivDown.setImageResource(R.drawable.iv_down);
                 titleHolder.tvEntrustType.setText(R.string.dividend_tgm);
-//                titleHolder.tvCurrent.setText(R.string.the_current_pkb_price);
                 intent = new Intent();
                 intent.putExtra("type", "udpCurrentPrice");
                 intent.putExtra("coinType", "3");
@@ -575,11 +523,10 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
                 EventBus.getDefault().post(intent);
                 break;
             case R.id.tv_dividends:
-//                Toasts.showShort("暫未開放此功能！");
                 if (!isFastClick()) {//防止误触发
                     return;
                 }
-                if (!checkEdit(titleHolder.edEntrustNum) || !checkEdit(titleHolder.tvCurrent)) {
+                if (!checkEdit(titleHolder.tvCurrent) || !checkEdit(titleHolder.edEntrustNum)) {
                     return;
                 }
                 if (MyApplication.getUserBean() != null) {
@@ -611,7 +558,11 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
                                         Toasts.showShort("卖出单价须大于或等于买1单价");
                                         return;
                                     }
+                                } else {
+                                    return;
                                 }
+                            } else {
+                                return;
                             }
                         } else {
                             return;
@@ -824,10 +775,6 @@ public class MarketDividendAdapter extends RecyclerView.Adapter implements View.
             return;
         }
         BigDecimal one = new BigDecimal("1");
-        BigDecimal ten = new BigDecimal(Double.valueOf("10"));
-        BigDecimal oneHundred = new BigDecimal(Double.valueOf("100"));
-//        BigDecimal accelerationValue = MyApplication.getUserBean().getAccelerationValue();
-//        BigDecimal oneHundredCount = accelerationValue.divide(oneHundred, 2, BigDecimal.ROUND_DOWN);  //换算加速值
         BigDecimal decimal = new BigDecimal(Double.valueOf(strPrice));//输入值
 
         switch (type) {

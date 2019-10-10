@@ -8,8 +8,8 @@ android {
         applicationId "com.jh.wxqb"
         minSdkVersion 15
         targetSdkVersion 29
-        versionCode 3
-        versionName "2.2"
+        versionCode 4
+        versionName "3.0"
         resValue "string", "tray__authority", "com.jh.wxqb.tray"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
@@ -53,11 +53,12 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    implementation 'com.yanzhenjie:recyclerview-swipe:1.1.3'
+    implementation 'com.yanzhenjie:recyclerview-swipe:1.1.4'
     implementation 'org.greenrobot:eventbus:3.1.1'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
     testImplementation 'junit:junit:4.12'
     implementation 'com.jaeger.statusbarutil:library:1.5.1'
     implementation 'io.github.meetsl:SCardView:1.1'
+    implementation 'com.githang:status-bar-compat:0.7'
 }

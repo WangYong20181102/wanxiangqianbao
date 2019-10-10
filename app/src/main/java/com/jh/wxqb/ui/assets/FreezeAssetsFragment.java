@@ -92,7 +92,7 @@ public class FreezeAssetsFragment extends BaseFragment implements AssetsView {
             shopRecy.post(new Runnable() {
                 @Override
                 public void run() {
-                    shopRecy.loadMoreFinish(false, true);
+//                    shopRecy.loadMoreFinish(false, true);
                     pageIndex = 1;
                     isClear = true;
                     assestPresenter.getQueryaccountassets(pageIndex, 7);

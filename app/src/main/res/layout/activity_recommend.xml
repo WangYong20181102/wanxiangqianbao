@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_style"
+    android:background="@color/white"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.jh.wxqb.ui.me.RecommendActivity">
@@ -14,6 +14,11 @@
         android:layout_height="wrap_content"
         app:canBack="true"
         app:titleText="@string/my_recommendation" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d1"
+        android:background="@color/color_eff2f4" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -41,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/iv_20"
-                android:textColor="@color/white"
+                android:textColor="@color/color_1F3F59"
                 android:textSize="@dimen/iv_30" />
 
             <TextView
@@ -50,7 +55,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/d20"
                 android:text="@string/my_invitation_code"
-                android:textColor="@color/white"
+                android:textColor="@color/color_1F3F59"
                 android:textSize="@dimen/iv_30" />
 
             <TextView
@@ -59,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/iv_36"
-                android:textColor="@color/color_588bdd"
+                android:textColor="@color/color_1F3F59"
                 android:textSize="@dimen/iv_56"
                 android:textStyle="bold" />
 
@@ -74,11 +79,11 @@
                 android:id="@+id/tv_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
                 android:layout_marginLeft="@dimen/iv_30"
                 android:layout_marginTop="@dimen/iv_20"
                 android:layout_marginRight="@dimen/iv_30"
-                android:textColor="@color/white"
+                android:gravity="center_horizontal"
+                android:textColor="@color/color_1F3F59"
                 android:textSize="@dimen/iv_30" />
 
             <TextView

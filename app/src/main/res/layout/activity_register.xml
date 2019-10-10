@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_style"
+    android:background="@color/white"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.jh.wxqb.ui.home.login.RegisterActivity">
@@ -14,6 +14,10 @@
         android:layout_height="wrap_content"
         app:canBack="true"
         app:titleText="@string/register" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d1"
+        android:background="@color/color_eff2f4"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -51,8 +55,8 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/username"
                     android:inputType="textVisiblePassword"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/color_94AED3"
+                    android:textColor="@color/color_1F3F59"
+                    android:textColorHint="@color/color_8C9FAD"
                     android:textSize="@dimen/s15" />
             </LinearLayout>
 
@@ -61,7 +65,7 @@
                 android:layout_height="@dimen/iv_2"
                 android:layout_marginLeft="@dimen/d26"
                 android:layout_marginRight="@dimen/d26"
-                android:background="@color/color_47638A"
+                android:background="@color/color_E7EBEE"
                 android:visibility="visible" />
 
             <LinearLayout
@@ -81,8 +85,8 @@
                     android:hint="@string/mobile_phone_number"
                     android:inputType="number"
                     android:maxLength="11"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/color_94AED3"
+                    android:textColor="@color/color_1F3F59"
+                    android:textColorHint="@color/color_8C9FAD"
                     android:textSize="@dimen/s15" />
             </LinearLayout>
 
@@ -91,7 +95,7 @@
                 android:layout_height="@dimen/iv_2"
                 android:layout_marginLeft="@dimen/d26"
                 android:layout_marginRight="@dimen/d26"
-                android:background="@color/color_47638A"
+                android:background="@color/color_E7EBEE"
                 android:visibility="visible" />
 
             <RelativeLayout
@@ -108,8 +112,8 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/login_pwd"
                     android:inputType="textPassword"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/color_94AED3"
+                    android:textColor="@color/color_1F3F59"
+                    android:textColorHint="@color/color_8C9FAD"
                     android:textSize="@dimen/s15" />
 
                 <RelativeLayout
@@ -134,7 +138,7 @@
                 android:layout_height="@dimen/iv_2"
                 android:layout_marginLeft="@dimen/d26"
                 android:layout_marginRight="@dimen/d26"
-                android:background="@color/color_47638A"
+                android:background="@color/color_E7EBEE"
                 android:visibility="visible" />
 
             <RelativeLayout
@@ -152,8 +156,8 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/enter_code"
                     android:inputType="number"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/color_94AED3"
+                    android:textColor="@color/color_1F3F59"
+                    android:textColorHint="@color/color_8C9FAD"
                     android:textSize="@dimen/s15" />
 
                 <TextView
@@ -174,7 +178,7 @@
                 android:layout_height="@dimen/iv_2"
                 android:layout_marginLeft="@dimen/d26"
                 android:layout_marginRight="@dimen/d146"
-                android:background="@color/color_47638A"
+                android:background="@color/color_E7EBEE"
                 android:visibility="visible" />
 
             <LinearLayout
@@ -193,8 +197,8 @@
                     android:background="@android:color/transparent"
                     android:gravity="center_vertical"
                     android:hint="@string/please_input_invitation_code"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/color_94AED3"
+                    android:textColor="@color/color_1F3F59"
+                    android:textColorHint="@color/color_8C9FAD"
                     android:textSize="@dimen/s15" />
             </LinearLayout>
 
@@ -203,7 +207,7 @@
                 android:layout_height="@dimen/iv_2"
                 android:layout_marginLeft="@dimen/d26"
                 android:layout_marginRight="@dimen/d26"
-                android:background="@color/color_47638A"
+                android:background="@color/color_E7EBEE"
                 android:visibility="visible" />
 
             <TextView

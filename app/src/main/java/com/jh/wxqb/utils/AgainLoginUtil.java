@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.jh.wxqb.api.ServerInterface;
+import com.jh.wxqb.base.AppManager;
 import com.jh.wxqb.base.MyApplication;
 import com.jh.wxqb.ui.home.login.LoginActivity;
 
@@ -22,12 +23,13 @@ public class AgainLoginUtil {
             mContext.startActivity(intent);
             MyApplication.setUserBean(null);
             MyApplication.setToken(null);
-            for (Activity activity : MyApplication.getInstance().activityList) {
-                if (activity == null || activity instanceof LoginActivity) {
-                    continue;
-                }
-                activity.finish();
-            }
+//            for (Activity activity : MyApplication.getInstance().activityList) {
+//                if (activity == null || activity instanceof LoginActivity) {
+//                    continue;
+//                }
+//                activity.finish();
+//            }
+            AppManager.getInstance().finishAllActivity();
         }
     }
 

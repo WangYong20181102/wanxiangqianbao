@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_style"
+    android:background="@color/white"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.jh.wxqb.ui.assets.AssetsFragment">
@@ -12,6 +12,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:titleText="@string/asset_management" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d1"
+        android:background="@color/color_eff2f4" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d57"
+        android:layout_marginLeft="@dimen/d15"
+        android:layout_marginTop="@dimen/d10"
+        android:layout_marginRight="@dimen/d15"
+        android:background="@drawable/assets_top_equivalent_assets_bg">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/equivalent_assets"
+                android:textColor="@color/white"
+                android:textSize="@dimen/s15" />
+
+            <TextView
+                android:id="@+id/tv_equivalent_assets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/s15" />
+        </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,20 +65,21 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/active_assets"
-                android:textColor="@color/white"
-                android:textSize="@dimen/iv_28" />
+                android:textColor="@color/color_16263E"
+                android:textSize="@dimen/s15" />
 
             <View
                 android:id="@+id/view_active_assets"
-                android:layout_width="@dimen/iv_26"
-                android:layout_height="@dimen/iv_6"
+                android:layout_width="@dimen/d58"
+                android:layout_height="@dimen/d2"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="@dimen/iv_20"
-                android:background="@color/home_text_color"
+                android:background="@color/color_16263E"
                 android:visibility="gone" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/ll_dividend_assets"
             android:layout_width="0dp"
@@ -56,17 +92,17 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/dividend_assets"
-                android:textColor="@color/white"
-                android:textSize="@dimen/iv_28" />
+                android:textColor="@color/color_8C9FAD"
+                android:textSize="@dimen/s15" />
 
             <View
                 android:id="@+id/view_dividend_assets"
-                android:layout_width="@dimen/iv_26"
-                android:layout_height="@dimen/iv_6"
+                android:layout_width="@dimen/d58"
+                android:layout_height="@dimen/d2"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="@dimen/iv_20"
-                android:background="@color/home_text_color"
+                android:background="@color/color_16263E"
                 android:visibility="gone" />
 
         </RelativeLayout>
@@ -101,9 +137,14 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d1"
+        android:background="@color/color_eff2f4" />
+
     <android.support.v4.view.ViewPager
         android:id="@+id/layout_view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

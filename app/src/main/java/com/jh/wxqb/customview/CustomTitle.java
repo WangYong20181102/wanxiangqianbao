@@ -3,11 +3,13 @@ package com.jh.wxqb.customview;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jh.wxqb.R;
@@ -20,6 +22,7 @@ import com.zhy.autolayout.AutoRelativeLayout;
  */
 public class CustomTitle extends AutoRelativeLayout {
 
+    private int tittleBg;
     private String titleText;
     private boolean canBack;
     private String backText = "";
@@ -37,6 +40,7 @@ public class CustomTitle extends AutoRelativeLayout {
             backText = ta.getString(R.styleable.CustomTitle_backText);
             moreImg = ta.getResourceId(R.styleable.CustomTitle_moreImg, 0);
             moreText = ta.getString(R.styleable.CustomTitle_moreText);
+            tittleBg = ta.getColor(R.styleable.CustomTitle_tittle_bg, Color.WHITE);
             setUpView();
         } finally {
             ta.recycle();
@@ -45,6 +49,7 @@ public class CustomTitle extends AutoRelativeLayout {
 
     private void setUpView() {
         TextView tvTitle = (TextView) findViewById(R.id.title);
+        RelativeLayout rlTittle = findViewById(R.id.rl_title);
         tvTitle.setText(titleText);
         LinearLayout backBtn = (LinearLayout) findViewById(R.id.title_back);
         backBtn.setVisibility(canBack ? VISIBLE : INVISIBLE);
@@ -71,6 +76,7 @@ public class CustomTitle extends AutoRelativeLayout {
             tvMore.setVisibility(VISIBLE);
             tvMore.setText(moreText);
         }
+        rlTittle.setBackgroundColor(tittleBg);
     }
 
 

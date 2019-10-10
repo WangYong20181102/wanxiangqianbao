@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_style"
+    android:background="@color/white"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_0f2441">
+        android:background="@color/white">
 
         <LinearLayout
             android:layout_width="@dimen/iv_156"
@@ -171,7 +171,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/iv_10"
                     android:text="0.0"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_1F3F59"
                     android:textSize="@dimen/iv_32" />
 
                 <TextView
@@ -181,7 +181,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/iv_10"
                     android:text="@string/me_active_assets"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_1F3F59"
                     android:textSize="@dimen/iv_22" />
             </RelativeLayout>
 
@@ -197,7 +197,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/iv_10"
                     android:text="0.0"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_1F3F59"
                     android:textSize="@dimen/iv_32" />
 
                 <TextView
@@ -207,7 +207,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/iv_10"
                     android:text="@string/me_dividend_assets"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_1F3F59"
                     android:textSize="@dimen/iv_22" />
             </RelativeLayout>
 
@@ -223,7 +223,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/iv_10"
                     android:text="0.0"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_1F3F59"
                     android:textSize="@dimen/iv_32" />
 
                 <TextView
@@ -233,7 +233,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/iv_10"
                     android:text="@string/me_repurchase_assets"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_1F3F59"
                     android:textSize="@dimen/iv_22" />
             </RelativeLayout>
         </LinearLayout>
@@ -293,7 +293,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/iv_15"
                             android:text="@string/personal_information"
-                            android:textColor="@color/white"
+                            android:textColor="@color/color_1F3F59"
                             android:textSize="@dimen/iv_28" />
                     </LinearLayout>
                 </LinearLayout>
@@ -325,7 +325,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/iv_15"
                             android:text="@string/current_entrustment"
-                            android:textColor="@color/white"
+                            android:textColor="@color/color_1F3F59"
                             android:textSize="@dimen/iv_28" />
                     </LinearLayout>
                 </LinearLayout>
@@ -355,7 +355,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/iv_15"
                             android:text="@string/my_recommendation"
-                            android:textColor="@color/white"
+                            android:textColor="@color/color_1F3F59"
                             android:textSize="@dimen/iv_28" />
                     </LinearLayout>
                 </LinearLayout>
@@ -365,7 +365,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/iv_20"
-                android:background="@color/color_title" />
+                android:background="@color/color_f7f7fb" />
 
             <RelativeLayout
                 android:id="@+id/ll_login_pwd"
@@ -387,7 +387,7 @@
                     android:layout_marginLeft="@dimen/iv_10"
                     android:layout_toRightOf="@id/image1"
                     android:text="@string/login_pwd"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_1F3F59"
                     android:textSize="@dimen/iv_26" />
 
                 <ImageView
@@ -401,8 +401,8 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_1"
-                android:background="@color/me_withdraw_color" />
+                android:layout_height="@dimen/iv_20"
+                android:background="@color/color_f7f7fb" />
 
             <RelativeLayout
                 android:id="@+id/ll_pay_pwd"
@@ -424,7 +424,7 @@
                     android:layout_marginLeft="@dimen/iv_10"
                     android:layout_toRightOf="@id/image2"
                     android:text="@string/payment_password"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_1F3F59"
                     android:textSize="@dimen/iv_26" />
 
                 <ImageView
@@ -438,8 +438,8 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_1"
-                android:background="@color/me_withdraw_color" />
+                android:layout_height="@dimen/iv_20"
+                android:background="@color/color_f7f7fb" />
 
             <RelativeLayout
                 android:id="@+id/ll_binding_account"
@@ -462,7 +462,7 @@
                     android:layout_marginLeft="@dimen/iv_10"
                     android:layout_toRightOf="@id/image3"
                     android:text="@string/binding_account"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_1F3F59"
                     android:textSize="@dimen/iv_26" />
 
                 <ImageView
@@ -477,7 +477,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/iv_1"
-                android:background="@color/me_withdraw_color" />
+                android:background="@color/color_E7EBEE" />
 
             <RelativeLayout
                 android:id="@+id/ll_my_team"
@@ -499,7 +499,7 @@
                     android:layout_marginLeft="@dimen/iv_10"
                     android:layout_toRightOf="@id/image4"
                     android:text="@string/my_team"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_1F3F59"
                     android:textSize="@dimen/iv_26" />
 
                 <ImageView
@@ -513,8 +513,8 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_1"
-                android:background="@color/me_withdraw_color" />
+                android:layout_height="@dimen/iv_20"
+                android:background="@color/color_f7f7fb" />
 
 
             <RelativeLayout
@@ -537,7 +537,7 @@
                     android:layout_marginLeft="@dimen/iv_10"
                     android:layout_toRightOf="@id/image5"
                     android:text="@string/user_feedback"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_1F3F59"
                     android:textSize="@dimen/iv_26" />
 
                 <ImageView
@@ -552,7 +552,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/iv_1"
-                android:background="@color/me_withdraw_color" />
+                android:background="@color/color_E7EBEE" />
 
             <RelativeLayout
                 android:id="@+id/ll_financial_details"
@@ -575,7 +575,7 @@
                     android:layout_marginLeft="@dimen/iv_10"
                     android:layout_toRightOf="@id/image6"
                     android:text="@string/financial_details"
-                    android:textColor="@color/white"
+                    android:textColor="@color/color_1F3F59"
                     android:textSize="@dimen/iv_26" />
 
                 <ImageView
@@ -589,8 +589,8 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_1"
-                android:background="@color/me_withdraw_color" />
+                android:layout_height="@dimen/iv_20"
+                android:background="@color/color_f7f7fb" />
 
             <TextView
                 android:id="@+id/tv_out_login"

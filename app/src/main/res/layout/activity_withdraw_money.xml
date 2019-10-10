@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_style"
+    android:background="@color/white"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.jh.wxqb.ui.assets.WithdrawMoneyActivity">
@@ -123,8 +123,8 @@
                 android:hint="@string/target_address"
                 android:inputType="textVisiblePassword"
                 android:maxLength="42"
-                android:textColor="@color/white"
-                android:textColorHint="@color/color_94AED3"
+                android:textColor="@color/color_1F3F59"
+                android:textColorHint="@color/color_8C9FAD"
                 android:textSize="@dimen/s15" />
 
             <RelativeLayout
@@ -145,7 +145,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/d1"
-            android:background="@color/color_47638A" />
+            android:background="@color/color_E7EBEE" />
     </LinearLayout>
 
     <LinearLayout
@@ -163,14 +163,14 @@
             android:background="@android:color/transparent"
             android:hint="@string/amount_of_money"
             android:inputType="numberDecimal"
-            android:textColor="@color/white"
-            android:textColorHint="@color/color_94AED3"
+            android:textColor="@color/color_1F3F59"
+            android:textColorHint="@color/color_8C9FAD"
             android:textSize="@dimen/s15" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/d1"
-            android:background="@color/color_47638A" />
+            android:background="@color/color_E7EBEE" />
     </LinearLayout>
 
     <LinearLayout
@@ -188,13 +188,13 @@
             android:background="@android:color/transparent"
             android:hint="@string/pay_pwd"
             android:inputType="numberPassword"
-            android:textColor="@color/white"
-            android:textColorHint="@color/color_94AED3"
+            android:textColor="@color/color_1F3F59"
+            android:textColorHint="@color/color_8C9FAD"
             android:textSize="@dimen/s15" />
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/d1"
-            android:background="@color/color_47638A" />
+            android:background="@color/color_E7EBEE" />
     </LinearLayout>
 
     <LinearLayout
@@ -217,8 +217,8 @@
                 android:background="@android:color/transparent"
                 android:hint="@string/please_input_code"
                 android:inputType="number"
-                android:textColor="@color/white"
-                android:textColorHint="@color/color_94AED3"
+                android:textColor="@color/color_1F3F59"
+                android:textColorHint="@color/color_8C9FAD"
                 android:textSize="@dimen/s15" />
 
             <TextView
@@ -237,7 +237,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/d1"
             android:layout_marginRight="@dimen/d100"
-            android:background="@color/color_47638A" />
+            android:background="@color/color_E7EBEE" />
     </LinearLayout>
 
     <TextView

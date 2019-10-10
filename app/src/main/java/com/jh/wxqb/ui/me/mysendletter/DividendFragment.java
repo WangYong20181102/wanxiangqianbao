@@ -102,7 +102,7 @@ public class DividendFragment extends BaseFragment implements MyClicker, MySendL
     //每个Item之间的间距
     protected RecyclerView.ItemDecoration createItemDecoration() {
         //颜色  宽度  高度
-        return new DefaultItemDecoration(Color.rgb(243, 243, 243), WindowManager.LayoutParams.MATCH_PARENT, 1);
+        return new DefaultItemDecoration(Color.parseColor("#999999"), WindowManager.LayoutParams.MATCH_PARENT, 1);
     }
 
 
