@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="app_name">Van Token</string>
+    <string name="app_name">Van Nex</string>
     <string name="network_connection_timeout">当前网络差，请检查网络链接。</string>
     <string name="mobile">手机号</string>
     <string name="code">验证码</string>
@@ -63,6 +63,7 @@
     <string name="login">登    錄</string>
     <string name="account">用戶名/手機號</string>
     <string name="login_pwd">登錄密碼</string>
+    <string name="all_send_car">全民发车</string>
     <string name="forget_pwd">忘記密碼?</string>
     <string name="confirm_login">確認登錄</string>
     <string name="mobile_phone_number">手機號碼</string>
@@ -84,7 +85,7 @@
     <string name="usdt_tgm">USDT/TGM</string>
     <string name="statue">狀态</string>
     <string name="active_assets">餘額資產</string>
-    <string name="repurchase_assets">重購資產</string>
+    <string name="repurchase_assets">优享資產</string>
     <string name="dividend_assets">凍結資產</string>
     <string name="freeze">凍結</string>
     <string name="withdraw_money">提幣</string>
@@ -114,7 +115,7 @@
     <string name="determine">確定</string>
     <string name="dividend">買入</string>
     <string name="sell">賣出</string>
-    <string name="equivalent_assets">资产折合(CNY)：</string>
+    <string name="equivalent_assets">资产折合(CNY)</string>
     <string name="the_dividend">買入中</string>
     <string name="time">時  間</string>
     <string name="delegate_quantity">委託量(USDT)</string>
@@ -177,6 +178,7 @@
     <string name="current_eth_balance">當前 TGM 餘額：</string>
     <string name="current_usdt_balance">當前 USDT 餘額：</string>
     <string name="current_tgm_balance">當前 TGM 餘額：</string>
+    <string name="current_balance">當前餘額：</string>
 
     <string name="access_to_dividends">買入</string>
     <string name="pan_mouth">盤口</string>
@@ -199,6 +201,9 @@
     <string name="all_success">全部成交</string>
     <string name="no">無</string>
     <string name="state">狀態</string>
+    <string name="exchange_rate">汇率</string>
+    <string name="real_time_redemption">实时兑换</string>
+    <string name="date_time">時間</string>
     <string name="please_input_invitation_code">請輸入邀請碼(非必填)</string>
     <string name="please_enter_user_name">請輸入用戶名/邮箱</string>
     <string name="please_enter_user_pwd">請輸入密碼</string>

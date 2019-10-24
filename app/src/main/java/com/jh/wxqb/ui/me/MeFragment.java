@@ -82,7 +82,7 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
         return view;
     }
 
-    @OnClick({R.id.ll_message, R.id.iv_user_img, R.id.ll_userinfo, R.id.ll_my_dividend, R.id.ll_my_recommendation, R.id.ll_login_pwd, R.id.ll_pay_pwd, R.id.ll_binding_account, R.id.ll_my_team, R.id.ll_user_feedback, R.id.ll_financial_details, R.id.tv_out_login})
+    @OnClick({R.id.ll_message, R.id.iv_user_img, R.id.ll_userinfo, R.id.ll_my_dividend, R.id.ll_my_recommendation, R.id.ll_all_send_car,R.id.ll_login_pwd, R.id.ll_pay_pwd, R.id.ll_binding_account, R.id.ll_my_team, R.id.ll_user_feedback, R.id.ll_financial_details, R.id.tv_out_login})
     public void onViewClicked(View view) {
         Intent intent;
         switch (view.getId()) {
@@ -106,6 +106,9 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
                 intent = new Intent(mContext, RecommendActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.ll_all_send_car://全民发车
+                Toasts.showShort("活動暫未開始！");
+                break;
             case R.id.ll_login_pwd:
                 intent = new Intent(mContext, UdpPwdActivity.class);
                 intent.putExtra("type", "login");
@@ -116,11 +119,11 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
                 intent.putExtra("type", "pay");
                 startActivity(intent);
                 break;
-            case R.id.ll_binding_account:
+            case R.id.ll_binding_account://绑定账户
                 intent = new Intent(mContext, BindingAccountActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.ll_my_team:
+            case R.id.ll_my_team://我的团队
                 intent = new Intent(mContext, MyTeamActivity.class);
                 startActivity(intent);
                 break;

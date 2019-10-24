@@ -78,7 +78,7 @@ public interface Biz {
     void financialDetailsType(OnBaseListener listener);
 
     //获取财务明细列表
-    void getFinancialDetails(int pageNum,int type,OnBaseListener listener);
+    void getFinancialDetails(int pageNum,int type,int coinTypeId,OnBaseListener listener);
     //資產管理
     void getQueryaccountassets(int pageNum,int type,OnBaseListener listener);
 
@@ -114,6 +114,10 @@ public interface Biz {
 
     //获取token失效时间
     void getTime(OnBaseListener listener);
+    //获取币种价格
+    void getQuerycoinprice(OnBaseListener listener);
+    //币种兑换
+    void getSavechangeinfo(Map<String, String> map,OnBaseListener listener);
 
 
 

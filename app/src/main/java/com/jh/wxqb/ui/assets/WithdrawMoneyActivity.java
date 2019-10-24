@@ -1,12 +1,15 @@
 package com.jh.wxqb.ui.assets;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jh.wxqb.R;
 import com.jh.wxqb.base.BaseActivity;
@@ -14,6 +17,7 @@ import com.jh.wxqb.base.CoreKeys;
 import com.jh.wxqb.base.MyApplication;
 import com.jh.wxqb.bean.AssetManagementBean;
 import com.jh.wxqb.bean.BaseBean;
+import com.jh.wxqb.bean.CoinPricesBean;
 import com.jh.wxqb.bean.FinancialDetailsBean;
 import com.jh.wxqb.bean.SafetyMarkingBean;
 import com.jh.wxqb.customview.CancelOrOkDialog;
@@ -28,6 +32,7 @@ import com.jh.wxqb.ui.me.UdpPwdActivity;
 import com.jh.wxqb.ui.message.MessagePresenter;
 import com.jh.wxqb.ui.message.MessageView;
 import com.jh.wxqb.utils.AgainLoginUtil;
+import com.jh.wxqb.utils.ArithUtils;
 import com.jh.wxqb.utils.GsonUtil;
 import com.jh.wxqb.utils.LogUtils;
 import com.jh.wxqb.utils.StringUtil;
@@ -37,10 +42,12 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import pub.devrel.easypermissions.EasyPermissions;
 
 
 /**
@@ -68,6 +75,16 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
     TextView tvCurrency;
     @BindView(R.id.image_right)
     ImageView imageRight;
+    @BindView(R.id.tv_bottom_activation)
+    TextView tvBottomActivition;
+    @BindView(R.id.tv_bottom_prompt)
+    TextView tvBottomPrompt;
+    @BindView(R.id.tv_coin_num)
+    TextView tvCoinNum;
+    @BindView(R.id.tv_erc20)
+    TextView tvErc20;
+
+    private String[] permissions = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
     private PopupWindow contentWindow;
     private AssestPresenter assestPresenter;
@@ -100,21 +117,57 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
 //            tvAssets.setText(StringUtil.subZeroAndDot(MyApplication.getUserBean().getActiveAssets().toPlainString()));
 //        }
         tvAssets.setText(assetsBean.getActiveAssets() + "");
+        tvErc20.setVisibility(View.GONE);
         switch (assetsBean.getBizCurrencyTypeId()) {
             case 1:
                 tvCurrency.setText("ETH");
                 imageIcon.setImageResource(R.drawable.icon_small_eth);
                 imageRight.setImageResource(R.drawable.icon_eth_right);
+                tvBottomActivition.setText("ETH提币手续费固定为0.001");
+                tvCoinNum.setVisibility(View.GONE);
+                tvBottomPrompt.setVisibility(View.GONE);
                 break;
             case 2:
                 tvCurrency.setText("TGM");
                 imageIcon.setImageResource(R.drawable.iv_small_tgm);
                 imageRight.setImageResource(R.drawable.iv_tgm_right);
+                tvBottomActivition.setText("TGM提币手续费为千分之五");
+                tvCoinNum.setVisibility(View.VISIBLE);
+                tvErc20.setVisibility(View.VISIBLE);
+                tvCoinNum.setText("最小提币数量：30枚");
+                tvBottomPrompt.setVisibility(View.GONE);
                 break;
             case 3:
                 tvCurrency.setText("USDT");
                 imageIcon.setImageResource(R.drawable.icon_small_usdt);
                 imageRight.setImageResource(R.drawable.icon_usdt_right);
+                tvBottomActivition.setText("USDT提币手续费固定为2USDT");
+                tvCoinNum.setVisibility(View.VISIBLE);
+                tvCoinNum.setText("最小提币数量：5枚");
+                tvErc20.setVisibility(View.VISIBLE);
+                tvBottomPrompt.setVisibility(View.VISIBLE);
+                tvBottomPrompt.setText("因每个交易所的最小充值金额不同，请您提USDT的时候，务必注意查看交易所充值的最小金额是多少，否则在交易所会出现无法上账的情况。");
+                break;
+            case 4:
+                tvCurrency.setText("HT");
+                imageIcon.setImageResource(R.drawable.iv_small_ht);
+                imageRight.setImageResource(R.drawable.iv_ht_right);
+                tvCoinNum.setVisibility(View.GONE);
+                tvBottomPrompt.setVisibility(View.GONE);
+                break;
+            case 5:
+                tvCurrency.setText("OKB");
+                imageIcon.setImageResource(R.drawable.iv_small_okb);
+                imageRight.setImageResource(R.drawable.iv_okb_right);
+                tvCoinNum.setVisibility(View.GONE);
+                tvBottomPrompt.setVisibility(View.GONE);
+                break;
+            case 6:
+                tvCurrency.setText("BNB");
+                imageIcon.setImageResource(R.drawable.iv_small_bnb);
+                imageRight.setImageResource(R.drawable.iv_bnb_right);
+                tvCoinNum.setVisibility(View.GONE);
+                tvBottomPrompt.setVisibility(View.GONE);
                 break;
         }
 
@@ -131,8 +184,7 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_scan:
-                Intent intent = new Intent(this, ScanningCodeActivity.class);
-                startActivityForResult(intent, CoreKeys.RESULT_CODE);
+                getPermission();
                 break;
             case R.id.tv_get_code:
                 if (MyApplication.getUserBean() != null) {
@@ -147,6 +199,20 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
                         if (!checkEdit(edTargetAddress) || !checkEdit(edAmountOfMoney) || !checkEdit(edPayPwd) || !checkEdit(edCode)) {
                             return;
                         }
+                        switch (assetsBean.getBizCurrencyTypeId()){
+                            case 2:
+                                if (Double.parseDouble(edAmountOfMoney.getText().toString().trim()) < 30) {
+                                    Toasts.showShort("最小提币数量30枚");
+                                    return;
+                                }
+                                break;
+                            case 3:
+                                if (Double.parseDouble(edAmountOfMoney.getText().toString().trim()) < 5) {
+                                    Toasts.showShort("最小提币数量5枚");
+                                    return;
+                                }
+                                break;
+                        }
                         StringUtil.Closekeyboard(this);
                         showWaitDialog();
                         map = new HashMap<>();
@@ -155,6 +221,7 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
                         map.put("pwd", edPayPwd.getText().toString());
                         map.put("smsCode", edCode.getText().toString());
                         map.put("type", "2");
+                        map.put("coinTypeId", String.valueOf(assetsBean.getBizCurrencyTypeId()));
                         map.put("ident", ident);
                         if (MyApplication.getUserBean() != null) {
                             map.put("mobile", MyApplication.getUserBean().getPhone());
@@ -179,6 +246,26 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
         }
     }
 
+    //获取权限
+    private void getPermission() {
+        if (EasyPermissions.hasPermissions(this, permissions)) {
+            //已经打开权限
+            Intent intent = new Intent(this, ScanningCodeActivity.class);
+            startActivityForResult(intent, CoreKeys.RESULT_CODE);
+        } else {
+            //没有打开相关权限、申请权限
+            EasyPermissions.requestPermissions(this, "需要获取您的相册、照相使用权限", 1, permissions);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            Intent intent = new Intent(this, ScanningCodeActivity.class);
+            startActivityForResult(intent, CoreKeys.RESULT_CODE);
+        }
+    }
 
     @Override
     public void getMessageCodeSuccess(BaseBean result) {
@@ -198,10 +285,12 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
         }
         dismissWaitDialog();
         LogUtils.e("withdrawMoneySuccess===>" + GsonUtil.GsonString(result));
+        tvAssets.setText(ArithUtils.sub(assetsBean.getActiveAssets(), Double.parseDouble(edAmountOfMoney.getText().toString().trim())) + "");
         edAmountOfMoney.setText(null);
         edPayPwd.setText(null);
         edCode.setText(null);
         EventBus.getDefault().post("udpHome");
+        EventBus.getDefault().post("udpAssestData");
         WithdrawMoneyDialog dialog = new WithdrawMoneyDialog(this, true);
         dialog.setTitle(R.string.currency_success);
         dialog.setTips(R.string.open_des_sel_withdraw_money);
@@ -216,6 +305,16 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
         dismissWaitDialog();
         LogUtils.e("safetyMarkingSuccess===>" + GsonUtil.GsonString(result));
         ident = result.getData().getIdent();
+    }
+
+    @Override
+    public void coinPricesSuccess(CoinPricesBean result) {
+
+    }
+
+    @Override
+    public void coinRechangeSuccess(BaseBean result) {
+
     }
 
     @Subscribe

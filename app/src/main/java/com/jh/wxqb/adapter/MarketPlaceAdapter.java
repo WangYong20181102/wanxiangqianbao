@@ -5,21 +5,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -29,12 +24,12 @@ import com.jh.wxqb.bean.CurrentPriceBean;
 import com.jh.wxqb.bean.MarketDividendBottomBean;
 import com.jh.wxqb.bean.MarketDividendTitleBean;
 import com.jh.wxqb.customview.CancelOrOkDialog;
+import com.jh.wxqb.customview.HandicapView;
 import com.jh.wxqb.ui.market.CurrentEntrustmentActivity;
 import com.jh.wxqb.ui.market.MoreBusinessActivity;
 import com.jh.wxqb.ui.market.PurchaseOrderActivity;
 import com.jh.wxqb.ui.me.UdpPwdActivity;
 import com.jh.wxqb.utils.DialogUtil;
-import com.jh.wxqb.utils.LogUtils;
 import com.jh.wxqb.utils.SharedPreferencesUtil;
 import com.jh.wxqb.utils.StringUtil;
 import com.jh.wxqb.utils.TimeUtil;
@@ -42,7 +37,6 @@ import com.jh.wxqb.utils.Toasts;
 
 import org.greenrobot.eventbus.EventBus;
 import org.jetbrains.annotations.NotNull;
-import org.w3c.dom.Text;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -54,10 +48,10 @@ import butterknife.ButterKnife;
  * 交易市场适配器
  */
 
-public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener, TextWatcher {
+public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
 
-    // 两次点击按钮之间的点击间隔不能少于2000毫秒
-    private static final int MIN_CLICK_DELAY_TIME = 500;
+    // 两次点击按钮之间的点击间隔不能少于1000毫秒
+    private static final int MIN_CLICK_DELAY_TIME = 1000;
     private static long lastClickTime;
     private LayoutInflater inflater;
     private static final int TITLE = 0;
@@ -71,30 +65,33 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private MarketDividendTitleBean.DataBean.ListBean buyListBean;
     private List<MarketDividendBottomBean.DataBean.ListBean> listBeen;
     private CurrentPriceBean currentPriceBean;
-    private String assetTypeId = "3";  //買入类型  1：活动ETH  2：重购USDT  3.買入USDT
-    private PopupWindow optionWindow;
-    private String selActiveType;  //选择買入类型文字记录   1活动ETH  2重购USDT  3.買入USDT
     private String expectedAccess = "0.0";  //所有预计获取值
-    private int typeText;  //标识当前买卖  选择类型文字改变  0全部 1買入 2卖出
-    private String isUdpTypeText;  //标识当前买卖是否修改  0不修改  1修改
     private Intent intent;
+    //交易额
     private double v1;
+    //判断是刷新界面还是点击买入卖出按钮事件 1 (买入卖出) 0 (adapter刷新)
+    private int showType;
+    //保存单价用于判断单价新老数值用于取消百分比选中状态
+    private String strSavePrices = "";
+    //保存数量用于判断数量新老数值用于取消百分比选中状态
+    private String strSaveNum = "";
+    //初始化显示买入价格
+    private boolean bPrices;
+    //选中状态
+    private boolean bSelect = false;
 
-    public MarketPlaceAdapter(Context mContext, Activity mActivity, String type,
+    public MarketPlaceAdapter(Context mContext, String type,
                               MarketDividendTitleBean.DataBean.ListBean buyListBean,
                               List<MarketDividendBottomBean.DataBean.ListBean> listBeen,
-                              CurrentPriceBean currentPriceBean, String selActiveType,
-                              String assetTypeId, int typeText, String isUdpTypeText) {
-        this.mActivity = mActivity;
+                              CurrentPriceBean currentPriceBean, int showType) {
+        this.mActivity = (Activity) mContext;
         this.mContext = mContext;
         this.type = type;
         this.buyListBean = buyListBean;
         this.listBeen = listBeen;
+        this.showType = showType;
         this.currentPriceBean = currentPriceBean;
-        this.selActiveType = selActiveType;
-        this.assetTypeId = assetTypeId;
-        this.typeText = typeText;
-        this.isUdpTypeText = isUdpTypeText;
+        bPrices = true;
         inflater = LayoutInflater.from(mContext);
     }
 
@@ -102,32 +99,23 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
      * 跟新数据
      *
      * @param mContext
-     * @param mActivity
      * @param type
      * @param buyListBean
      * @param listBeen
      * @param currentPriceBean
-     * @param selActiveType
-     * @param assetTypeId
-     * @param typeText
-     * @param isUdpTypeText
      */
-    public void updateList(Context mContext, Activity mActivity, String type,
+    public void updateList(Context mContext, String type,
                            MarketDividendTitleBean.DataBean.ListBean buyListBean,
                            List<MarketDividendBottomBean.DataBean.ListBean> listBeen,
-                           CurrentPriceBean currentPriceBean, String selActiveType,
-                           String assetTypeId, int typeText, String isUdpTypeText) {
+                           CurrentPriceBean currentPriceBean, int showType) {
 
-        this.mActivity = mActivity;
+        this.mActivity = (Activity) mContext;
         this.mContext = mContext;
         this.type = type;
         this.buyListBean = buyListBean;
         this.listBeen = listBeen;
+        this.showType = showType;
         this.currentPriceBean = currentPriceBean;
-        this.selActiveType = selActiveType;
-        this.assetTypeId = assetTypeId;
-        this.typeText = typeText;
-        this.isUdpTypeText = isUdpTypeText;
     }
 
     @Override
@@ -151,7 +139,7 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public RecyclerView.ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         switch (viewType) {
             case TITLE:
-                View itemTitle = inflater.inflate(R.layout.item_market_dividend_title, parent, false);
+                View itemTitle = inflater.inflate(R.layout.item_market_title, parent, false);
                 return new TitleHolder(itemTitle);
             case MAIN:
                 View itemMain = inflater.inflate(R.layout.item_market_dividend_main, parent, false);
@@ -189,59 +177,44 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
      *
      * @param currentPriceBean
      */
-    public void setCurrentPrice(CurrentPriceBean currentPriceBean) {
+    public void setCurrentPrice(CurrentPriceBean currentPriceBean, String type, int showType) {
         this.currentPriceBean = currentPriceBean;
+        this.type = type;
+        this.showType = showType;
     }
 
 
     public class TitleHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.ed_entrust_num)
         EditText edEntrustNum;
-        @BindView(R.id.ll_type)
-        LinearLayout llType;
         @BindView(R.id.linear_entrust)
         LinearLayout linearEntrust;
         @BindView(R.id.tv_expected)
         TextView tvExpected;
-        @BindView(R.id.tv_current_price)
-        TextView tvCurrentPrice;
         @BindView(R.id.tv_current_balance)
         TextView tvCurrentBalance;
-        @BindView(R.id.tv_entrust_type)
-        TextView tvEntrustType;
-        @BindView(R.id.tv_type)
-        TextView tvType;
-        @BindView(R.id.ed_pwd)
-        EditText edPwd;
         @BindView(R.id.tv_dividends)
         TextView tvDividends;
-        @BindView(R.id.tv_dividend_pkb)
-        TextView tvDividendPkb;
         @BindView(R.id.tv_current)
         EditText tvCurrent;
         @BindView(R.id.tv_balance)
         TextView tvBalance;
-        @BindView(R.id.tv_action)
-        TextView tvAction;
         @BindView(R.id.tv_company)
         TextView tvCompany;
-
-        @BindView(R.id.shop_up)
-        RecyclerView shopUp;
-        @BindView(R.id.shop_down)
-        RecyclerView shopDown;
         @BindView(R.id.ll_sel_more)
         RelativeLayout llSelMore;
-        @BindView(R.id.ll_sel_type)
-        LinearLayout llSelType;
-        @BindView(R.id.iv_down)
-        ImageView ivDown;
-        @BindView(R.id.iv_business_down)
-        ImageView ivBusinessDown;
-        @BindView(R.id.tv_one_price)
-        TextView tvOnePrice;
+        @BindView(R.id.handicap_view)
+        HandicapView handicapView;
         @BindView(R.id.tv_cny)
         TextView tvCny;
+        @BindView(R.id.tv_percentage_point1)
+        TextView tvPercentagePoint1;
+        @BindView(R.id.tv_percentage_point2)
+        TextView tvPercentagePoint2;
+        @BindView(R.id.tv_percentage_point3)
+        TextView tvPercentagePoint3;
+        @BindView(R.id.tv_percentage_point4)
+        TextView tvPercentagePoint4;
 
         TitleHolder(View itemView) {
             super(itemView);
@@ -263,7 +236,7 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         @BindView(R.id.tv_no)
         TextView tvNo;
 
-        public MainHolder(View itemView) {
+        private MainHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
@@ -274,27 +247,59 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         @BindView(R.id.rl_show_more)
         RelativeLayout rlShowMore;
 
-        public FootHolder(View itemView) {
+        private FootHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void setTitle(final TitleHolder holder) {
         titleHolder = holder;
-        switch (selActiveType) {
-            case "1":
-                holder.tvBalance.setText(R.string.current_eth_balance);
-                holder.tvEntrustType.setText(R.string.activity_eth);
-                break;
-            case "2":
-                holder.tvBalance.setText(R.string.current_usdt_balance);
-                holder.tvEntrustType.setText(R.string.repurchase_usdt);
-                break;
-            case "3":
-                holder.tvBalance.setText(R.string.current_usdt_balance);
-                holder.tvEntrustType.setText(R.string.dividend_tgm);
-                break;
+        if (bPrices) {//第一次进入用于显示买1或者卖1价格
+            switch (type) {
+                case "dividend":
+                    if (buyListBean != null) {
+                        if (buyListBean.getBuyList().size() > 0) {
+                            strSavePrices = String.valueOf(buyListBean.getSellList().get(0).getAmountPrice().doubleValue());
+                            holder.tvCurrent.setText(strSavePrices);
+                            bPrices = false;
+                        }
+                    }
+                    break;
+                case "sell":
+                    if (buyListBean != null) {
+                        if (buyListBean.getSellList().size() > 0) {
+                            strSavePrices = String.valueOf(buyListBean.getBuyList().get(0).getAmountPrice().doubleValue());
+                            holder.tvCurrent.setText(strSavePrices);
+                            bPrices = false;
+                        }
+                    }
+                    break;
+            }
+        }
+        if (showType == 1) {//切换买入卖出按钮清除百分比选中状态
+            bSelect = false;
+            clearSelection();
+            titleHolder.edEntrustNum.setText("");
+            switch (type) {
+                case "dividend":
+                    if (buyListBean != null) {
+                        if (buyListBean.getBuyList().size() > 0) {
+                            strSavePrices = String.valueOf(buyListBean.getSellList().get(0).getAmountPrice().doubleValue());
+                            holder.tvCurrent.setText(strSavePrices);
+                        }
+                    }
+                    break;
+                case "sell":
+                    if (buyListBean != null) {
+                        if (buyListBean.getSellList().size() > 0) {
+                            strSavePrices = String.valueOf(buyListBean.getBuyList().get(0).getAmountPrice().doubleValue());
+                            holder.tvCurrent.setText(strSavePrices);
+                        }
+                    }
+                    break;
+            }
         }
         switch (type) {
             case "dividend":
@@ -304,61 +309,54 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 holder.tvCurrentBalance.setTextColor(Color.parseColor("#03AD8F"));
                 holder.tvDividends.setBackgroundResource(R.drawable.market_buy_bg);
                 holder.tvDividends.setText(R.string.access_to_dividends);
-                holder.tvBalance.setText(R.string.current_eth_balance);
-                switch (assetTypeId) {
-                    case "1":
-                        holder.tvBalance.setText(R.string.current_eth_balance);
-                        break;
-                    case "2":
-                        holder.tvBalance.setText(R.string.current_usdt_balance);
-                        break;
-                    case "3":
-                        holder.tvBalance.setText(R.string.current_usdt_balance);
-                        break;
-                }
+                holder.tvBalance.setText(R.string.current_balance);
+
                 break;
             case "sell":
-                holder.llType.setVisibility(View.GONE);
                 holder.tvExpected.setTextColor(Color.parseColor("#D14B64"));
                 holder.tvBalance.setTextColor(Color.parseColor("#D14B64"));
                 holder.tvCurrentBalance.setTextColor(Color.parseColor("#D14B64"));
                 holder.tvDividends.setBackgroundResource(R.drawable.market_sell_bg);
                 holder.tvCompany.setTextColor(Color.parseColor("#D14B64"));
                 holder.tvDividends.setText(R.string.sell);
-                holder.tvBalance.setText(R.string.current_tgm_balance);
+                holder.tvBalance.setText(R.string.current_balance);
                 break;
         }
-        LogUtils.e("isUdpTypeText==>" + isUdpTypeText);
-        if (isUdpTypeText.equals("1")) {
-            switch (typeText) {
-                case 0:
-                    holder.tvType.setText(R.string.all);
-                    break;
-                case 1:
-                    holder.tvType.setText(R.string.dividend);
-                    break;
-                case 2:
-                    holder.tvType.setText(R.string.sell);
-                    break;
-            }
-        }
-
         if (currentPriceBean != null) {
             if (currentPriceBean.getData() != null) {
                 if (currentPriceBean.getData().getResultMap() != null) {
                     switch (type) {
                         case "dividend":
-                            holder.tvCurrentBalance.setText(StringUtil.checkDoubleOrInt(currentPriceBean.getData().getUsdtAccount()));
+                            holder.tvCurrentBalance.setText(StringUtil.checkDoubleOrInt(currentPriceBean.getData().getUsdtAccount()) + " USDT");
                             break;
                         case "sell":
-                            holder.tvCurrentBalance.setText(StringUtil.checkDoubleOrInt(currentPriceBean.getData().getTgmAccount()));
+                            holder.tvCurrentBalance.setText(StringUtil.checkDoubleOrInt(currentPriceBean.getData().getTgmAccount()) + " TGM");
                             break;
                     }
                 }
             }
         }
+        holder.edEntrustNum.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-        holder.edEntrustNum.addTextChangedListener(this);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (!strSaveNum.equals(charSequence.toString())) {
+                    if (!bSelect) {
+                        clearSelection();
+                    }
+                }
+                countExpected(charSequence.toString(), 2);
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
         holder.tvCurrent.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -367,6 +365,13 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if ("dividend".equals(type)) {//买入
+                    if (!strSavePrices.equals(charSequence.toString())) {
+                        if (!bSelect) {
+                            clearSelection();
+                        }
+                    }
+                }
                 countExpected(charSequence.toString(), 1);
             }
 
@@ -376,38 +381,23 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             }
         });
 
-        LinearLayoutManager manager = new LinearLayoutManager(mContext);
-        manager.setStackFromEnd(true);
-        holder.shopUp.setLayoutManager(manager);
-        MarketDividendTitleAdapter titleUpAdapter = new MarketDividendTitleAdapter(mContext, true, buyListBean);
-        holder.shopUp.setAdapter(titleUpAdapter);
-
-        holder.shopDown.setLayoutManager(new LinearLayoutManager(mContext));
-        MarketDividendTitleAdapter titleDownAdapter = new MarketDividendTitleAdapter(mContext, false, buyListBean);
-        holder.shopDown.setAdapter(titleDownAdapter);
-
-        //盘口中间CNY值
+        //盘口
         if (buyListBean != null) {
-            if (buyListBean.getBuyList() != null && buyListBean.getBuyList().size() > 0) {
-                BigDecimal onePrice = buyListBean.getBuyList().get(0).getAmountPrice();
-                holder.tvOnePrice.setText(String.valueOf(onePrice.divide(new BigDecimal("1"), 4, BigDecimal.ROUND_HALF_UP).doubleValue()));
-                //cny
-                BigDecimal multiply1 = onePrice.multiply(BigDecimal.valueOf(Double.valueOf(7)));
-                String cny = String.valueOf(multiply1.divide(new BigDecimal("1"), 4, BigDecimal.ROUND_HALF_UP).doubleValue());
-                holder.tvCny.setText("≈￥" + cny + "CNY");
-            }
+            titleHolder.handicapView.updateData(buyListBean);
         }
 
-        holder.llType.setOnClickListener(this);
-//        holder.llSelType.setOnClickListener(this);
         holder.llSelMore.setOnClickListener(this);
         holder.tvDividends.setOnClickListener(this);
         holder.linearEntrust.setOnClickListener(this);
+        holder.tvPercentagePoint1.setOnClickListener(this);
+        holder.tvPercentagePoint2.setOnClickListener(this);
+        holder.tvPercentagePoint3.setOnClickListener(this);
+        holder.tvPercentagePoint4.setOnClickListener(this);
 
     }
 
+    @SuppressLint("SetTextI18n")
     private void setMain(MainHolder holder, final int position) {
-        MainHolder mainHolder = holder;
         BigDecimal one = new BigDecimal("1");
         switch (listBeen.get(position - 1).getDirection()) {
             case 1:
@@ -435,17 +425,7 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 holder.tvNo.setText(R.string.partial_deal);
                 break;
         }
-        holder.tvTime.setText(TimeUtil.getTime(listBeen.get(position - 1).getCreateDate()));
-        String unit = "";
-        switch (listBeen.get(position - 1).getAssetTypeId()) {
-            case 1:
-                unit = "TGM";
-                break;
-            case 2:
-            case 3:
-                unit = "USDT";
-                break;
-        }
+        holder.tvTime.setText(listBeen.get(position - 1).getUpdateTime());
         holder.tvNum.setText(listBeen.get(position - 1).getAccountCommission().divide(one, 2, BigDecimal.ROUND_DOWN).doubleValue() + "");
         holder.tvPurchase.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -468,81 +448,15 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 intent = new Intent(mContext, MoreBusinessActivity.class);
                 mActivity.startActivity(intent);
                 break;
-            case R.id.ll_type:
-                selEntrustType(titleHolder.llType);
-                break;
-            case R.id.ll_sel_type:
-                selBusinessType(titleHolder.llSelType);
-                break;
             case R.id.linear_entrust://交易記錄
                 intent = new Intent(mContext, CurrentEntrustmentActivity.class);
                 mActivity.startActivity(intent);
-                break;
-            case R.id.tv_activity_eth:
-                optionWindow.dismiss();
-                titleHolder.ivDown.setImageResource(R.drawable.iv_down);
-                titleHolder.tvEntrustType.setText(R.string.activity_eth);
-                intent = new Intent();
-                intent.putExtra("type", "udpCurrentPrice");
-                intent.putExtra("coinType", "1");
-                intent.putExtra("assetTypeId", "1");
-                EventBus.getDefault().post(intent);
-                break;
-            case R.id.tv_repurchase_pkb:
-                optionWindow.dismiss();
-                titleHolder.ivDown.setImageResource(R.drawable.iv_down);
-                titleHolder.tvEntrustType.setText(R.string.repurchase_usdt);
-                intent = new Intent();
-                intent.putExtra("type", "udpCurrentPrice");
-                intent.putExtra("coinType", "2");
-                intent.putExtra("assetTypeId", "2");
-                EventBus.getDefault().post(intent);
-                break;
-            case R.id.tv_dividend_pkb:
-                optionWindow.dismiss();
-                titleHolder.ivDown.setImageResource(R.drawable.iv_down);
-                titleHolder.tvEntrustType.setText(R.string.dividend_tgm);
-                intent = new Intent();
-                intent.putExtra("type", "udpCurrentPrice");
-                intent.putExtra("coinType", "3");
-                intent.putExtra("assetTypeId", "3");
-                EventBus.getDefault().post(intent);
-                break;
-            case R.id.tv_all:
-                optionWindow.dismiss();
-                titleHolder.ivBusinessDown.setImageResource(R.drawable.iv_down);
-                titleHolder.tvType.setText(R.string.all);
-                intent = new Intent();
-                intent.putExtra("type", "udpBusiness");
-                intent.putExtra("typeNum", 0);
-                intent.putExtra("isUdpTypeText", "1");
-                EventBus.getDefault().post(intent);
-                break;
-            case R.id.tv_dividend:
-                optionWindow.dismiss();
-                titleHolder.ivBusinessDown.setImageResource(R.drawable.iv_down);
-                titleHolder.tvType.setText(R.string.dividend);
-                intent = new Intent();
-                intent.putExtra("type", "udpBusiness");
-                intent.putExtra("typeNum", 1);
-                intent.putExtra("isUdpTypeText", "1");
-                EventBus.getDefault().post(intent);
-                break;
-            case R.id.tv_sell:
-                optionWindow.dismiss();
-                titleHolder.ivBusinessDown.setImageResource(R.drawable.iv_down);
-                titleHolder.tvType.setText(R.string.sell);
-                intent = new Intent();
-                intent.putExtra("type", "udpBusiness");
-                intent.putExtra("typeNum", 2);
-                intent.putExtra("isUdpTypeText", "1");
-                EventBus.getDefault().post(intent);
                 break;
             case R.id.tv_dividends:
                 if (!isFastClick()) {//防止误触发
                     return;
                 }
-                if (!checkEdit(titleHolder.tvCurrent) || !checkEdit(titleHolder.edEntrustNum)) {
+                if (checkEditIsNull(titleHolder.tvCurrent) || checkEditIsNull(titleHolder.edEntrustNum)) {
                     return;
                 }
                 if (MyApplication.getUserBean() != null) {
@@ -633,14 +547,79 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     EventBus.getDefault().post("udpHome");
                 }
                 break;
+            case R.id.tv_percentage_point1:
+                bSelect = true;
+                clearSelection();
+                titleHolder.tvPercentagePoint1.setTextColor(ContextCompat.getColor(mContext, R.color.color_16263E));
+                calculationTgmNumber(new BigDecimal(0.25));
+                break;
+            case R.id.tv_percentage_point2:
+                bSelect = true;
+                clearSelection();
+                titleHolder.tvPercentagePoint2.setTextColor(ContextCompat.getColor(mContext, R.color.color_16263E));
+                calculationTgmNumber(new BigDecimal(0.5));
+                break;
+            case R.id.tv_percentage_point3:
+                bSelect = true;
+                clearSelection();
+                titleHolder.tvPercentagePoint3.setTextColor(ContextCompat.getColor(mContext, R.color.color_16263E));
+                calculationTgmNumber(new BigDecimal(0.75));
+                break;
+            case R.id.tv_percentage_point4:
+                bSelect = true;
+                clearSelection();
+                titleHolder.tvPercentagePoint4.setTextColor(ContextCompat.getColor(mContext, R.color.color_16263E));
+                calculationTgmNumber(new BigDecimal(1));
+                break;
         }
+    }
 
+    /**
+     * 计算tgm数量
+     *
+     * @param d
+     */
+    @SuppressLint("SetTextI18n")
+    private void calculationTgmNumber(BigDecimal d) {
+        if (currentPriceBean != null) {
+            if (currentPriceBean.getData() != null) {
+                switch (type) {
+                    case "dividend":
+                        //usdt余额
+                        BigDecimal usdtNum = currentPriceBean.getData().getUsdtAccount();
+                        BigDecimal d1 = usdtNum.multiply(d);
+                        String inputPrice = titleHolder.tvCurrent.getText().toString().trim();
+                        if (!TextUtils.isEmpty(inputPrice)) {
+                            titleHolder.edEntrustNum.setText(d1.divide(new BigDecimal(inputPrice), 2, BigDecimal.ROUND_HALF_UP).doubleValue() + "");
+                        } else {
+                            titleHolder.edEntrustNum.setText("0.0");
+                        }
+                        break;
+                    case "sell":
+                        //tgm余额
+                        BigDecimal tgmNum = currentPriceBean.getData().getTgmAccount();
+                        String d2 = String.valueOf(tgmNum.multiply(d).doubleValue());
+                        titleHolder.edEntrustNum.setText(new BigDecimal(d2).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue() + "");
+                        break;
+                }
+            }
+        }
+    }
+
+    /**
+     * 清除所有选中状态
+     */
+    private void clearSelection() {
+        titleHolder.tvPercentagePoint1.setTextColor(ContextCompat.getColor(mContext, R.color.color_8b9cae));
+        titleHolder.tvPercentagePoint2.setTextColor(ContextCompat.getColor(mContext, R.color.color_8b9cae));
+        titleHolder.tvPercentagePoint3.setTextColor(ContextCompat.getColor(mContext, R.color.color_8b9cae));
+        titleHolder.tvPercentagePoint4.setTextColor(ContextCompat.getColor(mContext, R.color.color_8b9cae));
     }
 
     /**
      * 显示支付密码弹框
      */
-    public void showPayDialog() {
+    private void showPayDialog() {
         DialogUtil.customDialog(mContext, new DialogUtil.OnClickYesListener() {
             @Override
             public void onClickYes(String strPassword) {
@@ -669,9 +648,9 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 intent.putExtra("exchangeCurrencyId", "3");
                 intent.putExtra("acountTransaction", expectedAccess);
                 EventBus.getDefault().post(intent);
+                clearSelection();
                 titleHolder.edEntrustNum.setText(null);
-                titleHolder.edPwd.setText(null);
-                titleHolder.tvExpected.setText(null);
+                titleHolder.tvExpected.setText("0.0");
                 expectedAccess = "0.0";
                 break;
             case "sell":
@@ -684,135 +663,55 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 intent.putExtra("exchangeCurrencyId", "3");
                 intent.putExtra("acountTransaction", expectedAccess);
                 EventBus.getDefault().post(intent);
+                clearSelection();
                 titleHolder.edEntrustNum.setText(null);
-                titleHolder.edPwd.setText(null);
-                titleHolder.tvExpected.setText(null);
+                titleHolder.tvExpected.setText("0.0");
                 expectedAccess = "0.0";
                 break;
         }
     }
 
     /**
-     * 判读输入框格式
+     * 判读输入框是否为空
      */
-    private boolean checkEdit(View v) {
+    private boolean checkEditIsNull(View v) {
         String str = ((TextView) v).getText().toString();
         switch (v.getId()) {
             case R.id.ed_entrust_num:
                 if (StringUtil.isEmpty(str)) {
                     Toasts.showShort(R.string.input_number);
-                    return false;
+                    return true;
                 }
                 break;
             case R.id.ed_pwd:
                 if (StringUtil.isEmpty(str)) {
                     Toasts.showShort(R.string.please_enter_the_tran_password);
-                    return false;
+                    return true;
                 }
             case R.id.tv_current:
                 if (StringUtil.isEmpty(str)) {
                     Toasts.showShort(R.string.please_enter_the_tran_price);
-                    return false;
+                    return true;
                 }
                 break;
         }
-        return true;
+        return false;
     }
 
-
-    /**
-     * 选择委托类型
-     */
-    @SuppressLint("WrongConstant")
-    private void selEntrustType(LinearLayout view) {
-        titleHolder.ivDown.setImageResource(R.drawable.iv_up);
-        View contentView = LayoutInflater.from(mContext).inflate(R.layout.item_sel_entrusrtype, null);
-        TextView tvActivityEth = (TextView) contentView.findViewById(R.id.tv_activity_eth);
-        TextView tvRepurchasePkb = (TextView) contentView.findViewById(R.id.tv_repurchase_pkb);
-        TextView tvDividendPkb = (TextView) contentView.findViewById(R.id.tv_dividend_pkb);
-        tvActivityEth.setOnClickListener(this);
-        tvRepurchasePkb.setOnClickListener(this);
-        tvDividendPkb.setOnClickListener(this);
-        optionWindow = new PopupWindow(contentView, WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.WRAP_CONTENT, true);
-        optionWindow.setTouchable(true);
-        optionWindow.setBackgroundDrawable(new ColorDrawable(0x00000000));   //设置背景
-        optionWindow.setOutsideTouchable(true);
-        optionWindow.showAsDropDown(view, -15, 0);
-        WindowManager.LayoutParams lp = mActivity.getWindow().getAttributes();    //将背景颜色参数重新设置
-        lp.alpha = 0.5f;
-        mActivity.getWindow().setAttributes(lp);
-        optionWindow.setSoftInputMode(PopupWindow.INPUT_METHOD_NEEDED);
-        optionWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        optionWindow.showAtLocation(contentView, Gravity.CENTER, 0, 0);   //从底部弹出
-        optionWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                WindowManager.LayoutParams lp = mActivity.getWindow().getAttributes();
-                lp.alpha = 1f;
-                mActivity.getWindow().setAttributes(lp);
-            }
-        });
-    }
-
-    /**
-     * 选择买卖订单类型类型
-     */
-    @SuppressLint("WrongConstant")
-    private void selBusinessType(LinearLayout view) {
-        titleHolder.ivBusinessDown.setImageResource(R.drawable.iv_up);
-        View contentView = LayoutInflater.from(mContext).inflate(R.layout.item_business_type, null);
-        TextView tvAll = (TextView) contentView.findViewById(R.id.tv_all);
-        TextView tvDividend = (TextView) contentView.findViewById(R.id.tv_dividend);
-        TextView tvSell = (TextView) contentView.findViewById(R.id.tv_sell);
-        tvAll.setOnClickListener(this);
-        tvDividend.setOnClickListener(this);
-        tvSell.setOnClickListener(this);
-        optionWindow = new PopupWindow(contentView, WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.WRAP_CONTENT, true);
-        optionWindow.setTouchable(true);
-        optionWindow.setBackgroundDrawable(new ColorDrawable(0x00000000));   //设置背景
-        optionWindow.setOutsideTouchable(true);
-        optionWindow.showAsDropDown(view, -15, 0);
-        WindowManager.LayoutParams lp = mActivity.getWindow().getAttributes();    //将背景颜色参数重新设置
-        lp.alpha = 0.5f;
-        mActivity.getWindow().setAttributes(lp);
-        optionWindow.setSoftInputMode(PopupWindow.INPUT_METHOD_NEEDED);
-        optionWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        optionWindow.showAtLocation(contentView, Gravity.CENTER, 0, 0);   //从底部弹出
-        optionWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                WindowManager.LayoutParams lp = mActivity.getWindow().getAttributes();
-                lp.alpha = 1f;
-                mActivity.getWindow().setAttributes(lp);
-            }
-        });
-    }
-
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-    }
-
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-    }
-
-    @Override
-    public void afterTextChanged(Editable s) {
-        countExpected(s.toString(), 2);
-    }
-
-    //计算预计获得
-    public void countExpected(String strPrice, int iType) {
+    //计算预计获得 iType(1单价  2数量)
+    @SuppressLint("SetTextI18n")
+    private void countExpected(String strPrice, int iType) {
+        bSelect = false;
         if (strPrice.equals("")) {
-            titleHolder.tvExpected.setText("");
+            titleHolder.tvExpected.setText("0.0");
+            if (iType == 1) {//单价输入框
+                titleHolder.tvCny.setText("≈¥ 0.0CNY");
+            }
             return;
         }
+        //判断输入第一位不能为小数点（BigDecimal第一位小数点无法编译）
         if (strPrice.length() == 1 && strPrice.equals(".")) {
-            switch (iType){
+            switch (iType) {
                 case 1:
                     titleHolder.tvCurrent.setText("");
                     break;
@@ -822,98 +721,52 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             }
             return;
         }
+        switch (iType) {
+            case 1:
+                strSavePrices = strPrice;
+                titleHolder.tvCny.setText("≈¥ " + new BigDecimal(titleHolder.tvCurrent.getText().toString()).multiply(new BigDecimal("7")).doubleValue() + "CNY");
+                break;
+            case 2:
+                strSaveNum = strPrice;
+                break;
+        }
         BigDecimal one = new BigDecimal("1");
         BigDecimal decimal = new BigDecimal(Double.valueOf(strPrice));//输入值
 
         switch (type) {
             case "dividend":
-                switch (assetTypeId) {
-                    case "1": //活动ETH    挂单数量*主流币的价格/子币的价格=A    （A*加速值*10）+A=最终计算结果
-//                        if (StringUtil.isCheckNumber(strPrice)) {
-//                            if (!StringUtil.isCheckNumZero(strPrice)) {
-//                                if (currentPriceBean != null) {
-//                                    if (currentPriceBean.getData() != null) {
-//                                        if (currentPriceBean.getData().getResultMap() != null)
-//                                            if (!TextUtils.isEmpty(currentPriceBean.getData().getResultMap().getConfigValue())) {
-//                                                BigDecimal currentPrice = currentPriceBean.getData().getResultMap().getCurrentPrice();
-//                                                BigDecimal multiply = decimal.multiply(currentPrice);
-//                                                BigDecimal v = multiply.divide(currentPriceBean.getData().getResultMap().getTodayPrice(), 2, BigDecimal.ROUND_DOWN);
-//
-//                                                //服务器传参保留8位
-//                                                BigDecimal pass = multiply.divide(currentPriceBean.getData().getResultMap().getTodayPrice(), 8, BigDecimal.ROUND_DOWN);
-//                                                BigDecimal pass1 = pass.multiply(oneHundredCount).multiply(ten);
-//                                                BigDecimal add1 = pass1.add(v);
-//                                                expectedAccess = String.valueOf(add1.divide(one, 8, BigDecimal.ROUND_DOWN).doubleValue());
-//
-//                                                //APP展示保留2位
-//                                                BigDecimal multiply1 = v.multiply(oneHundredCount).multiply(ten);
-//                                                BigDecimal add = multiply1.add(v);
-//                                                double v1 = add.divide(one, 2, BigDecimal.ROUND_DOWN).doubleValue();
-//                                                titleHolder.tvExpected.setText("" + v1);
-////                                                titleHolder.tvCompany.setText("USDT");
-//                                            }
-//                                    }
-//                                }
-//                            }
-//                        }
-                        break;
-                    case "2"://重购USDT    挂单数量*子币的价格/子币的价格
-//                        if (StringUtil.isCheckNumber(strPrice)) {
-//                            if (!StringUtil.isCheckNumZero(strPrice)) {
-//                                if (currentPriceBean != null) {
-//                                    if (currentPriceBean.getData() != null) {
-//                                        if (currentPriceBean.getData().getResultMap() != null) {
-//                                            if (currentPriceBean.getData().getResultMap().getCurrentPrice() != null) {
-//                                                BigDecimal multiply1 = decimal.multiply(oneHundredCount).multiply(ten);
-//                                                BigDecimal add = multiply1.add(decimal);
-//
-//                                                expectedAccess = String.valueOf(add.divide(one, 8, BigDecimal.ROUND_DOWN).doubleValue());
-//
-//                                                double v1 = add.divide(one, 2, BigDecimal.ROUND_DOWN).doubleValue();
-//                                                titleHolder.tvExpected.setText("" + v1);
-////                                                titleHolder.tvCompany.setText("USDT");
-//                                            }
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                        }
-                        break;
-                    case "3"://買入USDT    挂单数量*子币的价格/子币的价格
-                        if (StringUtil.isCheckNumber(strPrice)) {
-                            if (!StringUtil.isCheckNumZero(strPrice)) {
-                                if (currentPriceBean != null) {
-                                    if (currentPriceBean.getData() != null) {
-                                        if (currentPriceBean.getData().getResultMap() != null) {
-                                            String configValue = currentPriceBean.getData().getResultMap().getConfigValue();
-                                            if (!TextUtils.isEmpty(configValue)) {
-                                                BigDecimal multiply1 = null;
-                                                if (TextUtils.isEmpty(titleHolder.edEntrustNum.getText().toString()) || TextUtils.isEmpty(titleHolder.tvCurrent.getText().toString())) {
-                                                    return;
-                                                }
-                                                switch (iType) {
-                                                    case 1:
-                                                        multiply1 = decimal.multiply(BigDecimal.valueOf(Double.valueOf(titleHolder.edEntrustNum.getText().toString())));
-                                                        break;
-                                                    case 2:
-                                                        multiply1 = decimal.multiply(BigDecimal.valueOf(Double.valueOf(titleHolder.tvCurrent.getText().toString())));
-                                                        break;
-                                                }
-
-                                                BigDecimal num = new BigDecimal(configValue);
-                                                expectedAccess = String.valueOf(multiply1.divide(num, 8, BigDecimal.ROUND_HALF_UP).doubleValue());
-                                                v1 = multiply1.divide(one, 2, BigDecimal.ROUND_HALF_UP).doubleValue();
-                                                if (v1 > currentPriceBean.getData().getUsdtAccount().doubleValue()) {
-                                                    Toasts.showShort("餘額不足");
-                                                }
-                                                titleHolder.tvExpected.setText("" + v1);
-                                            }
+                if (StringUtil.isCheckNumber(strPrice)) {
+                    if (!StringUtil.isCheckNumZero(strPrice)) {
+                        if (currentPriceBean != null) {
+                            if (currentPriceBean.getData() != null) {
+                                if (currentPriceBean.getData().getResultMap() != null) {
+                                    String configValue = currentPriceBean.getData().getResultMap().getConfigValue();
+                                    if (!TextUtils.isEmpty(configValue)) {
+                                        BigDecimal multiply1 = null;
+                                        if (TextUtils.isEmpty(titleHolder.edEntrustNum.getText().toString()) || TextUtils.isEmpty(titleHolder.tvCurrent.getText().toString())) {
+                                            return;
                                         }
+                                        switch (iType) {
+                                            case 1:
+                                                multiply1 = decimal.multiply(BigDecimal.valueOf(Double.valueOf(titleHolder.edEntrustNum.getText().toString())));
+                                                break;
+                                            case 2:
+                                                multiply1 = decimal.multiply(BigDecimal.valueOf(Double.valueOf(titleHolder.tvCurrent.getText().toString())));
+                                                break;
+                                        }
+
+                                        BigDecimal num = new BigDecimal(configValue);
+                                        expectedAccess = String.valueOf(multiply1.divide(num, 8, BigDecimal.ROUND_HALF_UP).doubleValue());
+                                        v1 = multiply1.divide(one, 2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                                        if (v1 > currentPriceBean.getData().getUsdtAccount().doubleValue()) {
+                                            Toasts.showShort("餘額不足");
+                                        }
+                                        titleHolder.tvExpected.setText("" + v1);
                                     }
                                 }
                             }
                         }
-                        break;
+                    }
                 }
                 break;
             case "sell":   //挂单数量*子币的价格/主流币价格
@@ -954,6 +807,11 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
     }
 
+    /**
+     * 按钮触发时间控制
+     *
+     * @return
+     */
     private static boolean isFastClick() {
         boolean flag = false;
         long curClickTime = System.currentTimeMillis();

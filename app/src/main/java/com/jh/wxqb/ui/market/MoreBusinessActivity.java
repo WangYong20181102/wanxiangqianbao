@@ -40,7 +40,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * 当前买卖
+ * 查看更多（最近成交）
  */
 public class MoreBusinessActivity extends BaseActivity implements MarketView, MyClicker, View.OnClickListener {
 
@@ -84,13 +84,11 @@ public class MoreBusinessActivity extends BaseActivity implements MarketView, My
 
     @Override
     public void myClick(View view, int type) {
-        switch (type) {
-            case 0:
-                int position = (int) view.getTag();
-                Intent intent=new Intent(this,PurchaseOrderActivity.class);
-                intent.putExtra("data",listBeen.get(position));
-                startActivityForResult(intent, CoreKeys.RESULT_CODE);
-                break;
+        if (type == 0) {
+            int position = (int) view.getTag();
+            Intent intent = new Intent(this, PurchaseOrderActivity.class);
+            intent.putExtra("data", listBeen.get(position));
+            startActivityForResult(intent, CoreKeys.RESULT_CODE);
         }
     }
 
@@ -120,10 +118,10 @@ public class MoreBusinessActivity extends BaseActivity implements MarketView, My
     }
 
 
-    public void selType(int type){
+    public void selType(int type) {
         pageIndex = 1;
         isClear = true;
-        this.type =type;
+        this.type = type;
         showWaitDialog();
         marketPresenter.dividendMarketTopDividend(pageIndex, 1, type);
     }
@@ -135,9 +133,9 @@ public class MoreBusinessActivity extends BaseActivity implements MarketView, My
     private void selBusinessType(LinearLayout view) {
         ivBusinessDown.setImageResource(R.drawable.iv_up);
         View contentView = LayoutInflater.from(this).inflate(R.layout.item_business_type, null);
-        TextView tvAll = (TextView) contentView.findViewById(R.id.tv_all);
-        TextView tvDividend = (TextView) contentView.findViewById(R.id.tv_dividend);
-        TextView tvSell = (TextView) contentView.findViewById(R.id.tv_sell);
+        TextView tvAll = contentView.findViewById(R.id.tv_all);
+        TextView tvDividend = contentView.findViewById(R.id.tv_dividend);
+        TextView tvSell = contentView.findViewById(R.id.tv_sell);
         tvAll.setOnClickListener(this);
         tvDividend.setOnClickListener(this);
         tvSell.setOnClickListener(this);
@@ -237,7 +235,7 @@ public class MoreBusinessActivity extends BaseActivity implements MarketView, My
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==CoreKeys.RESULT_CODE && resultCode==CoreKeys.RESULT_CODE){
+        if (requestCode == CoreKeys.RESULT_CODE && resultCode == CoreKeys.RESULT_CODE) {
             pageIndex = 1;
             isClear = true;
             marketPresenter.dividendMarketTopDividend(pageIndex, 1, type);

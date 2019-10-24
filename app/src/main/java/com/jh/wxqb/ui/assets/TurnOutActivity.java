@@ -11,6 +11,7 @@ import com.jh.wxqb.base.CoreKeys;
 import com.jh.wxqb.base.MyApplication;
 import com.jh.wxqb.bean.AssetManagementBean;
 import com.jh.wxqb.bean.BaseBean;
+import com.jh.wxqb.bean.CoinPricesBean;
 import com.jh.wxqb.bean.FinancialDetailsBean;
 import com.jh.wxqb.bean.SafetyMarkingBean;
 import com.jh.wxqb.customview.CancelOrOkDialog;
@@ -176,6 +177,16 @@ public class TurnOutActivity extends BaseActivity implements MessageView, Assets
         dismissWaitDialog();
         LogUtils.e("safetyMarkingSuccess===>" + GsonUtil.GsonString(result));
         ident = result.getData().getIdent();
+    }
+
+    @Override
+    public void coinPricesSuccess(CoinPricesBean result) {
+
+    }
+
+    @Override
+    public void coinRechangeSuccess(BaseBean result) {
+
     }
 
     @Subscribe

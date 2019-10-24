@@ -18,7 +18,7 @@ import com.jh.wxqb.utils.PermissionUtils;
 
 public class WelcomeActivity extends AppCompatActivity {
     private static final int WHAT_DELAY = 0x11;
-    private static final int DELAY_TIME = 7000;// 延时时间
+    private static final int DELAY_TIME = 6000;// 延时时间
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         @Override

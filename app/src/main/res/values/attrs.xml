@@ -23,4 +23,21 @@
         <attr name="marquee_textSize" format="dimension|reference"/>
         <attr name="marquee_textColor" format="color|reference"/>
     </declare-styleable>
+    <declare-styleable name="HandicapView">
+        <attr name="buy_bg_color" format="color" />
+        <attr name="sell_bg_color" format="color" />
+        <attr name="buy_text_color" format="color" />
+        <attr name="sell_text_color" format="color" />
+        <attr name="title_text_color" format="color" />
+        <attr name="item_number_color" format="color"/>
+        <attr name="title_text_size" format="dimension" />
+        <attr name="title_text_padding" format="dimension"/>
+        <attr name="item_text_size" format="dimension" />
+        <attr name="about_size" format="dimension"/>
+        <attr name="now_price_size" format="dimension"/>
+        <attr name="now_price_padding" format="dimension"/>
+        <attr name="now_price_line_height" format="dimension"/>
+        <attr name="text_padding_end" format="dimension"/>
+        <attr name="text_padding_start" format="dimension"/>
+    </declare-styleable>
 </resources>

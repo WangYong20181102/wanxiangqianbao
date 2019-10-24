@@ -17,8 +17,8 @@ import com.jh.wxqb.ui.home.login.LoginActivity;
 public class AgainLoginUtil {
 
     public static void againLogin(Context mContext, int statue){
-        SharedPreferencesUtil.setPrefInt(mContext,"FirstVerification",0);
         if (statue == ServerInterface.LOGIN_INVALID) {
+            SharedPreferencesUtil.setPrefInt(mContext,"FirstVerification",0);
             Intent intent = new Intent(mContext, LoginActivity.class);
             mContext.startActivity(intent);
             MyApplication.setUserBean(null);

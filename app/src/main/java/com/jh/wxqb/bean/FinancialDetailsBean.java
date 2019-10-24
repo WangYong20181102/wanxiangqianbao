@@ -86,6 +86,15 @@ public class FinancialDetailsBean {
             private String Id;
             private int tradeType;
             private int flowType;
+            private String detailType;
+
+            public String getDetailType() {
+                return detailType;
+            }
+
+            public void setDetailType(String detailType) {
+                this.detailType = detailType;
+            }
 
             public int getFlowType() {
                 return flowType;

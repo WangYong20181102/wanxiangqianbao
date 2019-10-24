@@ -20,6 +20,7 @@ import com.jh.wxqb.base.MainActivity;
 import com.jh.wxqb.base.MyApplication;
 import com.jh.wxqb.bean.AssetManagementBean;
 import com.jh.wxqb.bean.BaseBean;
+import com.jh.wxqb.bean.CoinPricesBean;
 import com.jh.wxqb.bean.FinancialDetailsBean;
 import com.jh.wxqb.bean.SafetyMarkingBean;
 import com.jh.wxqb.customview.DefineLoadMoreView;
@@ -129,7 +130,7 @@ public class DividendAssetsFragment extends BaseFragment implements AssetsView {
                     shop_recy.loadMoreFinish(false, true);
                     pageIndex = 1;
                     isClear = true;
-                    assestPresenter.getFinancialDetails(pageIndex, 6);
+//                    assestPresenter.getFinancialDetails(pageIndex, 6);
                     sw_refresh.setRefreshing(false);  //停止刷新
                 }
             });
@@ -172,6 +173,16 @@ public class DividendAssetsFragment extends BaseFragment implements AssetsView {
     }
 
     @Override
+    public void coinPricesSuccess(CoinPricesBean result) {
+
+    }
+
+    @Override
+    public void coinRechangeSuccess(BaseBean result) {
+
+    }
+
+    @Override
     protected void onFragmentVisibleChange(boolean isVisible) {
 
     }
@@ -206,10 +217,10 @@ public class DividendAssetsFragment extends BaseFragment implements AssetsView {
     public void selAssets(String selAssets) {
         switch (selAssets) {
             case "udpAssestData":
-                assestPresenter.getFinancialDetails(pageIndex, 6);
+//                assestPresenter.getFinancialDetails(pageIndex, 6);
                 break;
             case "selAssets":
-                assestPresenter.getFinancialDetails(pageIndex, 6);
+//                assestPresenter.getFinancialDetails(pageIndex, 6);
                 break;
 //            case "udpAssestNum":
 //                if(MyApplication.getUserBean()!=null){

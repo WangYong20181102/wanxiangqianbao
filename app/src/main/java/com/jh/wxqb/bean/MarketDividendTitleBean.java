@@ -1,6 +1,5 @@
 package com.jh.wxqb.bean;
 
-import org.w3c.dom.Text;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -127,6 +126,18 @@ public class MarketDividendTitleBean {
                 private long createDate;
                 private int assetTypeId;
                 private String updateTime;
+                private BigDecimal depth;
+
+                public BigDecimal getDepth() {
+                    if (depth == null) {
+                        return new BigDecimal("0");
+                    }
+                    return depth;
+                }
+
+                public void setDepth(BigDecimal depth) {
+                    this.depth = depth;
+                }
 
                 public BigDecimal getCountUnfilledVolume() {
                     return countUnfilledVolume;
@@ -252,6 +263,18 @@ public class MarketDividendTitleBean {
                 private long createDate;
                 private int assetTypeId;
                 private String updateTime;
+                private BigDecimal depth;
+
+                public BigDecimal getDepth() {
+                    if (depth == null) {
+                        return new BigDecimal("0");
+                    }
+                    return depth;
+                }
+
+                public void setDepth(BigDecimal depth) {
+                    this.depth = depth;
+                }
 
                 public BigDecimal getCountUnfilledVolume() {
                     return countUnfilledVolume;

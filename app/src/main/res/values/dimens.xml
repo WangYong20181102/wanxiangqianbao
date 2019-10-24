@@ -545,11 +545,13 @@
     <dimen name="d110.5">110.5dp</dimen>
     <dimen name="d112">112dp</dimen>
     <dimen name="d113">113dp</dimen>
+    <dimen name="d114">114dp</dimen>
     <dimen name="d115">115dp</dimen>
     <dimen name="d116">116dp</dimen>
     <dimen name="d118">118dp</dimen>
     <dimen name="d119">119dp</dimen>
     <dimen name="d120">120dp</dimen>
+    <dimen name="d122">122dp</dimen>
     <dimen name="d125">125dp</dimen>
     <dimen name="d126">126dp</dimen>
     <dimen name="d129">129dp</dimen>

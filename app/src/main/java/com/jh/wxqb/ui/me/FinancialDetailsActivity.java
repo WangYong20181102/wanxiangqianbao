@@ -50,9 +50,10 @@ public class FinancialDetailsActivity extends BaseActivity implements MeView, My
     @BindView(R.id.tv_type)
     TextView tvType;
 
-    protected RecyclerView.ItemDecoration mItemDecoration;  //Item之间的间距
+//    protected RecyclerView.ItemDecoration mItemDecoration;  //Item之间的间距
     int pageIndex = 1;
     int type = 1;  //财务类型   	1.全部2.转出3.提币4.转入5.外部转入6.買入7.活动 8.重构9.買入收益10.分享奖励
+    int coinTypeId = 0;//币种
     boolean isClear = true;
     private FinancialDetailsAdapter adapter;
     private List<FinancialDetailsBean.DataBean.LogListBean> financialDetailsBeen = new ArrayList<>();
@@ -68,9 +69,10 @@ public class FinancialDetailsActivity extends BaseActivity implements MeView, My
 
     @Override
     protected void init() {
+        coinTypeId = getIntent().getIntExtra("coinTypeId", 0);
         mePresenter = new MePresenter(this);
         mePresenter.financialDetailsType();
-        mePresenter.getFinancialDetails(pageIndex, type);
+        mePresenter.getFinancialDetails(pageIndex, type, coinTypeId);
         initRecyclerView();
 
     }
@@ -92,8 +94,8 @@ public class FinancialDetailsActivity extends BaseActivity implements MeView, My
         shop_recy.setLoadMoreView(loadMoreView); // 设置LoadMoreView更新监听。
         shop_recy.setLoadMoreListener(mLoadMoreListener);   //上拉加载更多
         sw_refresh.setOnRefreshListener(mRefreshListener);  //下拉刷新
-        mItemDecoration = createItemDecoration(); //获取ItemDecoration对象
-        shop_recy.addItemDecoration(mItemDecoration); //添加每个Item之间的间距
+//        mItemDecoration = createItemDecoration(); //获取ItemDecoration对象
+//        shop_recy.addItemDecoration(mItemDecoration); //添加每个Item之间的间距
         //初始化适配器
         adapter = new FinancialDetailsAdapter(this, financialDetailsBeen);
         shop_recy.setAdapter(adapter);  //设置适配器
@@ -103,7 +105,7 @@ public class FinancialDetailsActivity extends BaseActivity implements MeView, My
     //每个Item之间的间距
     protected RecyclerView.ItemDecoration createItemDecoration() {
         //颜色  宽度  高度
-        return new DefaultItemDecoration(Color.rgb(243, 243, 243), WindowManager.LayoutParams.MATCH_PARENT, 1);
+        return new DefaultItemDecoration(Color.parseColor("#999999"), WindowManager.LayoutParams.MATCH_PARENT, 1);
     }
 
 
@@ -125,7 +127,7 @@ public class FinancialDetailsActivity extends BaseActivity implements MeView, My
                 public void run() {
                     isClear = false;
                     pageIndex = pageIndex + 1;
-                    mePresenter.getFinancialDetails(pageIndex, type);
+                    mePresenter.getFinancialDetails(pageIndex, type, coinTypeId);
                     shop_recy.loadMoreFinish(false, true);
                 }
             }, 1000);
@@ -142,7 +144,7 @@ public class FinancialDetailsActivity extends BaseActivity implements MeView, My
                     shop_recy.loadMoreFinish(false, true);
                     pageIndex = 1;
                     isClear = true;
-                    mePresenter.getFinancialDetails(pageIndex, type);
+                    mePresenter.getFinancialDetails(pageIndex, type, coinTypeId);
                     sw_refresh.setRefreshing(false);  //停止刷新
                 }
             });
@@ -158,7 +160,7 @@ public class FinancialDetailsActivity extends BaseActivity implements MeView, My
                 finish();
                 break;
             case R.id.tv_type:
-//                selType(tvType);
+                selType(tvType);
                 break;
         }
     }
@@ -192,7 +194,7 @@ public class FinancialDetailsActivity extends BaseActivity implements MeView, My
                 shop_recy.loadMoreFinish(false, true);
                 pageIndex = 1;
                 isClear = true;
-                mePresenter.getFinancialDetails(pageIndex, this.type);
+                mePresenter.getFinancialDetails(pageIndex, this.type, coinTypeId);
                 break;
         }
     }

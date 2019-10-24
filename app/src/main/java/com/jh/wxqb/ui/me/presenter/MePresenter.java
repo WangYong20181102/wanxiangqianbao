@@ -198,8 +198,8 @@ public class MePresenter {
     /**
      * 获取财务明细列表
      */
-    public void getFinancialDetails(int pageNum, int type) {
-        biz.getFinancialDetails(pageNum, type, new OnBaseListener() {
+    public void getFinancialDetails(int pageNum, int type,int coinTypeId) {
+        biz.getFinancialDetails(pageNum, type,coinTypeId, new OnBaseListener() {
             @Override
             public void onResponse(String result) {
                 if (GsonUtil.isJson(result)) {

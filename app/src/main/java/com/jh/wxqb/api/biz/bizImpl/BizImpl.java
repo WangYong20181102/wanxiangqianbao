@@ -811,8 +811,8 @@ public class BizImpl extends BaseBiz implements Biz {
      * @param listener
      */
     @Override
-    public void getFinancialDetails(int pageNum, int type, final OnBaseListener listener) {
-        getStringRetrofit().create(ServerApi.class).getFinancialDetails(pageNum, type).enqueue(new Callback<String>() {
+    public void getFinancialDetails(int pageNum, int type, int coinTypeId,final OnBaseListener listener) {
+        getStringRetrofit().create(ServerApi.class).getFinancialDetails(pageNum, type,coinTypeId).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (call != null) {
@@ -1269,6 +1269,75 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
+                listener.onFailure("服务器繁忙,请稍后再试", 0);
+            }
+        });
+    }
+
+    /**
+     * 获取币种价格
+     * @param listener
+     */
+    @Override
+    public void getQuerycoinprice(final OnBaseListener listener) {
+        getStringRetrofit().create(ServerApi.class).getQuerycoinprice().enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (call != null) {
+                    if (response.body() != null) {
+                        LogUtils.e("当前币种价格获取成功==>" + GsonUtil.GsonString(response.body()));
+                        if (response.isSuccessful()) {
+                            listener.onResponse(response.body());
+                        } else {
+                            listener.onFailure(response.message(), response.raw().code());
+                        }
+                    } else {
+                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                if (call.isExecuted()) {
+                    call.cancel();
+                }
+                LogUtils.e("服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
+                listener.onFailure("服务器繁忙,请稍后再试", 0);
+            }
+        });
+    }
+
+    /**
+     * 币种兑换
+     * @param map
+     * @param listener
+     */
+    @Override
+    public void getSavechangeinfo(Map<String, String> map, final OnBaseListener listener) {
+        getStringRetrofit().create(ServerApi.class).getSavechangeinfo(map).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (call != null) {
+                    if (response.body() != null) {
+                        LogUtils.e("币种兑换成功==>" + GsonUtil.GsonString(response.body()));
+                        if (response.isSuccessful()) {
+                            listener.onResponse(response.body());
+                        } else {
+                            listener.onFailure(response.message(), response.raw().code());
+                        }
+                    } else {
+                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                if (call.isExecuted()) {
+                    call.cancel();
+                }
+                LogUtils.e("服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
                 listener.onFailure("服务器繁忙,请稍后再试", 0);
             }
         });

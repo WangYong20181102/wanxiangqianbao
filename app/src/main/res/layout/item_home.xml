@@ -14,7 +14,7 @@
             android:layout_height="@dimen/iv_58"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/iv_30"
-            android:src="@drawable/logo" />
+            android:src="@mipmap/logo_white" />
 
         <TextView
             android:id="@+id/tv_name"

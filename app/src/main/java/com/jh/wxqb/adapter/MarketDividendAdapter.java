@@ -280,15 +280,15 @@ public class MarketDividendAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         titleHolder = holder;
         switch (selActiveType) {
             case "1":
-                holder.tvBalance.setText(R.string.current_eth_balance);
+                holder.tvBalance.setText(R.string.current_balance);
                 holder.tvEntrustType.setText(R.string.activity_eth);
                 break;
             case "2":
-                holder.tvBalance.setText(R.string.current_usdt_balance);
+                holder.tvBalance.setText(R.string.current_balance);
                 holder.tvEntrustType.setText(R.string.repurchase_usdt);
                 break;
             case "3":
-                holder.tvBalance.setText(R.string.current_usdt_balance);
+                holder.tvBalance.setText(R.string.current_balance);
                 holder.tvEntrustType.setText(R.string.dividend_tgm);
                 break;
         }
@@ -300,16 +300,16 @@ public class MarketDividendAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 holder.tvCurrentBalance.setTextColor(Color.rgb(0, 204, 102));
                 holder.tvDividends.setBackgroundResource(R.drawable.market_buy_bg);
                 holder.tvDividends.setText(R.string.access_to_dividends);
-                holder.tvBalance.setText(R.string.current_eth_balance);
+                holder.tvBalance.setText(R.string.current_balance);
                 switch (assetTypeId) {
                     case "1":
-                        holder.tvBalance.setText(R.string.current_eth_balance);
+                        holder.tvBalance.setText(R.string.current_balance);
                         break;
                     case "2":
-                        holder.tvBalance.setText(R.string.current_usdt_balance);
+                        holder.tvBalance.setText(R.string.current_balance);
                         break;
                     case "3":
-                        holder.tvBalance.setText(R.string.current_usdt_balance);
+                        holder.tvBalance.setText(R.string.current_balance);
                         break;
                 }
                 break;
@@ -321,7 +321,7 @@ public class MarketDividendAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 holder.tvDividends.setBackgroundResource(R.drawable.market_sell_bg);
                 holder.tvCompany.setTextColor(Color.parseColor("#d6734b"));
                 holder.tvDividends.setText(R.string.sell);
-                holder.tvBalance.setText(R.string.current_tgm_balance);
+                holder.tvBalance.setText(R.string.current_balance);
                 break;
         }
         LogUtils.e("isUdpTypeText==>" + isUdpTypeText);

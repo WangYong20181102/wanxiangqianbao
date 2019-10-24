@@ -17,6 +17,7 @@ import com.jh.wxqb.base.BaseFragment;
 import com.jh.wxqb.base.MainActivity;
 import com.jh.wxqb.bean.AssetManagementBean;
 import com.jh.wxqb.bean.BaseBean;
+import com.jh.wxqb.bean.CoinPricesBean;
 import com.jh.wxqb.bean.FinancialDetailsBean;
 import com.jh.wxqb.bean.SafetyMarkingBean;
 import com.jh.wxqb.customview.DefineLoadMoreView;
@@ -67,6 +68,7 @@ public class ActiveManagementFragment extends BaseFragment implements MyClicker,
             EventBus.getDefault().register(this);
             assestPresenter = new AssestPresenter(this);
             initRecyclerView();
+            assestPresenter.getQueryaccountassets(pageIndex, 7);
         }
         return view;
     }
@@ -190,6 +192,16 @@ public class ActiveManagementFragment extends BaseFragment implements MyClicker,
 
     @Override
     public void safetyMarkingSuccess(SafetyMarkingBean result) {
+
+    }
+
+    @Override
+    public void coinPricesSuccess(CoinPricesBean result) {
+
+    }
+
+    @Override
+    public void coinRechangeSuccess(BaseBean result) {
 
     }
 

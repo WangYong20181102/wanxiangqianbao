@@ -79,13 +79,8 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
     private CurrentPriceBean currentPriceBean;
     private MarketDividendTitleBean.DataBean.ListBean buyListBeen;
     private List<MarketDividendBottomBean.DataBean.ListBean> listBeen = new ArrayList<>();
-    private int type = 0;
+    private int type = 0; //全部
     private String viewType = "dividend";   //dividend：買入  sell：卖出
-    private String transactionType = "1";   //  挂单方向 1：買入  2：卖出
-    private String coinType = "1";   //  资产类型 1：活动ETH  2：重构PKB  3：買入PKB
-    private String selActiveType = "1";  //选择買入类型文字记录   1活动ETH  2重购PKB  3：買入PKB
-    private String assetTypeId = "3";  //记录 買入选择类型   委托数量输入框计算预计获得
-    private String isUdpTypeText = "0";  //标识当前买卖是否修改  0不修改  1修改
     private Timer timer;
     private int count = 0;
     private MarketPresenter marketPresenter;
@@ -139,8 +134,8 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
         map = new HashMap<>();
         switch (currentType) {
             case "dividend":
-                map.put("coinType", coinType);
-                map.put("transactionType", transactionType);
+                map.put("coinType", "1");
+                map.put("transactionType", "1");
                 break;
             case "sell":
                 map.put("transactionType", "2");
@@ -160,20 +155,23 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
                 startActivity(intent);
                 break;
             case R.id.ll_active_assets:
-                isUdpTypeText = "0";
+                count++;
                 selectTitle(0);
-                upTopBottomData("dividend");
+//                upTopBottomData("dividend");
                 break;
             case R.id.ll_repurchase_assets:
-                isUdpTypeText = "0";
+                count++;
                 selectTitle(1);
-                upTopBottomData("sell");
+//                upTopBottomData("sell");
                 break;
         }
     }
 
     //选择标题
     public void selectTitle(int index) {
+        if (timer == null) {
+            startTimer();
+        }
         clearViewAndTitle();
         switch (index) {
             case 0:
@@ -189,7 +187,10 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
                 llRepurchaseAssets.setBackgroundResource(R.mipmap.sell_select);
                 break;
         }
-        adapter = null;
+        if (adapter != null) {
+            adapter.setCurrentPrice(currentPriceBean, viewType,1);
+            adapter.notifyItemRangeChanged(0, 1);
+        }
     }
 
     //初始化标题
@@ -213,14 +214,20 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
                 map = new HashMap<>();
                 switch (viewType) {
                     case "dividend":
-                        map.put("coinType", coinType);
-                        map.put("transactionType", transactionType);
+                        map.put("coinType", "1");
+                        map.put("transactionType", "1");
                         break;
                     case "sell":
                         map.put("transactionType", "2");
                         break;
                 }
                 marketPresenter.getCurrentPrice(map);
+                break;
+            case "pauseTimer":
+                onPause();
+                break;
+            case "resumeTimer":
+                onResume();
                 break;
         }
     }
@@ -231,17 +238,12 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
         LogUtils.e("type==>" + type);
         switch (type) {
             case "udpBusiness":
-                this.type = intent.getIntExtra("typeNum", 0);
-                isUdpTypeText = intent.getStringExtra("isUdpTypeText");
                 marketPresenter.dividendMarketTopDividend(1, 1, this.type);
                 break;
             case "udpCurrentPrice":
-                coinType = intent.getStringExtra("coinType");
-                selActiveType = intent.getStringExtra("coinType");
-                assetTypeId = intent.getStringExtra("assetTypeId");
                 map = new HashMap<>();
-                map.put("coinType", coinType);
-                map.put("transactionType", transactionType);
+                map.put("coinType", "1");
+                map.put("transactionType", "1");
                 marketPresenter.getCurrentPrice(map);
                 break;
             case "openDividends":
@@ -281,7 +283,7 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
         //初始化适配器
         shop_recy.setFocusableInTouchMode(false);
         shop_recy.setItemAnimator(null);
-        adapter = new MarketPlaceAdapter(mContext, getActivity(), viewType, buyListBeen, listBeen, currentPriceBean, selActiveType, assetTypeId, type, isUdpTypeText);
+        adapter = new MarketPlaceAdapter(mContext, viewType, buyListBeen, listBeen, currentPriceBean,0);
         shop_recy.setAdapter(adapter);  //设置适配器
     }
 
@@ -296,6 +298,7 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
             buyListBeen = result.getData().getList();
             upDataAdapter();
         }
+        //增长点
         if (!TextUtils.isEmpty(result.getData().getQuoteChange())) {
             String percentagePoint = result.getData().getQuoteChange();
             if (percentagePoint.contains("+")) {
@@ -334,11 +337,10 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
      */
     private void upDataAdapter() {
         if (adapter == null) {
-            adapter = new MarketPlaceAdapter(mContext, getActivity(), viewType, buyListBeen, listBeen, currentPriceBean, selActiveType, assetTypeId, type, isUdpTypeText);
+            adapter = new MarketPlaceAdapter(mContext, viewType, buyListBeen, listBeen, currentPriceBean,0);
             shop_recy.setAdapter(adapter);  //设置适配器
         } else {
-            adapter.updateList(mContext, getActivity(), viewType, buyListBeen, listBeen,
-                    currentPriceBean, selActiveType, assetTypeId, type, isUdpTypeText);
+            adapter.updateList(mContext, viewType, buyListBeen, listBeen, currentPriceBean,0);
             //指定刷新，防止輸入框失去焦點
             int itemCount;
             if (listBeen.size() >= 5) {
@@ -363,8 +365,8 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
             map = new HashMap<>();
             switch (viewType) {
                 case "dividend":
-                    map.put("coinType", coinType);
-                    map.put("transactionType", transactionType);
+                    map.put("coinType", "1");
+                    map.put("transactionType", "1");
                     break;
                 case "sell":
                     map.put("transactionType", "2");
@@ -374,7 +376,7 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
             return;
         }
         if (adapter != null) {
-            adapter.setCurrentPrice(currentPriceBean);
+            adapter.setCurrentPrice(currentPriceBean, viewType,0);
             adapter.notifyItemRangeChanged(0, 1);
         }
     }
@@ -477,10 +479,7 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
         if (adapter != null) {
             adapter = null;
         }
-        if (unbinder != null) {
-            unbinder.unbind();
-            unbinder = null;
-        }
+        unbinder.unbind();
     }
 
     private void stopTimer() {
@@ -499,15 +498,17 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
         super.onPause();
         if (timer != null) {
             timer.cancel();
+            timer = null;
         }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (count > 1) {
+        if (count > 0) {
             if (timer != null) {
                 timer.cancel();
+                timer = null;
             }
             startTimer();
         }

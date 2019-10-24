@@ -8,6 +8,7 @@ import com.jh.wxqb.api.biz.bizImpl.BizImpl;
 import com.jh.wxqb.base.OnBaseListener;
 import com.jh.wxqb.bean.AssetManagementBean;
 import com.jh.wxqb.bean.BaseBean;
+import com.jh.wxqb.bean.CoinPricesBean;
 import com.jh.wxqb.bean.FinancialDetailsBean;
 import com.jh.wxqb.bean.SafetyMarkingBean;
 import com.jh.wxqb.ui.assets.view.AssetsView;
@@ -34,8 +35,8 @@ public class AssestPresenter {
     /**
      * 获取财务明细列表
      */
-    public void getFinancialDetails(int pageNum, int type) {
-        biz.getFinancialDetails(pageNum, type, new OnBaseListener() {
+    public void getFinancialDetails(int pageNum, int type, int coinTypeId) {
+        biz.getFinancialDetails(pageNum, type, coinTypeId, new OnBaseListener() {
             @Override
             public void onResponse(String result) {
                 if (GsonUtil.isJson(result)) {
@@ -129,6 +130,59 @@ public class AssestPresenter {
                         assetsView.safetyMarkingSuccess(safetyMarkingBean);
                     } else {
                         assetsView.onViewFailureString(safetyMarkingBean.getCode(), safetyMarkingBean.getMessage());
+                    }
+                } else {
+                    assetsView.onServerFailure("服务器繁忙", 0);
+                }
+            }
+
+            @Override
+            public void onFailure(String e, int code) {
+                assetsView.onServerFailure(e, code);
+            }
+        });
+    }
+
+    /**
+     * 币种价格
+     */
+    public void getCoinPrices() {
+        biz.getQuerycoinprice(new OnBaseListener() {
+            @Override
+            public void onResponse(String result) {
+                if (GsonUtil.isJson(result)) {
+                    LogUtils.e("coinPrices==>" + GsonUtil.GsonString(result));
+                    CoinPricesBean coinPricesBean = GsonUtil.GsonToBean(result, CoinPricesBean.class);
+                    if (coinPricesBean.getCode() == ServerInterface.SUCCESS) {
+                        assetsView.coinPricesSuccess(coinPricesBean);
+                    } else {
+                        assetsView.onViewFailureString(coinPricesBean.getCode(), coinPricesBean.getMessage());
+                    }
+                } else {
+                    assetsView.onServerFailure("服务器繁忙", 0);
+                }
+            }
+
+            @Override
+            public void onFailure(String e, int code) {
+                assetsView.onServerFailure(e, code);
+            }
+        });
+    }
+    /**
+     * 币种兑换
+     */
+    public void getSavechangeinfo(Map<String, String> map){
+        biz.getSavechangeinfo(map, new OnBaseListener() {
+            @Override
+            public void onResponse(String result) {
+                if (GsonUtil.isJson(result)) {
+                    LogUtils.e("币种兑换==>" + GsonUtil.GsonString(result));
+                    BaseBean baseBean = GsonUtil.GsonToBean(result, BaseBean.class);
+                    if (baseBean.getCode() == ServerInterface.SUCCESS) {
+                        assetsView.coinRechangeSuccess(baseBean);
+                    } else {
+                        assetsView.onViewFailureString(baseBean.getCode(), baseBean.getMessage());
                     }
                 } else {
                     assetsView.onServerFailure("服务器繁忙", 0);

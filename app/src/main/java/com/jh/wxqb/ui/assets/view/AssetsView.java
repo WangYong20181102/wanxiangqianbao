@@ -4,6 +4,7 @@ package com.jh.wxqb.ui.assets.view;
 import com.jh.wxqb.base.BaseView;
 import com.jh.wxqb.bean.AssetManagementBean;
 import com.jh.wxqb.bean.BaseBean;
+import com.jh.wxqb.bean.CoinPricesBean;
 import com.jh.wxqb.bean.FinancialDetailsBean;
 import com.jh.wxqb.bean.SafetyMarkingBean;
 
@@ -40,5 +41,14 @@ public interface AssetsView extends BaseView {
      */
     void safetyMarkingSuccess(SafetyMarkingBean result);
 
+
+    /**
+     * 币种价格
+     */
+    void coinPricesSuccess(CoinPricesBean result);
+    /**
+     * 币种兑换
+     */
+    void coinRechangeSuccess(BaseBean result);
 
 }

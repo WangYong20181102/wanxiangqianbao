@@ -14,6 +14,7 @@ import com.jh.wxqb.base.BaseFragment;
 import com.jh.wxqb.base.MainActivity;
 import com.jh.wxqb.bean.AssetManagementBean;
 import com.jh.wxqb.bean.BaseBean;
+import com.jh.wxqb.bean.CoinPricesBean;
 import com.jh.wxqb.bean.FinancialDetailsBean;
 import com.jh.wxqb.bean.SafetyMarkingBean;
 import com.jh.wxqb.customview.DefineLoadMoreView;
@@ -62,6 +63,7 @@ public class FreezeAssetsFragment extends BaseFragment implements AssetsView {
             unbinder = ButterKnife.bind(this, view);
             assestPresenter = new AssestPresenter(this);
             initRecyclerView();
+            assestPresenter.getQueryaccountassets(pageIndex, 7);
         }
         return view;
     }
@@ -155,6 +157,16 @@ public class FreezeAssetsFragment extends BaseFragment implements AssetsView {
 
     @Override
     public void safetyMarkingSuccess(SafetyMarkingBean result) {
+
+    }
+
+    @Override
+    public void coinPricesSuccess(CoinPricesBean result) {
+
+    }
+
+    @Override
+    public void coinRechangeSuccess(BaseBean result) {
 
     }
 

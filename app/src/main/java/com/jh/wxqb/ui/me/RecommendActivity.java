@@ -25,12 +25,6 @@ import butterknife.OnClick;
 public class RecommendActivity extends BaseActivity {
 
 
-    @BindView(R.id.iv_user_img)
-    CircleImageView ivUserImg;
-    @BindView(R.id.tv_name)
-    TextView tvName;
-    @BindView(R.id.tv_code)
-    TextView tvCode;
     @BindView(R.id.iv_code)
     ImageView ivCode;
     @BindView(R.id.tv_address)
@@ -47,12 +41,7 @@ public class RecommendActivity extends BaseActivity {
     }
 
     private void initView() {
-//        if (PreferencesLoader.getObject(CoreKeys.USER_IMG, String.class) != null) {
-//            ivUserImg.setImageBitmap(BitmapUtil.compressImage(BitmapUtil.ratio(BitmapUtil.stringtoBitmap(MyApplication.getUserImg()), 200, 200)));
-//        }
         if (MyApplication.getUserBean() != null) {
-            tvName.setText(MyApplication.getUserBean().getUserName());
-            tvCode.setText(MyApplication.getUserBean().getUserId());
             tvAddress.setText(StringUtil.ellipsisString(ServerInterface.BASE_WEB_REGISTER_URL + MyApplication.getUserBean().getUserId(),20));
             Bitmap nobgQRImage = QRImageUtil.createNobgQRImage(this, ServerInterface.BASE_WEB_REGISTER_URL + MyApplication.getUserBean().getUserId());
             ivCode.setImageBitmap(nobgQRImage);

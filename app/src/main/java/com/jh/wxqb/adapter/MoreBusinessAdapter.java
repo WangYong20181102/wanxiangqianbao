@@ -14,6 +14,8 @@ import com.jh.wxqb.utils.MyClicker;
 import com.jh.wxqb.utils.TimeUtil;
 import com.zhy.autolayout.utils.AutoUtils;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -22,7 +24,7 @@ import butterknife.ButterKnife;
 
 /**
  * Created by Administrator on 2018/5/11 0011.
- * 当前买卖
+ * 查看更多
  */
 
 public class MoreBusinessAdapter extends RecyclerView.Adapter<MoreBusinessAdapter.ViewHolder> implements View.OnClickListener {
@@ -37,15 +39,16 @@ public class MoreBusinessAdapter extends RecyclerView.Adapter<MoreBusinessAdapte
         this.myClicker = myClicker;
     }
 
+    @NotNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         //设置自适应布局
         AutoUtils.autoSize(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_market_dividend_main, null));
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_market_dividend_main, null));
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(@NotNull ViewHolder holder, int position) {
         holder.setItem(listBeen.get(position));
         holder.refurbish(position);
     }
@@ -86,18 +89,14 @@ public class MoreBusinessAdapter extends RecyclerView.Adapter<MoreBusinessAdapte
             BigDecimal one = new BigDecimal("1");
             switch (listBeen.get(position).getDirection()) {
                 case 1:
-//                    tvPurchase.setVisibility(View.GONE);
-//                    tvNo.setVisibility(View.VISIBLE);
-                    tvType.setTextColor(Color.rgb(0, 204, 102));
+                    tvType.setTextColor(Color.parseColor("#03AD8F"));
                     tvType.setText(R.string.dividend);
-                    tvTurnover.setText(String.valueOf(listBeen.get(position).getAmountPrice().divide(one, 4, BigDecimal.ROUND_HALF_UP).doubleValue() + ""));
+                    tvTurnover.setText(String.valueOf(listBeen.get(position).getAmountPrice().divide(one, 4, BigDecimal.ROUND_HALF_UP).doubleValue()));
                     break;
                 case 2:
-//                    tvPurchase.setVisibility(View.VISIBLE);
-//                    tvNo.setVisibility(View.GONE);
-                    tvType.setTextColor(Color.parseColor("#d6734b"));
+                    tvType.setTextColor(Color.parseColor("#D14B64"));
                     tvType.setText(R.string.sell);
-                    tvTurnover.setText(String.valueOf(listBeen.get(position).getAmountPrice().divide(one, 4, BigDecimal.ROUND_HALF_UP).doubleValue() + ""));
+                    tvTurnover.setText(String.valueOf(listBeen.get(position).getAmountPrice().divide(one, 4, BigDecimal.ROUND_HALF_UP).doubleValue()));
                     break;
             }
             switch (listBeen.get(position).getOrderStatus()) {
@@ -114,18 +113,8 @@ public class MoreBusinessAdapter extends RecyclerView.Adapter<MoreBusinessAdapte
                     tvNo.setText(R.string.partial_deal);
                     break;
             }
-            String unit = "";
-            switch (listBeen.get(position).getAssetTypeId()) {
-                case 1:
-                    unit = "TGM";
-                    break;
-                case 2:
-                case 3:
-                    unit = "USDT";
-                    break;
-            }
-            tvTime.setText(TimeUtil.getTime(listBeen.get(position).getCreateDate()));
-            tvNum.setText(String.valueOf(listBeen.get(position).getAccountCommission().divide(one, 2, BigDecimal.ROUND_DOWN).doubleValue() + ""));
+            tvTime.setText(listBeen.get(position).getUpdateTime());
+            tvNum.setText(String.valueOf(listBeen.get(position).getAccountCommission().divide(one, 2, BigDecimal.ROUND_DOWN).doubleValue()));
             tvPurchase.setOnClickListener(MoreBusinessAdapter.this);
             tvPurchase.setTag(position);
         }

@@ -108,6 +108,10 @@ public class TimeUtil {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
         return format.format(new Date(time));// 2012-10-03 23:41:31
     }
+    public static String getMMDD(long time) {
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd HH:mm");
+        return format.format(new Date(time));// 2012-10-03 23:41:31
+    }
 
     //显示完整的年月日 时分秒
     public static String getMinute(long time) {

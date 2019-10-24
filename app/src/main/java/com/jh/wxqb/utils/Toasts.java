@@ -84,11 +84,11 @@ public class Toasts {
                     Toast.LENGTH_SHORT);
             LinearLayout linearLayout = (LinearLayout) toast.getView();
             TextView messageTextView = (TextView) linearLayout.getChildAt(0);
-            messageTextView.setTextSize(sContext.getResources().getDimension(R.dimen.s8));
+            messageTextView.setTextSize(sContext.getResources().getDimension(R.dimen.s7));
         } else {
             LinearLayout linearLayout = (LinearLayout) toast.getView();
             TextView messageTextView = (TextView) linearLayout.getChildAt(0);
-            messageTextView.setTextSize(sContext.getResources().getDimension(R.dimen.s8));
+            messageTextView.setTextSize(sContext.getResources().getDimension(R.dimen.s7));
             toast.setText(message);
         }
         toast.show();

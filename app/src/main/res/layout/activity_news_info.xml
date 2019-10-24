@@ -14,6 +14,10 @@
         android:layout_height="wrap_content"
         app:canBack="true"
         app:titleText="@string/news_and_information" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d1"
+        android:background="@color/color_eff2f4"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -33,6 +37,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/iv_60"
                 android:textColor="@color/gray_text"
+                android:layout_marginLeft="@dimen/iv_30"
+                android:layout_marginRight="@dimen/iv_30"
                 android:textSize="@dimen/iv_32"
                 android:textStyle="bold" />
 

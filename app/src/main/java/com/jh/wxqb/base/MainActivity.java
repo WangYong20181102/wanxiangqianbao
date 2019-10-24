@@ -85,17 +85,20 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         switch (view.getId()) {
             case R.id.ll_home:
                 setTabSelection(0);
-                EventBus.getDefault().post("udpHomeWenView");
+                EventBus.getDefault().post("pauseTimer");
                 break;
             case R.id.ll_market:
                 setTabSelection(1);
+                EventBus.getDefault().post("resumeTimer");
                 break;
             case R.id.ll_assets:
                 setTabSelection(2);
+                EventBus.getDefault().post("pauseTimer");
                 EventBus.getDefault().post("udpAssestData");
                 break;
             case R.id.ll_me:
                 setTabSelection(3);
+                EventBus.getDefault().post("pauseTimer");
                 EventBus.getDefault().post("udpHome");
                 break;
         }

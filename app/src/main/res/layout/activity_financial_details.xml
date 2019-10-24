@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_style"
+    android:background="@color/white"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.jh.wxqb.ui.me.FinancialDetailsActivity">
@@ -29,8 +29,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/financial_details"
-            android:textColor="@color/white"
-            android:textSize="@dimen/iv_32" />
+            android:textStyle="bold"
+            android:textColor="@color/color_21405a"
+            android:textSize="@dimen/s20" />
 
         <TextView
             android:id="@+id/tv_type"
@@ -40,16 +41,18 @@
             android:layout_centerVertical="true"
             android:gravity="center"
             android:text="全部"
-            android:textColor="@color/white"
+            android:textColor="@color/color_21405a"
             android:textSize="@dimen/iv_24" />
     </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d1"
+        android:background="@color/color_eff2f4"/>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/sw_refresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/iv_50"
-        android:layout_marginRight="@dimen/iv_50"
         android:overScrollMode="never"
         android:scrollbars="none">
 

@@ -6,15 +6,16 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
-import android.widget.RelativeLayout;
 
 import com.jh.wxqb.R;
 import com.jh.wxqb.api.ServerInterface;
@@ -28,6 +29,7 @@ import com.jh.wxqb.bean.NewsMoreListBean;
 import com.jh.wxqb.bean.UserBean;
 import com.jh.wxqb.bean.VersionUpdateBean;
 import com.jh.wxqb.customview.AppUpdateProgressDialog;
+import com.jh.wxqb.customview.MyWebView;
 import com.jh.wxqb.ui.home.presenter.HomePresenter;
 import com.jh.wxqb.ui.home.view.HomeView;
 import com.jh.wxqb.utils.AgainLoginUtil;
@@ -37,6 +39,8 @@ import com.jh.wxqb.utils.GsonUtil;
 import com.jh.wxqb.utils.LogUtils;
 import com.jh.wxqb.utils.SystemUtils;
 import com.jh.wxqb.utils.Toasts;
+import com.tencent.smtt.sdk.CookieManager;
+import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
@@ -55,14 +59,15 @@ import butterknife.Unbinder;
 /**
  * 首页
  */
-public class HomeFragment extends BaseFragment implements HomeView {
+public class HomeFragment extends BaseFragment implements HomeView, MyWebView.IScrollListener {
 
     Unbinder unbinder;
+    @BindView(R.id.swipe_refresh)
+    SwipeRefreshLayout swipeRefresh;
     private View view;
     @BindView(R.id.webView)
-    WebView mWebView;
+    MyWebView mWebView;
     private String appUrl = ServerInterface.BASE_URL + "wxwallet/index.html#/";
-//    http://192.168.101.51/wxwallet/index.html/#/home
     private static int REQUEST_WRITE = 42;
     public static AppUpdateProgressDialog dialog;
     private int mMaxProgress = 100;//百分比
@@ -91,9 +96,19 @@ public class HomeFragment extends BaseFragment implements HomeView {
                     + "&webpath=" + ServerInterface.BASE_WEB_URL + "&platform=az" + "&lang=" + MyApplication.getLanuage();
             LogUtils.e("首页访问路径==>" + appUrl);
         }
+        swipeRefresh.setOnRefreshListener(mRefreshListener);  //下拉刷新
+
+        mWebView.setOnScrollListener(this);
         mWebView.getSettings().setJavaScriptEnabled(true);// 支持js
         mWebView.getSettings().setUseWideViewPort(true); //自适应屏幕
-        mWebView.loadUrl(appUrl);  //访问路径
+        mWebView.setDrawingCacheEnabled(false);
+        mWebView.getSettings().setLoadWithOverviewMode(true);
+        mWebView.getSettings().setBlockNetworkImage(false);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            CookieManager cookieManager = CookieManager.getInstance();
+//            cookieManager.setAcceptThirdPartyCookies(mWebView, true);
+//            mWebView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+//        }
         WebSettings settings = mWebView.getSettings();//获取设置对对象
         settings.setSupportZoom(true); //支持缩放，默认为true。是下面那个的前提。
         settings.setBuiltInZoomControls(false); //设置内置的缩放控件。若为false，则该WebView不可缩放
@@ -125,7 +140,10 @@ public class HomeFragment extends BaseFragment implements HomeView {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+                //网页加载完成
+                mWebView.getSettings().setBlockNetworkImage(false);
 //                ((MainActivity) mContext).dismissWaitDialog();
+                swipeRefresh.setRefreshing(false);  //停止刷新
             }
 
             @Override
@@ -141,12 +159,33 @@ public class HomeFragment extends BaseFragment implements HomeView {
 //        第二个参数就是该类中的字符串常量
         JavaScriptMethod method = new JavaScriptMethod(mContext, mWebView);
         mWebView.addJavascriptInterface(method, JavaScriptMethod.JAVAINTERFACE);
+
+        mWebView.loadUrl(appUrl);  //访问路径
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    //下拉刷新
+    private SwipeRefreshLayout.OnRefreshListener mRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            mWebView.reload();
+        }
+    };
+
+    @Override
+    public void onScrollChanged(int scrollY) {
+        if (scrollY == 0) {
+            //开启下拉刷新
+            swipeRefresh.setEnabled(true);
+        } else {
+            //关闭下拉刷新
+            swipeRefresh.setEnabled(false);
+        }
     }
 
     public class JavaScriptMethod {
@@ -183,7 +222,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
                 presenter.getUserInfo();
                 break;
             case "udpHomeWenView":
-                mWebView.reload();
+//                mWebView.reload();
                 break;
         }
     }
@@ -205,10 +244,10 @@ public class HomeFragment extends BaseFragment implements HomeView {
             MyApplication.setUserBean(result.getData().getInfo());
             LogUtils.e("本地用户信息==>" + GsonUtil.GsonString(MyApplication.getUserBean()));
             EventBus.getDefault().post("udpMe");
-            EventBus.getDefault().post("udpWithdrawMoney");
+//            EventBus.getDefault().post("udpWithdrawMoney");
             EventBus.getDefault().post("udpTurnOut");
             EventBus.getDefault().post("udpPurchaseOrder");
-            EventBus.getDefault().post("udpAssestNum");
+//            EventBus.getDefault().post("udpAssestNum");
         }
     }
 
@@ -271,7 +310,6 @@ public class HomeFragment extends BaseFragment implements HomeView {
             public void close() {
                 super.close();
                 presenter.getUserInfo();
-//                EventBus.getDefault().post("selAssets");
             }
         };
         dialog.show();

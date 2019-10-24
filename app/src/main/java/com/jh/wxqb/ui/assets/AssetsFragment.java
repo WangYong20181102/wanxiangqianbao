@@ -45,11 +45,9 @@ public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChan
     View viewDividendAssets;
     @BindView(R.id.layout_view_pager)
     ViewPager layoutAssets;
-    //    @BindViews({R.id.tv_active_assets, R.id.tv_dividend_assets, R.id.tv_repurchase_assets})
-    @BindViews({R.id.tv_active_assets, R.id.tv_dividend_assets})
+    @BindViews({R.id.tv_active_assets, R.id.tv_dividend_assets, R.id.tv_repurchase_assets})
     List<TextView> allTitle;
-    //    @BindViews({R.id.view_active_assets, R.id.view_dividend_assets, R.id.view_repurchase_assets})
-    @BindViews({R.id.view_active_assets, R.id.view_dividend_assets})
+    @BindViews({R.id.view_active_assets, R.id.view_dividend_assets, R.id.view_repurchase_assets})
     List<View> allView;
     @BindView(R.id.tv_equivalent_assets)
     TextView tvEquivalentAssets;
@@ -74,7 +72,7 @@ public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChan
 
     private void initListener() {
         layoutAssets.addOnPageChangeListener(this);
-        layoutAssets.setOffscreenPageLimit(2);
+        layoutAssets.setOffscreenPageLimit(3);
     }
 
     private void initFragment() {
@@ -82,11 +80,13 @@ public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChan
         activeAssetsFragment = new ActiveManagementFragment();
         activeAssetsFragment.setOnEquivalentAssetsListener(this);
         FreezeAssetsFragment freezeAssetsFragment = new FreezeAssetsFragment();
+        EnjoyAssetsFragment enjoyAssetsFragment = new EnjoyAssetsFragment();
 //        ActiveAssetsFragment activeAssetsFragment = new ActiveAssetsFragment();
 //        DividendAssetsFragment dividendAssetsFragment = new DividendAssetsFragment();
 //        RepurchaseAssetsFragment repurchaseAssetsFragment = new RepurchaseAssetsFragment();
         fragmentList.add(activeAssetsFragment);
         fragmentList.add(freezeAssetsFragment);
+        fragmentList.add(enjoyAssetsFragment);
 //        fragmentList.add(repurchaseAssetsFragment);
         PagerAdapter adapter = new PagerAdapter(getActivity().getSupportFragmentManager(), fragmentList);
         layoutAssets.setAdapter(adapter);
@@ -161,6 +161,6 @@ public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChan
     @Override
     public void onResult(double totalAssets) {
         double f1 = new BigDecimal(totalAssets).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-        tvEquivalentAssets.setText(f1 + "");
+        tvEquivalentAssets.setText("¥ " + f1);
     }
 }

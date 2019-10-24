@@ -6,12 +6,20 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/rl_bg_click"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/d14"
         android:layout_marginTop="@dimen/iv_10"
         android:layout_marginRight="@dimen/d15"
         android:background="@android:color/transparent">
+
+        <ImageView
+            android:layout_width="@dimen/d6"
+            android:layout_height="@dimen/d11"
+            android:src="@mipmap/assets_right"
+            android:layout_marginTop="@dimen/d13"
+            android:layout_alignParentRight="true"/>
 
         <LinearLayout
             android:id="@+id/ll_layout"
@@ -41,6 +49,15 @@
                     android:textColor="@color/color_16263E"
                     android:textSize="@dimen/s13"
                     android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tv_team_excitation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_16263E"
+                    android:textSize="@dimen/s11"
+                    android:layout_marginLeft="@dimen/d10"
+                    android:text="(社区长激励：)"
+                    android:visibility="gone"/>
             </LinearLayout>
 
             <RelativeLayout

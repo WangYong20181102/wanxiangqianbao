@@ -27,7 +27,7 @@
             android:id="@+id/iv_user_img"
             android:layout_width="@dimen/iv_90"
             android:layout_height="@dimen/iv_90"
-            android:src="@drawable/logo" />
+            android:src="@mipmap/logo_white" />
 
         <TextView
             android:id="@+id/tv_name"

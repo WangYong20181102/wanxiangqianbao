@@ -119,7 +119,7 @@ public interface ServerApi {
 
     //获取财务明细列表
     @GET(ServerInterface.GET_FINANCIAL_DETAILS)
-    Call<String> getFinancialDetails(@Query("pageNum") int pageNum, @Query("type") int type);
+    Call<String> getFinancialDetails(@Query("pageNum") int pageNum, @Query("type") int type,@Query("coinTypeId") int coinTypeId);
     //資產管理
     @GET(ServerInterface.GET_QUERYACCOUNTASSETS)
     Call<String> getQueryaccountassets(@Query("pageNum") int pageNum, @Query("type") int type);
@@ -167,6 +167,13 @@ public interface ServerApi {
     //获取token失效时间
     @GET(ServerInterface.GET_TIME)
     Call<String> getTime();
+    //获取币种价格
+    @GET(ServerInterface.GET_QUERYCOINPRICE)
+    Call<String> getQuerycoinprice();
+    //币种兑换
+    @POST(ServerInterface.GET_SAVECHANGEINFO)
+    @FormUrlEncoded
+    Call<String> getSavechangeinfo(@FieldMap Map<String, String> map);
 
 
 

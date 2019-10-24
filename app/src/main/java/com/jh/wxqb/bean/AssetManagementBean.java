@@ -1,6 +1,7 @@
 package com.jh.wxqb.bean;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -74,10 +75,20 @@ public class AssetManagementBean implements Serializable {
             private double activeAssets;
             private double discountedPrice;
             private double dividendAssets;
-            private int sharingRevenue;
+            private BigDecimal sharingRevenue;
+            private int isGrouper;
+
             private int configRevenue;
             private long updateTime;
             private long createTime;
+            public int getIsGrouper() {
+                return isGrouper;
+            }
+
+            public void setIsGrouper(int isGrouper) {
+                this.isGrouper = isGrouper;
+            }
+
 
             public int getId() {
                 return id;
@@ -135,11 +146,11 @@ public class AssetManagementBean implements Serializable {
                 this.dividendAssets = dividendAssets;
             }
 
-            public int getSharingRevenue() {
+            public BigDecimal getSharingRevenue() {
                 return sharingRevenue;
             }
 
-            public void setSharingRevenue(int sharingRevenue) {
+            public void setSharingRevenue(BigDecimal sharingRevenue) {
                 this.sharingRevenue = sharingRevenue;
             }
 

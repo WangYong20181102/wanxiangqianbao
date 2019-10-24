@@ -9,7 +9,7 @@
         android:id="@+id/imageView"
         android:layout_width="@dimen/iv_100"
         android:layout_height="@dimen/iv_100"
-        android:src="@mipmap/logo" />
+        android:src="@mipmap/logo_white" />
 
     <RelativeLayout
         android:layout_width="fill_parent"

@@ -19,6 +19,7 @@ import com.jh.wxqb.base.MainActivity;
 import com.jh.wxqb.base.MyApplication;
 import com.jh.wxqb.bean.AssetManagementBean;
 import com.jh.wxqb.bean.BaseBean;
+import com.jh.wxqb.bean.CoinPricesBean;
 import com.jh.wxqb.bean.FinancialDetailsBean;
 import com.jh.wxqb.bean.SafetyMarkingBean;
 import com.jh.wxqb.customview.DefineLoadMoreView;
@@ -115,7 +116,7 @@ public class RepurchaseAssetsFragment extends BaseFragment implements AssetsView
                     shop_recy.loadMoreFinish(false, true);
                     pageIndex = 1;
                     isClear = true;
-                    assestPresenter.getFinancialDetails(pageIndex, 8);
+//                    assestPresenter.getFinancialDetails(pageIndex, 8);
                     sw_refresh.setRefreshing(false);  //停止刷新
                 }
             });
@@ -153,6 +154,16 @@ public class RepurchaseAssetsFragment extends BaseFragment implements AssetsView
 
     @Override
     public void safetyMarkingSuccess(SafetyMarkingBean result) {
+
+    }
+
+    @Override
+    public void coinPricesSuccess(CoinPricesBean result) {
+
+    }
+
+    @Override
+    public void coinRechangeSuccess(BaseBean result) {
 
     }
 

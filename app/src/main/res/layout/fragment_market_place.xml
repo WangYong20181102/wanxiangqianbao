@@ -18,8 +18,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/dividend_market"
+            android:textStyle="bold"
             android:textColor="@color/color_21405a"
-            android:textSize="@dimen/s17" />
+            android:textSize="@dimen/s20" />
 
         <RelativeLayout
             android:id="@+id/ll_current_entrustment"
@@ -68,6 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/dividend"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="@dimen/s14" />
         </RelativeLayout>
@@ -86,6 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/sell"
+                android:textStyle="bold"
                 android:textColor="@color/color_7E93A2"
                 android:textSize="@dimen/s14" />
 

@@ -171,7 +171,7 @@
                     android:id="@+id/tv_balance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/current_eth_balance"
+                    android:text="@string/current_balance"
                     android:textColor="@color/color_02c289"
                     android:textSize="@dimen/s15" />
 

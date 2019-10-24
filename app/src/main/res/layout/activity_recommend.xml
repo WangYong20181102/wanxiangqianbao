@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@mipmap/recommend_bg"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.jh.wxqb.ui.me.RecommendActivity">
@@ -20,58 +20,28 @@
         android:layout_height="@dimen/d1"
         android:background="@color/color_eff2f4" />
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:overScrollMode="never"
-        android:scrollbars="none">
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/d114"
+            android:layout_height="@dimen/d85"
+            android:layout_marginTop="@dimen/d20"
+            android:layout_marginLeft="@dimen/d20"
+            android:src="@drawable/login_logo" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="vertical">
-
-            <com.jh.wxqb.customview.CircleImageView
-                android:id="@+id/iv_user_img"
-                android:layout_width="@dimen/iv_200"
-                android:layout_height="@dimen/iv_200"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/iv_42"
-                android:src="@drawable/iv_user_logo"
-                app:layout_auto_baseheight="width" />
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/iv_20"
-                android:textColor="@color/color_1F3F59"
-                android:textSize="@dimen/iv_30" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/d20"
-                android:text="@string/my_invitation_code"
-                android:textColor="@color/color_1F3F59"
-                android:textSize="@dimen/iv_30" />
-
-            <TextView
-                android:id="@+id/tv_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/iv_36"
-                android:textColor="@color/color_1F3F59"
-                android:textSize="@dimen/iv_56"
-                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/iv_code"
-                android:layout_width="@dimen/d120"
-                android:layout_height="@dimen/d120"
+                android:layout_width="@dimen/d150"
+                android:layout_height="@dimen/d150"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/d20" />
 
@@ -80,10 +50,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/iv_30"
-                android:layout_marginTop="@dimen/iv_20"
+                android:layout_marginTop="@dimen/d20"
                 android:layout_marginRight="@dimen/iv_30"
                 android:gravity="center_horizontal"
-                android:textColor="@color/color_1F3F59"
+                android:textColor="@color/white"
                 android:textSize="@dimen/iv_30" />
 
             <TextView
@@ -98,7 +68,6 @@
                 android:text="@string/copy"
                 android:textColor="@color/white"
                 android:textSize="@dimen/iv_30" />
-
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 </LinearLayout>
