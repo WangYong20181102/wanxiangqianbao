@@ -24,14 +24,6 @@ public class MarketPresenter {
 
     private Biz biz;
     private MarketView marketView;
-    private static MarketPresenter marketPresenter = null;
-
-    public static MarketPresenter getMarketPresenter(MarketView marView) {
-        if (marketPresenter == null) {
-            marketPresenter = new MarketPresenter(marView);
-        }
-        return marketPresenter;
-    }
 
     public MarketPresenter(MarketView marketView) {
         this.marketView = marketView;

@@ -55,6 +55,7 @@ public class HandicapDetailActivity extends BaseActivity implements MarketView {
 
     private MarketPresenter marketPresenter;
     private MarketDividendTitleBean.DataBean.ListBean listBean;
+    //交易深度适配器
     private HandicapDetailAdapter adapter;
 
     @Override
@@ -64,6 +65,7 @@ public class HandicapDetailActivity extends BaseActivity implements MarketView {
 
     @Override
     protected void init() {
+        //参数拼接
         if (MyApplication.getToken() != null) {
             appUrl += "?token=" + MyApplication.getToken().getAccess_token()
                     + "&webpath=" + ServerInterface.BASE_WEB_URL + "&platform=az" + "&lang=" + MyApplication.getLanuage();
