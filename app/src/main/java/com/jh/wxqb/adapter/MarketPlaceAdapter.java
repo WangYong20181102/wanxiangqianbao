@@ -26,6 +26,7 @@ import com.jh.wxqb.bean.MarketDividendTitleBean;
 import com.jh.wxqb.customview.CancelOrOkDialog;
 import com.jh.wxqb.customview.HandicapView;
 import com.jh.wxqb.ui.market.CurrentEntrustmentActivity;
+import com.jh.wxqb.ui.market.HandicapDetailActivity;
 import com.jh.wxqb.ui.market.MoreBusinessActivity;
 import com.jh.wxqb.ui.market.PurchaseOrderActivity;
 import com.jh.wxqb.ui.me.UdpPwdActivity;
@@ -203,6 +204,8 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         TextView tvCompany;
         @BindView(R.id.ll_sel_more)
         RelativeLayout llSelMore;
+        @BindView(R.id.rl_shendu)
+        RelativeLayout rlShendu;
         @BindView(R.id.handicap_view)
         HandicapView handicapView;
         @BindView(R.id.tv_cny)
@@ -215,6 +218,7 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         TextView tvPercentagePoint3;
         @BindView(R.id.tv_percentage_point4)
         TextView tvPercentagePoint4;
+
 
         TitleHolder(View itemView) {
             super(itemView);
@@ -393,6 +397,7 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         holder.tvPercentagePoint2.setOnClickListener(this);
         holder.tvPercentagePoint3.setOnClickListener(this);
         holder.tvPercentagePoint4.setOnClickListener(this);
+        holder.rlShendu.setOnClickListener(this);
 
     }
 
@@ -450,6 +455,10 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 break;
             case R.id.linear_entrust://交易記錄
                 intent = new Intent(mContext, CurrentEntrustmentActivity.class);
+                mActivity.startActivity(intent);
+                break;
+            case R.id.rl_shendu://交易深度
+                intent = new Intent(mContext, HandicapDetailActivity.class);
                 mActivity.startActivity(intent);
                 break;
             case R.id.tv_dividends:
@@ -517,6 +526,16 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                                 return;
                             }
                             break;
+                    }
+                    //判断当前单价是否为0
+                    if (new BigDecimal(titleHolder.tvCurrent.getText().toString().trim()).compareTo(new BigDecimal("0.0")) <= 0) {
+                        Toasts.showShort("单价不能为0");
+                        return;
+                    }
+                    //判断当前数量是否为0
+                    if (new BigDecimal(titleHolder.edEntrustNum.getText().toString().trim()).compareTo(new BigDecimal("0.0")) <= 0){
+                        Toasts.showShort("数量不能为0");
+                        return;
                     }
                     if (MyApplication.getUserBean().getIsHasTradePwd()) {
                         if (SharedPreferencesUtil.getPrefInt(mContext, "FirstVerification", 0) == 0) {//第一次输入支付密码

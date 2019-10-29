@@ -9,8 +9,6 @@
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/sw_refresh"
         android:scrollbars="none"
-        android:layout_marginRight="@dimen/iv_50"
-        android:layout_marginLeft="@dimen/iv_50"
         android:overScrollMode="never"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

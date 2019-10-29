@@ -174,10 +174,12 @@ public interface ServerApi {
     @POST(ServerInterface.GET_SAVECHANGEINFO)
     @FormUrlEncoded
     Call<String> getSavechangeinfo(@FieldMap Map<String, String> map);
-
-
-
-
+    //新闻资讯
+    @GET(ServerInterface.GET_NOTICE)
+    Call<String> getNewMessageData(@Query("type")int type);
+    //折线图
+    @GET(ServerInterface.GET_ECHARTS)
+    Call<String> getLineFigureData();
 
 
 }

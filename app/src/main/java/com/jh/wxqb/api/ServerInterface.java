@@ -10,8 +10,8 @@ public class ServerInterface {
     public static final int TOKEN_INVALID = 401;
 
     //服务器常量类
-//    public static final String BASE_URL = "http://192.168.101.51:80/";//测试环境
-//   public static final String BASE_WEB_URL = "http://192.168.101.51:80";   //测试环境 首页Web路径   服务器路径去掉最后
+//    public static final String BASE_URL = "http://192.168.101.51:80/";//本地环境
+//    public static final String BASE_WEB_URL = "http://192.168.101.51:80";   //本地环境 首页Web路径   服务器路径去掉最后
 //    public static final String BASE_Q_CARD = "http://192.168.101.51:80";   //推荐二维码
 
     public static final String BASE_URL = "http://www.qbmap.com/";  //正式环境18825572827   15767847174  13714173670 13266761427
@@ -133,6 +133,10 @@ public class ServerInterface {
     public static final String GET_QUERYCOINPRICE = "queryCoinPrice";
     //币种兑换
     public static final String GET_SAVECHANGEINFO = "saveChangeInfo";
+    //k线图
+    public static final String GET_ECHARTS = "getEcharts";
+    //新闻资讯
+    public static final String GET_NOTICE = "notice";
 
 
 }

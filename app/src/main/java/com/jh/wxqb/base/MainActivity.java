@@ -3,7 +3,6 @@ package com.jh.wxqb.base;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,8 +13,7 @@ import com.jh.wxqb.R;
 import com.jh.wxqb.adapter.PagerAdapter;
 import com.jh.wxqb.customview.NoScrollMainPager;
 import com.jh.wxqb.ui.assets.AssetsFragment;
-import com.jh.wxqb.ui.home.HomeFragment;
-import com.jh.wxqb.ui.market.MarketFragment;
+import com.jh.wxqb.ui.home.HomePageFragment;
 import com.jh.wxqb.ui.market.MarketPlaceFragment;
 import com.jh.wxqb.ui.me.MeFragment;
 
@@ -67,7 +65,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     private void initFragment() {
         ArrayList<Fragment> fragmentList = new ArrayList<>();
-        HomeFragment homeFragment = new HomeFragment();
+        HomePageFragment homeFragment = new HomePageFragment();
 //        MarketFragment marketFragment = new MarketFragment();
         MarketPlaceFragment marketFragment = new MarketPlaceFragment();
         AssetsFragment assetsFragment = new AssetsFragment();
@@ -85,20 +83,24 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         switch (view.getId()) {
             case R.id.ll_home:
                 setTabSelection(0);
-                EventBus.getDefault().post("pauseTimer");
+                EventBus.getDefault().post("pauseTimer");//暂停交易市场数据请求
+                EventBus.getDefault().post("homeResumeTimer");//开启首页轮播
                 break;
             case R.id.ll_market:
                 setTabSelection(1);
-                EventBus.getDefault().post("resumeTimer");
+                EventBus.getDefault().post("homePauseTimer");//暂停首页轮播
+                EventBus.getDefault().post("resumeTimer");//开启交易市场数据请求
                 break;
             case R.id.ll_assets:
                 setTabSelection(2);
-                EventBus.getDefault().post("pauseTimer");
+                EventBus.getDefault().post("homePauseTimer");//暂停首页轮播
+                EventBus.getDefault().post("pauseTimer");//暂停交易市场数据请求
                 EventBus.getDefault().post("udpAssestData");
                 break;
             case R.id.ll_me:
                 setTabSelection(3);
-                EventBus.getDefault().post("pauseTimer");
+                EventBus.getDefault().post("homePauseTimer");//暂停首页轮播
+                EventBus.getDefault().post("pauseTimer");//暂停交易市场数据请求
                 EventBus.getDefault().post("udpHome");
                 break;
         }

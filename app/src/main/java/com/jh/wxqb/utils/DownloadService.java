@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.jh.wxqb.R;
 import com.jh.wxqb.base.CoreKeys;
-import com.jh.wxqb.ui.home.HomeFragment;
+import com.jh.wxqb.ui.home.HomePageFragment;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -61,7 +61,7 @@ public class DownloadService extends Service {
                     break;
                 case 1:
                     if (isShow) {
-                        HomeFragment.dialog.dismiss();//关闭弹窗
+                        HomePageFragment.dialog.dismiss();//关闭弹窗
                     }
                     LogUtils.e("弹窗已关闭");
                     mNotificationManager.cancel(NOTIFY_DOW_ID);
@@ -152,12 +152,11 @@ public class DownloadService extends Service {
                 // 放置在"正在运行"栏目中
                 mNotification.flags = Notification.FLAG_ONGOING_EVENT;
                 RemoteViews contentView = new RemoteViews(mContext.getPackageName(), R.layout.download_notification_layout);
-                contentView.setTextViewText(R.id.fileName, "正在下载：wanxiangqianbao.apk");
+                contentView.setTextViewText(R.id.fileName, "正在下载：vanNex.apk");
                 mNotification.contentView = contentView;
 
                 break;
             case NOTIFY_OK_ID:
-
                 Toast.makeText(DownloadService.this, "下载完成", Toast.LENGTH_SHORT).show();
                 stopSelf();// 停掉服务自身
                 break;

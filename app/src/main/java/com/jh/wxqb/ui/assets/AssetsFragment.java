@@ -52,10 +52,11 @@ public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChan
     @BindView(R.id.tv_equivalent_assets)
     TextView tvEquivalentAssets;
     Unbinder unbinder;
-    private ArrayList<Fragment> fragmentList;
 
     private View view;
-    private ActiveManagementFragment activeAssetsFragment;
+
+    //资产折合
+    private double f1 = 0.0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,8 +77,8 @@ public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChan
     }
 
     private void initFragment() {
-        fragmentList = new ArrayList<>();
-        activeAssetsFragment = new ActiveManagementFragment();
+        ArrayList<Fragment> fragmentList = new ArrayList<>();
+        ActiveManagementFragment activeAssetsFragment = new ActiveManagementFragment();
         activeAssetsFragment.setOnEquivalentAssetsListener(this);
         FreezeAssetsFragment freezeAssetsFragment = new FreezeAssetsFragment();
         EnjoyAssetsFragment enjoyAssetsFragment = new EnjoyAssetsFragment();
@@ -133,6 +134,14 @@ public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChan
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (f1 > 0) {
+            tvEquivalentAssets.setText("¥ " + f1);
+        }
+    }
+
     //选择标题
     public void selectTitle(int index) {
         clearViewAndTitle();
@@ -160,7 +169,7 @@ public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChan
     @SuppressLint("SetTextI18n")
     @Override
     public void onResult(double totalAssets) {
-        double f1 = new BigDecimal(totalAssets).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        f1 = new BigDecimal(totalAssets).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
         tvEquivalentAssets.setText("¥ " + f1);
     }
 }

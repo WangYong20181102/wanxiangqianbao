@@ -44,7 +44,7 @@ public class HomePresenter {
                         homeView.onViewFailureString(userBean.getCode(), userBean.getMessage());
                     }
                 } else {
-                    homeView.onServerFailure("服务器繁忙", 0);
+                    homeView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -72,7 +72,7 @@ public class HomePresenter {
                         homeView.onViewFailureString(versionUpdateBean.getCode(), versionUpdateBean.getMessage());
                     }
                 } else {
-                    homeView.onServerFailure("服务器繁忙", 0);
+                    homeView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -99,7 +99,7 @@ public class HomePresenter {
                         homeView.onViewFailureString(newsInfoBean.getCode(), newsInfoBean.getMessage());
                     }
                 } else {
-                    homeView.onServerFailure("服务器繁忙", 0);
+                    homeView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -126,7 +126,7 @@ public class HomePresenter {
                         homeView.onViewFailureString(newsMoreListBean.getCode(), newsMoreListBean.getMessage());
                     }
                 } else {
-                    homeView.onServerFailure("服务器繁忙", 0);
+                    homeView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -154,7 +154,7 @@ public class HomePresenter {
                         homeView.onViewFailureString(myMessageBean.getCode(), myMessageBean.getMessage());
                     }
                 } else {
-                    homeView.onServerFailure("服务器繁忙", 0);
+                    homeView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -181,7 +181,7 @@ public class HomePresenter {
                         homeView.onViewFailureString(messageDetailsBean.getCode(), messageDetailsBean.getMessage());
                     }
                 } else {
-                    homeView.onServerFailure("服务器繁忙", 0);
+                    homeView.onServerFailure("网络异常", 0);
                 }
             }
 

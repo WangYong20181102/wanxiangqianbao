@@ -82,7 +82,7 @@
     <string name="information_list">資訊列表</string>
     <string name="can_use">可用</string>
     <string name="equivalent_cny">折合(CNY)</string>
-    <string name="usdt_tgm">USDT/TGM</string>
+    <string name="usdt_tgm">TGM/USDT</string>
     <string name="statue">狀态</string>
     <string name="active_assets">餘額資產</string>
     <string name="repurchase_assets">优享資產</string>
@@ -199,6 +199,7 @@
     <string name="sell_immediately">立即賣出</string>
     <string name="dividend_tgm">TGM</string>
     <string name="all_success">全部成交</string>
+    <string name="all_success_brackets">(全部成交)</string>
     <string name="no">無</string>
     <string name="state">狀態</string>
     <string name="exchange_rate">汇率</string>
@@ -211,7 +212,9 @@
     <string name="recommendation_code">推薦碼</string>
     <string name="have_done_deal">已成交</string>
     <string name="revocation">已撤銷</string>
+    <string name="revocation_brackets">(已撤銷)</string>
     <string name="in_the_pending_order">挂單中</string>
+    <string name="in_the_pending_order_brackets">(挂單中)</string>
     <string name="stop_queuing">停止排隊</string>
     <string name="queuing">未成交</string>
     <string name="cance_order">是否確認取消掛單?</string>
@@ -241,6 +244,7 @@
     <string name="turn_out_to_be_successful">轉出成功</string>
     <string name="fail_to_turn_out">轉出失敗</string>
     <string name="replicating_success">復製成功</string>
+    <string name="partial_deal_brackets">(部分成交)</string>
     <string name="partial_deal">部分成交</string>
     <string name="sell_market">賣</string>
     <string name="buy_market">買</string>

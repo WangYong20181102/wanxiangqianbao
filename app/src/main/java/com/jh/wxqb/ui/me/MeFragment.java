@@ -108,6 +108,8 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
                 break;
             case R.id.ll_all_send_car://全民发车
                 Toasts.showShort("活動暫未開始！");
+//                intent = new Intent(mContext, NationalDepartureActivity.class);
+//                startActivity(intent);
                 break;
             case R.id.ll_login_pwd:
                 intent = new Intent(mContext, UdpPwdActivity.class);

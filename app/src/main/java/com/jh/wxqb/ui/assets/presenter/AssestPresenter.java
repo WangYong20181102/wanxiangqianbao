@@ -48,7 +48,7 @@ public class AssestPresenter {
                         assetsView.onViewFailureString(financialDetailsBean.getCode(), financialDetailsBean.getMessage());
                     }
                 } else {
-                    assetsView.onServerFailure("服务器繁忙", 0);
+                    assetsView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -78,7 +78,7 @@ public class AssestPresenter {
                         assetsView.onViewFailureString(financialDetailsBean.getCode(), financialDetailsBean.getMessage());
                     }
                 } else {
-                    assetsView.onServerFailure("服务器繁忙", 0);
+                    assetsView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -105,7 +105,7 @@ public class AssestPresenter {
                         assetsView.onViewFailureString(baseBean.getCode(), baseBean.getMessage());
                     }
                 } else {
-                    assetsView.onServerFailure("服务器繁忙", 0);
+                    assetsView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -132,7 +132,7 @@ public class AssestPresenter {
                         assetsView.onViewFailureString(safetyMarkingBean.getCode(), safetyMarkingBean.getMessage());
                     }
                 } else {
-                    assetsView.onServerFailure("服务器繁忙", 0);
+                    assetsView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -159,7 +159,7 @@ public class AssestPresenter {
                         assetsView.onViewFailureString(coinPricesBean.getCode(), coinPricesBean.getMessage());
                     }
                 } else {
-                    assetsView.onServerFailure("服务器繁忙", 0);
+                    assetsView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -185,7 +185,7 @@ public class AssestPresenter {
                         assetsView.onViewFailureString(baseBean.getCode(), baseBean.getMessage());
                     }
                 } else {
-                    assetsView.onServerFailure("服务器繁忙", 0);
+                    assetsView.onServerFailure("网络异常", 0);
                 }
             }
 

@@ -71,8 +71,8 @@ public class HomeFragment extends BaseFragment implements HomeView, MyWebView.IS
     private static int REQUEST_WRITE = 42;
     public static AppUpdateProgressDialog dialog;
     private int mMaxProgress = 100;//百分比
-    private HomePresenter presenter;
     private Intent download;
+    private HomePresenter presenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

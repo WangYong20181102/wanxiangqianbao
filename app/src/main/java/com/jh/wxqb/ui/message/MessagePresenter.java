@@ -39,7 +39,7 @@ public class MessagePresenter {
                         messageView.onViewFailureString(baseBean.getCode(), baseBean.getMessage());
                     }
                 } else {
-                    messageView.onServerFailure("服务器繁忙",0);
+                    messageView.onServerFailure("网络异常",0);
                 }
             }
 

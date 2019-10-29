@@ -43,7 +43,7 @@ public class BizImpl extends BaseBiz implements Biz {
                             listener.onFailure(response.message(), response.raw().code());
                         }
                     } else {
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -54,7 +54,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -79,7 +79,7 @@ public class BizImpl extends BaseBiz implements Biz {
                             listener.onFailure(response.message(), response.raw().code());
                         }
                     } else {
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -90,7 +90,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -115,7 +115,7 @@ public class BizImpl extends BaseBiz implements Biz {
                             listener.onFailure(response.message(), response.raw().code());
                         }
                     } else {
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -126,7 +126,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -151,7 +151,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -162,7 +162,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -189,7 +189,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -200,7 +200,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -226,7 +226,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -237,7 +237,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -263,7 +263,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -274,7 +274,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -302,7 +302,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -313,7 +313,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -342,7 +342,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -353,7 +353,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -379,7 +379,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -390,7 +390,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -416,7 +416,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -427,7 +427,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -452,7 +452,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -463,7 +463,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -490,7 +490,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -501,7 +501,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -527,7 +527,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -538,7 +538,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -565,7 +565,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -576,7 +576,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -602,7 +602,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -613,7 +613,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -639,7 +639,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -650,7 +650,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -677,7 +677,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -688,7 +688,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -714,7 +714,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -725,7 +725,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -751,7 +751,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -762,7 +762,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -787,7 +787,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -798,7 +798,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -825,7 +825,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -836,7 +836,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -863,7 +863,7 @@ public class BizImpl extends BaseBiz implements Biz {
                         }
                     } else {
                         LogUtils.e("code======>" + response.raw().code());
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -874,7 +874,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -899,7 +899,7 @@ public class BizImpl extends BaseBiz implements Biz {
                             listener.onFailure(response.message(), response.raw().code());
                         }
                     } else {
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -910,7 +910,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -935,7 +935,7 @@ public class BizImpl extends BaseBiz implements Biz {
                             listener.onFailure(response.message(), response.raw().code());
                         }
                     } else {
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -946,7 +946,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -973,7 +973,7 @@ public class BizImpl extends BaseBiz implements Biz {
                             listener.onFailure(response.message(), response.raw().code());
                         }
                     } else {
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -984,7 +984,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -1009,7 +1009,7 @@ public class BizImpl extends BaseBiz implements Biz {
                             listener.onFailure(response.message(), response.raw().code());
                         }
                     } else {
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -1020,7 +1020,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -1045,7 +1045,7 @@ public class BizImpl extends BaseBiz implements Biz {
                             listener.onFailure(response.message(), response.raw().code());
                         }
                     } else {
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -1056,7 +1056,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -1081,7 +1081,7 @@ public class BizImpl extends BaseBiz implements Biz {
                             listener.onFailure(response.message(), response.raw().code());
                         }
                     } else {
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -1092,7 +1092,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -1117,7 +1117,7 @@ public class BizImpl extends BaseBiz implements Biz {
                             listener.onFailure(response.message(), response.raw().code());
                         }
                     } else {
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -1128,7 +1128,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -1153,7 +1153,7 @@ public class BizImpl extends BaseBiz implements Biz {
                             listener.onFailure(response.message(), response.raw().code());
                         }
                     } else {
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -1164,7 +1164,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -1188,7 +1188,7 @@ public class BizImpl extends BaseBiz implements Biz {
                             listener.onFailure(response.message(), response.raw().code());
                         }
                     } else {
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -1199,7 +1199,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -1223,7 +1223,7 @@ public class BizImpl extends BaseBiz implements Biz {
                             listener.onFailure(response.message(), response.raw().code());
                         }
                     } else {
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -1234,7 +1234,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -1258,7 +1258,7 @@ public class BizImpl extends BaseBiz implements Biz {
                             listener.onFailure(response.message(), response.raw().code());
                         }
                     } else {
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -1269,7 +1269,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("Biz服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -1292,7 +1292,7 @@ public class BizImpl extends BaseBiz implements Biz {
                             listener.onFailure(response.message(), response.raw().code());
                         }
                     } else {
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -1303,7 +1303,7 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }
@@ -1327,7 +1327,7 @@ public class BizImpl extends BaseBiz implements Biz {
                             listener.onFailure(response.message(), response.raw().code());
                         }
                     } else {
-                        listener.onFailure("服务器繁忙,请稍后再试", response.raw().code());
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
                     }
                 }
             }
@@ -1338,7 +1338,73 @@ public class BizImpl extends BaseBiz implements Biz {
                     call.cancel();
                 }
                 LogUtils.e("服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
-                listener.onFailure("服务器繁忙,请稍后再试", 0);
+                listener.onFailure("网络异常,请稍后再试", 0);
+            }
+        });
+    }
+
+    /**
+     * 新闻资讯
+     */
+    @Override
+    public void getNewVoices(int type,final OnBaseListener listener) {
+        getStringRetrofit().create(ServerApi.class).getNewMessageData(type).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (call != null) {
+                    if (response.body() != null) {
+                        LogUtils.e("新闻资讯==>" + GsonUtil.GsonString(response.body()));
+                        if (response.isSuccessful()) {
+                            listener.onResponse(response.body());
+                        } else {
+                            listener.onFailure(response.message(), response.raw().code());
+                        }
+                    } else {
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                if (call.isExecuted()) {
+                    call.cancel();
+                }
+                LogUtils.e("服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
+                listener.onFailure("网络异常,请稍后再试", 0);
+            }
+        });
+    }
+
+    /**
+     * k线图
+     */
+    @Override
+    public void getKChatLineData(final OnBaseListener listener) {
+        getStringRetrofit().create(ServerApi.class).getLineFigureData().enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (call != null) {
+                    if (response.body() != null) {
+                        LogUtils.e("折线图数据==>" + GsonUtil.GsonString(response.body()));
+                        if (response.isSuccessful()) {
+                            listener.onResponse(response.body());
+                        } else {
+                            listener.onFailure(response.message(), response.raw().code());
+                        }
+                    } else {
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                if (call.isExecuted()) {
+                    call.cancel();
+                }
+                LogUtils.e("服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
+                listener.onFailure("网络异常,请稍后再试", 0);
             }
         });
     }

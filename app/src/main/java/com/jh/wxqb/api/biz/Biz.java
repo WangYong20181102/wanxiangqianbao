@@ -39,7 +39,7 @@ public interface Biz {
     void forgetLoginPwd(String mobile, String newOnePwd, String smsCode, OnBaseListener listener);
 
     //修改登录/交易密码
-    void udpLoginPwd(int type, String newOnePwd, String newTwoPwd, String smsCode,String mobile, OnBaseListener listener);
+    void udpLoginPwd(int type, String newOnePwd, String newTwoPwd, String smsCode, String mobile, OnBaseListener listener);
 
     //绑定账户邮箱
     void bandingEmail(Map<String, String> map, OnBaseListener listener);
@@ -57,7 +57,7 @@ public interface Biz {
     void newsInfo(String id, OnBaseListener listener);
 
     //新闻咨询列表
-    void newsList(String type,int pageNum, OnBaseListener listener);
+    void newsList(String type, int pageNum, OnBaseListener listener);
 
     //我的消息列表
     void myMessage(int pageNum, OnBaseListener listener);
@@ -78,18 +78,19 @@ public interface Biz {
     void financialDetailsType(OnBaseListener listener);
 
     //获取财务明细列表
-    void getFinancialDetails(int pageNum,int type,int coinTypeId,OnBaseListener listener);
+    void getFinancialDetails(int pageNum, int type, int coinTypeId, OnBaseListener listener);
+
     //資產管理
-    void getQueryaccountassets(int pageNum,int type,OnBaseListener listener);
+    void getQueryaccountassets(int pageNum, int type, OnBaseListener listener);
 
     //提币
     void withdrawMoney(Map<String, String> map, OnBaseListener listener);
 
     //買入市場--買入顶部列表
-    void dividendMarketDividend(int type,OnBaseListener listener);
+    void dividendMarketDividend(int type, OnBaseListener listener);
 
     //買入市場--買入底部列表
-    void dividendMarketTopDividend(int pageNum,int type,int direction,OnBaseListener listener);
+    void dividendMarketTopDividend(int pageNum, int type, int direction, OnBaseListener listener);
 
     //购买订单
     void purchaseOrder(Map<String, String> map, OnBaseListener listener);
@@ -114,11 +115,18 @@ public interface Biz {
 
     //获取token失效时间
     void getTime(OnBaseListener listener);
+
     //获取币种价格
     void getQuerycoinprice(OnBaseListener listener);
-    //币种兑换
-    void getSavechangeinfo(Map<String, String> map,OnBaseListener listener);
 
+    //币种兑换
+    void getSavechangeinfo(Map<String, String> map, OnBaseListener listener);
+
+    //新闻资讯
+    void getNewVoices(int type, OnBaseListener listener);
+
+    //k线图
+    void getKChatLineData(OnBaseListener listener);
 
 
 }

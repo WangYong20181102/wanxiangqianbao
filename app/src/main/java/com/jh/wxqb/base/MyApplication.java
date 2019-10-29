@@ -12,6 +12,8 @@ import com.jh.wxqb.utils.GsonUtil;
 import com.jh.wxqb.utils.LogUtils;
 import com.jh.wxqb.utils.PreferencesLoader;
 import com.jh.wxqb.utils.SPHelper;
+import com.umeng.commonsdk.UMConfigure;
+import com.umeng.socialize.PlatformConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +39,10 @@ public class MyApplication extends Application {
         activityList = new ArrayList<>();
         //初始化PreferencesLoader
         PreferencesLoader.init(this);
+        //友盟分享初始化
+//        UMConfigure.init(this, "5db255b2570df396c7000c0a", "umeng", UMConfigure.DEVICE_TYPE_PHONE, "");//58edcfeb310c93091c000be2 5965ee00734be40b580001a0
+//       //微信分享
+//        PlatformConfig.setWeixin("wxdc1e388c3822c80b", "3baf1193c85774b3fd9d18447d76cab0");
     }
 
     /**

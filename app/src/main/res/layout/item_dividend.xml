@@ -3,255 +3,189 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/ll_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/iv_40"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dividend"
-                android:textColor="@color/my_dividend_color"
-                android:textSize="@dimen/s13"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/iv_10"
-                android:text="USDT/TGM"
-                android:textColor="@color/black_text"
-                android:textSize="@dimen/iv_30"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_success"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/iv_42"
-            android:layout_marginRight="@dimen/d24"
-            android:text="@string/success"
-            android:textColor="@color/red_text"
-            android:textSize="@dimen/iv_26"
-            android:visibility="gone" />
-
-
-        <LinearLayout
-            android:id="@+id/ll_title1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ll_layout"
-            android:layout_marginTop="@dimen/iv_42">
+            android:layout_marginLeft="@dimen/d15"
+            android:layout_marginRight="@dimen/d15">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/time"
-                android:textColor="@color/light_gray_text"
-                android:textSize="@dimen/iv_26" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/d15"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tv_company"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/current_price"
-                android:textColor="@color/light_gray_text"
-                android:textSize="@dimen/iv_26" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dividend"
+                    android:textColor="@color/color_03AD8F"
+                    android:textSize="@dimen/s15"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/transaction_num"
-                android:textColor="@color/light_gray_text"
-                android:textSize="@dimen/iv_26"/>
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/iv_10"
+                    android:text="USDT/TGM"
+                    android:textColor="@color/color_18293D"
+                    android:textSize="@dimen/s15"
+                    android:textStyle="bold" />
 
-        <LinearLayout
-            android:id="@+id/ll_content1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ll_title1"
-            android:layout_marginTop="@dimen/iv_24">
+                <TextView
+                    android:id="@+id/tv_success"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/d24"
+                    android:text="@string/success"
+                    android:textColor="@color/color_D14B64"
+                    android:textSize="@dimen/s12"
+                    android:visibility="gone" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_time"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="06/07 14:30"
-                android:textColor="@color/gray_text"
-                android:textSize="@dimen/iv_26"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tv_delegate_quantity"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="0.0"
-                android:textColor="@color/gray_text"
-                android:textSize="@dimen/iv_26"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tv_dividend_income"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="0.0"
-                android:textColor="@color/gray_text"
-                android:textSize="@dimen/iv_26"
-                android:textStyle="bold"/>
-        </LinearLayout>
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ll_content1"
-            android:layout_marginBottom="@dimen/d5"
-            android:layout_marginTop="@dimen/iv_28">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:id="@+id/ll_title2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/actual_transaction"
-                        android:textColor="@color/light_gray_text"
-                        android:textSize="@dimen/iv_26"/>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/actual_transaction"
-                        android:textColor="@color/light_gray_text"
-                        android:textSize="@dimen/iv_26"
-                        android:visibility="invisible"/>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/rate_of_return"
-                        android:textColor="@color/light_gray_text"
-                        android:textSize="@dimen/iv_26"
-                        android:visibility="invisible" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_content2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/iv_24">
-
-                    <TextView
-                        android:id="@+id/tv_volume"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="0.0"
-                        android:textColor="@color/gray_text"
-                        android:textSize="@dimen/iv_26"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:id="@+id/tv_total_turnover"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="0.0"
-                        android:textColor="@color/gray_text"
-                        android:textSize="@dimen/iv_26"
-                        android:textStyle="bold"
-                        android:visibility="invisible"/>
-
-                    <TextView
-                        android:id="@+id/tv_rate"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="0.0"
-                        android:textColor="@color/gray_text"
-                        android:textSize="@dimen/iv_26"
-                        android:textStyle="bold"
-                        android:visibility="invisible" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:orientation="horizontal"
-                android:visibility="gone">
+                android:text="06/07 14:30"
+                android:textColor="@color/color_627B9B"
+                android:textSize="@dimen/s10"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_dividend"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/the_dividend"
-                    android:textColor="@color/home_text_color"
-                    android:textSize="@dimen/iv_26"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/tv_dividend_state"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/iv_30"
-                    android:layout_marginRight="@dimen/d20"
-                    android:background="@drawable/shape_div_bg"
-                    android:gravity="center"
-                    android:paddingLeft="@dimen/d8"
-                    android:paddingTop="@dimen/d3"
-                    android:paddingRight="@dimen/d8"
-                    android:paddingBottom="@dimen/d3"
-                    android:text="@string/cancel_order"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/s13" />
-            </LinearLayout>
         </RelativeLayout>
 
-    </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d22"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/d15"
+            android:layout_marginRight="@dimen/d15"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="@dimen/d0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_delegate_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="0.0"
+                    android:textColor="@color/color_18293D"
+                    android:textSize="@dimen/s14"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_company"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/d3"
+                    android:text="@string/current_price"
+                    android:textColor="@color/color_627B9B"
+                    android:textSize="@dimen/s10" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/d0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_dividend_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="0.0"
+                    android:textColor="@color/color_18293D"
+                    android:textSize="@dimen/s14"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/d3"
+                    android:text="@string/transaction_num"
+                    android:textColor="@color/color_627B9B"
+                    android:textSize="@dimen/s10" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/d0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_volume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="0.0"
+                    android:textColor="@color/color_18293D"
+                    android:textSize="@dimen/s14"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/d3"
+                    android:text="@string/actual_transaction"
+                    android:textColor="@color/color_627B9B"
+                    android:textSize="@dimen/s10" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ll_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="invisible">
+
+                    <TextView
+                        android:id="@+id/tv_dividend_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_div_bg"
+                        android:paddingLeft="@dimen/d8"
+                        android:paddingTop="@dimen/d3"
+                        android:paddingRight="@dimen/d8"
+                        android:paddingBottom="@dimen/d3"
+                        android:text="@string/cancel_order"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/s13" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d1"
+            android:layout_marginTop="@dimen/d14"
+            android:background="@color/color_eff2f4" />
+    </LinearLayout>
 
 </RelativeLayout>

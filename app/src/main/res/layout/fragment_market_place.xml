@@ -18,9 +18,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/dividend_market"
-            android:textStyle="bold"
             android:textColor="@color/color_21405a"
-            android:textSize="@dimen/s20" />
+            android:textSize="@dimen/s20"
+            android:textStyle="bold" />
 
         <RelativeLayout
             android:id="@+id/ll_current_entrustment"
@@ -49,72 +49,136 @@
         </RelativeLayout>
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d15"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/d13"
+                android:layout_height="@dimen/d14"
+                android:src="@mipmap/market_top_list" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/d15"
+                android:text="@string/usdt_tgm"
+                android:textColor="@color/color_143652"
+                android:textSize="@dimen/s17"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/d15"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/d20"
+                android:layout_height="@dimen/d20"
+                android:src="@mipmap/market_up" />
+
+            <TextView
+                android:id="@+id/tv_percentage_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/d12"
+                android:background="@drawable/market_rate"
+                android:paddingLeft="@dimen/d2"
+                android:paddingTop="@dimen/d1"
+                android:paddingRight="@dimen/d2"
+                android:paddingBottom="@dimen/d1"
+                android:textColor="@color/color_03AD8F"
+                android:textSize="@dimen/s15" />
+        </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/d28"
         android:layout_marginLeft="@dimen/d15"
-        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/d5"
         android:orientation="horizontal">
 
-        <RelativeLayout
-            android:id="@+id/ll_active_assets"
-            android:layout_width="@dimen/d81"
+        <LinearLayout
+            android:layout_width="@dimen/d0"
             android:layout_height="match_parent"
-            android:background="@mipmap/dividend_select">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
+            <RelativeLayout
+                android:id="@+id/ll_active_assets"
+                android:layout_width="@dimen/d0"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@mipmap/dividend_select">
+
+                <TextView
+                    android:id="@+id/tv_dividend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/dividend"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/s14"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/ll_repurchase_assets"
+                android:layout_width="@dimen/d0"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/d4"
+                android:background="@mipmap/sell_un_select">
+
+                <TextView
+                    android:id="@+id/tv_sell"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/sell"
+                    android:textColor="@color/color_7E93A2"
+                    android:textSize="@dimen/s14"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d25"
+            android:layout_marginRight="@dimen/d15"
+            android:layout_weight="1">
             <TextView
-                android:id="@+id/tv_dividend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/dividend"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:textSize="@dimen/s14" />
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:id="@+id/ll_repurchase_assets"
-            android:layout_width="@dimen/d81"
-            android:layout_height="match_parent"
-            android:background="@mipmap/sell_un_select"
-            android:layout_marginLeft="@dimen/d4">
-
-            <TextView
-                android:id="@+id/tv_sell"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/sell"
-                android:textStyle="bold"
+                android:text="@string/price"
                 android:textColor="@color/color_7E93A2"
-                android:textSize="@dimen/s14" />
-
+                android:layout_marginLeft="@dimen/d5"
+                android:textSize="@dimen/s11"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/market_number"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/color_7E93A2"
+                android:textSize="@dimen/s11"/>
         </RelativeLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/d15"
-            android:text="@string/usdt_tgm"
-            android:textColor="@color/color_143652"
-            android:textSize="@dimen/s17"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tv_percentage_point"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/d7"
-            android:background="@drawable/market_rate"
-            android:paddingLeft="@dimen/d2"
-            android:paddingTop="@dimen/d2"
-            android:paddingRight="@dimen/d2"
-            android:paddingBottom="@dimen/d2"
-            android:textColor="@color/color_03AD8F"
-            android:textSize="@dimen/s15" />
     </LinearLayout>
 
     <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView

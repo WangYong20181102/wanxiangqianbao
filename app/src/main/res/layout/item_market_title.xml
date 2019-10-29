@@ -19,10 +19,17 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="限价单"
+                android:textColor="@color/color_7E93A2"
+                android:textSize="@dimen/s15"
+                android:layout_marginTop="@dimen/d15"/>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/d40"
-                android:layout_marginTop="@dimen/d30"
+                android:layout_marginTop="@dimen/d15"
                 android:background="@drawable/et_bg_line">
 
                 <EditText
@@ -232,6 +239,53 @@
                 android:id="@+id/handicap_view"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/d340" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d5">
+
+                <RelativeLayout
+                    android:id="@+id/rl_shendu"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d23"
+                    android:layout_toLeftOf="@+id/rl_shendu_icon"
+                    android:background="@drawable/et_bg_line">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/d15"
+                        android:text="交易深度"
+                        android:textColor="@color/color_8599A8"
+                        android:textSize="@dimen/s11" />
+
+                    <ImageView
+                        android:layout_width="@dimen/d8"
+                        android:layout_height="@dimen/d8"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/d10"
+                        android:src="@mipmap/market_next" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_shendu_icon"
+                    android:layout_width="@dimen/d28"
+                    android:layout_height="@dimen/d23"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/d5"
+                    android:background="@drawable/et_bg_line">
+
+                    <ImageView
+                        android:layout_width="@dimen/d16"
+                        android:layout_height="@dimen/d15"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/market_shendu"/>
+                </RelativeLayout>
+
+            </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
 

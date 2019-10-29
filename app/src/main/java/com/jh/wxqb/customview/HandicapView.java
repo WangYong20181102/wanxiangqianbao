@@ -17,11 +17,9 @@ import android.view.View;
 
 import com.jh.wxqb.R;
 import com.jh.wxqb.bean.MarketDividendTitleBean;
-import com.jh.wxqb.utils.BigDecimalUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class HandicapView extends View implements HandicapViewInterface {
@@ -150,7 +148,7 @@ public class HandicapView extends View implements HandicapViewInterface {
         itemSize = (int) typedArray.getDimension(R.styleable.HandicapView_item_text_size, getDimension(R.dimen.s12));
         aboutPriceSize = (int) typedArray.getDimension(R.styleable.HandicapView_now_price_size, getDimension(R.dimen.s11));
         nowPriceSize = (int) typedArray.getDimension(R.styleable.HandicapView_now_price_size, getDimension(R.dimen.s17));
-        nowPricePadding = (int) typedArray.getDimension(R.styleable.HandicapView_now_price_padding, getDimension(R.dimen.d12));
+        nowPricePadding = (int) typedArray.getDimension(R.styleable.HandicapView_now_price_padding, getDimension(R.dimen.d5));
         nowPriceLineHeight = (int) typedArray.getDimension(R.styleable.HandicapView_now_price_line_height, getDimension(R.dimen.d5));
         textPaddingStart = (int) typedArray.getDimension(R.styleable.HandicapView_text_padding_start, getDimension(R.dimen.d0));
         textPaddingEnd = (int) typedArray.getDimension(R.styleable.HandicapView_text_padding_end, getDimension(R.dimen.d10));
@@ -172,7 +170,7 @@ public class HandicapView extends View implements HandicapViewInterface {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.save();
-        drawTitle(canvas);
+//        drawTitle(canvas);
         drawNowPrice(canvas);
         drawHandicapTopView(canvas);
         drawHandicapDownView(canvas);
@@ -503,7 +501,7 @@ public class HandicapView extends View implements HandicapViewInterface {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (selectItemListener != null) {
-            Log.e(TAG, "类型：" + String.valueOf(event.getAction()));
+            Log.e(TAG, "类型：" + event.getAction());
             switch (event.getAction()) {
                 case MotionEvent.ACTION_UP:
                     int y = (int) event.getY();
@@ -547,16 +545,13 @@ public class HandicapView extends View implements HandicapViewInterface {
     public void updateData(MarketDividendTitleBean.DataBean.ListBean listBeans) {
         List<MarketDividendTitleBean.DataBean.ListBean.BuyListBean> buyListBeans = listBeans.getBuyList();
         List<MarketDividendTitleBean.DataBean.ListBean.SellListBean> sellListBeans = listBeans.getSellList();
-//        BigDecimal allBuy = new BigDecimal("0");
         if (buyListBeans != null) {
             buyList.clear();
-//            allBuy = new BigDecimal("0");
             //初始化买盘列表的数据
             for (int i = 0; i < 7; i++) {
                 if (i < buyListBeans.size()) {
                     MarketDividendTitleBean.DataBean.ListBean.BuyListBean bean = buyListBeans.get(i);
                     bean.setDepth(bean.getCountUnfilledVolume());
-//                    allBuy = BigDecimalUtils.greater(allBuy, bean.getCountUnfilledVolume()) ? allBuy : bean.getCountUnfilledVolume();
                     buyList.add(bean);
                 } else {
                     buyList.add(null);
@@ -564,28 +559,26 @@ public class HandicapView extends View implements HandicapViewInterface {
             }
         }
 
-//        BigDecimal allSell = new BigDecimal(0);
         if (sellListBeans != null) {
             sellList.clear();
-//            allSell = new BigDecimal("0");
             //初始化卖盘列表的数据
             for (int i = 0; i < 7; i++) {
                 if (i < sellListBeans.size()) {
                     MarketDividendTitleBean.DataBean.ListBean.SellListBean bean = sellListBeans.get(i);
                     bean.setDepth(bean.getCountUnfilledVolume());
-//                    allSell = BigDecimalUtils.greater(allSell, bean.getCountUnfilledVolume()) ? allSell : bean.getCountUnfilledVolume();
                     sellList.add(bean);
                 } else {
                     sellList.add(null);
                 }
             }
         }
-//        BigDecimal max = BigDecimalUtils.greater(allBuy, allSell) ? allBuy : allSell;
-//        if (max.compareTo(new BigDecimal(0)) > 0) {
-//            this.max = max;
-//        }
         // 刷新页面
         invalidate();
+    }
+
+    @Override
+    public void updateData(MarketDividendTitleBean.DataBean.ListBean.BuyListBean buyListBean, MarketDividendTitleBean.DataBean.ListBean.SellListBean sellListBean) {
+
     }
 
     public interface SelectItemListener {

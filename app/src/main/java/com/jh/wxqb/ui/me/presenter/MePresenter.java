@@ -49,7 +49,7 @@ public class MePresenter {
                         meView.onViewFailureString(baseBean.getCode(), baseBean.getMessage());
                     }
                 } else {
-                    meView.onServerFailure("服务器繁忙", 0);
+                    meView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -76,7 +76,7 @@ public class MePresenter {
                         meView.onViewFailureString(baseBean.getCode(), baseBean.getMessage());
                     }
                 } else {
-                    meView.onServerFailure("服务器繁忙", 0);
+                    meView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -103,7 +103,7 @@ public class MePresenter {
                         meView.onViewFailureString(myTeamBean.getCode(), myTeamBean.getMessage());
                     }
                 } else {
-                    meView.onServerFailure("服务器繁忙", 0);
+                    meView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -130,7 +130,7 @@ public class MePresenter {
                         meView.onViewFailureString(userImage.getCode(), userImage.getMessage());
                     }
                 } else {
-                    meView.onServerFailure("服务器繁忙", 0);
+                    meView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -157,7 +157,7 @@ public class MePresenter {
                         meView.onViewFailureString(baseBean.getCode(), baseBean.getMessage());
                     }
                 } else {
-                    meView.onServerFailure("服务器繁忙", 0);
+                    meView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -184,7 +184,7 @@ public class MePresenter {
                         meView.onViewFailureString(financialDetailsTypeBean.getCode(), financialDetailsTypeBean.getMessage());
                     }
                 } else {
-                    meView.onServerFailure("服务器繁忙", 0);
+                    meView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -211,7 +211,7 @@ public class MePresenter {
                         meView.onViewFailureString(financialDetailsBean.getCode(), financialDetailsBean.getMessage());
                     }
                 } else {
-                    meView.onServerFailure("服务器繁忙", 0);
+                    meView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -238,7 +238,7 @@ public class MePresenter {
                         meView.onViewFailureString(baseBean.getCode(), baseBean.getMessage());
                     }
                 } else {
-                    meView.onServerFailure("服务器繁忙", 0);
+                    meView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -265,7 +265,7 @@ public class MePresenter {
                         meView.onViewFailureString(baseBean.getCode(), baseBean.getMessage());
                     }
                 } else {
-                    meView.onServerFailure("服务器繁忙", 0);
+                    meView.onServerFailure("网络异常", 0);
                 }
             }
 

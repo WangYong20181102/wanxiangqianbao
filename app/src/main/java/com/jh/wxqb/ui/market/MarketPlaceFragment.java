@@ -157,12 +157,10 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
             case R.id.ll_active_assets:
                 count++;
                 selectTitle(0);
-//                upTopBottomData("dividend");
                 break;
             case R.id.ll_repurchase_assets:
                 count++;
                 selectTitle(1);
-//                upTopBottomData("sell");
                 break;
         }
     }
@@ -228,6 +226,14 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
                 break;
             case "resumeTimer":
                 onResume();
+                break;
+            case "backSell":
+                count++;
+                selectTitle(1);
+                break;
+            case "backBuy":
+                count++;
+                selectTitle(0);
                 break;
         }
     }

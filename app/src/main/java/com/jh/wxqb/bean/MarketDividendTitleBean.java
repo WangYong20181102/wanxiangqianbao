@@ -140,6 +140,9 @@ public class MarketDividendTitleBean {
                 }
 
                 public BigDecimal getCountUnfilledVolume() {
+                    if (countUnfilledVolume == null){
+                        return new BigDecimal("0");
+                    }
                     return countUnfilledVolume;
                 }
 
@@ -172,6 +175,9 @@ public class MarketDividendTitleBean {
                 }
 
                 public BigDecimal getAmountPrice() {
+                    if (amountPrice == null){
+                        return new BigDecimal("0");
+                    }
                     return amountPrice;
                 }
 
@@ -277,6 +283,9 @@ public class MarketDividendTitleBean {
                 }
 
                 public BigDecimal getCountUnfilledVolume() {
+                    if (countUnfilledVolume == null){
+                        return new BigDecimal("0");
+                    }
                     return countUnfilledVolume;
                 }
 
@@ -309,6 +318,9 @@ public class MarketDividendTitleBean {
                 }
 
                 public BigDecimal getAmountPrice() {
+                    if (amountPrice == null){
+                        return new BigDecimal("0");
+                    }
                     return amountPrice;
                 }
 

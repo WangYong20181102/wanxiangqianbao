@@ -2,14 +2,12 @@ package com.jh.wxqb.ui.assets;
 
 import android.Manifest;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jh.wxqb.R;
 import com.jh.wxqb.base.BaseActivity;
@@ -42,10 +40,8 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.HashMap;
-import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -55,8 +51,6 @@ import pub.devrel.easypermissions.EasyPermissions;
  */
 public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, MessageView {
 
-    @BindView(R.id.tv_title)
-    CustomTitle tvTitle;
     @BindView(R.id.ed_target_address)
     EditText edTargetAddress;
     @BindView(R.id.ed_amount_of_money)
@@ -76,7 +70,7 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
     @BindView(R.id.image_right)
     ImageView imageRight;
     @BindView(R.id.tv_bottom_activation)
-    TextView tvBottomActivition;
+    TextView tvBottomActivation;
     @BindView(R.id.tv_bottom_prompt)
     TextView tvBottomPrompt;
     @BindView(R.id.tv_coin_num)
@@ -86,7 +80,6 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
 
     private String[] permissions = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
-    private PopupWindow contentWindow;
     private AssestPresenter assestPresenter;
     private MessagePresenter messagePresenter;
     private String ident;
@@ -113,9 +106,6 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
     }
 
     private void initView() {
-//        if (MyApplication.getUserBean() != null) {
-//            tvAssets.setText(StringUtil.subZeroAndDot(MyApplication.getUserBean().getActiveAssets().toPlainString()));
-//        }
         tvAssets.setText(assetsBean.getActiveAssets() + "");
         tvErc20.setVisibility(View.GONE);
         switch (assetsBean.getBizCurrencyTypeId()) {
@@ -123,7 +113,7 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
                 tvCurrency.setText("ETH");
                 imageIcon.setImageResource(R.drawable.icon_small_eth);
                 imageRight.setImageResource(R.drawable.icon_eth_right);
-                tvBottomActivition.setText("ETH提币手续费固定为0.001");
+                tvBottomActivation.setText("ETH提币手续费固定为0.001");
                 tvCoinNum.setVisibility(View.GONE);
                 tvBottomPrompt.setVisibility(View.GONE);
                 break;
@@ -131,7 +121,7 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
                 tvCurrency.setText("TGM");
                 imageIcon.setImageResource(R.drawable.iv_small_tgm);
                 imageRight.setImageResource(R.drawable.iv_tgm_right);
-                tvBottomActivition.setText("TGM提币手续费为千分之五");
+                tvBottomActivation.setText("TGM提币手续费：小于1000枚固定为5枚，大于1000枚千分之五");
                 tvCoinNum.setVisibility(View.VISIBLE);
                 tvErc20.setVisibility(View.VISIBLE);
                 tvCoinNum.setText("最小提币数量：30枚");
@@ -141,7 +131,7 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
                 tvCurrency.setText("USDT");
                 imageIcon.setImageResource(R.drawable.icon_small_usdt);
                 imageRight.setImageResource(R.drawable.icon_usdt_right);
-                tvBottomActivition.setText("USDT提币手续费固定为2USDT");
+                tvBottomActivation.setText("USDT提币手续费固定为2USDT");
                 tvCoinNum.setVisibility(View.VISIBLE);
                 tvCoinNum.setText("最小提币数量：5枚");
                 tvErc20.setVisibility(View.VISIBLE);

@@ -47,4 +47,10 @@ public interface HandicapViewInterface {
      */
     void updateData(MarketDividendTitleBean.DataBean.ListBean listBeans);
 
+    /**
+     * 设置数据(socket 抓到数据后更新盘口显示)
+     */
+    void updateData(MarketDividendTitleBean.DataBean.ListBean.BuyListBean buyListBean,MarketDividendTitleBean.DataBean.ListBean.SellListBean sellListBean);
+
+
 }

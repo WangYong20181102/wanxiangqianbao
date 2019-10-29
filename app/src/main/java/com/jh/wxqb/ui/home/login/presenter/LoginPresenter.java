@@ -44,7 +44,7 @@ public class LoginPresenter {
                         loginView.onViewFailureString(baseBean.getCode(), baseBean.getMessage());
                     }
                 } else {
-                    loginView.onServerFailure("服务器繁忙", 0);
+                    loginView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -71,7 +71,7 @@ public class LoginPresenter {
                         loginView.onViewFailureString(baseBean.getCode(), baseBean.getMessage());
                     }
                 } else {
-                    loginView.onServerFailure("服务器繁忙", 0);
+                    loginView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -98,7 +98,7 @@ public class LoginPresenter {
                         loginView.onViewFailureString(baseBean.getCode(), baseBean.getMessage());
                     }
                 } else {
-                    loginView.onServerFailure("服务器繁忙", 0);
+                    loginView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -126,7 +126,7 @@ public class LoginPresenter {
                         loginView.onViewFailureString(getTimeBean.getCode(), getTimeBean.getMessage());
                     }
                 } else {
-                    loginView.onServerFailure("服务器繁忙", 0);
+                    loginView.onServerFailure("网络异常", 0);
                 }
             }
 

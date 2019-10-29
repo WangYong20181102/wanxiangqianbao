@@ -44,7 +44,7 @@ public class MySendLetterPresenter {
                         mySendLetterView.onViewFailureString(meDividend.getCode(), meDividend.getMessage());
                     }
                 } else {
-                    mySendLetterView.onServerFailure("服务器繁忙", 0);
+                    mySendLetterView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -71,7 +71,7 @@ public class MySendLetterPresenter {
                         mySendLetterView.onViewFailureString(baseBean.getCode(), baseBean.getMessage());
                     }
                 } else {
-                    mySendLetterView.onServerFailure("服务器繁忙", 0);
+                    mySendLetterView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -98,7 +98,7 @@ public class MySendLetterPresenter {
                         mySendLetterView.onViewFailureString(baseBean.getCode(), baseBean.getMessage());
                     }
                 } else {
-                    mySendLetterView.onServerFailure("服务器繁忙", 0);
+                    mySendLetterView.onServerFailure("网络异常", 0);
                 }
             }
 

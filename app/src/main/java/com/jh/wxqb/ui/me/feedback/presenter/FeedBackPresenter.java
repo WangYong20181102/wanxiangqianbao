@@ -46,7 +46,7 @@ public class FeedBackPresenter {
                         feedBackView.onViewFailureString(baseBean.getCode(), baseBean.getMessage());
                     }
                 } else {
-                    feedBackView.onServerFailure("服务器繁忙", 0);
+                    feedBackView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -73,7 +73,7 @@ public class FeedBackPresenter {
                         feedBackView.onViewFailureString(feedbackListBean.getCode(), feedbackListBean.getMessage());
                     }
                 } else {
-                    feedBackView.onServerFailure("服务器繁忙", 0);
+                    feedBackView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -100,7 +100,7 @@ public class FeedBackPresenter {
                         feedBackView.onViewFailureString(feedbackInfoBean.getCode(), feedbackInfoBean.getMessage());
                     }
                 } else {
-                    feedBackView.onServerFailure("服务器繁忙", 0);
+                    feedBackView.onServerFailure("网络异常", 0);
                 }
             }
 

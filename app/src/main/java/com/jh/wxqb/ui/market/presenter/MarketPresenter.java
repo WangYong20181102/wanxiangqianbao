@@ -56,7 +56,7 @@ public class MarketPresenter {
                         marketView.onViewFailureString(meDividend.getCode(), meDividend.getMessage());
                     }
                 } else {
-                    marketView.onServerFailure("服务器繁忙", 0);
+                    marketView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -83,7 +83,7 @@ public class MarketPresenter {
                         marketView.onViewFailureString(marketDividendTitleBean.getCode(), marketDividendTitleBean.getMessage());
                     }
                 } else {
-                    marketView.onServerFailure("服务器繁忙", 0);
+                    marketView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -110,7 +110,7 @@ public class MarketPresenter {
                         marketView.onViewFailureString(marketDividendBottomBean.getCode(), marketDividendBottomBean.getMessage());
                     }
                 } else {
-                    marketView.onServerFailure("服务器繁忙", 0);
+                    marketView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -137,7 +137,7 @@ public class MarketPresenter {
                         marketView.onViewFailureString(baseBean.getCode(), baseBean.getMessage());
                     }
                 } else {
-                    marketView.onServerFailure("服务器繁忙", 0);
+                    marketView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -164,7 +164,7 @@ public class MarketPresenter {
                         marketView.onViewFailureString(currentPriceBean.getCode(), currentPriceBean.getMessage());
                     }
                 } else {
-                    marketView.onServerFailure("服务器繁忙", 0);
+                    marketView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -191,7 +191,7 @@ public class MarketPresenter {
                         marketView.onViewFailureString(baseBean.getCode(), baseBean.getMessage());
                     }
                 } else {
-                    marketView.onServerFailure("服务器繁忙", 0);
+                    marketView.onServerFailure("网络异常", 0);
                 }
             }
 
@@ -218,7 +218,7 @@ public class MarketPresenter {
                         marketView.onViewFailureString(baseBean.getCode(), baseBean.getMessage());
                     }
                 } else {
-                    marketView.onServerFailure("服务器繁忙", 0);
+                    marketView.onServerFailure("网络异常", 0);
                 }
             }
 

@@ -51,7 +51,6 @@ public class DividendFragment extends BaseFragment implements MyClicker, MySendL
     SwipeMenuRecyclerView shop_recy;
     @BindView(R.id.sw_refresh)
     SwipeRefreshLayout sw_refresh;
-    protected RecyclerView.ItemDecoration mItemDecoration;  //Item之间的间距
     int pageIndex = 1;
     boolean isClear = true;
     private DividendAdapter adapter;
@@ -91,18 +90,9 @@ public class DividendFragment extends BaseFragment implements MyClicker, MySendL
         shop_recy.setLoadMoreView(loadMoreView); // 设置LoadMoreView更新监听。
         shop_recy.setLoadMoreListener(mLoadMoreListener);   //上拉加载更多
         sw_refresh.setOnRefreshListener(mRefreshListener);  //下拉刷新
-        mItemDecoration = createItemDecoration(); //获取ItemDecoration对象
-        shop_recy.addItemDecoration(mItemDecoration); //添加每个Item之间的间距
         //初始化适配器
         adapter = new DividendAdapter(mContext, meDividends, this);
         shop_recy.setAdapter(adapter);  //设置适配器
-    }
-
-
-    //每个Item之间的间距
-    protected RecyclerView.ItemDecoration createItemDecoration() {
-        //颜色  宽度  高度
-        return new DefaultItemDecoration(Color.parseColor("#999999"), WindowManager.LayoutParams.MATCH_PARENT, 1);
     }
 
 
