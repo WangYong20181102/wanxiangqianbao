@@ -42,7 +42,7 @@ import butterknife.OnClick;
 /**
  * 查看更多（最近成交）
  */
-public class MoreBusinessActivity extends BaseActivity implements MarketView, MyClicker, View.OnClickListener {
+public class MoreBusinessActivity extends BaseActivity implements MarketView, MyClicker{
 
     @BindView(R.id.shop_recy)
     SwipeMenuRecyclerView shop_recy;
@@ -54,8 +54,8 @@ public class MoreBusinessActivity extends BaseActivity implements MarketView, My
     TextView tvType;
     @BindView(R.id.iv_business_down)
     ImageView ivBusinessDown;
-    @BindView(R.id.ll_sel_type)
-    LinearLayout llSelType;
+//    @BindView(R.id.ll_sel_type)
+//    LinearLayout llSelType;
 
     private MoreBusinessAdapter adapter;
     private List<MarketDividendBottomBean.DataBean.ListBean> listBeen = new ArrayList<>();
@@ -77,10 +77,10 @@ public class MoreBusinessActivity extends BaseActivity implements MarketView, My
     }
 
 
-    @OnClick(R.id.ll_sel_type)
-    public void onViewClicked() {
-        selBusinessType(llSelType);
-    }
+//    @OnClick(R.id.ll_sel_type)
+//    public void onViewClicked() {
+//        selBusinessType(llSelType);
+//    }
 
     @Override
     public void myClick(View view, int type) {
@@ -93,38 +93,38 @@ public class MoreBusinessActivity extends BaseActivity implements MarketView, My
     }
 
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tv_all:
-                optionWindow.dismiss();
-                ivBusinessDown.setImageResource(R.drawable.iv_down);
-                tvType.setText(R.string.all);
-                selType(0);
-                break;
-            case R.id.tv_dividend:
-                optionWindow.dismiss();
-                ivBusinessDown.setImageResource(R.drawable.iv_down);
-                tvType.setText(R.string.dividend);
-                selType(1);
-                break;
-            case R.id.tv_sell:
-                optionWindow.dismiss();
-                ivBusinessDown.setImageResource(R.drawable.iv_down);
-                tvType.setText(R.string.sell);
-                selType(2);
-                break;
-        }
-    }
+//    @Override
+//    public void onClick(View v) {
+//        switch (v.getId()) {
+//            case R.id.tv_all:
+//                optionWindow.dismiss();
+//                ivBusinessDown.setImageResource(R.drawable.iv_down);
+//                tvType.setText(R.string.all);
+//                selType(0);
+//                break;
+//            case R.id.tv_dividend:
+//                optionWindow.dismiss();
+//                ivBusinessDown.setImageResource(R.drawable.iv_down);
+//                tvType.setText(R.string.dividend);
+//                selType(1);
+//                break;
+//            case R.id.tv_sell:
+//                optionWindow.dismiss();
+//                ivBusinessDown.setImageResource(R.drawable.iv_down);
+//                tvType.setText(R.string.sell);
+//                selType(2);
+//                break;
+//        }
+//    }
 
 
-    public void selType(int type) {
-        pageIndex = 1;
-        isClear = true;
-        this.type = type;
-        showWaitDialog();
-        marketPresenter.dividendMarketTopDividend(pageIndex, 1, type);
-    }
+//    public void selType(int type) {
+//        pageIndex = 1;
+//        isClear = true;
+//        this.type = type;
+//        showWaitDialog();
+//        marketPresenter.dividendMarketTopDividend(pageIndex, 1, type);
+//    }
 
     /**
      * 选择买卖订单类型类型
@@ -136,9 +136,9 @@ public class MoreBusinessActivity extends BaseActivity implements MarketView, My
         TextView tvAll = contentView.findViewById(R.id.tv_all);
         TextView tvDividend = contentView.findViewById(R.id.tv_dividend);
         TextView tvSell = contentView.findViewById(R.id.tv_sell);
-        tvAll.setOnClickListener(this);
-        tvDividend.setOnClickListener(this);
-        tvSell.setOnClickListener(this);
+//        tvAll.setOnClickListener(this);
+//        tvDividend.setOnClickListener(this);
+//        tvSell.setOnClickListener(this);
         optionWindow = new PopupWindow(contentView, WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT, true);
         optionWindow.setTouchable(true);

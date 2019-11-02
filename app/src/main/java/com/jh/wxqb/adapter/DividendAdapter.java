@@ -64,8 +64,8 @@ public class DividendAdapter extends RecyclerView.Adapter<DividendAdapter.ViewHo
 
         @BindView(R.id.tv_success)
         TextView tvSuccess;
-        @BindView(R.id.tv_dividend_state)
-        TextView tvDividendState;
+        @BindView(R.id.tv_dividend_status)
+        TextView tvDividendStatus;
         @BindView(R.id.tv_time)
         TextView tvTime;
         @BindView(R.id.tv_delegate_quantity)
@@ -76,8 +76,8 @@ public class DividendAdapter extends RecyclerView.Adapter<DividendAdapter.ViewHo
         TextView tvVolume;
         @BindView(R.id.tv_company)
         TextView tvCompany;
-        @BindView(R.id.ll_state)
-        LinearLayout llState;
+        @BindView(R.id.ll_status)
+        LinearLayout llStatus;
 
         public ViewHolder(View v) {
             super(v);
@@ -85,7 +85,7 @@ public class DividendAdapter extends RecyclerView.Adapter<DividendAdapter.ViewHo
         }
 
         //      1買入中2.停止買入3.停止排队4.挂单中5.已成交6.已撤销7.排队中
-        //tvDividendState  1：停止買入   2：停止排队
+        //tvDividendStatus  1：停止買入   2：停止排队
         public void refurbish(final int position) {
             BigDecimal one = new BigDecimal("1");
             tvTime.setText(TimeUtil.getTime(item.getCreateDate()));
@@ -103,32 +103,32 @@ public class DividendAdapter extends RecyclerView.Adapter<DividendAdapter.ViewHo
             }
             switch (item.getStatus()) {
                 case 1:
-                    llState.setVisibility(View.VISIBLE);
+                    llStatus.setVisibility(View.VISIBLE);
                     tvSuccess.setVisibility(View.VISIBLE);
                     tvSuccess.setText(R.string.in_the_pending_order_brackets);
-                    tvDividendState.setText(R.string.cancel_order);
-                    tvDividendState.setOnClickListener(DividendAdapter.this);
-                    tvDividendState.setTag(R.string.value1, position);
-                    tvDividendState.setTag(R.string.value2, 1);
+                    tvDividendStatus.setText(R.string.cancel_order);
+                    tvDividendStatus.setOnClickListener(DividendAdapter.this);
+                    tvDividendStatus.setTag(R.string.value1, position);
+                    tvDividendStatus.setTag(R.string.value2, 1);
                     break;
                 case 3:
-                    llState.setVisibility(View.INVISIBLE);
+                    llStatus.setVisibility(View.INVISIBLE);
                     tvSuccess.setVisibility(View.VISIBLE);
                     tvSuccess.setText(R.string.all_success_brackets);
                     break;
                 case 4:
-                    llState.setVisibility(View.INVISIBLE);
+                    llStatus.setVisibility(View.INVISIBLE);
                     tvSuccess.setVisibility(View.VISIBLE);
                     tvSuccess.setText(R.string.revocation_brackets);
                     break;
                 case 5:
-                    llState.setVisibility(View.VISIBLE);
+                    llStatus.setVisibility(View.VISIBLE);
                     tvSuccess.setVisibility(View.VISIBLE);
                     tvSuccess.setText(R.string.partial_deal_brackets);
-                    tvDividendState.setText(R.string.cancel_order);
-                    tvDividendState.setOnClickListener(DividendAdapter.this);
-                    tvDividendState.setTag(R.string.value1, position);
-                    tvDividendState.setTag(R.string.value2, 1);
+                    tvDividendStatus.setText(R.string.cancel_order);
+                    tvDividendStatus.setOnClickListener(DividendAdapter.this);
+                    tvDividendStatus.setTag(R.string.value1, position);
+                    tvDividendStatus.setTag(R.string.value2, 1);
                     break;
             }
         }
@@ -137,7 +137,7 @@ public class DividendAdapter extends RecyclerView.Adapter<DividendAdapter.ViewHo
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.tv_dividend_state:
+            case R.id.tv_dividend_status:
                 myClicker.myClick(v, 0);
                 break;
         }

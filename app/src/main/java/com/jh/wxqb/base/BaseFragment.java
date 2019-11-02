@@ -46,6 +46,7 @@ public abstract class BaseFragment extends Fragment {
             onAttachToContext(activity);
         }
     }
+
     protected void onAttachToContext(Context context) {
         //do something
         mContext = context;

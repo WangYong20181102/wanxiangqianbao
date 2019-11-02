@@ -46,9 +46,9 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/d24"
                     android:text="@string/success"
-                    android:textColor="@color/color_588bdd"
+                    android:textColor="@color/color_D14B64"
                     android:textSize="@dimen/s12"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
 
             </LinearLayout>
 

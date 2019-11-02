@@ -70,6 +70,8 @@ public class MeSellAdapter extends RecyclerView.Adapter<MeSellAdapter.ViewHolder
         TextView tvDelegateQuantity;
         @BindView(R.id.tv_total_turnover)
         TextView tvTotalTurnover;
+        @BindView(R.id.tv_dividend_income)
+        TextView tvDividendIncome;
         @BindView(R.id.tv_cancel_order)
         TextView tvCancelOrder;
         @BindView(R.id.tv_success)
@@ -87,8 +89,8 @@ public class MeSellAdapter extends RecyclerView.Adapter<MeSellAdapter.ViewHolder
             BigDecimal one=new BigDecimal("1");
             tvTime.setText(TimeUtil.getTime(item.getCreateDate()));
             tvDelegateQuantity.setText(String.valueOf(item.getAmountPrice().divide(one,4,BigDecimal.ROUND_HALF_UP)));
+            tvDividendIncome.setText(String.valueOf(item.getAccountCommission().divide(one,2,BigDecimal.ROUND_HALF_UP)));
             tvTotalTurnover.setText(String.valueOf(item.getVolume().divide(one,2,BigDecimal.ROUND_HALF_UP)));
-
             tvCancelOrder.setOnClickListener(MeSellAdapter.this);
             tvCancelOrder.setTag(position);
 

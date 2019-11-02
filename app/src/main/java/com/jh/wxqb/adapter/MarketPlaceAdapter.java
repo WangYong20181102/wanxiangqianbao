@@ -237,8 +237,8 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         TextView tvTurnover;
         @BindView(R.id.tv_purchase)
         TextView tvPurchase;
-        @BindView(R.id.tv_no)
-        TextView tvNo;
+        @BindView(R.id.tv_status)
+        TextView tvStatus;
 
         private MainHolder(View itemView) {
             super(itemView);
@@ -418,16 +418,16 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
         switch (listBeen.get(position - 1).getOrderStatus()) {
             case 1://挂单中
-                holder.tvNo.setText(R.string.in_the_pending_order);
+                holder.tvStatus.setText(R.string.in_the_pending_order);
                 break;
             case 3://全部成交
-                holder.tvNo.setText(R.string.all_success);
+                holder.tvStatus.setText(R.string.all_success);
                 break;
             case 4://已撤销
-                holder.tvNo.setText(R.string.revocation);
+                holder.tvStatus.setText(R.string.revocation);
                 break;
             case 5://部分成交
-                holder.tvNo.setText(R.string.partial_deal);
+                holder.tvStatus.setText(R.string.partial_deal);
                 break;
         }
         holder.tvTime.setText(listBeen.get(position - 1).getUpdateTime());

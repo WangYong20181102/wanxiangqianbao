@@ -1,5 +1,6 @@
 package com.jh.wxqb.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,10 @@ import java.math.BigDecimal;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * 交易深度
+ * （盘口）
+ */
 public class HandicapDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
@@ -29,6 +34,11 @@ public class HandicapDetailAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         inflater = LayoutInflater.from(context);
     }
 
+    /**
+     * 数据更新
+     *
+     * @param listBean
+     */
     public void upDataList(MarketDividendTitleBean.DataBean.ListBean listBean) {
         this.listBean = listBean;
     }
@@ -40,33 +50,34 @@ public class HandicapDetailAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         return new MyViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof MyViewHolder) {
             if (listBean != null) {
-                if (position > listBean.getBuyList().size() - 1) {
-                    ((MyViewHolder) holder).tvLeftId.setText("--");
-                    ((MyViewHolder) holder).tvLeftPrices.setText("--");
-                    ((MyViewHolder) holder).tvLeftNum.setText("--");
-                    ((MyViewHolder) holder).myCanvasLeft.updateBgSize(new BigDecimal(0), 0);
+                if (position > listBean.getBuyList().size() - 1) { //判断是否大于买盘集合大小，大于显示默认“--”
+                    ((MyViewHolder) holder).tvBuyId.setText("--");//买盘盘口id
+                    ((MyViewHolder) holder).tvBuyPrices.setText("--");//买盘价格
+                    ((MyViewHolder) holder).tvBuyNum.setText("--");//数量
+                    ((MyViewHolder) holder).myCanvasBuy.updateBgSize(new BigDecimal(0), 0);//更新背景
                 } else {
                     MarketDividendTitleBean.DataBean.ListBean.BuyListBean buyListBean = listBean.getBuyList().get(position);
-                    ((MyViewHolder) holder).tvLeftId.setText(buyListBean.getId() + "");
-                    ((MyViewHolder) holder).tvLeftPrices.setText(String.valueOf(buyListBean.getAmountPrice().doubleValue()));
-                    ((MyViewHolder) holder).tvLeftNum.setText(String.valueOf(buyListBean.getCountUnfilledVolume().doubleValue()));
-                    ((MyViewHolder) holder).myCanvasLeft.updateBgSize(buyListBean.getCountUnfilledVolume(), 0);
+                    ((MyViewHolder) holder).tvBuyId.setText(buyListBean.getId() + "");
+                    ((MyViewHolder) holder).tvBuyPrices.setText(String.valueOf(buyListBean.getAmountPrice().doubleValue()));
+                    ((MyViewHolder) holder).tvBuyNum.setText(String.valueOf(buyListBean.getCountUnfilledVolume().doubleValue()));
+                    ((MyViewHolder) holder).myCanvasBuy.updateBgSize(buyListBean.getCountUnfilledVolume(), 0);
                 }
-                if (position > listBean.getSellList().size() - 1) {
-                    ((MyViewHolder) holder).tvRightId.setText("--");
-                    ((MyViewHolder) holder).tvRightPrices.setText("--");
-                    ((MyViewHolder) holder).tvRightNum.setText("--");
-                    ((MyViewHolder) holder).myCanvasRight.updateBgSize(new BigDecimal(0), 0);
+                if (position > listBean.getSellList().size() - 1) {//判断是否大于卖盘集合大小，大于显示默认“--”
+                    ((MyViewHolder) holder).tvSellId.setText("--");//卖盘盘口id
+                    ((MyViewHolder) holder).tvSellPrices.setText("--");//卖盘价格
+                    ((MyViewHolder) holder).tvSellNum.setText("--");//数量
+                    ((MyViewHolder) holder).myCanvasSell.updateBgSize(new BigDecimal(0), 0);
                 } else {
                     MarketDividendTitleBean.DataBean.ListBean.SellListBean sellListBean = listBean.getSellList().get(position);
-                    ((MyViewHolder) holder).tvRightId.setText(sellListBean.getId() + "");
-                    ((MyViewHolder) holder).tvRightPrices.setText(String.valueOf(sellListBean.getAmountPrice().doubleValue()));
-                    ((MyViewHolder) holder).tvRightNum.setText(String.valueOf(sellListBean.getCountUnfilledVolume().doubleValue()));
-                    ((MyViewHolder) holder).myCanvasRight.updateBgSize(sellListBean.getCountUnfilledVolume(), 1);
+                    ((MyViewHolder) holder).tvSellId.setText(sellListBean.getId() + "");
+                    ((MyViewHolder) holder).tvSellPrices.setText(String.valueOf(sellListBean.getAmountPrice().doubleValue()));
+                    ((MyViewHolder) holder).tvSellNum.setText(String.valueOf(sellListBean.getCountUnfilledVolume().doubleValue()));
+                    ((MyViewHolder) holder).myCanvasSell.updateBgSize(sellListBean.getCountUnfilledVolume(), 1);
                 }
 
             }
@@ -75,27 +86,27 @@ public class HandicapDetailAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public int getItemCount() {
-        return 20;
+        return 20;//固定20条数据
     }
 
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.my_canvas_left)
-        MyCanvasView myCanvasLeft;
-        @BindView(R.id.tv_left_id)
-        TextView tvLeftId;
-        @BindView(R.id.tv_left_prices)
-        TextView tvLeftPrices;
-        @BindView(R.id.tv_left_num)
-        TextView tvLeftNum;
-        @BindView(R.id.my_canvas_right)
-        MyCanvasView myCanvasRight;
-        @BindView(R.id.tv_right_num)
-        TextView tvRightNum;
-        @BindView(R.id.tv_right_prices)
-        TextView tvRightPrices;
-        @BindView(R.id.tv_right_id)
-        TextView tvRightId;
+        @BindView(R.id.my_canvas_buy)
+        MyCanvasView myCanvasBuy;
+        @BindView(R.id.tv_buy_id)
+        TextView tvBuyId;
+        @BindView(R.id.tv_buy_prices)
+        TextView tvBuyPrices;
+        @BindView(R.id.tv_buy_num)
+        TextView tvBuyNum;
+        @BindView(R.id.my_canvas_sell)
+        MyCanvasView myCanvasSell;
+        @BindView(R.id.tv_sell_num)
+        TextView tvSellNum;
+        @BindView(R.id.tv_sell_prices)
+        TextView tvSellPrices;
+        @BindView(R.id.tv_sell_id)
+        TextView tvSellId;
 
         public MyViewHolder(View itemView) {
             super(itemView);

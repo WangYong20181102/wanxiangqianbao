@@ -22,7 +22,7 @@ public class AppUpdateProgressDialog extends Dialog {
     private TextView tvVersion;
     private String content;
     private String version;
-    private boolean isImportant=false;  //标识是否是重要本版
+    private boolean isImportant = false;  //标识是否是重要本版
     private Context context;
 
     public AppUpdateProgressDialog(Context context) {
@@ -30,24 +30,24 @@ public class AppUpdateProgressDialog extends Dialog {
         initLayout();
     }
 
-    public AppUpdateProgressDialog(Context context, String content, boolean isImportant,String version) {
+    public AppUpdateProgressDialog(Context context, String content, boolean isImportant, String version) {
         super(context, R.style.Custom_Progress);
         this.context = context;
-        this.content=content;
-        this.isImportant=isImportant;
-        this.version=version;
+        this.content = content;
+        this.isImportant = isImportant;
+        this.version = version;
         initLayout();
     }
 
     private void initLayout() {
         this.setContentView(R.layout.update_progress_layout);
         getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        numberProgressBar = (NumberProgressBar) findViewById(R.id.number_progress);
-        ivClose = (ImageView) findViewById(R.id.iv_close);
-        updateTv = (TextView) findViewById(R.id.update_tv);
-        tvContent = (TextView) findViewById(R.id.tv_content);
-        tvUdp = (TextView) findViewById(R.id.tv_udp);
-        tvVersion = (TextView) findViewById(R.id.tv_version);
+        numberProgressBar = findViewById(R.id.number_progress);
+        ivClose = findViewById(R.id.iv_close);
+        updateTv = findViewById(R.id.update_tv);
+        tvContent = findViewById(R.id.tv_content);
+        tvUdp = findViewById(R.id.tv_udp);
+        tvVersion = findViewById(R.id.tv_version);
         this.setCanceledOnTouchOutside(false);//点击dialog背景部分不消失
         ivClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,10 +71,10 @@ public class AppUpdateProgressDialog extends Dialog {
                 udp();
             }
         });
-        if(isImportant){
+        if (isImportant) {
             ivClose.setVisibility(View.GONE);
             this.setCancelable(false);//dialog出现时，点击back键不消失
-        }else {
+        } else {
             this.setCancelable(true);//dialog出现时，点击back键消失
         }
         tvContent.setText(content);
@@ -88,9 +88,12 @@ public class AppUpdateProgressDialog extends Dialog {
     /**
      * 更新
      */
-    public void udp(){}
+    public void udp() {
+    }
+
     /**
      * 关闭
      */
-    public void close(){}
+    public void close() {
+    }
 }

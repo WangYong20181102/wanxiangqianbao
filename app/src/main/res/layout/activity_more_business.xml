@@ -42,7 +42,7 @@
                 android:id="@+id/tv_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/type"
+                android:text="@string/state"
                 android:textColor="@color/color_8C9CAE"
                 android:textSize="@dimen/iv_20" />
 
@@ -51,7 +51,8 @@
                 android:layout_width="@dimen/iv_20"
                 android:layout_height="@dimen/iv_10"
                 android:layout_marginLeft="@dimen/iv_10"
-                android:src="@drawable/iv_down" />
+                android:src="@drawable/iv_down"
+                android:visibility="gone"/>
         </LinearLayout>
 
         <TextView

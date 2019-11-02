@@ -36,7 +36,7 @@ public class CurrentEntrustmentAdapter extends RecyclerView.Adapter<CurrentEntru
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //设置自适应布局
+        //设置自适应布局w
         AutoUtils.autoSize(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_market_dividend_main, null));
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_market_dividend_main, null));
     }
@@ -70,8 +70,8 @@ public class CurrentEntrustmentAdapter extends RecyclerView.Adapter<CurrentEntru
         TextView tvTurnover;
         @BindView(R.id.tv_purchase)
         TextView tvPurchase;
-        @BindView(R.id.tv_no)
-        TextView tvNo;
+        @BindView(R.id.tv_status)
+        TextView tvStatus;
 
         public ViewHolder(View v) {
             super(v);
@@ -107,35 +107,35 @@ public class CurrentEntrustmentAdapter extends RecyclerView.Adapter<CurrentEntru
                     break;
             }
             tvNum.setText(item.getAccountCommission().divide(one, 2, BigDecimal.ROUND_DOWN).doubleValue() + "");
-            tvNo.setVisibility(View.VISIBLE);
+            tvStatus.setVisibility(View.VISIBLE);
             switch (item.getStatus()) {
                 case 1:
-                    tvNo.setTextColor(Color.rgb(55, 105, 245));
-                    tvNo.setText(R.string.in_the_pending_order);
+                    tvStatus.setTextColor(Color.rgb(55, 105, 245));
+                    tvStatus.setText(R.string.in_the_pending_order);
                     break;
 //                case 2:
-//                    tvNo.setTextColor(Color.parseColor("#d6734b"));
-//                    tvNo.setText(R.string.stop_the_dividend);
+//                    tvStatus.setTextColor(Color.parseColor("#d6734b"));
+//                    tvStatus.setText(R.string.stop_the_dividend);
 //                    break;
                 case 3:
-                    tvNo.setTextColor(Color.rgb(0, 204, 102));
-                    tvNo.setText(R.string.all_success);
+                    tvStatus.setTextColor(Color.rgb(0, 204, 102));
+                    tvStatus.setText(R.string.all_success);
                     break;
                 case 4:
-                    tvNo.setTextColor(Color.parseColor("#d6734b"));
-                    tvNo.setText(R.string.revocation);
+                    tvStatus.setTextColor(Color.parseColor("#d6734b"));
+                    tvStatus.setText(R.string.revocation);
                     break;
                 case 5:
-                    tvNo.setTextColor(Color.rgb(0, 204, 102));
-                    tvNo.setText(R.string.partial_deal);
+                    tvStatus.setTextColor(Color.rgb(0, 204, 102));
+                    tvStatus.setText(R.string.partial_deal);
                     break;
 //                case 6:
-//                    tvNo.setTextColor(Color.parseColor("#d6734b"));
-//                    tvNo.setText(R.string.revocation);
+//                    tvStatus.setTextColor(Color.parseColor("#d6734b"));
+//                    tvStatus.setText(R.string.revocation);
 //                    break;
 //                case 7:
-//                    tvNo.setTextColor(Color.rgb(0, 204, 102));
-//                    tvNo.setText(R.string.queuing);
+//                    tvStatus.setTextColor(Color.rgb(0, 204, 102));
+//                    tvStatus.setText(R.string.queuing);
 //                    break;
             }
         }

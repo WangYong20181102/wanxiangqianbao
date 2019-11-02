@@ -22,38 +22,38 @@
                 android:layout_width="@dimen/iv_600"
                 android:layout_height="@dimen/iv_302"
                 android:layout_centerHorizontal="true"
-                android:orientation="vertical"
                 android:layout_marginTop="@dimen/iv_18"
-                android:background="@drawable/iv_udp_bg">
+                android:background="@drawable/iv_udp_bg"
+                android:orientation="vertical">
 
                 <TextView
-                    android:text="@string/new_version"
-                    android:layout_marginTop="@dimen/iv_80"
-                    android:layout_marginLeft="@dimen/iv_50"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/iv_40"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/iv_50"
+                    android:layout_marginTop="@dimen/iv_80"
+                    android:text="@string/new_version"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/iv_40" />
 
                 <TextView
                     android:id="@+id/tv_version"
-                    android:layout_marginTop="@dimen/iv_20"
-                    android:layout_marginLeft="@dimen/iv_50"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/iv_24"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/iv_50"
+                    android:layout_marginTop="@dimen/iv_20"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/iv_24" />
 
             </LinearLayout>
 
 
             <ImageView
                 android:id="@+id/iv_close"
-                android:paddingBottom="@dimen/iv_30"
-                android:paddingLeft="@dimen/iv_30"
                 android:layout_width="@dimen/iv_80"
                 android:layout_height="@dimen/iv_80"
                 android:layout_alignParentRight="true"
+                android:paddingLeft="@dimen/iv_30"
+                android:paddingBottom="@dimen/iv_30"
                 android:src="@drawable/home_wrong" />
         </RelativeLayout>
 
@@ -65,13 +65,13 @@
             android:orientation="vertical">
 
             <TextView
-                android:lineSpacingMultiplier="1.2"
                 android:id="@+id/tv_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/iv_76"
-                android:layout_marginRight="@dimen/iv_76"
                 android:layout_marginTop="@dimen/iv_50"
+                android:layout_marginRight="@dimen/iv_76"
+                android:lineSpacingMultiplier="1.2"
                 android:textColor="@color/black_text"
                 android:textSize="@dimen/iv_26" />
 
@@ -80,8 +80,8 @@
                 android:layout_width="@dimen/iv_208"
                 android:layout_height="@dimen/iv_78"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="@dimen/iv_50"
                 android:layout_marginTop="@dimen/iv_50"
+                android:layout_marginBottom="@dimen/iv_50"
                 android:background="@drawable/shape_app_udp_bg"
                 android:gravity="center"
                 android:text="立即更新"
@@ -91,25 +91,25 @@
 
             <com.jh.wxqb.customview.NumberProgressBar
                 android:id="@+id/number_progress"
-                android:visibility="gone"
-                android:layout_marginLeft="@dimen/iv_20"
-                android:layout_marginRight="@dimen/iv_20"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/iv_100"
-                android:layout_marginTop="@dimen/iv_50" />
+                android:layout_marginLeft="@dimen/iv_20"
+                android:layout_marginTop="@dimen/iv_50"
+                android:layout_marginRight="@dimen/iv_20"
+                android:visibility="gone" />
 
             <TextView
-                android:layout_marginBottom="@dimen/iv_20"
-                android:visibility="gone"
                 android:id="@+id/update_tv"
                 android:layout_width="@dimen/iv_635"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center_horizontal"
                 android:layout_marginTop="@dimen/iv_30"
+                android:layout_marginBottom="@dimen/iv_20"
                 android:gravity="center_horizontal"
                 android:text="新版本正在更新,請稍等..."
                 android:textColor="@color/blue"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone" />
 
         </LinearLayout>
 

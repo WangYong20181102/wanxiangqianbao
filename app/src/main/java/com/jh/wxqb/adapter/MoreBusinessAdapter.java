@@ -77,8 +77,8 @@ public class MoreBusinessAdapter extends RecyclerView.Adapter<MoreBusinessAdapte
         TextView tvTurnover;
         @BindView(R.id.tv_purchase)
         TextView tvPurchase;
-        @BindView(R.id.tv_no)
-        TextView tvNo;
+        @BindView(R.id.tv_status)
+        TextView tvStatus;
 
         public ViewHolder(View v) {
             super(v);
@@ -101,19 +101,21 @@ public class MoreBusinessAdapter extends RecyclerView.Adapter<MoreBusinessAdapte
             }
             switch (listBeen.get(position).getOrderStatus()) {
                 case 1://挂单中
-                    tvNo.setText(R.string.in_the_pending_order);
+                    tvStatus.setText(R.string.in_the_pending_order);
                     break;
                 case 3://全部成交
-                    tvNo.setText(R.string.all_success);
+                    tvStatus.setText(R.string.all_success);
                     break;
                 case 4://已撤销
-                    tvNo.setText(R.string.revocation);
+                    tvStatus.setText(R.string.revocation);
                     break;
                 case 5://部分成交
-                    tvNo.setText(R.string.partial_deal);
+                    tvStatus.setText(R.string.partial_deal);
                     break;
             }
+            //更新时间
             tvTime.setText(listBeen.get(position).getUpdateTime());
+            //数量
             tvNum.setText(String.valueOf(listBeen.get(position).getAccountCommission().divide(one, 2, BigDecimal.ROUND_DOWN).doubleValue()));
             tvPurchase.setOnClickListener(MoreBusinessAdapter.this);
             tvPurchase.setTag(position);

@@ -47,7 +47,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/d24"
                     android:text="@string/success"
-                    android:textColor="@color/color_D14B64"
+                    android:textColor="@color/color_03AD8F"
                     android:textSize="@dimen/s12"
                     android:visibility="gone" />
 
@@ -158,14 +158,14 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/ll_state"
+                    android:id="@+id/ll_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:visibility="invisible">
 
                     <TextView
-                        android:id="@+id/tv_dividend_state"
+                        android:id="@+id/tv_dividend_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/shape_div_bg"

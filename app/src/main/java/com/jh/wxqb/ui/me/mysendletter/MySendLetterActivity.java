@@ -27,7 +27,6 @@ public class MySendLetterActivity extends BaseActivity implements ViewPager.OnPa
     List<TextView> allTitle;
     @BindViews({R.id.view_dividend, R.id.view_sell})
     List<View> allView;
-    private ArrayList<Fragment> fragmentList;
 
     @Override
     protected int getLayout() {
@@ -47,7 +46,7 @@ public class MySendLetterActivity extends BaseActivity implements ViewPager.OnPa
 
 
     private void initFragment() {
-        fragmentList = new ArrayList<>();
+        ArrayList<Fragment> fragmentList = new ArrayList<>();
         DividendFragment dividendFragment = new DividendFragment();
         SellFragment sellFragment = new SellFragment();
         fragmentList.add(dividendFragment);

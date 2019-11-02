@@ -67,9 +67,10 @@ public class HomePageFragment extends BaseFragment implements HomePagerView, Vie
     @BindView(R.id.view_pager)
     ViewPager viewPager;
     @BindView(R.id.ll_points)
-    LinearLayout llPoint;
+    LinearLayout llPoint;//轮播图小圆点
     private int mMaxProgress = 100;//百分比
     private Intent download;
+    @SuppressLint("StaticFieldLeak")
     public static AppUpdateProgressDialog dialog;
     Unbinder unbinder;
     private HomePagePresenter homePagePresenter;

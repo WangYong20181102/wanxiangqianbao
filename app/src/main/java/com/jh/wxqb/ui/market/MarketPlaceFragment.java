@@ -105,7 +105,6 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
         marketPresenter = new MarketPresenter(this);
         initRecyclerView();
         upTopBottomData(viewType);
-        startTimer();
     }
 
     @Override
@@ -225,6 +224,7 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
                 onPause();
                 break;
             case "resumeTimer":
+                count++;
                 onResume();
                 break;
             case "backSell":

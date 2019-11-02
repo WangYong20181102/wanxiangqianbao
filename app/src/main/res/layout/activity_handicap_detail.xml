@@ -77,6 +77,7 @@
                                     android:text="加载中..."
                                     android:layout_centerInParent="true"
                                     android:textColor="@color/color_435973"
+                                    android:background="@color/transparent"
                                     android:textSize="@dimen/s20" />
 
                             </RelativeLayout>

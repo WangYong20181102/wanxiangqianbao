@@ -1,5 +1,6 @@
 package com.jh.wxqb.utils;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.Service;
@@ -48,6 +49,7 @@ public class DownloadService extends Service {
 
 //    private static AsyncHttpClientHelper asyClient;
 
+    @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
@@ -79,6 +81,7 @@ public class DownloadService extends Service {
         ;
     };
 
+    @SuppressLint("HandlerLeak")
     private Handler handMessage = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {

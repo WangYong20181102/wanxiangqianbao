@@ -39,6 +39,7 @@ import com.jh.wxqb.utils.Toasts;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 
 import butterknife.BindView;
@@ -189,25 +190,32 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
                         if (!checkEdit(edTargetAddress) || !checkEdit(edAmountOfMoney) || !checkEdit(edPayPwd) || !checkEdit(edCode)) {
                             return;
                         }
-                        switch (assetsBean.getBizCurrencyTypeId()){
+                        String turnNum = edAmountOfMoney.getText().toString().trim();
+                        switch (assetsBean.getBizCurrencyTypeId()) {
                             case 2:
-                                if (Double.parseDouble(edAmountOfMoney.getText().toString().trim()) < 30) {
+                                if (Double.parseDouble(turnNum) < 30) {
                                     Toasts.showShort("最小提币数量30枚");
                                     return;
                                 }
                                 break;
                             case 3:
-                                if (Double.parseDouble(edAmountOfMoney.getText().toString().trim()) < 5) {
+                                if (Double.parseDouble(turnNum) < 5) {
                                     Toasts.showShort("最小提币数量5枚");
                                     return;
                                 }
                                 break;
                         }
+
+                        //判断可用余额是否为0、转出数量是否大于可用余额
+                        if (new BigDecimal(turnNum).compareTo(new BigDecimal(assetsBean.getActiveAssets())) > 0 || assetsBean.getActiveAssets() == 0) {
+                            Toasts.showShort("余额不足");
+                            return;
+                        }
                         StringUtil.Closekeyboard(this);
                         showWaitDialog();
                         map = new HashMap<>();
                         map.put("site", edTargetAddress.getText().toString());
-                        map.put("number", edAmountOfMoney.getText().toString());
+                        map.put("number", turnNum);
                         map.put("pwd", edPayPwd.getText().toString());
                         map.put("smsCode", edCode.getText().toString());
                         map.put("type", "2");

@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -33,8 +32,8 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private Context context;
     private LayoutInflater inflater;
-    private int newsTotal = 0;//消息总条数
-    private int bottomItemTotal = 0;//成交记录总条数
+    private int newsTotalNum = 0;//消息总条数
+    private int bottomItemTotalNum = 0;//成交记录总条数
 
     public HomePageAdapter(Context context, NewsBean newsBeans, MarketDividendBottomBean marketDividendBottomBean) {
         this.context = context;
@@ -43,12 +42,12 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         inflater = LayoutInflater.from(context);
         if (newsBeans != null) {
             if (newsBeans.getData().getNoticeMap().size() > 0) {
-                newsTotal = newsBeans.getData().getNoticeMap().size() > 5 ? 5 : newsBeans.getData().getNoticeMap().size();
+                newsTotalNum = newsBeans.getData().getNoticeMap().size() > 5 ? 5 : newsBeans.getData().getNoticeMap().size();
             }
         }
         if (marketDividendBottomBean != null) {
             if (marketDividendBottomBean.getData().getList().size() > 0) {
-                bottomItemTotal = marketDividendBottomBean.getData().getList().size();
+                bottomItemTotalNum = marketDividendBottomBean.getData().getList().size();
             }
         }
 
@@ -66,13 +65,13 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.marketDividendBottomBean = marketDividendBottomBean;
         if (newsBeans != null) {
             if (newsBeans.getData().getNoticeMap().size() > 0) {
-                newsTotal = newsBeans.getData().getNoticeMap().size() > 5 ? 5 : newsBeans.getData().getNoticeMap().size();
+                newsTotalNum = newsBeans.getData().getNoticeMap().size() > 5 ? 5 : newsBeans.getData().getNoticeMap().size();
             }
         }
         if (marketDividendBottomBean != null) {
             if (marketDividendBottomBean.getData() != null) {
                 if (marketDividendBottomBean.getData().getList().size() > 0) {
-                    bottomItemTotal = marketDividendBottomBean.getData().getList().size();
+                    bottomItemTotalNum = marketDividendBottomBean.getData().getList().size();
                 }
             }
         }
@@ -111,7 +110,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             ((MyViewHolderNews) holder).tvNewsDate.setText(newsBeans.getData().getNoticeMap().get(position - 1).getCreateDate());//新闻时间
         } else if (holder instanceof MyViewHolderBottom) {
             BigDecimal one = new BigDecimal("1");
-            MarketDividendBottomBean.DataBean.ListBean listBeans = marketDividendBottomBean.getData().getList().get(position - newsTotal - 2);
+            MarketDividendBottomBean.DataBean.ListBean listBeans = marketDividendBottomBean.getData().getList().get(position - newsTotalNum - 2);
             switch (listBeans.getDirection()) {
                 case 1:
                     ((MyViewHolderBottom) holder).tvType.setTextColor(Color.parseColor("#03AD8F"));
@@ -126,16 +125,16 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             }
             switch (listBeans.getOrderStatus()) {
                 case 1://挂单中
-                    ((MyViewHolderBottom) holder).tvNo.setText(R.string.in_the_pending_order);
+                    ((MyViewHolderBottom) holder).tvStatus.setText(R.string.in_the_pending_order);
                     break;
                 case 3://全部成交
-                    ((MyViewHolderBottom) holder).tvNo.setText(R.string.all_success);
+                    ((MyViewHolderBottom) holder).tvStatus.setText(R.string.all_success);
                     break;
                 case 4://已撤销
-                    ((MyViewHolderBottom) holder).tvNo.setText(R.string.revocation);
+                    ((MyViewHolderBottom) holder).tvStatus.setText(R.string.revocation);
                     break;
                 case 5://部分成交
-                    ((MyViewHolderBottom) holder).tvNo.setText(R.string.partial_deal);
+                    ((MyViewHolderBottom) holder).tvStatus.setText(R.string.partial_deal);
                     break;
             }
             ((MyViewHolderBottom) holder).tvTime.setText(listBeans.getUpdateTime());
@@ -145,16 +144,16 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemCount() {
-        return newsTotal + bottomItemTotal + 2;
+        return newsTotalNum + bottomItemTotalNum + 2;
     }
 
     @Override
     public int getItemViewType(int position) {
         if (position == 0) {
             return HEAD;
-        } else if (position <= newsTotal) {
+        } else if (position <= newsTotalNum) {
             return NEW;
-        } else if (position <= newsTotal + 1) {
+        } else if (position <= newsTotalNum + 1) {
             return TRANSACTION_TITLE;
         } else {
             return TRANSACTION;
@@ -219,8 +218,8 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         TextView tvNum;
         @BindView(R.id.tv_turnover)
         TextView tvTurnover;
-        @BindView(R.id.tv_no)
-        TextView tvNo;
+        @BindView(R.id.tv_status)
+        TextView tvStatus;
 
         public MyViewHolderBottom(View itemView) {
             super(itemView);

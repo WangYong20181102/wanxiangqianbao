@@ -1,5 +1,6 @@
 package com.jh.wxqb.ui.market;
 
+import android.annotation.SuppressLint;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,6 +24,7 @@ import com.jh.wxqb.bean.MeDividend;
 import com.jh.wxqb.customview.NestedScrollWebView;
 import com.jh.wxqb.ui.market.presenter.MarketPresenter;
 import com.jh.wxqb.ui.market.view.MarketView;
+import com.jh.wxqb.utils.LogUtils;
 import com.jh.wxqb.utils.Toasts;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 
@@ -67,8 +69,8 @@ public class HandicapDetailActivity extends BaseActivity implements MarketView {
     protected void init() {
         //参数拼接
         if (MyApplication.getToken() != null) {
-            appUrl += "?token=" + MyApplication.getToken().getAccess_token()
-                    + "&webpath=" + ServerInterface.BASE_WEB_URL + "&platform=az" + "&lang=" + MyApplication.getLanuage();
+            appUrl += "?token=" + MyApplication.getToken().getAccess_token() + "&webpath=" + ServerInterface.BASE_WEB_URL + "&platform=az" + "&lang=" + MyApplication.getLanuage();
+            LogUtils.e("折线图url=====>"+appUrl);
         }
         marketPresenter = new MarketPresenter(this);
         initWebView();
@@ -80,6 +82,7 @@ public class HandicapDetailActivity extends BaseActivity implements MarketView {
     /**
      * 初始化webView
      */
+    @SuppressLint("SetJavaScriptEnabled")
     private void initWebView() {
         WebSettings settings = webView.getSettings();//获取设置对对象
         settings.setJavaScriptEnabled(true);
@@ -93,10 +96,10 @@ public class HandicapDetailActivity extends BaseActivity implements MarketView {
                 }
             }
         });
-        webView.setWebViewClient(new WebViewClient(){
+        webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
-                if (tvLoading != null){
+                if (tvLoading != null) {
                     tvLoading.setVisibility(View.GONE);
                 }
             }
@@ -112,7 +115,6 @@ public class HandicapDetailActivity extends BaseActivity implements MarketView {
         swipeRecycleView.loadMoreFinish(false, false);
         //设置布局管理器
         swipeRecycleView.setLayoutManager(new LinearLayoutManager(this));
-        //初始化适配器
         swipeRecycleView.setFocusableInTouchMode(false);
         swipeRecycleView.setItemAnimator(null);
         swipeRefresh.setOnRefreshListener(mRefreshListener);  //下拉刷新
@@ -126,6 +128,7 @@ public class HandicapDetailActivity extends BaseActivity implements MarketView {
                 }
             }
         });
+        //初始化适配器
         adapter = new HandicapDetailAdapter(this, listBean);
         swipeRecycleView.setAdapter(adapter);
     }
@@ -153,6 +156,7 @@ public class HandicapDetailActivity extends BaseActivity implements MarketView {
                 adapter = new HandicapDetailAdapter(this, listBean);
                 swipeRecycleView.setAdapter(adapter);
             } else {
+                //更新数据
                 adapter.upDataList(listBean);
                 adapter.notifyDataSetChanged();
             }
