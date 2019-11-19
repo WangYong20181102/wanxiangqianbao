@@ -14,25 +14,23 @@
         android:layout_height="wrap_content"
         app:canBack="true"
         app:titleText="@string/my_dividend" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/d1"
-        android:background="@color/color_E7EBEE"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/iv_60"
         android:gravity="center"
+        android:layout_marginLeft="@dimen/d15"
+        android:layout_marginRight="@dimen/d15"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:text="@string/time"
-            android:textColor="@color/color_8C9CAE"
-            android:textSize="@dimen/iv_20" />
+            android:textColor="@color/color_CDCFD5"
+            android:textSize="@dimen/s11" />
 
         <LinearLayout
             android:id="@+id/ll_sel_type"
@@ -47,8 +45,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/all"
-                android:textColor="@color/color_8C9CAE"
-                android:textSize="@dimen/iv_20" />
+                android:textColor="@color/color_CDCFD5"
+                android:textSize="@dimen/s11" />
 
             <ImageView
                 android:id="@+id/iv_img"
@@ -64,8 +62,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/transaction_number"
-            android:textColor="@color/color_8C9CAE"
-            android:textSize="@dimen/iv_20" />
+            android:textColor="@color/color_CDCFD5"
+            android:textSize="@dimen/s11" />
 
         <TextView
             android:layout_width="0dp"
@@ -73,17 +71,17 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/current_price"
-            android:textColor="@color/color_8C9CAE"
-            android:textSize="@dimen/iv_20" />
+            android:textColor="@color/color_CDCFD5"
+            android:textSize="@dimen/s11" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="center_vertical|right"
             android:text="@string/state"
-            android:textColor="@color/color_8C9CAE"
-            android:textSize="@dimen/iv_20" />
+            android:textColor="@color/color_CDCFD5"
+            android:textSize="@dimen/s11" />
     </LinearLayout>
 
     <android.support.v4.widget.SwipeRefreshLayout

@@ -142,7 +142,7 @@ public class HandicapView extends View implements HandicapViewInterface {
         buyTextColor = typedArray.getResourceId(R.styleable.HandicapView_buy_text_color, ContextCompat.getColor(context, R.color.colorTextBuy));
         sellTextColor = typedArray.getResourceId(R.styleable.HandicapView_sell_text_color, ContextCompat.getColor(context, R.color.colorTextSell));
         titleColor = typedArray.getResourceId(R.styleable.HandicapView_title_text_color, ContextCompat.getColor(context, R.color.colorTitleColor));
-        itemNumberColor = typedArray.getResourceId(R.styleable.HandicapView_item_number_color, ContextCompat.getColor(context, R.color.colorTitleColor));
+        itemNumberColor = typedArray.getResourceId(R.styleable.HandicapView_item_number_color, ContextCompat.getColor(context, R.color.color_646482));
         titleSize = (int) typedArray.getDimension(R.styleable.HandicapView_title_text_size, getDimension(R.dimen.s11));
         titlePadding = (int) typedArray.getDimension(R.styleable.HandicapView_title_text_padding, getDimension(R.dimen.d10));
         itemSize = (int) typedArray.getDimension(R.styleable.HandicapView_item_text_size, getDimension(R.dimen.s12));
@@ -151,7 +151,7 @@ public class HandicapView extends View implements HandicapViewInterface {
         nowPricePadding = (int) typedArray.getDimension(R.styleable.HandicapView_now_price_padding, getDimension(R.dimen.d5));
         nowPriceLineHeight = (int) typedArray.getDimension(R.styleable.HandicapView_now_price_line_height, getDimension(R.dimen.d5));
         textPaddingStart = (int) typedArray.getDimension(R.styleable.HandicapView_text_padding_start, getDimension(R.dimen.d0));
-        textPaddingEnd = (int) typedArray.getDimension(R.styleable.HandicapView_text_padding_end, getDimension(R.dimen.d10));
+        textPaddingEnd = (int) typedArray.getDimension(R.styleable.HandicapView_text_padding_end, getDimension(R.dimen.d15));
 
         typedArray.recycle();
         return false;
@@ -170,7 +170,7 @@ public class HandicapView extends View implements HandicapViewInterface {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.save();
-//        drawTitle(canvas);
+        drawTitle(canvas);
         drawNowPrice(canvas);
         drawHandicapTopView(canvas);
         drawHandicapDownView(canvas);
@@ -251,7 +251,7 @@ public class HandicapView extends View implements HandicapViewInterface {
             BigDecimal multiply1 = onePrice.multiply(rate);
             String cny = String.valueOf(new BigDecimal(String.valueOf(multiply1)).setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue());
             titlePaint.setTextSize(aboutPriceSize);
-            titlePaint.setColor(ContextCompat.getColor(context, R.color.color_7E93A2));
+            titlePaint.setColor(ContextCompat.getColor(context, R.color.color_9393A8));
             titlePaint.getTextBounds(nowPrice.toPlainString(), 0, nowPrice.toPlainString().length(), rect);
             h = h + nowPriceLineHeight + rect.height();
             //todo 自己将≈配置到string.xml

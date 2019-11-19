@@ -27,6 +27,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
     private Context mContext;
     private List<NewsMoreListBean.DataBean.NoticeMapBean> newsListBeen;
 
+
     public NewsListAdapter(Context mContext, List<NewsMoreListBean.DataBean.NoticeMapBean> newsListBeen) {
         this.mContext = mContext;
         this.newsListBeen = newsListBeen;

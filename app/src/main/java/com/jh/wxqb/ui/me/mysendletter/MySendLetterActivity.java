@@ -3,17 +3,15 @@ package com.jh.wxqb.ui.me.mysendletter;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.RelativeLayout;
 
 import com.jh.wxqb.R;
 import com.jh.wxqb.adapter.PagerAdapter;
 import com.jh.wxqb.base.BaseActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
-import butterknife.BindViews;
 import butterknife.OnClick;
 
 /**
@@ -23,10 +21,10 @@ public class MySendLetterActivity extends BaseActivity implements ViewPager.OnPa
 
     @BindView(R.id.view_pager)
     ViewPager viewPager;
-    @BindViews({R.id.tv_dividend, R.id.tv_sell})
-    List<TextView> allTitle;
-    @BindViews({R.id.view_dividend, R.id.view_sell})
-    List<View> allView;
+    @BindView(R.id.ll_dividend)
+    RelativeLayout llDividend;
+    @BindView(R.id.ll_sell)
+    RelativeLayout llSell;
 
     @Override
     protected int getLayout() {
@@ -85,20 +83,18 @@ public class MySendLetterActivity extends BaseActivity implements ViewPager.OnPa
 
     //选择标题
     public void selectTitle(int index) {
-        clearViewAndTitle();
         viewPager.setCurrentItem(index);
-        allTitle.get(index).setTextColor(getResources().getColor(R.color.color_16263E));
-        allView.get(index).setVisibility(View.VISIBLE);
-    }
+        switch (index) {
+            case 0:
+                llDividend.setBackgroundResource(R.drawable.current_commission_top_bg);
+                llSell.setBackgroundResource(R.drawable.market_place_sell_buy_unselect);
+                break;
+            case 1:
+                llDividend.setBackgroundResource(R.drawable.market_place_sell_buy_unselect);
+                llSell.setBackgroundResource(R.drawable.current_commission_top_bg);
+                break;
+        }
 
-    //初始化标题
-    public void clearViewAndTitle() {
-        for (TextView text : allTitle) {
-            text.setTextColor(getResources().getColor(R.color.color_8C9FAD));
-        }
-        for (View view : allView) {
-            view.setVisibility(View.GONE);
-        }
     }
 
 }

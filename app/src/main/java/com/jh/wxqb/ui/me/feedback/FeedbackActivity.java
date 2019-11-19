@@ -1,10 +1,14 @@
 package com.jh.wxqb.ui.me.feedback;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.jh.wxqb.R;
 import com.jh.wxqb.adapter.GridViewAdapter;
@@ -39,7 +43,7 @@ import okhttp3.RequestBody;
 /**
  * 用户反馈
  */
-public class FeedbackActivity extends BaseActivity implements MyClicker, FeedBackView {
+public class FeedbackActivity extends BaseActivity implements MyClicker, FeedBackView, TextWatcher {
 
     @BindView(R.id.ed_content)
     EditText edContent;
@@ -47,6 +51,8 @@ public class FeedbackActivity extends BaseActivity implements MyClicker, FeedBac
     ImageView ivAddImg;
     @BindView(R.id.gridView)
     NoScrollGridView mGridView;
+    @BindView(R.id.tv_current_num)
+    TextView tvCurrentNum;
     private ArrayList<String> mPicList = new ArrayList<>(); //上传的图片凭证的数据源
     private GridViewAdapter mGridViewAdapter;
     private File mPictureFile;
@@ -63,6 +69,7 @@ public class FeedbackActivity extends BaseActivity implements MyClicker, FeedBac
     protected void init() {
         presenter = new FeedBackPresenter(this);
         setTitleListener(R.id.tv_title);
+        edContent.addTextChangedListener(this);
         initGridView();
         isViewVisible();
     }
@@ -98,12 +105,12 @@ public class FeedbackActivity extends BaseActivity implements MyClicker, FeedBac
     public void createFileValue() {
         uploadList = new ArrayList<>();
         for (int i = 0; i < mPicList.size(); i++) {
-            LogUtils.e("下标===>"+i);
+            LogUtils.e("下标===>" + i);
             LogUtils.e("path==>" + mPicList.get(i));
             File file = new File(mPicList.get(i));
             int index = i + 1;
             RequestBody requestFile = RequestBody.create(MediaType.parse("image/jpg"), file);
-            MultipartBody.Part body = MultipartBody.Part.createFormData("file" +index, file.getName(), requestFile);
+            MultipartBody.Part body = MultipartBody.Part.createFormData("file" + index, file.getName(), requestFile);
             uploadList.add(body);
         }
         LogUtils.e("当前图片集合大小==>" + uploadList.size());
@@ -137,24 +144,24 @@ public class FeedbackActivity extends BaseActivity implements MyClicker, FeedBac
     private void initGridView() {
         mGridViewAdapter = new GridViewAdapter(FeedbackActivity.this, mPicList, this);
         mGridView.setAdapter(mGridViewAdapter);
-        //设置GridView的条目的点击事件
-        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == parent.getChildCount() - 1) {
-                    //如果添加按钮是最后一张 并且添加图片的数量不超过9张
-                    if (mPicList.size() == CoreKeys.MAX_SELECT_PIV_NUM) {
-                        //最多添加5张照片
-                        viewPluImg(position);
-                    } else {
-                        //添加照片的凭证
-                        selectPic(CoreKeys.MAX_SELECT_PIV_NUM - mPicList.size());
-                    }
-                } else {
-                    viewPluImg(position);
-                }
-            }
-        });
+//        //设置GridView的条目的点击事件
+//        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                if (position == parent.getChildCount() - 1) {
+//                    //如果添加按钮是最后一张 并且添加图片的数量不超过9张
+//                    if (mPicList.size() == CoreKeys.MAX_SELECT_PIV_NUM) {
+//                        //最多添加5张照片
+//                        viewPluImg(position);
+//                    } else {
+//                        //添加照片的凭证
+//                        selectPic(CoreKeys.MAX_SELECT_PIV_NUM - mPicList.size());
+//                    }
+//                } else {
+//                    viewPluImg(position);
+//                }
+//            }
+//        });
     }
 
     /**
@@ -275,4 +282,19 @@ public class FeedbackActivity extends BaseActivity implements MyClicker, FeedBac
         Toasts.showShort(e);
     }
 
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        tvCurrentNum.setText(charSequence.length() + "");
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+
+    }
 }

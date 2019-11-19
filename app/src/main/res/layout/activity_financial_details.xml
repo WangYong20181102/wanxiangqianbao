@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,55 +11,110 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/iv_98"
-        android:background="@drawable/shape_state_bg">
+        android:layout_marginLeft="@dimen/d18"
+        android:layout_marginTop="@dimen/d10"
+        android:layout_marginRight="@dimen/d31">
 
         <ImageView
             android:id="@+id/img_back"
-            android:layout_width="@dimen/iv_80"
-            android:layout_height="@dimen/iv_98"
-            android:paddingBottom="@dimen/iv_28"
-            android:paddingLeft="@dimen/iv_26"
-            android:paddingRight="@dimen/iv_36"
-            android:paddingTop="@dimen/iv_28"
-            android:src="@drawable/iv_back" />
+            android:layout_width="@dimen/d23"
+            android:layout_height="@dimen/d23"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/iv_back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/d38"
             android:text="@string/financial_details"
-            android:textStyle="bold"
-            android:textColor="@color/color_21405a"
-            android:textSize="@dimen/s20" />
+            android:textColor="@color/color_28283C"
+            android:textSize="@dimen/s23"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_type"
-            android:layout_width="@dimen/iv_200"
+            android:layout_width="@dimen/d50"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:gravity="center"
+            android:gravity="center_vertical|right"
             android:text="全部"
             android:textColor="@color/color_21405a"
             android:textSize="@dimen/iv_24" />
     </RelativeLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/d1"
-        android:background="@color/color_eff2f4"/>
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/sw_refresh"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:overScrollMode="never"
-        android:scrollbars="none">
+        android:layout_marginLeft="@dimen/d16"
+        android:layout_marginTop="@dimen/d16"
+        android:layout_marginRight="@dimen/d16"
+        android:background="@drawable/financial_breakdown_bg"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/d23"
+        android:paddingBottom="@dimen/d23"
+        android:layout_marginBottom="@dimen/d20"
+        android:paddingRight="@dimen/d23">
 
-        <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
-            android:id="@+id/shop_recy"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </android.support.v4.widget.SwipeRefreshLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d14"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="@dimen/d3"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/d0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/date_time"
+                android:textColor="@color/color_CDCFD5"
+                android:textSize="@dimen/s12" />
+
+            <TextView
+                android:layout_width="@dimen/d0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/state"
+                android:textColor="@color/color_CDCFD5"
+                android:textSize="@dimen/s12" />
+
+            <TextView
+                android:layout_width="@dimen/d0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/type"
+                android:textColor="@color/color_CDCFD5"
+                android:textSize="@dimen/s12" />
+
+            <TextView
+                android:layout_width="@dimen/d0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/money"
+                android:textColor="@color/color_CDCFD5"
+                android:textSize="@dimen/s12" />
+
+        </LinearLayout>
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/sw_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+                android:id="@+id/shop_recy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

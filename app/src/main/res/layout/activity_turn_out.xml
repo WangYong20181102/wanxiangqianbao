@@ -119,9 +119,9 @@
             android:gravity="center">
 
             <ImageView
-                android:layout_width="@dimen/iv_40"
-                android:layout_height="@dimen/iv_40"
-                android:src="@drawable/iv_scan" />
+                android:layout_width="@dimen/d23"
+                android:layout_height="@dimen/d23"
+                android:src="@mipmap/iv_scan" />
         </RelativeLayout>
     </RelativeLayout>
 

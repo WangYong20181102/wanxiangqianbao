@@ -2,14 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/d15"
+    android:layout_marginRight="@dimen/d15"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_80"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_height="@dimen/d35"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -18,10 +17,11 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:text="15:54:55"
-            android:textColor="@color/color_1F3F59"
-            android:textSize="@dimen/iv_26" />
+            android:textStyle="bold"
+            android:textColor="@color/color_646482"
+            android:textSize="@dimen/s11" />
 
         <TextView
             android:id="@+id/tv_type"
@@ -30,8 +30,9 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="賣出"
+            android:textStyle="bold"
             android:textColor="@color/color_d6734b"
-            android:textSize="@dimen/iv_26" />
+            android:textSize="@dimen/s11" />
 
         <TextView
             android:id="@+id/tv_num"
@@ -40,8 +41,9 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="0.0"
-            android:textColor="@color/color_1F3F59"
-            android:textSize="@dimen/iv_26" />
+            android:textStyle="bold"
+            android:textColor="@color/color_484859"
+            android:textSize="@dimen/s11"/>
 
         <TextView
             android:id="@+id/tv_turnover"
@@ -50,8 +52,9 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="0.0"
-            android:textColor="@color/color_1F3F59"
-            android:textSize="@dimen/iv_26" />
+            android:textStyle="bold"
+            android:textColor="@color/color_484859"
+            android:textSize="@dimen/s11"/>
 
 
         <TextView
@@ -59,10 +62,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="center_vertical|right"
             android:text="全部成交"
-            android:textColor="@color/color_1F3F59"
-            android:textSize="@dimen/iv_26"
+            android:textColor="@color/color_28283C"
+            android:textStyle="bold"
+            android:textSize="@dimen/s11"
             android:visibility="visible" />
     </LinearLayout>
 

@@ -8,20 +8,16 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.AppBarLayout;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.jh.wxqb.R;
+import com.jh.wxqb.adapter.BannerViewHolder;
 import com.jh.wxqb.adapter.HomePageAdapter;
-import com.jh.wxqb.adapter.HomeViewPagerAdapter;
 import com.jh.wxqb.base.BaseFragment;
 import com.jh.wxqb.base.KChatLineBase;
 import com.jh.wxqb.base.MyApplication;
@@ -32,7 +28,6 @@ import com.jh.wxqb.bean.VersionUpdateBean;
 import com.jh.wxqb.customview.AppUpdateProgressDialog;
 import com.jh.wxqb.ui.home.presenter.HomePagePresenter;
 import com.jh.wxqb.ui.home.view.HomePagerView;
-import com.jh.wxqb.utils.DensityUtils;
 import com.jh.wxqb.utils.DownloadService;
 import com.jh.wxqb.utils.GetEditionCode;
 import com.jh.wxqb.utils.GsonUtil;
@@ -40,6 +35,8 @@ import com.jh.wxqb.utils.LogUtils;
 import com.jh.wxqb.utils.SystemUtils;
 import com.jh.wxqb.utils.Toasts;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
+import com.zhouwei.mzbanner.MZBannerView;
+import com.zhouwei.mzbanner.holder.MZHolderCreator;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -47,17 +44,12 @@ import org.greenrobot.eventbus.Subscribe;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 
-public class HomePageFragment extends BaseFragment implements HomePagerView, ViewPager.OnPageChangeListener {
-    @BindView(R.id.ll_message)
-    RelativeLayout llMessage;
+public class HomePageFragment extends BaseFragment implements HomePagerView {
     @BindView(R.id.swipe_recycle_view)
     SwipeMenuRecyclerView swipeRecycleView;
     @BindView(R.id.swipe_refresh)
@@ -65,9 +57,7 @@ public class HomePageFragment extends BaseFragment implements HomePagerView, Vie
     @BindView(R.id.decorate_com_appbar)
     AppBarLayout decorateComAppbar;
     @BindView(R.id.view_pager)
-    ViewPager viewPager;
-    @BindView(R.id.ll_points)
-    LinearLayout llPoint;//轮播图小圆点
+    MZBannerView viewPager;
     private int mMaxProgress = 100;//百分比
     private Intent download;
     @SuppressLint("StaticFieldLeak")
@@ -81,15 +71,11 @@ public class HomePageFragment extends BaseFragment implements HomePagerView, Vie
     private NewsBean newsBeanList;
     //最近成交
     private MarketDividendBottomBean marketDividendBottomBean;
-    private int[] images = {R.mipmap.banner4, R.mipmap.banner1, R.mipmap.banner2, R.mipmap.banner3};
-    private Timer timer;
+    private int[] images = {R.mipmap.banner5,R.mipmap.banner4, R.mipmap.banner1, R.mipmap.banner2, R.mipmap.banner3};
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
-                case 0:
-                    viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
-                    break;
                 case 100://更新
                     dialog.setProgress(DownloadService.progress);
                     break;
@@ -115,39 +101,6 @@ public class HomePageFragment extends BaseFragment implements HomePagerView, Vie
     }
 
     /**
-     * 初始化dot
-     */
-    private void initDots() {
-        llPoint.removeAllViews();
-        for (int i = 0; i < mImageList.size(); i++) {
-            ImageView imageView = new ImageView(mContext);
-            // 设置小圆点imageview的参数
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(DensityUtils.dp2px(mContext, 9), DensityUtils.dp2px(mContext, 4));
-            layoutParams.rightMargin = DensityUtils.dp2px(mContext, 5);
-            layoutParams.leftMargin = DensityUtils.dp2px(mContext, 5);
-            imageView.setLayoutParams(layoutParams);
-
-            imageView.setBackgroundResource(R.drawable.home_page_dot_state);
-            llPoint.addView(imageView);
-        }
-        updateDots();
-    }
-
-
-    /**
-     * 更新点
-     */
-    private void updateDots() {
-        if (mImageList.size() == 0) {
-            return;
-        }
-        int currentPage = viewPager.getCurrentItem() % mImageList.size();
-        for (int i = 0; i < llPoint.getChildCount(); i++) {
-            llPoint.getChildAt(i).setEnabled(i == currentPage);// 设置setEnabled为true的话
-        }
-    }
-
-    /**
      * 初始化数据
      */
     private void initData() {
@@ -155,16 +108,17 @@ public class HomePageFragment extends BaseFragment implements HomePagerView, Vie
         for (int i = 0; i < images.length; i++) {
             mImageList.add(images[i]);
         }
-
-        initDots();
         initViewPager();
     }
 
     private void initViewPager() {
-        viewPager.addOnPageChangeListener(this);
-        HomeViewPagerAdapter viewPagerAdapter = new HomeViewPagerAdapter(mContext, mImageList);
-        viewPager.setAdapter(viewPagerAdapter);
-        startTimer();
+        viewPager.setDelayedTime(2000);//轮播时间间隔
+        viewPager.setPages(mImageList, new MZHolderCreator<BannerViewHolder>() {
+            @Override
+            public BannerViewHolder createViewHolder() {
+                return new BannerViewHolder();
+            }
+        });
     }
 
     @Subscribe
@@ -247,7 +201,6 @@ public class HomePageFragment extends BaseFragment implements HomePagerView, Vie
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        stopTimer();
         unbinder.unbind();
         boolean serviceRunning = SystemUtils.isServiceRunning(getContext(), DownloadService.class.getName());
         //取消下载
@@ -255,13 +208,6 @@ public class HomePageFragment extends BaseFragment implements HomePagerView, Vie
             mContext.stopService(download);
         }
         EventBus.getDefault().unregister(this);
-    }
-
-    private void stopTimer() {
-        if (timer != null) {
-            timer.cancel();
-            timer = null;
-        }
         if (handler != null) {
             handler.removeCallbacksAndMessages(null);
         }
@@ -324,31 +270,21 @@ public class HomePageFragment extends BaseFragment implements HomePagerView, Vie
 
     }
 
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-        //轮播图点选中状态更新
-        updateDots();
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
-    }
-
     /**
      * 版本更新
      */
     private void upDataApp(VersionUpdateBean result) {
         String versionNameCode = GetEditionCode.getVersionNameCode(mContext);
+        double servesVersionCode;
+        if (result.getData().getApp() != null) {
+            servesVersionCode = result.getData().getApp().getVers();
+        } else {
+            servesVersionCode = Double.parseDouble(versionNameCode);
+        }
         LogUtils.e("本地版本号versionNameCode==>" + versionNameCode);
-        LogUtils.e("服务端版本号versionNameCode==>" + result.getData().getApp().getVers());
+        LogUtils.e("服务端版本号versionNameCode==>" + servesVersionCode);
         BigDecimal localOverCode = new BigDecimal(Double.parseDouble(versionNameCode));
-        BigDecimal serverVer = new BigDecimal(Double.valueOf(result.getData().getApp().getVers()));
+        BigDecimal serverVer = new BigDecimal(servesVersionCode);
         int comparisonResult = localOverCode.compareTo(serverVer);
         LogUtils.e("比较结果==>" + comparisonResult);
         if (comparisonResult < 0) {
@@ -431,40 +367,15 @@ public class HomePageFragment extends BaseFragment implements HomePagerView, Vie
         }).start();
     }
 
-    @OnClick(R.id.ll_message)
-    public void onViewClicked() {
-        Intent intent = new Intent(mContext, MyMessageActivity.class);
-        startActivity(intent);
-    }
-
     @Override
     public void onPause() {
         super.onPause();
-        if (timer != null) {
-            timer.cancel();
-            timer = null;
-        }
+        viewPager.pause();//暂停轮播
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (timer != null) {
-            timer.cancel();
-            timer = null;
-        }
-        startTimer();
-    }
-
-    private void startTimer() {
-        timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                Message message = new Message();
-                message.what = 0;
-                handler.sendMessage(message);
-            }
-        }, 1000, 2000);
+        viewPager.start();
     }
 }

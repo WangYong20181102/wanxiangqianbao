@@ -51,7 +51,6 @@ public class ActiveManagementFragment extends BaseFragment implements MyClicker,
     SwipeMenuRecyclerView shop_recy;
     @BindView(R.id.sw_refresh)
     SwipeRefreshLayout sw_refresh;
-    protected RecyclerView.ItemDecoration mItemDecoration;  //Item之间的间距
     int pageIndex = 1;
     boolean isClear = true;
     private AssetManagementAdapter adapter;

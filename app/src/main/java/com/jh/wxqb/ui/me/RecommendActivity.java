@@ -7,11 +7,7 @@ import android.widget.TextView;
 import com.jh.wxqb.R;
 import com.jh.wxqb.api.ServerInterface;
 import com.jh.wxqb.base.BaseActivity;
-import com.jh.wxqb.base.CoreKeys;
 import com.jh.wxqb.base.MyApplication;
-import com.jh.wxqb.customview.CircleImageView;
-import com.jh.wxqb.utils.BitmapUtil;
-import com.jh.wxqb.utils.PreferencesLoader;
 import com.jh.wxqb.utils.QRImageUtil;
 import com.jh.wxqb.utils.StringUtil;
 import com.jh.wxqb.utils.Toasts;
@@ -29,6 +25,8 @@ public class RecommendActivity extends BaseActivity {
     ImageView ivCode;
     @BindView(R.id.tv_address)
     TextView tvAddress;
+    @BindView(R.id.tv_invite_code)
+    TextView tvInviteCode;
 
     @Override
     protected int getLayout() {
@@ -43,6 +41,7 @@ public class RecommendActivity extends BaseActivity {
     private void initView() {
         if (MyApplication.getUserBean() != null) {
             tvAddress.setText(StringUtil.ellipsisString(ServerInterface.BASE_WEB_REGISTER_URL + MyApplication.getUserBean().getUserId(),20));
+            tvInviteCode.setText(MyApplication.getUserBean().getUserId());
             Bitmap nobgQRImage = QRImageUtil.createNobgQRImage(this, ServerInterface.BASE_WEB_REGISTER_URL + MyApplication.getUserBean().getUserId());
             ivCode.setImageBitmap(nobgQRImage);
         }

@@ -2,6 +2,7 @@ package com.jh.wxqb.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,17 +29,19 @@ public class CurrentEntrustmentAdapter extends RecyclerView.Adapter<CurrentEntru
 
     private Context mContext;
     private List<MeDividend.DataBean.ListBean> currentEntrustmentBeen;
+    private LayoutInflater inflater;
 
     public CurrentEntrustmentAdapter(Context mContext, List<MeDividend.DataBean.ListBean> currentEntrustmentBeen) {
         this.mContext = mContext;
         this.currentEntrustmentBeen = currentEntrustmentBeen;
+        inflater = LayoutInflater.from(mContext);
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //设置自适应布局w
-        AutoUtils.autoSize(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_market_dividend_main, null));
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_market_dividend_main, null));
+        View view = inflater.inflate(R.layout.item_market_dividend_main, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -86,12 +89,12 @@ public class CurrentEntrustmentAdapter extends RecyclerView.Adapter<CurrentEntru
             switch (item.getDirection()) {
                 case 1:
                     tvType.setTextColor(Color.WHITE);
-                    tvType.setTextColor(Color.rgb(0, 204, 102));
+                    tvType.setTextColor(ContextCompat.getColor(mContext,R.color.colorTextBuy));
                     tvType.setText(R.string.dividend);
                     tvTurnover.setText(String.valueOf(item.getAmountPrice().divide(one, 4, BigDecimal.ROUND_DOWN).doubleValue() + ""));
                     break;
                 case 2:
-                    tvType.setTextColor(Color.parseColor("#d6734b"));
+                    tvType.setTextColor(ContextCompat.getColor(mContext,R.color.colorTextSell));
                     tvType.setText(R.string.sell);
                     tvTurnover.setText(String.valueOf(item.getAmountPrice().divide(one, 4, BigDecimal.ROUND_DOWN).doubleValue() + ""));
                     break;

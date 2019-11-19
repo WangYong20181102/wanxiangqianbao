@@ -7,8 +7,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,6 +25,7 @@ import com.jh.wxqb.adapter.CoinTypeAdapter;
 import com.jh.wxqb.base.CoinTypeBean;
 import com.jh.wxqb.bean.AssetManagementBean;
 import com.jh.wxqb.bean.CoinPricesBean;
+import com.jh.wxqb.utils.StringUtil;
 import com.jh.wxqb.utils.Toasts;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 
@@ -51,8 +55,6 @@ public class RealTimeRedemptionDialog extends Dialog implements CoinTypeAdapter.
     RelativeLayout rlLeftCoinClick;
     @BindView(R.id.et_out_num)
     EditText etOutNum;
-    @BindView(R.id.image_rechange)
-    ImageView imageRechange;
     @BindView(R.id.image_right_icon)
     ImageView imageRightIcon;
     @BindView(R.id.tv_right_coin)
@@ -65,6 +67,12 @@ public class RealTimeRedemptionDialog extends Dialog implements CoinTypeAdapter.
     TextView tvInputNum;
     @BindView(R.id.ll_fast_redemption)
     LinearLayout llFastRedemption;
+    @BindView(R.id.tv_context)
+    TextView tvContext;
+    @BindView(R.id.linear)
+    LinearLayout linear;
+    @BindView(R.id.ll_click)
+    LinearLayout llClick;
     private Context context;
     private PopupWindow optionWindow;
     private int type = 0;
@@ -85,6 +93,7 @@ public class RealTimeRedemptionDialog extends Dialog implements CoinTypeAdapter.
     //获取余额资产
     private List<AssetManagementBean.DataBean.AccountAssetsBean> financialDetailsBeen;
     private AssetManagementBean.DataBean.AccountAssetsBean assetsBean;
+    private int w;
 
 
     public RealTimeRedemptionDialog(Context context, CoinPricesBean coinPricesBean, List<AssetManagementBean.DataBean.AccountAssetsBean> financialDetailsBeen) {
@@ -108,6 +117,17 @@ public class RealTimeRedemptionDialog extends Dialog implements CoinTypeAdapter.
      * 初始化数据
      */
     private void initData() {
+        ViewTreeObserver vtb1 = rlLeftCoinClick.getViewTreeObserver();
+        vtb1.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+
+            @Override
+            public void onGlobalLayout() {
+                rlLeftCoinClick.getViewTreeObserver().addOnGlobalLayoutListener(this);
+                w = rlLeftCoinClick.getWidth();
+            }
+        });
+
+
         coinTypeBeans.add(new CoinTypeBean(2, "TGM"));
         coinTypeBeans.add(new CoinTypeBean(1, "ETH"));
 //        coinTypeBeans.add(new CoinTypeBean(3, "USDT"));
@@ -115,7 +135,8 @@ public class RealTimeRedemptionDialog extends Dialog implements CoinTypeAdapter.
 //        coinTypeBeans.add(new CoinTypeBean(5, "OKB"));
 //        coinTypeBeans.add(new CoinTypeBean(6, "BNB"));
 
-        tvTitle.setText("TGM当天开盘价");
+        tvTitle.setText("TGM");
+        tvContext.setText("当天开盘价");
         turnOutPrice = coinPricesBean.getData().getPriceMap().getBestBuyPrice();
         rogerThatPrice = coinPricesBean.getData().getPriceMap().getHtPrice();
         tvExchangeRate.setText(new BigDecimal(turnOutPrice).setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue() + "");
@@ -127,6 +148,18 @@ public class RealTimeRedemptionDialog extends Dialog implements CoinTypeAdapter.
      * 初始化视图
      */
     private void initView() {
+        //获取当前Activity所在的窗体
+        Window dialogWindow = getWindow();
+        //设置Dialog从窗体底部弹出
+        dialogWindow.setGravity(Gravity.BOTTOM);
+        dialogWindow.getDecorView().setPadding(0, 0, 0, 0);
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+        //设置宽
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        //设置高
+        lp.height = WindowManager.LayoutParams.MATCH_PARENT;
+        dialogWindow.setAttributes(lp);
+
         rlLeftCoinClick.setEnabled(true);
         rlRightCoinClick.setEnabled(false);
         etOutNum.addTextChangedListener(this);
@@ -142,7 +175,7 @@ public class RealTimeRedemptionDialog extends Dialog implements CoinTypeAdapter.
         shopRecy.setLayoutManager(new LinearLayoutManager(context));
         CoinTypeAdapter coinTypeAdapter = new CoinTypeAdapter(context, coinTypeBeans, this);
         shopRecy.setAdapter(coinTypeAdapter);
-        optionWindow = new PopupWindow(contentView, WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT, true);
+        optionWindow = new PopupWindow(contentView, w, WindowManager.LayoutParams.WRAP_CONTENT, true);
         optionWindow.setTouchable(true);
         optionWindow.setBackgroundDrawable(new ColorDrawable(0x00000000));
         optionWindow.setOutsideTouchable(true);
@@ -164,7 +197,8 @@ public class RealTimeRedemptionDialog extends Dialog implements CoinTypeAdapter.
 //        if (type == 0) {
         switch (coinType) {
             case 1:
-                tvTitle.setText("实时价格");
+                tvTitle.setText("ETH");
+                tvContext.setText("实时价格");
                 if (financialDetailsBeen != null && financialDetailsBeen.size() > 0) {
                     assetsBean = financialDetailsBeen.get(0);
                 }
@@ -177,7 +211,8 @@ public class RealTimeRedemptionDialog extends Dialog implements CoinTypeAdapter.
                 tvRightCoin.setText("USDT");
                 break;
             case 2:
-                tvTitle.setText("TGM当天开盘价");
+                tvTitle.setText("TGM");
+                tvContext.setText("当天开盘价");
                 if (financialDetailsBeen != null && financialDetailsBeen.size() > 0) {
                     assetsBean = financialDetailsBeen.get(1);
                 }
@@ -194,7 +229,8 @@ public class RealTimeRedemptionDialog extends Dialog implements CoinTypeAdapter.
                 tvExchangeRate.setText("7.0");
                 break;
             case 4:
-                tvTitle.setText("实时价格");
+                tvTitle.setText("HT");
+                tvContext.setText("实时价格");
                 if (financialDetailsBeen != null && financialDetailsBeen.size() > 0) {
                     assetsBean = financialDetailsBeen.get(3);
                 }
@@ -279,9 +315,16 @@ public class RealTimeRedemptionDialog extends Dialog implements CoinTypeAdapter.
 
     }
 
-    @OnClick({R.id.rl_left_coin_click, R.id.rl_right_coin_click, R.id.ll_fast_redemption, R.id.image_rechange})
+    @OnClick({R.id.rl_left_coin_click, R.id.rl_right_coin_click, R.id.ll_fast_redemption, R.id.ll_click, R.id.linear,R.id.image_close})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.linear:
+
+                break;
+            case R.id.ll_click:
+            case R.id.image_close:
+                dismiss();
+                break;
             case R.id.rl_left_coin_click:
                 type = 0;
                 selType(rlLeftCoinClick);
@@ -312,31 +355,6 @@ public class RealTimeRedemptionDialog extends Dialog implements CoinTypeAdapter.
                 params.put("changeTypeId", String.valueOf(rogerThatId));
                 onSure(params);
                 dismiss();
-                break;
-            case R.id.image_rechange:
-//                if (bChange) {
-//                    bChange = false;
-//                    rlLeftCoinClick.setEnabled(false);
-//                    rlRightCoinClick.setEnabled(false);
-//                    imageLeftIcon.setImageResource(R.mipmap.tgm);
-//                    imageRightIcon.setImageResource(R.mipmap.ht);
-//                    tvRightCoin.setText("HT");
-//                    tvLeftCoin.setText("TGM");
-//                    imageLeftPullDown.setVisibility(View.GONE);
-//                    imageRightPullDown.setVisibility(View.GONE);
-//                    tvExchangeRate.setText(new BigDecimal(coinPricesBean.getData().getPriceMap().getBestBuyPrice()).setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue()+"");
-//                } else {
-//                    bChange = true;
-//                    rlLeftCoinClick.setEnabled(true);
-//                    rlRightCoinClick.setEnabled(false);
-//                    imageRightIcon.setImageResource(R.mipmap.tgm);
-//                    imageLeftIcon.setImageResource(R.mipmap.eth);
-//                    tvLeftCoin.setText("ETH");
-//                    tvRightCoin.setText("TGM");
-//                    imageLeftPullDown.setVisibility(View.VISIBLE);
-//                    imageRightPullDown.setVisibility(View.GONE);
-//                    tvExchangeRate.setText(new BigDecimal(coinPricesBean.getData().getPriceMap().getEthPrice()).setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue()+"");
-//                }
                 break;
         }
     }

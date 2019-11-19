@@ -111,19 +111,19 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         clearSelection();
         switch (index) {
             case 0:
-                ivHome.setImageResource(R.drawable.home_true);
+                ivHome.setImageResource(R.mipmap.home_true);
                 tvHome.setTextColor(ContextCompat.getColor(this, R.color.new_home_text_color));
                 break;
             case 1:
-                ivMarket.setImageResource(R.drawable.market_true);
+                ivMarket.setImageResource(R.mipmap.market_true);
                 tvMarket.setTextColor(ContextCompat.getColor(this, R.color.new_home_text_color));
                 break;
             case 2:
-                ivAssets.setImageResource(R.drawable.assets_true);
+                ivAssets.setImageResource(R.mipmap.assets_true);
                 tvAssets.setTextColor(ContextCompat.getColor(this, R.color.new_home_text_color));
                 break;
             case 3:
-                ivMe.setImageResource(R.drawable.me_true);
+                ivMe.setImageResource(R.mipmap.me_true);
                 tvMe.setTextColor(ContextCompat.getColor(this, R.color.new_home_text_color));
                 break;
         }
@@ -131,10 +131,10 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     }
 
     private void clearSelection() {
-        ivHome.setImageResource(R.drawable.home_false);
-        ivMarket.setImageResource(R.drawable.market_false);
-        ivAssets.setImageResource(R.drawable.assets_false);
-        ivMe.setImageResource(R.drawable.me_false);
+        ivHome.setImageResource(R.mipmap.home_false);
+        ivMarket.setImageResource(R.mipmap.market_false);
+        ivAssets.setImageResource(R.mipmap.assets_false);
+        ivMe.setImageResource(R.mipmap.me_false);
 
         tvHome.setTextColor(ContextCompat.getColor(this, R.color.home_tv_no_click));
         tvMarket.setTextColor(ContextCompat.getColor(this, R.color.home_tv_no_click));

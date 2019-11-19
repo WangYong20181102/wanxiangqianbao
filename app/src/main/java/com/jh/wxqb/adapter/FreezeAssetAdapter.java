@@ -39,8 +39,7 @@ public class FreezeAssetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_freeze_assets, parent, false);
-        MyViewHolder holder = new MyViewHolder(view);
-        return holder;
+        return new MyViewHolder(view);
     }
 
     @Override
@@ -50,33 +49,27 @@ public class FreezeAssetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             switch (item.getBizCurrencyTypeId()) {
                 case 1:
                     ((MyViewHolder) holder).tvName.setText("ETH");
-                    ((MyViewHolder) holder).imageLeftIcon.setImageResource(R.drawable.icon_eth_small);
-                    ((MyViewHolder) holder).imageRightIcon.setImageResource(R.drawable.icon_eth_right);
+                    ((MyViewHolder) holder).imageIcon.setImageResource(R.mipmap.coin_type_icon_eth);
                     break;
                 case 2:
                     ((MyViewHolder) holder).tvName.setText("TGM");
-                    ((MyViewHolder) holder).imageLeftIcon.setImageResource(R.drawable.iv_tgm_small);
-                    ((MyViewHolder) holder).imageRightIcon.setImageResource(R.drawable.iv_tgm_right);
+                    ((MyViewHolder) holder).imageIcon.setImageResource(R.mipmap.coin_type_icon_tgm);
                     break;
                 case 3:
                     ((MyViewHolder) holder).tvName.setText("USDT");
-                    ((MyViewHolder) holder).imageLeftIcon.setImageResource(R.drawable.icon_usdt_small);
-                    ((MyViewHolder) holder).imageRightIcon.setImageResource(R.drawable.icon_usdt_right);
+                    ((MyViewHolder) holder).imageIcon.setImageResource(R.mipmap.coin_type_icon_usdt);
                     break;
                 case 4:
                     ((MyViewHolder) holder).tvName.setText("HT");
-                    ((MyViewHolder) holder).imageLeftIcon.setImageResource(R.drawable.iv_ht_small);
-                    ((MyViewHolder) holder).imageRightIcon.setImageResource(R.drawable.iv_ht_right);
+                    ((MyViewHolder) holder).imageIcon.setImageResource(R.mipmap.coin_type_icon_ht);
                     break;
                 case 5:
                     ((MyViewHolder) holder).tvName.setText("OKB");
-                    ((MyViewHolder) holder).imageLeftIcon.setImageResource(R.drawable.iv_okb_small);
-                    ((MyViewHolder) holder).imageRightIcon.setImageResource(R.drawable.iv_okb_right);
+                    ((MyViewHolder) holder).imageIcon.setImageResource(R.mipmap.coin_type_icon_okb);
                     break;
                 case 6:
                     ((MyViewHolder) holder).tvName.setText("BNB");
-                    ((MyViewHolder) holder).imageLeftIcon.setImageResource(R.drawable.iv_bnb_small);
-                    ((MyViewHolder) holder).imageRightIcon.setImageResource(R.drawable.iv_bnb_right);
+                    ((MyViewHolder) holder).imageIcon.setImageResource(R.mipmap.coin_type_icon_bnb);
                     break;
 
             }
@@ -91,18 +84,14 @@ public class FreezeAssetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.image_left_icon)
-        ImageView imageLeftIcon;
+        @BindView(R.id.image_icon)
+        ImageView imageIcon;
         @BindView(R.id.tv_name)
         TextView tvName;
-        @BindView(R.id.ll_pkb)
-        LinearLayout llPkb;
         @BindView(R.id.tv_can_use)
         TextView tvCanUse;
         @BindView(R.id.tv_assets)
         TextView tvAssets;
-        @BindView(R.id.image_right_icon)
-        ImageView imageRightIcon;
 
         public MyViewHolder(View item) {
             super(item);

@@ -1,34 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/d7"
+    android:paddingLeft="@dimen/d10"
+    android:paddingRight="@dimen/d10"
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <com.meetsl.scardview.SCardView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_120"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/d16"
+        app:cardElevation="@dimen/d5"
+        app:cardShadowStartColor="@color/color_301179_alpha_5"
+        app:cardUseCompatPadding="true">
 
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/iv_30"
-            android:layout_marginTop="@dimen/iv_28"
-            android:text="關於配資俱樂部遊戲規則說明"
-            android:textColor="@color/gray_text"
-            android:textSize="@dimen/iv_26"
-            android:textStyle="bold" />
+        <RelativeLayout
+            android:id="@+id/ll_news_click"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d65"
+            android:layout_marginTop="-5dp">
 
-        <TextView
-            android:id="@+id/tv_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/iv_20"
-            android:layout_marginLeft="@dimen/iv_30"
-            android:text="2018-08-20 15:45:30"
-            android:textColor="@color/light_gray_text"
-            android:textSize="@dimen/iv_22" />
+            <ImageView
+                android:layout_width="@dimen/d42"
+                android:layout_height="@dimen/d42"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/d12"
+                android:src="@mipmap/home_notice" />
 
-    </RelativeLayout>
-</RelativeLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/d65"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxEms="11"
+                    android:singleLine="true"
+                    android:text="公告内容公告内容公告内容公告内容..."
+                    android:textColor="@color/color_484859"
+                    android:textSize="@dimen/s15"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2019-09-23 12:40:00"
+                    android:textColor="@color/color_9393A8"
+                    android:textSize="@dimen/s13"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="@dimen/d23"
+                android:layout_height="@dimen/d23"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/d8"
+                android:src="@mipmap/show_more_right" />
+        </RelativeLayout>
+    </com.meetsl.scardview.SCardView>
+
+
+</LinearLayout>

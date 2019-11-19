@@ -4,20 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:fitsSystemWindows="true"
+    android:background="@color/color_f7f7f8"
     android:orientation="vertical"
     tools:context="com.jh.wxqb.ui.home.NewsListActivity">
 
-    <com.jh.wxqb.customview.CustomTitle
+    <com.jh.wxqb.customview.StatusBarView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:canBack="true"
-        app:titleText="@string/information_list" />
-    <View
+        android:background="@color/white"/>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/d1"
-        android:background="@color/color_eff2f4"/>
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/d15"
+        android:paddingBottom="@dimen/d15">
+
+        <com.jh.wxqb.customview.CustomTitle
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:canBack="true"
+            app:titleText="@string/information_list" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d56"
+            android:layout_marginTop="-10dp"
+            android:text="ANNOUNCEMENT"
+            android:textColor="@color/color_9393A8"
+            android:textSize="@dimen/s14" />
+    </LinearLayout>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/sw_refresh"

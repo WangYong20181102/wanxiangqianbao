@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -52,8 +55,31 @@ public class DialogUtil {
         final EditText etPassword = view.findViewById(R.id.ed_pwd);
         TextView tvCancle = view.findViewById(R.id.tv_cancel);
         TextView tvSure = view.findViewById(R.id.tv_sure);
+        ImageView imageView = view.findViewById(R.id.image_close);
+        RelativeLayout relativeLayout = view.findViewById(R.id.rl_dialog_bg_click);
+        LinearLayout linearLayout = view.findViewById(R.id.ll_dialog_bg);
+        //获取当前Activity所在的窗体
+        Window dialogWindow = customDialog.getWindow();
+        //设置Dialog从窗体底部弹出
+        dialogWindow.getDecorView().setPadding(0, 0, 0, 0);
+        dialogWindow.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+
         customDialog.setContentView(view);
         customDialog.setCancelable(false);
+        linearLayout.setOnClickListener(null);
+        imageView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                customDialog.dismiss();
+            }
+        });
+        relativeLayout.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                customDialog.dismiss();
+            }
+        });
+
         tvCancle.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {

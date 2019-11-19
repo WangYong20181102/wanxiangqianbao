@@ -1,43 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/d16"
-    android:paddingLeft="@dimen/d15"
-    android:paddingRight="@dimen/d15"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/d2"
+    android:paddingLeft="@dimen/d10"
+    android:paddingRight="@dimen/d10">
 
-    <RelativeLayout
-        android:id="@+id/ll_news_click"
+
+    <com.meetsl.scardview.SCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/d16"
+        app:cardElevation="@dimen/d5"
+        app:cardUseCompatPadding="true"
+        app:cardShadowStartColor="@color/color_301179_alpha_5">
 
-        <TextView
-            android:id="@+id/tv_news_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="公告内容公告内容公告内容公告内容..."
-            android:textColor="@color/color_505050"
-            android:maxEms="15"
-            android:singleLine="true"
-            android:ellipsize="end"
-            android:textSize="@dimen/s12" />
+        <RelativeLayout
+            android:id="@+id/ll_news_click"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d65"
+            android:layout_marginTop="-5dp">
 
-        <TextView
-            android:id="@+id/tv_news_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:text="2019-09-23 12:40:00"
-            android:textColor="@color/color_7E93A2"
-            android:textSize="@dimen/s10" />
-    </RelativeLayout>
+            <ImageView
+                android:layout_width="@dimen/d42"
+                android:layout_height="@dimen/d42"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/d12"
+                android:src="@mipmap/home_notice" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/d1"
-        android:layout_marginTop="@dimen/d16"
-        android:background="@color/color_eff2f4" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/d65"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_news_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxEms="11"
+                    android:singleLine="true"
+                    android:text="公告内容公告内容公告内容公告内容..."
+                    android:textColor="@color/color_484859"
+                    android:textSize="@dimen/s15"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_news_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2019-09-23 12:40:00"
+                    android:textColor="@color/color_9393A8"
+                    android:textSize="@dimen/s13"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="@dimen/d23"
+                android:layout_height="@dimen/d23"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/d8"
+                android:src="@mipmap/show_more_right" />
+        </RelativeLayout>
+    </com.meetsl.scardview.SCardView>
 </LinearLayout>

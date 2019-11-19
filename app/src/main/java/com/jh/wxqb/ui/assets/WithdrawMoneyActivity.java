@@ -66,10 +66,8 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
     TextView tvGetCode;
     @BindView(R.id.image_icon)
     ImageView imageIcon;
-    @BindView(R.id.tv_currency)
-    TextView tvCurrency;
-    @BindView(R.id.image_right)
-    ImageView imageRight;
+//    @BindView(R.id.tv_currency)
+//    TextView tvCurrency;
     @BindView(R.id.tv_bottom_activation)
     TextView tvBottomActivation;
     @BindView(R.id.tv_bottom_prompt)
@@ -111,17 +109,15 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
         tvErc20.setVisibility(View.GONE);
         switch (assetsBean.getBizCurrencyTypeId()) {
             case 1:
-                tvCurrency.setText("ETH");
-                imageIcon.setImageResource(R.drawable.icon_small_eth);
-                imageRight.setImageResource(R.drawable.icon_eth_right);
+//                tvCurrency.setText("ETH");
+                imageIcon.setImageResource(R.drawable.icon_eth_small);
                 tvBottomActivation.setText("ETH提币手续费固定为0.001");
                 tvCoinNum.setVisibility(View.GONE);
                 tvBottomPrompt.setVisibility(View.GONE);
                 break;
             case 2:
-                tvCurrency.setText("TGM");
-                imageIcon.setImageResource(R.drawable.iv_small_tgm);
-                imageRight.setImageResource(R.drawable.iv_tgm_right);
+//                tvCurrency.setText("TGM");
+                imageIcon.setImageResource(R.drawable.iv_tgm_small);
                 tvBottomActivation.setText("TGM提币手续费：小于1000枚固定为5枚，大于1000枚千分之五");
                 tvCoinNum.setVisibility(View.VISIBLE);
                 tvErc20.setVisibility(View.VISIBLE);
@@ -129,9 +125,8 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
                 tvBottomPrompt.setVisibility(View.GONE);
                 break;
             case 3:
-                tvCurrency.setText("USDT");
-                imageIcon.setImageResource(R.drawable.icon_small_usdt);
-                imageRight.setImageResource(R.drawable.icon_usdt_right);
+//                tvCurrency.setText("USDT");
+                imageIcon.setImageResource(R.drawable.icon_usdt_small);
                 tvBottomActivation.setText("USDT提币手续费固定为2USDT");
                 tvCoinNum.setVisibility(View.VISIBLE);
                 tvCoinNum.setText("最小提币数量：5枚");
@@ -140,23 +135,20 @@ public class WithdrawMoneyActivity extends BaseActivity implements AssetsView, M
                 tvBottomPrompt.setText("因每个交易所的最小充值金额不同，请您提USDT的时候，务必注意查看交易所充值的最小金额是多少，否则在交易所会出现无法上账的情况。");
                 break;
             case 4:
-                tvCurrency.setText("HT");
-                imageIcon.setImageResource(R.drawable.iv_small_ht);
-                imageRight.setImageResource(R.drawable.iv_ht_right);
+//                tvCurrency.setText("HT");
+                imageIcon.setImageResource(R.drawable.iv_ht_small);
                 tvCoinNum.setVisibility(View.GONE);
                 tvBottomPrompt.setVisibility(View.GONE);
                 break;
             case 5:
-                tvCurrency.setText("OKB");
-                imageIcon.setImageResource(R.drawable.iv_small_okb);
-                imageRight.setImageResource(R.drawable.iv_okb_right);
+//                tvCurrency.setText("OKB");
+                imageIcon.setImageResource(R.drawable.iv_okb_small);
                 tvCoinNum.setVisibility(View.GONE);
                 tvBottomPrompt.setVisibility(View.GONE);
                 break;
             case 6:
-                tvCurrency.setText("BNB");
-                imageIcon.setImageResource(R.drawable.iv_small_bnb);
-                imageRight.setImageResource(R.drawable.iv_bnb_right);
+//                tvCurrency.setText("BNB");
+                imageIcon.setImageResource(R.drawable.iv_bnb_small);
                 tvCoinNum.setVisibility(View.GONE);
                 tvBottomPrompt.setVisibility(View.GONE);
                 break;

@@ -112,12 +112,12 @@ public class DividendAdapter extends RecyclerView.Adapter<DividendAdapter.ViewHo
                     tvDividendStatus.setTag(R.string.value2, 1);
                     break;
                 case 3:
-                    llStatus.setVisibility(View.INVISIBLE);
+                    llStatus.setVisibility(View.GONE);
                     tvSuccess.setVisibility(View.VISIBLE);
                     tvSuccess.setText(R.string.all_success_brackets);
                     break;
                 case 4:
-                    llStatus.setVisibility(View.INVISIBLE);
+                    llStatus.setVisibility(View.GONE);
                     tvSuccess.setVisibility(View.VISIBLE);
                     tvSuccess.setText(R.string.revocation_brackets);
                     break;

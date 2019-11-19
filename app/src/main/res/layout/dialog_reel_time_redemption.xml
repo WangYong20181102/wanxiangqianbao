@@ -1,197 +1,300 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_click"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/d15"
-    android:layout_marginRight="@dimen/d15"
-    android:background="@drawable/real_time_redemption_bg"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/linear"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/d20"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:visibility="visible">
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/d100"
+        android:background="@drawable/real_time_redemption_bg"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TGM当天开盘价"
-            android:textColor="@color/color_627B9B"
-            android:textSize="@dimen/s15" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
 
-        <TextView
-            android:id="@+id/tv_exchange_rate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/d8"
-            android:text="0.0"
-            android:textColor="@color/color_03AD8F"
-            android:textSize="@dimen/s15" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/d22"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/d12"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:id="@+id/rl_left_coin_click"
-                android:layout_width="@dimen/d119"
-                android:layout_height="@dimen/d38"
-                android:background="@drawable/real_time_redemption_item_bg">
-
-                <ImageView
-                    android:id="@+id/image_left_icon"
-                    android:layout_width="@dimen/d22"
-                    android:layout_height="@dimen/d22"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/d10"
-                    android:src="@mipmap/tgm" />
-
-                <TextView
-                    android:id="@+id/tv_left_coin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/d39"
-                    android:text="TGM"
-                    android:textColor="@color/color_16263E"
-                    android:textSize="@dimen/s15" />
-
-                <ImageView
-                    android:id="@+id/image_left_pull_down"
-                    android:layout_width="@dimen/d10"
-                    android:layout_height="@dimen/d5"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/d10"
-                    android:src="@mipmap/pull_down" />
-
-
-            </RelativeLayout>
-
-            <EditText
-                android:id="@+id/et_out_num"
-                android:layout_width="@dimen/d119"
-                android:layout_height="@dimen/d38"
-                android:layout_marginTop="@dimen/d33"
-                android:background="@drawable/real_time_redemption_item_bg"
-                android:hint="兑换数量"
-                android:inputType="numberDecimal"
-                android:paddingLeft="@dimen/d10"
-                android:textColor="@color/color_627B9B"
-                android:textColorHint="@color/color_627B9B"
-                android:textSize="@dimen/s13" />
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/image_rechange"
-            android:layout_width="@dimen/d36"
-            android:layout_height="@dimen/d36"
-            android:layout_marginLeft="@dimen/d10"
-            android:layout_marginRight="@dimen/d10"
-            android:src="@mipmap/rechange_next" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/d12"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:id="@+id/rl_right_coin_click"
-                android:layout_width="@dimen/d119"
-                android:layout_height="@dimen/d38"
-                android:background="@drawable/real_time_redemption_item_bg">
-
-                <ImageView
-                    android:id="@+id/image_right_icon"
-                    android:layout_width="@dimen/d22"
-                    android:layout_height="@dimen/d22"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/d10"
-                    android:src="@mipmap/ht" />
-
-                <TextView
-                    android:id="@+id/tv_right_coin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/d39"
-                    android:text="HT"
-                    android:textColor="@color/color_16263E"
-                    android:textSize="@dimen/s15" />
-
-                <ImageView
-                    android:id="@+id/image_right_pull_down"
-                    android:layout_width="@dimen/d10"
-                    android:layout_height="@dimen/d5"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/d10"
-                    android:src="@mipmap/pull_down"
-                    android:visibility="gone" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/tv_input_num"
-                android:layout_width="@dimen/d119"
-                android:layout_height="@dimen/d38"
-                android:layout_marginTop="@dimen/d33"
-                android:background="@drawable/real_time_redemption_item_bg"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/d10"
-                android:text="收到数量"
-                android:textColor="@color/color_627B9B"
-                android:textSize="@dimen/s13" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/d18"
-        android:layout_marginBottom="@dimen/d17"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:id="@+id/ll_fast_redemption"
-            android:layout_width="@dimen/d122"
-            android:layout_height="@dimen/d32"
-            android:background="@drawable/fast_rechange_bg"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="@dimen/d22"
-                android:layout_height="@dimen/d22"
-                android:src="@mipmap/rechange" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="快速兑换"
-                android:textColor="@color/white"
-                android:textSize="@dimen/s14" />
-        </LinearLayout>
-    </LinearLayout>
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/d31"
+                    android:layout_marginTop="@dimen/d30"
+                    android:layout_marginRight="@dimen/d31">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TGM"
+                            android:textColor="@color/color_28283C"
+                            android:textSize="@dimen/s19"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_context"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d10"
+                            android:text="当天开盘价"
+                            android:textColor="@color/color_9393A8"
+                            android:textSize="@dimen/s11" />
+
+                        <TextView
+                            android:id="@+id/tv_exchange_rate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.0"
+                            android:textColor="@color/color_2E3CD9"
+                            android:textSize="@dimen/s23" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/image_close"
+                        android:layout_width="@dimen/d31"
+                        android:layout_height="@dimen/d31"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/close" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/d31"
+                    android:layout_marginTop="@dimen/d25"
+                    android:layout_marginRight="@dimen/d31"
+                    android:background="@drawable/recharge_content_bg"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/d16"
+                        android:layout_marginTop="@dimen/d16"
+                        android:layout_marginRight="@dimen/d16"
+                        android:layout_marginBottom="@dimen/d16"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="@dimen/d42"
+                                android:layout_height="@dimen/d87"
+                                android:background="@drawable/dialog_from_bg"
+                                android:gravity="center"
+                                android:text="从"
+                                android:textColor="@color/color_646482"
+                                android:textSize="@dimen/s13"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/d2"
+                                android:orientation="vertical">
+
+                                <RelativeLayout
+                                    android:id="@+id/rl_left_coin_click"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/d42"
+                                    android:background="@drawable/real_time_redemption_item_bg">
+
+                                    <ImageView
+                                        android:id="@+id/image_left_icon"
+                                        android:layout_width="@dimen/d22"
+                                        android:layout_height="@dimen/d22"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginLeft="@dimen/d10"
+                                        android:src="@mipmap/tgm" />
+
+                                    <TextView
+                                        android:id="@+id/tv_left_coin"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginLeft="@dimen/d39"
+                                        android:text="TGM"
+                                        android:textColor="@color/color_28283C"
+                                        android:textSize="@dimen/s13"
+                                        android:textStyle="bold" />
+
+                                    <ImageView
+                                        android:id="@+id/image_left_pull_down"
+                                        android:layout_width="@dimen/d10"
+                                        android:layout_height="@dimen/d5"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginRight="@dimen/d10"
+                                        android:src="@mipmap/pull_down" />
+
+
+                                </RelativeLayout>
+
+                                <EditText
+                                    android:id="@+id/et_out_num"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/d42"
+                                    android:layout_marginTop="@dimen/d2"
+                                    android:background="@drawable/real_time_redemption_item_bg"
+                                    android:hint="兑换数量"
+                                    android:inputType="numberDecimal"
+                                    android:paddingLeft="@dimen/d10"
+                                    android:textColor="@color/color_484859"
+                                    android:textColorHint="@color/color_9393A8"
+                                    android:textSize="@dimen/s13"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d25"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="@dimen/d42"
+                                android:layout_height="@dimen/d87"
+                                android:background="@drawable/dialog_from_to"
+                                android:gravity="center"
+                                android:text="到"
+                                android:textColor="@color/color_646482"
+                                android:textSize="@dimen/s13"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/d2"
+                                android:orientation="vertical">
+
+                                <RelativeLayout
+                                    android:id="@+id/rl_right_coin_click"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/d42"
+                                    android:background="@drawable/real_time_redemption_item_bg">
+
+                                    <ImageView
+                                        android:id="@+id/image_right_icon"
+                                        android:layout_width="@dimen/d22"
+                                        android:layout_height="@dimen/d22"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginLeft="@dimen/d10"
+                                        android:src="@mipmap/ht" />
+
+                                    <TextView
+                                        android:id="@+id/tv_right_coin"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginLeft="@dimen/d39"
+                                        android:text="HT"
+                                        android:textColor="@color/color_28283C"
+                                        android:textSize="@dimen/s13"
+                                        android:textStyle="bold" />
+
+                                    <ImageView
+                                        android:id="@+id/image_right_pull_down"
+                                        android:layout_width="@dimen/d10"
+                                        android:layout_height="@dimen/d5"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginRight="@dimen/d10"
+                                        android:src="@mipmap/pull_down"
+                                        android:visibility="gone" />
+
+                                </RelativeLayout>
+
+                                <TextView
+                                    android:id="@+id/tv_input_num"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/d42"
+                                    android:layout_marginTop="@dimen/d2"
+                                    android:background="@drawable/real_time_redemption_item_bg"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="@dimen/d10"
+                                    android:text="收到数量"
+                                    android:textColor="@color/color_9393A8"
+                                    android:textSize="@dimen/s13"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d25"
+                    android:layout_marginBottom="@dimen/d20"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <com.meetsl.scardview.SCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/d50"
+                        android:layout_marginLeft="@dimen/d31"
+                        android:layout_marginRight="@dimen/d31"
+                        app:cardBackgroundColor="@color/color_828BE9"
+                        app:cardCornerRadius="@dimen/d16"
+                        app:cardElevation="@dimen/d5"
+                        app:cardLightDirection="top"
+                        app:cardPreventCornerOverlap="false">
+
+                        <LinearLayout
+                            android:id="@+id/ll_fast_redemption"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="@dimen/d22"
+                                android:layout_height="@dimen/d22"
+                                android:src="@mipmap/rechange" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="快速兑换"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/s19"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </com.meetsl.scardview.SCardView>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 </LinearLayout>

@@ -4,23 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:fitsSystemWindows="true"
+    android:background="@color/color_FBFBFB"
     android:orientation="vertical"
     tools:context="com.jh.wxqb.ui.me.feedback.FeedbackListActivity">
 
-    <com.jh.wxqb.customview.CustomTitle
+    <LinearLayout
         android:layout_width="match_parent"
-        app:canBack="true"
-        app:titleText="@string/feedback_list"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/d10"
+        android:orientation="vertical">
+
+        <com.jh.wxqb.customview.StatusBarView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white" />
+
+        <com.jh.wxqb.customview.CustomTitle
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:canBack="true"
+            app:titleText="@string/feedback_list" />
+    </LinearLayout>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/sw_refresh"
-        android:scrollbars="none"
-        android:overScrollMode="never"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
         <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
             android:id="@+id/shop_recy"

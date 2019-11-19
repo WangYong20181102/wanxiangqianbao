@@ -730,21 +730,6 @@ public class StringUtil {
         return true;
     }
 
-
-    /**
-     * 获取屏幕高度(px)
-     */
-    public static int getScreenHeight(Context context) {
-        return context.getResources().getDisplayMetrics().heightPixels;
-    }
-
-    /**
-     * 获取屏幕宽度(px)15158995943
-     */
-    public static int getScreenWidth(Context context) {
-        return context.getResources().getDisplayMetrics().widthPixels;
-    }
-
     /**
      * 判断是不是一个合法的手机号码
      */

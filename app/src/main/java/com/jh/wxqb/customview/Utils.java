@@ -1,8 +1,6 @@
 package com.jh.wxqb.customview;
 
-import android.app.Activity;
 import android.content.Context;
-import android.util.DisplayMetrics;
 
 /**
  * 常用工具类
@@ -33,18 +31,5 @@ public class Utils {
         return (int) (spValue * fontScale + 0.5f);
     }
 
-    // 屏幕宽度（像素）
-    public static int getWindowWidth(Activity context) {
-        DisplayMetrics metric = new DisplayMetrics();
-        context.getWindowManager().getDefaultDisplay().getMetrics(metric);
-        return metric.widthPixels;
-    }
-
-    // 屏幕高度（像素）
-    public static int getWindowHeight(Activity context) {
-        DisplayMetrics metric = new DisplayMetrics();
-        context.getWindowManager().getDefaultDisplay().getMetrics(metric);
-        return metric.heightPixels;
-    }
 
 }

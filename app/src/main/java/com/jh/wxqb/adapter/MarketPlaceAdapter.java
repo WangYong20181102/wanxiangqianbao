@@ -202,8 +202,6 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         TextView tvBalance;
         @BindView(R.id.tv_company)
         TextView tvCompany;
-        @BindView(R.id.ll_sel_more)
-        RelativeLayout llSelMore;
         @BindView(R.id.rl_shendu)
         RelativeLayout rlShendu;
         @BindView(R.id.handicap_view)
@@ -266,7 +264,7 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     if (buyListBean != null) {
                         if (buyListBean.getBuyList().size() > 0) {
                             strSavePrices = String.valueOf(buyListBean.getSellList().get(0).getAmountPrice().doubleValue());
-                            holder.tvCurrent.setText(strSavePrices);
+                            holder.tvCurrent.setText(String.valueOf(new BigDecimal(strSavePrices).setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue()));
                             bPrices = false;
                         }
                     }
@@ -275,7 +273,7 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     if (buyListBean != null) {
                         if (buyListBean.getSellList().size() > 0) {
                             strSavePrices = String.valueOf(buyListBean.getBuyList().get(0).getAmountPrice().doubleValue());
-                            holder.tvCurrent.setText(strSavePrices);
+                            holder.tvCurrent.setText(String.valueOf(new BigDecimal(strSavePrices).setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue()));
                             bPrices = false;
                         }
                     }
@@ -291,7 +289,7 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     if (buyListBean != null) {
                         if (buyListBean.getBuyList().size() > 0) {
                             strSavePrices = String.valueOf(buyListBean.getSellList().get(0).getAmountPrice().doubleValue());
-                            holder.tvCurrent.setText(strSavePrices);
+                            holder.tvCurrent.setText(String.valueOf(new BigDecimal(strSavePrices).setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue()));
                         }
                     }
                     break;
@@ -299,7 +297,7 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     if (buyListBean != null) {
                         if (buyListBean.getSellList().size() > 0) {
                             strSavePrices = String.valueOf(buyListBean.getBuyList().get(0).getAmountPrice().doubleValue());
-                            holder.tvCurrent.setText(strSavePrices);
+                            holder.tvCurrent.setText(String.valueOf(new BigDecimal(strSavePrices).setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue()));
                         }
                     }
                     break;
@@ -307,23 +305,16 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
         switch (type) {
             case "dividend":
-                holder.tvExpected.setTextColor(Color.parseColor("#03AD8F"));
-                holder.tvBalance.setTextColor(Color.parseColor("#03AD8F"));
-                holder.tvCompany.setTextColor(Color.parseColor("#03AD8F"));
-                holder.tvCurrentBalance.setTextColor(Color.parseColor("#03AD8F"));
                 holder.tvDividends.setBackgroundResource(R.drawable.market_buy_bg);
                 holder.tvDividends.setText(R.string.access_to_dividends);
-                holder.tvBalance.setText(R.string.current_balance);
-
+                holder.tvExpected.setTextColor(ContextCompat.getColor(mContext,R.color.colorTextBuy));
+                holder.tvCompany.setTextColor(ContextCompat.getColor(mContext,R.color.colorTextBuy));
                 break;
             case "sell":
-                holder.tvExpected.setTextColor(Color.parseColor("#D14B64"));
-                holder.tvBalance.setTextColor(Color.parseColor("#D14B64"));
-                holder.tvCurrentBalance.setTextColor(Color.parseColor("#D14B64"));
                 holder.tvDividends.setBackgroundResource(R.drawable.market_sell_bg);
-                holder.tvCompany.setTextColor(Color.parseColor("#D14B64"));
                 holder.tvDividends.setText(R.string.sell);
-                holder.tvBalance.setText(R.string.current_balance);
+                holder.tvExpected.setTextColor(ContextCompat.getColor(mContext,R.color.colorTextSell));
+                holder.tvCompany.setTextColor(ContextCompat.getColor(mContext,R.color.colorTextSell));
                 break;
         }
         if (currentPriceBean != null) {
@@ -331,10 +322,12 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 if (currentPriceBean.getData().getResultMap() != null) {
                     switch (type) {
                         case "dividend":
-                            holder.tvCurrentBalance.setText(StringUtil.checkDoubleOrInt(currentPriceBean.getData().getUsdtAccount()) + " USDT");
+                            holder.tvCurrentBalance.setText(StringUtil.checkDoubleOrInt(currentPriceBean.getData().getUsdtAccount()));
+                            holder.tvBalance.setText("USDT");
                             break;
                         case "sell":
-                            holder.tvCurrentBalance.setText(StringUtil.checkDoubleOrInt(currentPriceBean.getData().getTgmAccount()) + " TGM");
+                            holder.tvCurrentBalance.setText(StringUtil.checkDoubleOrInt(currentPriceBean.getData().getTgmAccount()));
+                            holder.tvBalance.setText("TGM");
                             break;
                     }
                 }
@@ -390,7 +383,6 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             titleHolder.handicapView.updateData(buyListBean);
         }
 
-        holder.llSelMore.setOnClickListener(this);
         holder.tvDividends.setOnClickListener(this);
         holder.linearEntrust.setOnClickListener(this);
         holder.tvPercentagePoint1.setOnClickListener(this);
@@ -406,12 +398,12 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         BigDecimal one = new BigDecimal("1");
         switch (listBeen.get(position - 1).getDirection()) {
             case 1:
-                holder.tvType.setTextColor(Color.parseColor("#03AD8F"));
+                holder.tvType.setTextColor(ContextCompat.getColor(mContext,R.color.colorTextBuy));
                 holder.tvType.setText(R.string.dividend);
                 holder.tvTurnover.setText(listBeen.get(position - 1).getAmountPrice().divide(one, 4, BigDecimal.ROUND_HALF_UP).doubleValue() + "");
                 break;
             case 2:
-                holder.tvType.setTextColor(Color.parseColor("#D14B64"));
+                holder.tvType.setTextColor(ContextCompat.getColor(mContext,R.color.colorTextSell));
                 holder.tvType.setText(R.string.sell);
                 holder.tvTurnover.setText(listBeen.get(position - 1).getAmountPrice().divide(one, 4, BigDecimal.ROUND_HALF_UP).doubleValue() + "");
                 break;
@@ -445,10 +437,6 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.ll_sel_more:
-                intent = new Intent(mContext, MoreBusinessActivity.class);
-                mActivity.startActivity(intent);
-                break;
             case R.id.rl_show_more://查看更多
                 intent = new Intent(mContext, MoreBusinessActivity.class);
                 mActivity.startActivity(intent);
@@ -533,7 +521,7 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                         return;
                     }
                     //判断当前数量是否为0
-                    if (new BigDecimal(titleHolder.edEntrustNum.getText().toString().trim()).compareTo(new BigDecimal("0.0")) <= 0){
+                    if (new BigDecimal(titleHolder.edEntrustNum.getText().toString().trim()).compareTo(new BigDecimal("0.0")) <= 0) {
                         Toasts.showShort("数量不能为0");
                         return;
                     }
@@ -569,28 +557,57 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             case R.id.tv_percentage_point1:
                 bSelect = true;
                 clearSelection();
-                titleHolder.tvPercentagePoint1.setTextColor(ContextCompat.getColor(mContext, R.color.color_16263E));
+                changeTvColor(titleHolder.tvPercentagePoint1);
                 calculationTgmNumber(new BigDecimal(0.25));
                 break;
             case R.id.tv_percentage_point2:
                 bSelect = true;
                 clearSelection();
-                titleHolder.tvPercentagePoint2.setTextColor(ContextCompat.getColor(mContext, R.color.color_16263E));
+                changeTvColor(titleHolder.tvPercentagePoint2);
                 calculationTgmNumber(new BigDecimal(0.5));
                 break;
             case R.id.tv_percentage_point3:
                 bSelect = true;
                 clearSelection();
-                titleHolder.tvPercentagePoint3.setTextColor(ContextCompat.getColor(mContext, R.color.color_16263E));
+                changeTvColor(titleHolder.tvPercentagePoint3);
                 calculationTgmNumber(new BigDecimal(0.75));
                 break;
             case R.id.tv_percentage_point4:
                 bSelect = true;
                 clearSelection();
-                titleHolder.tvPercentagePoint4.setTextColor(ContextCompat.getColor(mContext, R.color.color_16263E));
+                changeTvColor(titleHolder.tvPercentagePoint4);
                 calculationTgmNumber(new BigDecimal(1));
                 break;
         }
+    }
+
+    /**
+     * 文字背景和字体颜色
+     */
+    private void changeTvColor(TextView textView) {
+        textView.setTextColor(ContextCompat.getColor(mContext, R.color.color_484859));
+        switch (type) {
+            case "dividend":
+                textView.setBackgroundResource(R.drawable.market_place_buy_percentage_bg);
+                break;
+            case "sell":
+                textView.setBackgroundResource(R.drawable.market_place_sell_percentage_bg);
+                break;
+        }
+    }
+
+    /**
+     * 清除所有选中状态
+     */
+    private void clearSelection() {
+        titleHolder.tvPercentagePoint1.setTextColor(ContextCompat.getColor(mContext, R.color.color_8b9cae));
+        titleHolder.tvPercentagePoint1.setBackgroundColor(Color.TRANSPARENT);
+        titleHolder.tvPercentagePoint2.setTextColor(ContextCompat.getColor(mContext, R.color.color_8b9cae));
+        titleHolder.tvPercentagePoint2.setBackgroundColor(Color.TRANSPARENT);
+        titleHolder.tvPercentagePoint3.setTextColor(ContextCompat.getColor(mContext, R.color.color_8b9cae));
+        titleHolder.tvPercentagePoint3.setBackgroundColor(Color.TRANSPARENT);
+        titleHolder.tvPercentagePoint4.setTextColor(ContextCompat.getColor(mContext, R.color.color_8b9cae));
+        titleHolder.tvPercentagePoint4.setBackgroundColor(Color.TRANSPARENT);
     }
 
     /**
@@ -623,16 +640,6 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 }
             }
         }
-    }
-
-    /**
-     * 清除所有选中状态
-     */
-    private void clearSelection() {
-        titleHolder.tvPercentagePoint1.setTextColor(ContextCompat.getColor(mContext, R.color.color_8b9cae));
-        titleHolder.tvPercentagePoint2.setTextColor(ContextCompat.getColor(mContext, R.color.color_8b9cae));
-        titleHolder.tvPercentagePoint3.setTextColor(ContextCompat.getColor(mContext, R.color.color_8b9cae));
-        titleHolder.tvPercentagePoint4.setTextColor(ContextCompat.getColor(mContext, R.color.color_8b9cae));
     }
 
     /**

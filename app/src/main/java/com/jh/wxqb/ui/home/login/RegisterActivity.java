@@ -61,7 +61,7 @@ public class RegisterActivity extends BaseActivity implements LoginView, Message
         loginPresenter = new LoginPresenter(this);
     }
 
-    @OnClick({R.id.tv_code, R.id.ll_is_show_pwd, R.id.tv_register})
+    @OnClick({R.id.tv_code, R.id.ll_is_show_pwd, R.id.tv_register, R.id.img_back})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_code:
@@ -102,6 +102,9 @@ public class RegisterActivity extends BaseActivity implements LoginView, Message
                 map.put("smsCode", code);
                 map.put("mobile", phone);
                 loginPresenter.userRegister(map);
+                break;
+            case R.id.img_back:
+                finish();
                 break;
         }
     }

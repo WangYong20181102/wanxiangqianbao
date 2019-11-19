@@ -4,13 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:fitsSystemWindows="true"
     android:orientation="vertical">
+
+    <com.jh.wxqb.customview.StatusBarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/iv_98"
-        android:background="@drawable/shape_state_bg">
+        android:background="@drawable/shape_state_bg"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -41,11 +45,6 @@
         </RelativeLayout>
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/d1"
-        android:background="@color/color_eff2f4" />
-
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
@@ -61,9 +60,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                app:layout_behavior=".customview.CustomBehavior"
                 android:fitsSystemWindows="true"
-                app:elevation="@dimen/d0">
+                app:elevation="@dimen/d0"
+                app:layout_behavior=".customview.CustomBehavior">
 
                 <android.support.design.widget.CollapsingToolbarLayout
                     android:id="@+id/decorate_com_collapsing_toolbar"
@@ -76,56 +75,14 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <RelativeLayout
+                        <com.zhouwei.mzbanner.MZBannerView
+                            android:id="@+id/view_pager"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/d150">
-
-                            <android.support.v4.view.ViewPager
-                                android:id="@+id/view_pager"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/d150" />
-
-                            <LinearLayout
-                                android:id="@+id/ll_points"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/d25"
-                                android:layout_alignParentBottom="true"
-                                android:layout_marginBottom="@dimen/d10"
-                                android:gravity="center"
-                                android:orientation="horizontal" />
-                        </RelativeLayout>
-
-
-                        <!--<LinearLayout-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_marginTop="@dimen/d23"-->
-                            <!--android:gravity="center_vertical"-->
-                            <!--android:orientation="horizontal"-->
-                            <!--android:visibility="gone">-->
-
-                            <!--<View-->
-                                <!--android:layout_width="@dimen/d3"-->
-                                <!--android:layout_height="@dimen/d17"-->
-                                <!--android:layout_marginLeft="@dimen/d15"-->
-                                <!--android:background="@color/color_18293D" />-->
-
-                            <!--<TextView-->
-                                <!--android:layout_width="wrap_content"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginLeft="@dimen/d9"-->
-                                <!--android:text="TGM日线走势图"-->
-                                <!--android:textColor="@color/color_18293D"-->
-                                <!--android:textSize="@dimen/s15" />-->
-
-                        <!--</LinearLayout>-->
-
-                        <!--<com.jh.wxqb.customview.NestedScrollWebView-->
-                            <!--android:id="@+id/webView"-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="@dimen/d320"-->
-                            <!--android:visibility="gone"/>-->
-
+                            android:layout_height="@dimen/d130"
+                            android:layout_marginTop="@dimen/d10"
+                            app:canLoop="true"
+                            app:indicatorAlign="center"
+                            app:open_mz_mode="true" />
                     </LinearLayout>
 
                 </android.support.design.widget.CollapsingToolbarLayout>

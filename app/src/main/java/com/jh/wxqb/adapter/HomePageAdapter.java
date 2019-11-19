@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -41,13 +43,21 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.marketDividendBottomBean = marketDividendBottomBean;
         inflater = LayoutInflater.from(context);
         if (newsBeans != null) {
-            if (newsBeans.getData().getNoticeMap().size() > 0) {
-                newsTotalNum = newsBeans.getData().getNoticeMap().size() > 5 ? 5 : newsBeans.getData().getNoticeMap().size();
+            if (newsBeans.getData() != null) {
+                if (newsBeans.getData().getNoticeMap() != null) {
+                    if (newsBeans.getData().getNoticeMap().size() > 0) {
+                        newsTotalNum = newsBeans.getData().getNoticeMap().size() > 2 ? 2 : newsBeans.getData().getNoticeMap().size();
+                    }
+                }
             }
         }
         if (marketDividendBottomBean != null) {
-            if (marketDividendBottomBean.getData().getList().size() > 0) {
-                bottomItemTotalNum = marketDividendBottomBean.getData().getList().size();
+            if (marketDividendBottomBean.getData() != null) {
+                if (marketDividendBottomBean.getData().getList() != null) {
+                    if (marketDividendBottomBean.getData().getList().size() > 0) {
+                        bottomItemTotalNum = marketDividendBottomBean.getData().getList().size();
+                    }
+                }
             }
         }
 
@@ -64,14 +74,20 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.newsBeans = newsBeans;
         this.marketDividendBottomBean = marketDividendBottomBean;
         if (newsBeans != null) {
-            if (newsBeans.getData().getNoticeMap().size() > 0) {
-                newsTotalNum = newsBeans.getData().getNoticeMap().size() > 5 ? 5 : newsBeans.getData().getNoticeMap().size();
+            if (newsBeans.getData() != null) {
+                if (newsBeans.getData().getNoticeMap() != null) {
+                    if (newsBeans.getData().getNoticeMap().size() > 0) {
+                        newsTotalNum = newsBeans.getData().getNoticeMap().size() > 2 ? 2 : newsBeans.getData().getNoticeMap().size();
+                    }
+                }
             }
         }
         if (marketDividendBottomBean != null) {
             if (marketDividendBottomBean.getData() != null) {
-                if (marketDividendBottomBean.getData().getList().size() > 0) {
-                    bottomItemTotalNum = marketDividendBottomBean.getData().getList().size();
+                if (marketDividendBottomBean.getData().getList() != null) {
+                    if (marketDividendBottomBean.getData().getList().size() > 0) {
+                        bottomItemTotalNum = marketDividendBottomBean.getData().getList().size();
+                    }
                 }
             }
         }
@@ -84,7 +100,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         if (viewType == HEAD) {
             View view = inflater.inflate(R.layout.item_head, parent, false);
             MyViewHolderHead myViewHolderHead = new MyViewHolderHead(view);
-            myViewHolderHead.tvShowMore.setOnClickListener(this);
+            myViewHolderHead.imageShowMore.setOnClickListener(this);
             return myViewHolderHead;
         } else if (viewType == NEW) {
             View view = inflater.inflate(R.layout.item_news, parent, false);
@@ -113,12 +129,12 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             MarketDividendBottomBean.DataBean.ListBean listBeans = marketDividendBottomBean.getData().getList().get(position - newsTotalNum - 2);
             switch (listBeans.getDirection()) {
                 case 1:
-                    ((MyViewHolderBottom) holder).tvType.setTextColor(Color.parseColor("#03AD8F"));
+                    ((MyViewHolderBottom) holder).tvType.setTextColor(ContextCompat.getColor(context, R.color.colorTextBuy));
                     ((MyViewHolderBottom) holder).tvType.setText(R.string.dividend);
                     ((MyViewHolderBottom) holder).tvTurnover.setText(listBeans.getAmountPrice().divide(one, 4, BigDecimal.ROUND_HALF_UP).doubleValue() + "");
                     break;
                 case 2:
-                    ((MyViewHolderBottom) holder).tvType.setTextColor(Color.parseColor("#D14B64"));
+                    ((MyViewHolderBottom) holder).tvType.setTextColor(ContextCompat.getColor(context, R.color.colorTextSell));
                     ((MyViewHolderBottom) holder).tvType.setText(R.string.sell);
                     ((MyViewHolderBottom) holder).tvTurnover.setText(listBeans.getAmountPrice().divide(one, 4, BigDecimal.ROUND_HALF_UP).doubleValue() + "");
                     break;
@@ -166,10 +182,10 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         switch (view.getId()) {
             case R.id.ll_news_click://新闻点击查看详情
                 intent = new Intent(context, NewsInfoActivity.class);
-                intent.putExtra("id", newsBeans.getData().getNoticeMap().get((Integer) view.getTag()).getId()+"");
+                intent.putExtra("id", newsBeans.getData().getNoticeMap().get((Integer) view.getTag()).getId() + "");
                 context.startActivity(intent);
                 break;
-            case R.id.tv_show_more://查看更多
+            case R.id.show_more://查看更多
                 intent = new Intent(context, NewsListActivity.class);
                 context.startActivity(intent);
                 break;
@@ -178,8 +194,8 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     class MyViewHolderHead extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.tv_show_more)
-        TextView tvShowMore;
+        @BindView(R.id.show_more)
+        ImageView imageShowMore;
 
         public MyViewHolderHead(View itemView) {
             super(itemView);

@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.jh.wxqb.R;
 import com.jh.wxqb.adapter.PagerAdapter;
 import com.jh.wxqb.base.BaseFragment;
+import com.jh.wxqb.utils.StringUtil;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -82,13 +84,9 @@ public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChan
         activeAssetsFragment.setOnEquivalentAssetsListener(this);
         FreezeAssetsFragment freezeAssetsFragment = new FreezeAssetsFragment();
         EnjoyAssetsFragment enjoyAssetsFragment = new EnjoyAssetsFragment();
-//        ActiveAssetsFragment activeAssetsFragment = new ActiveAssetsFragment();
-//        DividendAssetsFragment dividendAssetsFragment = new DividendAssetsFragment();
-//        RepurchaseAssetsFragment repurchaseAssetsFragment = new RepurchaseAssetsFragment();
         fragmentList.add(activeAssetsFragment);
         fragmentList.add(freezeAssetsFragment);
         fragmentList.add(enjoyAssetsFragment);
-//        fragmentList.add(repurchaseAssetsFragment);
         PagerAdapter adapter = new PagerAdapter(getActivity().getSupportFragmentManager(), fragmentList);
         layoutAssets.setAdapter(adapter);
     }
@@ -146,14 +144,16 @@ public class AssetsFragment extends BaseFragment implements ViewPager.OnPageChan
     public void selectTitle(int index) {
         clearViewAndTitle();
         layoutAssets.setCurrentItem(index);
-        allTitle.get(index).setTextColor(Color.parseColor("#16263E"));
+        allTitle.get(index).setTextColor(Color.parseColor("#ffffff"));
+        allTitle.get(index).setTextSize(TypedValue.COMPLEX_UNIT_DIP,19);
         allView.get(index).setVisibility(View.VISIBLE);
     }
 
     //初始化标题
     public void clearViewAndTitle() {
         for (TextView text : allTitle) {
-            text.setTextColor(Color.parseColor("#8c9fad"));
+            text.setTextColor(Color.parseColor("#80FFFFFF"));
+            text.setTextSize(TypedValue.COMPLEX_UNIT_DIP,16);
         }
         for (View view : allView) {
             view.setVisibility(View.GONE);

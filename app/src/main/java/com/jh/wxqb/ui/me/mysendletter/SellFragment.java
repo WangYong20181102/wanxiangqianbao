@@ -4,6 +4,7 @@ package com.jh.wxqb.ui.me.mysendletter;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.jh.wxqb.ui.me.mysendletter.view.MySendLetterView;
 import com.jh.wxqb.utils.AgainLoginUtil;
 import com.jh.wxqb.utils.GsonUtil;
 import com.jh.wxqb.utils.LogUtils;
+import com.jh.wxqb.utils.MoveDistanceUtils;
 import com.jh.wxqb.utils.MyClicker;
 import com.jh.wxqb.utils.Toasts;
 import com.yanzhenjie.recyclerview.swipe.SwipeItemClickListener;
@@ -50,6 +52,8 @@ public class SellFragment extends BaseFragment implements MyClicker, MySendLette
     private List<MeDividend.DataBean.ListBean> meSellBeen = new ArrayList<>();
     private MySendLetterPresenter presenter;
     private boolean isMaxPageIndex = false; //标识是否是已请求到最大页码。已无数据
+    private boolean iMove;//屏幕滑动距离
+    private LinearLayoutManager mLinearLayoutManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,30 +75,52 @@ public class SellFragment extends BaseFragment implements MyClicker, MySendLette
         //是否开启加载更多
         shop_recy.loadMoreFinish(false, true);
         //设置布局管理器
-        shop_recy.setLayoutManager(new LinearLayoutManager(mContext));
-        shop_recy.setSwipeItemClickListener(itemClickListener);   //每项Item点击事件
+        mLinearLayoutManager = new LinearLayoutManager(mContext);
+        shop_recy.setLayoutManager(mLinearLayoutManager);
 
         // 自定义的核心就是DefineLoadMoreView类。
         DefineLoadMoreView loadMoreView = new DefineLoadMoreView(mContext);
         shop_recy.addFooterView(loadMoreView); // 添加为Footer。
         shop_recy.setLoadMoreView(loadMoreView); // 设置LoadMoreView更新监听。
-        shop_recy.setLoadMoreListener(mLoadMoreListener);   //上拉加载更多
+//        shop_recy.setLoadMoreListener(mLoadMoreListener);   //上拉加载更多
+        shop_recy.addOnScrollListener(onScrollListener);
         sw_refresh.setOnRefreshListener(mRefreshListener);  //下拉刷新
+        new MoveDistanceUtils().setOnMoveDistanceListener(shop_recy, new MoveDistanceUtils.OnMoveDistanceListener() {
+            @Override
+            public void onMoveDistance(boolean b) {
+                iMove = b;
+            }
+        });
         //初始化适配器
         adapter = new MeSellAdapter(mContext, meSellBeen, this);
         shop_recy.setAdapter(adapter);  //设置适配器
     }
 
-
-    //item点击事件
-    private SwipeItemClickListener itemClickListener = new SwipeItemClickListener() {
+    //滑动事件
+    private RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {
         @Override
-        public void onItemClick(View itemView, int position) {
-//            Intent intent = new Intent(NewsListActivity.this, NewsInfoActivity.class);
-//            startActivity(intent);
+        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            //滑动加载更多
+            super.onScrollStateChanged(recyclerView, newState);
+            if (adapter != null) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE && mLinearLayoutManager.findLastVisibleItemPosition() == adapter.getItemCount()) {
+                    if (iMove) {
+                        //加载更多
+                        shop_recy.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                isClear = false;
+                                pageIndex = pageIndex + 1;
+                                presenter.myDividend(pageIndex, 2);
+                                shop_recy.loadMoreFinish(false, true);
+                            }
+                        }, 1000);
+                    }
+                }
+            }
+
         }
     };
-
     //上拉加载更多
     private SwipeMenuRecyclerView.LoadMoreListener mLoadMoreListener = new SwipeMenuRecyclerView.LoadMoreListener() {
         @Override
@@ -119,7 +145,7 @@ public class SellFragment extends BaseFragment implements MyClicker, MySendLette
                 @Override
                 public void run() {
                     shop_recy.loadMoreFinish(false, true);
-                    isMaxPageIndex=false;
+                    isMaxPageIndex = false;
                     pageIndex = 1;
                     isClear = true;
                     presenter.myDividend(pageIndex, 2);
@@ -188,7 +214,7 @@ public class SellFragment extends BaseFragment implements MyClicker, MySendLette
             pageIndex = 1;
             isClear = true;
             presenter.myDividend(pageIndex, 2);
-        }else {
+        } else {
             presenter.myDividend(pageIndex, 2);
         }
         EventBus.getDefault().post("udpHome");

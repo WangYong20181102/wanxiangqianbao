@@ -94,7 +94,7 @@ public class MyCanvasView extends View {
             }
             switch (type) {
                 case 0://买
-                    paint.setColor(Color.parseColor("#e6fbf7"));
+                    paint.setColor(Color.parseColor("#E9F8F5"));
                     int left = (int) ((new BigDecimal(1).subtract(numTotal.divide(max, 4, BigDecimal.ROUND_DOWN))).floatValue() * (viewWidth));
                     Path path = new Path();
                     path.moveTo(left, viewHeight);
@@ -104,7 +104,7 @@ public class MyCanvasView extends View {
                     canvas.drawPath(path, paint);
                     break;
                 case 1://卖
-                    paint.setColor(Color.parseColor("#fdedf0"));
+                    paint.setColor(Color.parseColor("#FDEBEE"));
                     int right = (int) ((new BigDecimal(1).subtract(numTotal.divide(max, 4, BigDecimal.ROUND_DOWN))).floatValue() * (viewWidth));
 
                     Path path1 = new Path();

@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:text="全部"
-            android:textColor="@color/home_text_color"
+            android:textColor="@color/color_646482"
             android:textSize="@dimen/iv_24" />
     </RelativeLayout>
 

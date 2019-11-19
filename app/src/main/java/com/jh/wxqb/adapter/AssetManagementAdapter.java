@@ -57,14 +57,12 @@ public class AssetManagementAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             switch (item.getBizCurrencyTypeId()) {
                 case 1:
                     ((MyViewHolder) holder).tvCurrency.setText("ETH");
-                    ((MyViewHolder) holder).ivMoneyImg.setImageResource(R.drawable.icon_eth_small);
-                    ((MyViewHolder) holder).imageRight.setImageResource(R.drawable.icon_eth_right);
                     ((MyViewHolder) holder).tvTeamExcitation.setVisibility(View.GONE);
+                    ((MyViewHolder) holder).ivMoneyImg.setImageResource(R.drawable.icon_eth_small);
                     break;
                 case 2:
                     ((MyViewHolder) holder).tvCurrency.setText("TGM");
                     ((MyViewHolder) holder).ivMoneyImg.setImageResource(R.drawable.iv_tgm_small);
-                    ((MyViewHolder) holder).imageRight.setImageResource(R.drawable.iv_tgm_right);
                     if (item.getIsGrouper() == 1) {
                         ((MyViewHolder) holder).tvTeamExcitation.setVisibility(View.VISIBLE);
                         ((MyViewHolder) holder).tvTeamExcitation.setText("(社区长激励：" + item.getSharingRevenue().doubleValue() + ")");
@@ -75,25 +73,21 @@ public class AssetManagementAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 case 3:
                     ((MyViewHolder) holder).tvCurrency.setText("USDT");
                     ((MyViewHolder) holder).ivMoneyImg.setImageResource(R.drawable.icon_usdt_small);
-                    ((MyViewHolder) holder).imageRight.setImageResource(R.drawable.icon_usdt_right);
                     ((MyViewHolder) holder).tvTeamExcitation.setVisibility(View.GONE);
                     break;
                 case 4:
                     ((MyViewHolder) holder).tvCurrency.setText("HT");
                     ((MyViewHolder) holder).ivMoneyImg.setImageResource(R.drawable.iv_ht_small);
-                    ((MyViewHolder) holder).imageRight.setImageResource(R.drawable.iv_ht_right);
                     ((MyViewHolder) holder).tvTeamExcitation.setVisibility(View.GONE);
                     break;
                 case 5:
                     ((MyViewHolder) holder).tvCurrency.setText("OKB");
                     ((MyViewHolder) holder).ivMoneyImg.setImageResource(R.drawable.iv_okb_small);
-                    ((MyViewHolder) holder).imageRight.setImageResource(R.drawable.iv_okb_right);
                     ((MyViewHolder) holder).tvTeamExcitation.setVisibility(View.GONE);
                     break;
                 case 6:
                     ((MyViewHolder) holder).tvCurrency.setText("BNB");
                     ((MyViewHolder) holder).ivMoneyImg.setImageResource(R.drawable.iv_bnb_small);
-                    ((MyViewHolder) holder).imageRight.setImageResource(R.drawable.iv_bnb_right);
                     ((MyViewHolder) holder).tvTeamExcitation.setVisibility(View.GONE);
                     break;
             }
@@ -117,7 +111,6 @@ public class AssetManagementAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-
         @BindView(R.id.iv_money_img)
         ImageView ivMoneyImg;
         @BindView(R.id.tv_currency)
@@ -130,8 +123,6 @@ public class AssetManagementAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         TextView tvTran;
         @BindView(R.id.tv_withdraw_money)
         TextView tvWithdrawMoney;
-        @BindView(R.id.image_right)
-        ImageView imageRight;
         @BindView(R.id.tv_equivalent_assets)
         TextView tvtvEquivalentAssets;
         @BindView(R.id.rl_bg_click)

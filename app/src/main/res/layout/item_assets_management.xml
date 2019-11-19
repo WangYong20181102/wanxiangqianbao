@@ -9,17 +9,10 @@
         android:id="@+id/rl_bg_click"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/d14"
+        android:layout_marginLeft="@dimen/d16"
         android:layout_marginTop="@dimen/iv_10"
-        android:layout_marginRight="@dimen/d15"
+        android:layout_marginRight="@dimen/d16"
         android:background="@android:color/transparent">
-
-        <ImageView
-            android:layout_width="@dimen/d6"
-            android:layout_height="@dimen/d11"
-            android:src="@mipmap/assets_right"
-            android:layout_marginTop="@dimen/d13"
-            android:layout_alignParentRight="true"/>
 
         <LinearLayout
             android:id="@+id/ll_layout"
@@ -28,135 +21,148 @@
             android:layout_marginTop="@dimen/iv_30"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/iv_money_img"
-                    android:layout_width="@dimen/d15"
-                    android:layout_height="@dimen/d15"
-                    android:src="@drawable/iv_tgm_small" />
-
-                <TextView
-                    android:id="@+id/tv_currency"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/d3"
-                    android:text="TGM"
-                    android:textColor="@color/color_16263E"
-                    android:textSize="@dimen/s13"
-                    android:textStyle="bold" />
-                <TextView
-                    android:id="@+id/tv_team_excitation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/color_16263E"
-                    android:textSize="@dimen/s11"
-                    android:layout_marginLeft="@dimen/d10"
-                    android:text="(社区长激励：)"
-                    android:visibility="gone"/>
-            </LinearLayout>
-
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/d10">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_money_img"
+                        android:layout_width="@dimen/d15"
+                        android:layout_height="@dimen/d15"
+                        android:src="@drawable/iv_tgm_small" />
+
+                    <TextView
+                        android:id="@+id/tv_currency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/d3"
+                        android:text="TGM"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_16263E"
+                        android:textSize="@dimen/s19" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_tran"
+                        android:layout_width="@dimen/d84"
+                        android:layout_height="@dimen/d31"
+                        android:background="@drawable/recharge_bg"
+                        android:gravity="center"
+                        android:text="@string/punching_money"
+                        android:textColor="@color/color_646482"
+                        android:textSize="@dimen/s11" />
+
+                    <TextView
+                        android:id="@+id/tv_withdraw_money"
+                        android:layout_width="@dimen/d84"
+                        android:layout_height="@dimen/d31"
+                        android:layout_marginLeft="@dimen/d16"
+                        android:background="@drawable/withdraw_bg"
+                        android:gravity="center"
+                        android:text="@string/withdraw_money"
+                        android:textColor="@color/color_646482"
+                        android:textSize="@dimen/s11" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_team_excitation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(社区长激励：)"
+                android:textColor="@color/color_16263E"
+                android:textSize="@dimen/s11"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d15"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="@dimen/d0"
+                    android:layout_height="@dimen/d77"
+                    android:layout_weight="1"
+                    android:background="@drawable/balance_assets_item_bg"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/d12">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/can_use"
-                        android:textColor="@color/color_627B9B"
-                        android:textSize="@dimen/s11" />
+                        android:textColor="@color/color_9393A8"
+                        android:textSize="@dimen/s13" />
 
                     <TextView
                         android:id="@+id/tv_balance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/d12"
+                        android:layout_marginTop="@dimen/d4"
                         android:text="0.0"
-                        android:textColor="@color/color_1F3F59"
-                        android:textSize="@dimen/s14" />
+                        android:textColor="@color/color_484859"
+                        android:textSize="@dimen/s19" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/d105"
-                    android:orientation="vertical">
+                    android:layout_width="@dimen/d0"
+                    android:layout_height="@dimen/d77"
+                    android:layout_marginLeft="@dimen/d15"
+                    android:layout_weight="1"
+                    android:background="@drawable/balance_assets_item_bg"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/d12">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/equivalent_cny"
-                        android:textColor="@color/color_627B9B"
-                        android:textSize="@dimen/s11" />
+                        android:textColor="@color/color_9393A8"
+                        android:textSize="@dimen/s13" />
 
                     <TextView
                         android:id="@+id/tv_equivalent_assets"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/d12"
+                        android:layout_marginTop="@dimen/d4"
                         android:text="0.0"
-                        android:textColor="@color/color_1F3F59"
-                        android:textSize="@dimen/s14" />
+                        android:textColor="@color/color_484859"
+                        android:textSize="@dimen/s19" />
                 </LinearLayout>
-            </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="@dimen/d23"
+                    android:layout_height="@dimen/d23"
+                    android:layout_marginLeft="@dimen/d20"
+                    android:src="@mipmap/icon_right" />
+            </LinearLayout>
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/image_right"
-            android:layout_width="@dimen/d60"
-            android:layout_height="@dimen/d60"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/d26"
-            android:layout_marginRight="@dimen/d37"
-            android:src="@drawable/iv_tgm_right" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/d58"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv_tran"
-                android:layout_width="@dimen/d62"
-                android:layout_height="@dimen/d26"
-                android:background="@drawable/rechage_bg"
-                android:gravity="center"
-                android:text="@string/punching_money"
-                android:textColor="@color/color_03AD8F"
-                android:textSize="@dimen/s13" />
-
-            <TextView
-                android:id="@+id/tv_withdraw_money"
-                android:layout_width="@dimen/d62"
-                android:layout_height="@dimen/d26"
-                android:layout_marginLeft="@dimen/d10"
-                android:background="@drawable/withdraw_bg"
-                android:gravity="center"
-                android:text="@string/withdraw_money"
-                android:textColor="@color/color_CD4A63"
-                android:textSize="@dimen/s13" />
-        </LinearLayout>
-
 
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/d1"
-        android:layout_marginTop="@dimen/d13"
-        android:background="@color/color_eff2f4" />
+        android:layout_height="@dimen/d4"
+        android:layout_marginTop="@dimen/d15"
+        android:background="@color/color_f7f7f8" />
 
 </LinearLayout>

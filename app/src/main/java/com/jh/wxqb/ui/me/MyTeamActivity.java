@@ -1,28 +1,24 @@
 package com.jh.wxqb.ui.me;
 
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.widget.TextView;
 
 import com.jh.wxqb.R;
 import com.jh.wxqb.adapter.MyTeamAdapter;
 import com.jh.wxqb.base.BaseActivity;
-import com.jh.wxqb.base.CoreKeys;
 import com.jh.wxqb.base.MyApplication;
 import com.jh.wxqb.bean.BaseBean;
 import com.jh.wxqb.bean.FinancialDetailsBean;
 import com.jh.wxqb.bean.FinancialDetailsTypeBean;
 import com.jh.wxqb.bean.MyTeamBean;
 import com.jh.wxqb.bean.UserImage;
-import com.jh.wxqb.customview.CircleImageView;
 import com.jh.wxqb.customview.DefineLoadMoreView;
 import com.jh.wxqb.ui.me.presenter.MePresenter;
 import com.jh.wxqb.ui.me.view.MeView;
 import com.jh.wxqb.utils.AgainLoginUtil;
-import com.jh.wxqb.utils.BitmapUtil;
 import com.jh.wxqb.utils.GsonUtil;
 import com.jh.wxqb.utils.LogUtils;
-import com.jh.wxqb.utils.PreferencesLoader;
 import com.jh.wxqb.utils.Toasts;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 
@@ -41,14 +37,8 @@ public class MyTeamActivity extends BaseActivity implements MeView {
     SwipeMenuRecyclerView shop_recy;
     @BindView(R.id.sw_refresh)
     SwipeRefreshLayout sw_refresh;
-    @BindView(R.id.tv_name)
-    TextView tvName;
-    @BindView(R.id.tv_phone)
-    TextView tvPhone;
     @BindView(R.id.tv_number)
     TextView tvNumber;
-    @BindView(R.id.iv_user_img)
-    CircleImageView ivUserImg;
 
     int pageIndex = 1;
     boolean isClear = true;
@@ -66,21 +56,8 @@ public class MyTeamActivity extends BaseActivity implements MeView {
         showWaitDialog();
         mePresenter = new MePresenter(this);
         mePresenter.myTeam(pageIndex);
-        initView();
         initRecyclerView();
     }
-
-    private void initView() {
-//        if (PreferencesLoader.getObject(CoreKeys.USER_IMG, String.class) != null) {
-//            ivUserImg.setImageBitmap(BitmapUtil.compressImage(BitmapUtil.ratio(BitmapUtil.stringtoBitmap(MyApplication.getUserImg()), 150, 150)));
-//        }
-        if (MyApplication.getUserBean() != null) {
-            tvName.setText(MyApplication.getUserBean().getUserName());
-            tvPhone.setText(MyApplication.getUserBean().getPhone());
-
-        }
-    }
-
 
     /**
      * 初始化RecyclerView配置
@@ -89,7 +66,7 @@ public class MyTeamActivity extends BaseActivity implements MeView {
         //是否开启加载更多
         shop_recy.loadMoreFinish(false, true);
         //设置布局管理器
-        shop_recy.setLayoutManager(new LinearLayoutManager(this));
+        shop_recy.setLayoutManager(new GridLayoutManager(this, 2));
         // 自定义的核心就是DefineLoadMoreView类。
         DefineLoadMoreView loadMoreView = new DefineLoadMoreView(this);
         shop_recy.addFooterView(loadMoreView); // 添加为Footer。
@@ -150,29 +127,29 @@ public class MyTeamActivity extends BaseActivity implements MeView {
             if (result.getData().getTeamPeples() != null && !result.getData().getTeamPeples().equals("")) {
                 switch (MyApplication.getLanuage()) {
                     case "zh":
-                        tvNumber.setText("團隊總人數：" + result.getData().getTeamPeples());
+                        tvNumber.setText(result.getData().getTeamPeples());
                         break;
                     case "en":
-                        tvNumber.setText("Total team size：" + result.getData().getTeamPeples());
+                        tvNumber.setText(result.getData().getTeamPeples());
                         break;
                 }
             } else {
                 switch (MyApplication.getLanuage()) {
                     case "zh":
-                        tvNumber.setText("團隊總人數：0");
+                        tvNumber.setText("0");
                         break;
                     case "en":
-                        tvNumber.setText("Total team size：0");
+                        tvNumber.setText("0");
                         break;
                 }
             }
         } else {
             switch (MyApplication.getLanuage()) {
                 case "zh":
-                    tvNumber.setText("團隊總人數：0");
+                    tvNumber.setText("0");
                     break;
                 case "en":
-                    tvNumber.setText("Total team size：0");
+                    tvNumber.setText("0");
                     break;
             }
         }

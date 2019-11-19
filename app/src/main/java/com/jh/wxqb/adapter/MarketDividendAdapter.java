@@ -230,8 +230,6 @@ public class MarketDividendAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         RecyclerView shopUp;
         @BindView(R.id.shop_down)
         RecyclerView shopDown;
-        @BindView(R.id.ll_sel_more)
-        RelativeLayout llSelMore;
         @BindView(R.id.ll_sel_type)
         LinearLayout llSelType;
         @BindView(R.id.iv_down)
@@ -384,7 +382,6 @@ public class MarketDividendAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         holder.llType.setOnClickListener(this);
 //        holder.llSelType.setOnClickListener(this);
-        holder.llSelMore.setOnClickListener(this);
         holder.tvDividends.setOnClickListener(this);
         holder.linearEntrust.setOnClickListener(this);
 
@@ -444,10 +441,6 @@ public class MarketDividendAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.ll_sel_more:
-                intent = new Intent(mContext, MoreBusinessActivity.class);
-                mActivity.startActivity(intent);
-                break;
             case R.id.rl_show_more://查看更多
                 intent = new Intent(mContext, MoreBusinessActivity.class);
                 mActivity.startActivity(intent);

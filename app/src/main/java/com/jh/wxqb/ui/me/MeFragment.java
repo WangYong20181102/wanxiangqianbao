@@ -10,14 +10,16 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.jaeger.library.StatusBarUtil;
 import com.jh.wxqb.R;
 import com.jh.wxqb.base.BaseFragment;
-import com.jh.wxqb.base.CoreKeys;
 import com.jh.wxqb.base.MainActivity;
 import com.jh.wxqb.base.MyApplication;
 import com.jh.wxqb.bean.BaseBean;
@@ -52,23 +54,15 @@ import butterknife.OnClick;
 public class MeFragment extends BaseFragment implements View.OnClickListener, MeView {
 
     @BindView(R.id.iv_user_img)
-    CircleImageView ivUserImg;
+    ImageView ivUserImg;
     @BindView(R.id.tv_name)
     TextView tvName;
     @BindView(R.id.tv_phone)
     TextView tvPhone;
-    @BindView(R.id.tv_active_assets)
-    TextView tvActiveAssets;
-    @BindView(R.id.tv_dividend_assets)
-    TextView tvDividendAssets;
-    @BindView(R.id.tv_repurchase_assets)
-    TextView tvRepurchaseAssets;
-    @BindView(R.id.tv_acceleration_value)
-    TextView tvAccelerationValue;
 
     private View view;
     private PopupWindow contentWindow;
-    private MePresenter mePresenter;
+//    private MePresenter mePresenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,16 +71,16 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
             view = inflater.inflate(R.layout.fragment_me, container, false);
             ButterKnife.bind(this, view);
             EventBus.getDefault().register(this);
-            mePresenter = new MePresenter(this);
+//            mePresenter = new MePresenter(this);
         }
         return view;
     }
 
-    @OnClick({R.id.ll_message, R.id.iv_user_img, R.id.ll_userinfo, R.id.ll_my_dividend, R.id.ll_my_recommendation, R.id.ll_all_send_car,R.id.ll_login_pwd, R.id.ll_pay_pwd, R.id.ll_binding_account, R.id.ll_my_team, R.id.ll_user_feedback, R.id.ll_financial_details, R.id.tv_out_login})
+    @OnClick({R.id.ll_message, R.id.iv_user_img, R.id.ll_userinfo, R.id.ll_my_dividend, R.id.ll_my_recommendation, R.id.ll_all_send_car, R.id.ll_login_pwd, R.id.ll_pay_pwd, R.id.ll_binding_account, R.id.ll_my_team, R.id.ll_user_feedback, R.id.ll_financial_details, R.id.tv_out_login})
     public void onViewClicked(View view) {
         Intent intent;
         switch (view.getId()) {
-            case R.id.ll_message:
+            case R.id.ll_message://我的消息
                 intent = new Intent(mContext, MyMessageActivity.class);
                 startActivity(intent);
                 break;
@@ -102,7 +96,7 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
                 intent = new Intent(mContext, MySendLetterActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.ll_my_recommendation:
+            case R.id.ll_my_recommendation://我要推荐
                 intent = new Intent(mContext, RecommendActivity.class);
                 startActivity(intent);
                 break;
@@ -111,12 +105,12 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
 //                intent = new Intent(mContext, NationalDepartureActivity.class);
 //                startActivity(intent);
                 break;
-            case R.id.ll_login_pwd:
+            case R.id.ll_login_pwd://登录密码
                 intent = new Intent(mContext, UdpPwdActivity.class);
                 intent.putExtra("type", "login");
                 startActivity(intent);
                 break;
-            case R.id.ll_pay_pwd:
+            case R.id.ll_pay_pwd://支付密码
                 intent = new Intent(mContext, UdpPwdActivity.class);
                 intent.putExtra("type", "pay");
                 startActivity(intent);
@@ -129,7 +123,7 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
                 intent = new Intent(mContext, MyTeamActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.ll_user_feedback:
+            case R.id.ll_user_feedback://用户反馈
                 intent = new Intent(mContext, FeedbackActivity.class);
                 startActivity(intent);
                 break;
@@ -150,8 +144,14 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
     private void outApp() {
         //转换设置布局文件
         View contentView = LayoutInflater.from(mContext).inflate(R.layout.item_out_app, null);
-        TextView tvCancel = (TextView) contentView.findViewById(R.id.tv_cancel);
-        TextView tvDetermine = (TextView) contentView.findViewById(R.id.tv_determine);
+        TextView tvCancel = contentView.findViewById(R.id.tv_cancel);
+        TextView tvDetermine = contentView.findViewById(R.id.tv_determine);
+        ImageView imageClose = contentView.findViewById(R.id.image_close);
+        RelativeLayout rlDialogBgClick = contentView.findViewById(R.id.rl_dialog_bg_click);
+        LinearLayout llDialogBg = contentView.findViewById(R.id.ll_dialog_bg);
+        llDialogBg.setOnClickListener(null);
+        imageClose.setOnClickListener(this);
+        rlDialogBgClick.setOnClickListener(this);
         tvCancel.setOnClickListener(this);
         tvDetermine.setOnClickListener(this);
         //创建PopupWindow对象
@@ -161,9 +161,22 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
         contentWindow.setOutsideTouchable(false);     //点击其他区域消失
         contentWindow.setFocusable(true);
         contentWindow.setAnimationStyle(android.R.style.Animation_InputMethod);   //设置动画
-        WindowManager.LayoutParams lp = getActivity().getWindow().getAttributes();    //将背景颜色参数重新设置
+
+        //获取当前Activity所在的窗体
+        Window dialogWindow = getActivity().getWindow();
+        //设置Dialog从窗体底部弹出
+        dialogWindow.setGravity(Gravity.BOTTOM);
+        dialogWindow.getDecorView().setPadding(0, 0, 0, 0);
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
         lp.alpha = 0.5f;
-        getActivity().getWindow().setAttributes(lp);
+        //设置宽
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        //设置高
+        lp.height = WindowManager.LayoutParams.MATCH_PARENT;
+        dialogWindow.setAttributes(lp);
+
+        contentWindow.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
+
         contentWindow.setSoftInputMode(PopupWindow.INPUT_METHOD_NEEDED);
         contentWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         contentWindow.showAtLocation(contentView, Gravity.CENTER, 0, 0);   //从底部弹出
@@ -181,6 +194,8 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_cancel:
+            case R.id.image_close:
+            case R.id.rl_dialog_bg_click:
                 contentWindow.dismiss();
                 break;
             case R.id.tv_determine:
@@ -196,21 +211,8 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
         switch (udpMe) {
             case "udpMe":
                 if (MyApplication.getUserBean() != null) {
-//                    BigDecimal one = new BigDecimal("1");
                     tvName.setText(MyApplication.getUserBean().getUserName());
                     tvPhone.setText(StringUtil.makePhoneNum(MyApplication.getUserBean().getPhone()));
-//                    if (MyApplication.getUserBean().getActiveAssets() != null) {
-//                        tvActiveAssets.setText(StringUtil.checkDoubleOrInt(MyApplication.getUserBean().getActiveAssets()));
-//                    }
-//                    if (MyApplication.getUserBean().getDividendAssets() != null) {
-//                        tvDividendAssets.setText(StringUtil.checkDoubleOrInt(MyApplication.getUserBean().getDividendAssets()));
-//                    }
-//                    if (MyApplication.getUserBean().getRepurchaseAssets() != null) {
-//                        tvRepurchaseAssets.setText(StringUtil.checkDoubleOrInt(MyApplication.getUserBean().getRepurchaseAssets()));
-//                    }
-//                    if (MyApplication.getUserBean().getAccelerationValue() != null) {
-//                        tvAccelerationValue.setText(StringUtil.subZeroAndDot(MyApplication.getUserBean().getAccelerationValue().toPlainString()) + "%");
-//                    }
                 }
 //                mePresenter.selUserImage();
                 break;

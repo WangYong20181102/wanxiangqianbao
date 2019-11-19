@@ -2,6 +2,7 @@ package com.jh.wxqb.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,16 +31,18 @@ public class FinancialDetailsAdapter extends RecyclerView.Adapter<FinancialDetai
 
     private Context mContext;
     private List<FinancialDetailsBean.DataBean.LogListBean> financialDetailsBeen;
+    private LayoutInflater inflater;
 
     public FinancialDetailsAdapter(Context mContext, List<FinancialDetailsBean.DataBean.LogListBean> financialDetailsBeen) {
         this.mContext = mContext;
         this.financialDetailsBeen = financialDetailsBeen;
+        inflater = LayoutInflater.from(mContext);
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //设置自适应布局
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_financial_details, null);
+        View view = inflater.inflate(R.layout.item_financial_details, parent,false);
         return new ViewHolder(view);
     }
 
@@ -139,11 +142,11 @@ public class FinancialDetailsAdapter extends RecyclerView.Adapter<FinancialDetai
             switch (item.getFlowType()) {
                 case 1:
                     type = "+ ";
-                    tvType.setTextColor(Color.parseColor("#03AD8F"));
+                    tvNum.setTextColor(ContextCompat.getColor(mContext, R.color.color_1EB496));
                     break;
                 case 2:
                     type = "- ";
-                    tvType.setTextColor(Color.parseColor("#D14B64"));
+                    tvNum.setTextColor(ContextCompat.getColor(mContext, R.color.color_EE3B59));
                     break;
             }
             //交易类型

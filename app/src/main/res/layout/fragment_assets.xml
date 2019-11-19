@@ -3,156 +3,182 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.jh.wxqb.ui.assets.AssetsFragment">
 
-    <com.jh.wxqb.customview.CustomTitle
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:titleText="@string/asset_management" />
+        android:layout_height="match_parent"
+        android:descendantFocusability="blocksDescendants">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/d1"
-        android:background="@color/color_eff2f4" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/d15"
-        android:layout_marginTop="@dimen/d10"
-        android:layout_marginRight="@dimen/d15"
-        android:background="@drawable/assets_top_equivalent_assets_bg">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/decorate_com_appbar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="@dimen/d18"
-            android:layout_marginBottom="@dimen/d18"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:background="@drawable/assets_manager_bg"
+            app:elevation="@dimen/d0">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/decorate_com_collapsing_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/d31"
+                    android:layout_marginTop="@dimen/d42"
+                    android:layout_marginRight="@dimen/d31"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/equivalent_assets"
+                                android:textColor="@color/color_alpha_50"
+                                android:textSize="@dimen/s16" />
+
+                            <TextView
+                                android:id="@+id/tv_equivalent_assets"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/d4"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/s31" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/equivalent_assets"
-                android:textColor="@color/white"
-                android:textSize="@dimen/s13" />
+                android:layout_marginTop="@dimen/d28">
 
-            <TextView
-                android:id="@+id/tv_equivalent_assets"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/d5"
-                android:textColor="@color/white"
-                android:textSize="@dimen/s30" />
-        </LinearLayout>
-    </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/d31"
+                    android:layout_marginRight="@dimen/d31"
+                    android:orientation="horizontal"
+                    android:overScrollMode="always">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_110"
-        android:orientation="horizontal">
+                    <RelativeLayout
+                        android:id="@+id/ll_active_assets"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:id="@+id/ll_active_assets"
-            android:layout_width="0dp"
+                        <TextView
+                            android:id="@+id/tv_active_assets"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="@dimen/d25"
+                            android:text="@string/active_assets"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/s19"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:id="@+id/view_active_assets"
+                            android:layout_width="@dimen/d58"
+                            android:layout_height="@dimen/d2"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="@dimen/d12"
+                            android:background="@color/white"
+                            android:visibility="visible" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/ll_dividend_assets"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/d31">
+
+                        <TextView
+                            android:id="@+id/tv_dividend_assets"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="@dimen/d25"
+                            android:text="@string/dividend_assets"
+                            android:textColor="@color/color_alpha_50"
+                            android:textSize="@dimen/s15"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:id="@+id/view_dividend_assets"
+                            android:layout_width="@dimen/d58"
+                            android:layout_height="@dimen/d2"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="@dimen/d12"
+                            android:background="@color/white"
+                            android:visibility="gone" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/ll_repurchase_assets"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/d31">
+
+                        <TextView
+                            android:id="@+id/tv_repurchase_assets"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="@dimen/d25"
+                            android:text="@string/repurchase_assets"
+                            android:textColor="@color/color_alpha_50"
+                            android:textSize="@dimen/s15"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:id="@+id/view_repurchase_assets"
+                            android:layout_width="@dimen/d58"
+                            android:layout_height="@dimen/d2"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="@dimen/d12"
+                            android:background="@color/white"
+                            android:visibility="gone" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d2"
+                    android:layout_marginTop="@dimen/d37"
+                    android:background="@color/color_alpha_20" />
+            </RelativeLayout>
+
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/layout_view_pager"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/tv_active_assets"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/active_assets"
-                android:textStyle="bold"
-                android:textColor="@color/color_16263E"
-                android:textSize="@dimen/s15" />
-
-            <View
-                android:id="@+id/view_active_assets"
-                android:layout_width="@dimen/d58"
-                android:layout_height="@dimen/d2"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/iv_20"
-                android:background="@color/color_16263E"
-                android:visibility="gone" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/ll_dividend_assets"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/tv_dividend_assets"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/dividend_assets"
-                android:textStyle="bold"
-                android:textColor="@color/color_8C9FAD"
-                android:textSize="@dimen/s15" />
-
-            <View
-                android:id="@+id/view_dividend_assets"
-                android:layout_width="@dimen/d58"
-                android:layout_height="@dimen/d2"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/iv_20"
-                android:background="@color/color_16263E"
-                android:visibility="gone" />
-
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:id="@+id/ll_repurchase_assets"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:visibility="visible">
-
-            <TextView
-                android:id="@+id/tv_repurchase_assets"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/repurchase_assets"
-                android:textStyle="bold"
-                android:textColor="@color/color_8C9FAD"
-                android:textSize="@dimen/s15" />
-
-            <View
-                android:id="@+id/view_repurchase_assets"
-                android:layout_width="@dimen/d58"
-                android:layout_height="@dimen/d2"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/iv_20"
-                android:background="@color/color_16263E"
-                android:visibility="gone"/>
-
-        </RelativeLayout>
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/d1"
-        android:background="@color/color_eff2f4" />
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/layout_view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+            android:background="@color/white"
+            android:overScrollMode="never"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </android.support.design.widget.CoordinatorLayout>
 
 </LinearLayout>

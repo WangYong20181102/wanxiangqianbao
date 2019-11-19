@@ -145,14 +145,9 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
         marketPresenter.getCurrentPrice(map);
     }
 
-    @OnClick({R.id.ll_current_entrustment, R.id.ll_active_assets, R.id.ll_repurchase_assets})
+    @OnClick({ R.id.ll_active_assets, R.id.ll_repurchase_assets})
     public void onViewClicked(View view) {
-        Intent intent;
         switch (view.getId()) {
-            case R.id.ll_current_entrustment:
-                intent = new Intent(mContext, CurrentEntrustmentActivity.class);
-                startActivity(intent);
-                break;
             case R.id.ll_active_assets:
                 count++;
                 selectTitle(0);
@@ -174,14 +169,14 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
             case 0:
                 viewType = "dividend";
                 allTitle.get(index).setTextColor(Color.WHITE);
-                llActiveAssets.setBackgroundResource(R.mipmap.dividend_select);
-                llRepurchaseAssets.setBackgroundResource(R.mipmap.sell_un_select);
+                llActiveAssets.setBackgroundResource(R.drawable.market_place_buy_bg);
+                llRepurchaseAssets.setBackgroundResource(R.drawable.market_place_sell_buy_unselect);
                 break;
             case 1:
                 viewType = "sell";
                 allTitle.get(index).setTextColor(Color.WHITE);
-                llActiveAssets.setBackgroundResource(R.mipmap.dividend_un_select);
-                llRepurchaseAssets.setBackgroundResource(R.mipmap.sell_select);
+                llActiveAssets.setBackgroundResource(R.drawable.market_place_sell_buy_unselect);
+                llRepurchaseAssets.setBackgroundResource(R.drawable.market_place_sell_bg);
                 break;
         }
         if (adapter != null) {
@@ -193,7 +188,7 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
     //初始化标题
     public void clearViewAndTitle() {
         for (TextView text : allTitle) {
-            text.setTextColor(getResources().getColor(R.color.color_7E93A2));
+            text.setTextColor(getResources().getColor(R.color.color_646482));
         }
     }
 

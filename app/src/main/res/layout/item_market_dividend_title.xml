@@ -353,23 +353,6 @@
                 android:textSize="@dimen/s16" />
 
         </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/ll_sel_more"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/iv_50"
-            android:gravity="center"
-            android:visibility="gone">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/look_at_more"
-                android:textColor="@color/white"
-                android:textSize="@dimen/iv_20" />
-        </RelativeLayout>
     </LinearLayout>
 
     <View
@@ -390,7 +373,7 @@
             android:gravity="center"
             android:text="@string/time"
             android:textColor="@color/color_8C9CAE"
-            android:textSize="@dimen/iv_20" />
+            android:textSize="@dimen/s11" />
 
         <LinearLayout
             android:id="@+id/ll_sel_type"
@@ -406,11 +389,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/state"
                 android:textColor="@color/color_8C9CAE"
-                android:textSize="@dimen/iv_20" />
+                android:textSize="@dimen/s11" />
 
             <ImageView
                 android:id="@+id/iv_business_down"
-                android:layout_width="@dimen/iv_20"
+                android:layout_width="@dimen/s11"
                 android:layout_height="@dimen/iv_10"
                 android:layout_marginLeft="@dimen/iv_10"
                 android:src="@drawable/iv_down"
@@ -424,7 +407,7 @@
             android:gravity="center"
             android:text="@string/transaction_number"
             android:textColor="@color/color_8C9CAE"
-            android:textSize="@dimen/iv_20" />
+            android:textSize="@dimen/s11" />
 
         <TextView
             android:layout_width="0dp"
@@ -433,7 +416,7 @@
             android:gravity="center"
             android:text="@string/current_price"
             android:textColor="@color/color_8C9CAE"
-            android:textSize="@dimen/iv_20" />
+            android:textSize="@dimen/s11" />
 
         <TextView
             android:id="@+id/tv_action"
@@ -443,6 +426,6 @@
             android:gravity="center"
             android:text="@string/type"
             android:textColor="@color/color_8C9CAE"
-            android:textSize="@dimen/iv_20" />
+            android:textSize="@dimen/s11" />
     </LinearLayout>
 </LinearLayout>

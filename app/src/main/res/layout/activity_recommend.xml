@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/recommend_bg"
+    android:background="@color/white"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.jh.wxqb.ui.me.RecommendActivity">
@@ -15,59 +15,75 @@
         app:canBack="true"
         app:titleText="@string/my_recommendation" />
 
-    <View
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/d1"
-        android:background="@color/color_eff2f4" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="@dimen/d114"
-            android:layout_height="@dimen/d85"
-            android:layout_marginTop="@dimen/d20"
-            android:layout_marginLeft="@dimen/d20"
-            android:src="@drawable/login_logo" />
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/recommend_bg"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d60"
+                android:text="一起加入TGM生态"
+                android:textColor="@color/white"
+                android:textSize="@dimen/s30" />
 
             <ImageView
                 android:id="@+id/iv_code"
-                android:layout_width="@dimen/d150"
-                android:layout_height="@dimen/d150"
+                android:layout_width="@dimen/d173"
+                android:layout_height="@dimen/d173"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/d20" />
+                android:layout_marginTop="@dimen/d40" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d40"
+                android:text="邀请码"
+                android:textColor="@color/white"
+                android:textSize="@dimen/s12" />
+
+            <TextView
+                android:id="@+id/tv_invite_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d8"
+                android:textColor="@color/white"
+                android:textSize="@dimen/s30"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/iv_30"
-                android:layout_marginTop="@dimen/d20"
-                android:layout_marginRight="@dimen/iv_30"
+                android:layout_marginLeft="@dimen/d15"
+                android:layout_marginRight="@dimen/d15"
                 android:gravity="center_horizontal"
                 android:textColor="@color/white"
-                android:textSize="@dimen/iv_30" />
+                android:textSize="@dimen/s12" />
 
             <TextView
                 android:id="@+id/tv_copy"
-                android:layout_width="@dimen/iv_306"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d54"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/d30"
+                android:layout_marginLeft="@dimen/d75"
+                android:layout_marginTop="@dimen/d120"
+                android:layout_marginRight="@dimen/d75"
                 android:layout_marginBottom="@dimen/iv_100"
                 android:background="@drawable/all_btn_bg"
                 android:gravity="center"
-                android:text="@string/copy"
-                android:textColor="@color/white"
-                android:textSize="@dimen/iv_30" />
+                android:text="复制邀请码"
+                android:textColor="@color/color_484859"
+                android:textSize="@dimen/s19" />
         </LinearLayout>
-    </LinearLayout>
+
+    </ScrollView>
 </LinearLayout>

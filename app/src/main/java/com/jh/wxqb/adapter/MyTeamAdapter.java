@@ -27,17 +27,19 @@ public class MyTeamAdapter extends RecyclerView.Adapter<MyTeamAdapter.ViewHolder
 
     private Context mContext;
     private List<MyTeamBean.DataBean.TeamInfoBean> myTeamBeen;
+    private LayoutInflater inflater;
 
     public MyTeamAdapter(Context mContext, List<MyTeamBean.DataBean.TeamInfoBean> myTeamBeen) {
         this.mContext = mContext;
         this.myTeamBeen = myTeamBeen;
+        inflater = LayoutInflater.from(mContext);
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //设置自适应布局
-        AutoUtils.autoSize(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_team, null));
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_team, null));
+        View view = inflater.inflate(R.layout.item_my_team,parent,false);
+        return new ViewHolder(view);
     }
 
     @Override

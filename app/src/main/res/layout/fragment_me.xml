@@ -1,245 +1,95 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
-
-        <LinearLayout
-            android:layout_width="@dimen/iv_156"
-            android:layout_height="@dimen/iv_40"
-            android:layout_marginLeft="@dimen/iv_25"
-            android:layout_marginTop="@dimen/iv_45"
-            android:background="@drawable/shape_acceleration_bg"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:visibility="gone">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/acceleration_value"
-                android:textColor="@color/white"
-                android:textSize="@dimen/iv_18" />
-
-            <TextView
-                android:id="@+id/tv_acceleration_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/iv_10"
-                android:text="0.0%"
-                android:textColor="@color/white"
-                android:textSize="@dimen/iv_24" />
-        </LinearLayout>
+        android:layout_marginBottom="@dimen/d24"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/iv_30">
+            android:layout_marginTop="@dimen/d42">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_344"
-                android:background="@mipmap/mine_top_bg"
-                android:gravity="center_vertical"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.jh.wxqb.customview.CircleImageView
+                <ImageView
                     android:id="@+id/iv_user_img"
-                    android:layout_width="@dimen/iv_130"
-                    android:layout_height="@dimen/iv_130"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="@dimen/iv_60"
-                    android:src="@drawable/iv_user_logo"
-                    app:layout_auto_baseheight="width" />
+                    android:layout_width="@dimen/d69"
+                    android:layout_height="@dimen/d69"
+                    android:layout_marginLeft="@dimen/d16"
+                    android:src="@drawable/iv_user_logo" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/iv_50"
+                    android:layout_marginLeft="@dimen/d16"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        android:id="@+id/ll_username"
+                    <TextView
+                        android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/mine_username"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/iv_28" />
-
-                        <TextView
-                            android:id="@+id/tv_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:maxEms="5"
-                            android:singleLine="true"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/iv_28" />
-
-                    </LinearLayout>
-
+                        android:ellipsize="end"
+                        android:maxEms="5"
+                        android:singleLine="true"
+                        android:textColor="@color/color_28283C"
+                        android:textSize="@dimen/s30"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tv_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/ll_username"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/iv_25"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/iv_28" />
+                        android:textColor="@color/color_9393A8"
+                        android:textSize="@dimen/s13" />
                 </LinearLayout>
             </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ll_message"
+                android:layout_width="@dimen/d31"
+                android:layout_height="@dimen/d31"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/d8"
+                android:layout_marginRight="@dimen/d16"
+                android:src="@mipmap/mine_news" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/d23"
+            android:layout_marginLeft="@dimen/d101"
+            android:layout_marginTop="@dimen/d5"
+            android:background="@drawable/me_normal_bg"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/d8"
+            android:paddingRight="@dimen/d8">
+
+            <ImageView
+                android:layout_width="@dimen/d15"
+                android:layout_height="@dimen/d15"
+                android:src="@mipmap/mine_normal" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/d5"
-                android:layout_toLeftOf="@+id/scard_type"
-                android:text="@string/statue"
-                android:textColor="@color/white"
-                android:textSize="@dimen/s13" />
-
-            <com.meetsl.scardview.SCardView
-                android:id="@+id/scard_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/d30"
-                app:cardCornerRadius="@dimen/d5"
-                app:cardElevation="@dimen/d3">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/d8"
-                    android:layout_marginTop="@dimen/d3"
-                    android:layout_marginRight="@dimen/d8"
-                    android:layout_marginBottom="@dimen/d3"
-                    android:gravity="center"
-                    android:text="@string/normal"
-                    android:textSize="@dimen/s15" />
-            </com.meetsl.scardview.SCardView>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/ll_message"
-            android:layout_width="@dimen/iv_100"
-            android:layout_height="@dimen/iv_100"
-            android:layout_alignParentRight="true"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="@dimen/iv_32"
-                android:layout_height="@dimen/iv_32"
-                android:src="@drawable/nav_news" />
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/iv_100"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/iv_20"
-            android:orientation="horizontal"
-            android:visibility="gone">
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/tv_active_assets"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/iv_10"
-                    android:text="0.0"
-                    android:textColor="@color/color_1F3F59"
-                    android:textSize="@dimen/iv_32" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_active_assets"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/iv_10"
-                    android:text="@string/me_active_assets"
-                    android:textColor="@color/color_1F3F59"
-                    android:textSize="@dimen/iv_22" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/tv_dividend_assets"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/iv_10"
-                    android:text="0.0"
-                    android:textColor="@color/color_1F3F59"
-                    android:textSize="@dimen/iv_32" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_dividend_assets"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/iv_10"
-                    android:text="@string/me_dividend_assets"
-                    android:textColor="@color/color_1F3F59"
-                    android:textSize="@dimen/iv_22" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/tv_repurchase_assets"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/iv_10"
-                    android:text="0.0"
-                    android:textColor="@color/color_1F3F59"
-                    android:textSize="@dimen/iv_32" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_repurchase_assets"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/iv_10"
-                    android:text="@string/me_repurchase_assets"
-                    android:textColor="@color/color_1F3F59"
-                    android:textSize="@dimen/iv_22" />
-            </RelativeLayout>
+                android:layout_marginLeft="@dimen/d4"
+                android:text="@string/normal"
+                android:textColor="@color/color_9393A8"
+                android:textSize="@dimen/s11"
+                android:textStyle="bold" />
         </LinearLayout>
-
-    </RelativeLayout>
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -254,236 +104,398 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_178"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/d11"
+                android:layout_marginRight="@dimen/d11"
                 android:orientation="horizontal">
 
-                <!--<com.meetsl.scardview.SCardView-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="@dimen/iv_150"-->
-                <!--android:layout_weight="1"-->
-                <!--app:cardLightDirection="none"-->
-                <!--app:cardBackgroundColor="@color/color_style"-->
-                <!--app:cardCornerRadius="@dimen/iv_8"-->
-                <!--app:cardShadowStartColor="#144d6a"-->
-                <!--app:cardElevation="@dimen/iv_5"-->
-                <!--app:cardShadowEndColor="#144d6a">-->
-
-
-                <LinearLayout
-                    android:id="@+id/ll_userinfo"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                <com.meetsl.scardview.SCardView
+                    android:layout_width="@dimen/d0"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    app:cardCornerRadius="@dimen/d8"
+                    app:cardElevation="@dimen/d5"
+                    app:cardShadowStartColor="@color/color_301179_alpha_5">
 
                     <LinearLayout
+                        android:id="@+id/ll_my_dividend"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@mipmap/person_message_bg"
-                        android:gravity="center"
+                        android:layout_height="@dimen/d78"
+                        android:layout_marginTop="-5dp"
                         android:orientation="vertical">
 
-                        <ImageView
-                            android:layout_width="@dimen/iv_48"
-                            android:layout_height="@dimen/iv_48"
-                            android:src="@drawable/userinfo" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/iv_15"
-                            android:text="@string/personal_information"
-                            android:textStyle="bold"
-                            android:textColor="@color/color_1F3F59"
-                            android:textSize="@dimen/iv_28" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/d16"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/d23"
+                                    android:layout_height="@dimen/d23"
+                                    android:src="@mipmap/me_sendletter" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/d8"
+                                    android:text="@string/mine_entrustment"
+                                    android:textColor="@color/color_28283C"
+                                    android:textSize="@dimen/s15"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/d8"
+                                android:text="@string/look_commission_detail"
+                                android:textColor="@color/color_646482"
+                                android:textSize="@dimen/s11"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-                <!--</com.meetsl.scardview.SCardView>-->
+                </com.meetsl.scardview.SCardView>
 
-
-                <LinearLayout
-                    android:id="@+id/ll_my_dividend"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                <com.meetsl.scardview.SCardView
+                    android:layout_width="@dimen/d0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/d11"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    app:cardCornerRadius="@dimen/d8"
+                    app:cardElevation="@dimen/d5"
+                    app:cardShadowStartColor="@color/color_301179_alpha_5">
 
                     <LinearLayout
+                        android:id="@+id/ll_my_recommendation"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@mipmap/person_message_bg"
-                        android:gravity="center"
+                        android:layout_height="@dimen/d78"
+                        android:layout_marginTop="-5dp"
                         android:orientation="vertical">
 
-                        <ImageView
-                            android:layout_width="@dimen/iv_48"
-                            android:layout_height="@dimen/iv_48"
-                            android:src="@drawable/me_sendletter" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/d16"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/iv_15"
-                            android:text="@string/current_entrustment"
-                            android:textStyle="bold"
-                            android:textColor="@color/color_1F3F59"
-                            android:textSize="@dimen/iv_28" />
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="@dimen/d23"
+                                    android:layout_height="@dimen/d23"
+                                    android:src="@mipmap/my_recommendation" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/d8"
+                                    android:text="@string/my_recommendation"
+                                    android:textColor="@color/color_28283C"
+                                    android:textSize="@dimen/s15"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/d8"
+                                android:text="@string/invite_friends"
+                                android:textColor="@color/color_646482"
+                                android:textSize="@dimen/s11"
+                                android:textStyle="bold" />
+                        </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_my_recommendation"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@mipmap/person_message_bg"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="@dimen/iv_48"
-                            android:layout_height="@dimen/iv_48"
-                            android:src="@drawable/my_recommendation" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/iv_15"
-                            android:text="@string/my_recommendation"
-                            android:textStyle="bold"
-                            android:textColor="@color/color_1F3F59"
-                            android:textSize="@dimen/iv_28" />
-                    </LinearLayout>
-                </LinearLayout>
-
+                </com.meetsl.scardview.SCardView>
             </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_20"
-                android:background="@color/color_f7f7fb" />
 
             <RelativeLayout
                 android:id="@+id/ll_all_send_car"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_100">
+                android:layout_height="@dimen/d54"
+                android:layout_marginLeft="@dimen/d16"
+                android:layout_marginTop="@dimen/d13"
+                android:layout_marginRight="@dimen/d16"
+                android:background="@drawable/mine_all_send_card_bg">
+
 
                 <ImageView
-                    android:id="@+id/image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/d42"
+                    android:layout_height="@dimen/d42"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_40"
-                    android:src="@drawable/me_send_car" />
+                    android:layout_marginLeft="@dimen/d16"
+                    android:src="@mipmap/me_send_car" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_10"
-                    android:layout_toRightOf="@id/image"
+                    android:layout_marginLeft="@dimen/d62"
+                    android:layout_marginTop="@dimen/d6"
                     android:text="@string/all_send_car"
-                    android:textStyle="bold"
-                    android:textColor="@color/color_1F3F59"
-                    android:textSize="@dimen/iv_26" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/s18"
+                    android:textStyle="bold" />
 
                 <ImageView
-                    android:layout_width="@dimen/iv_50"
-                    android:layout_height="@dimen/iv_50"
+                    android:layout_width="@dimen/d23"
+                    android:layout_height="@dimen/d23"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/iv_50"
-                    android:src="@drawable/iv_rigth_img" />
+                    android:layout_marginRight="@dimen/d16"
+                    android:src="@mipmap/show_more_right" />
             </RelativeLayout>
 
-            <View
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_20"
-                android:background="@color/color_f7f7fb" />
+                android:layout_height="@dimen/d100"
+                android:layout_marginLeft="@dimen/d16"
+                android:layout_marginTop="@dimen/d16"
+                android:layout_marginRight="@dimen/d16"
+                android:orientation="horizontal">
 
-            <RelativeLayout
-                android:id="@+id/ll_login_pwd"
+                <LinearLayout
+                    android:id="@+id/ll_userinfo"
+                    android:layout_width="@dimen/d0"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/me_item_bg"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="@dimen/d42"
+                            android:layout_height="@dimen/d42"
+                            android:background="@drawable/me_item_icon_bg"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="@dimen/d42"
+                                android:layout_height="@dimen/d42"
+                                android:src="@mipmap/userinfo" />
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d6"
+                            android:text="@string/personal_information"
+                            android:textColor="@color/color_28283C"
+                            android:textSize="@dimen/s15"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_my_team"
+                    android:layout_width="@dimen/d0"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/d15"
+                    android:layout_weight="1"
+                    android:background="@drawable/me_item_bg"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/d42"
+                            android:layout_height="@dimen/d42"
+                            android:src="@mipmap/me_my_team" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d6"
+                            android:text="@string/my_team"
+                            android:textColor="@color/color_28283C"
+                            android:textSize="@dimen/s15"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_100">
+                android:layout_height="@dimen/d100"
+                android:layout_marginLeft="@dimen/d16"
+                android:layout_marginTop="@dimen/d15"
+                android:layout_marginRight="@dimen/d16"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/image1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_40"
-                    android:src="@drawable/me_pwd" />
+                <LinearLayout
+                    android:id="@+id/ll_login_pwd"
+                    android:layout_width="@dimen/d0"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/me_item_bg"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_10"
-                    android:layout_toRightOf="@id/image1"
-                    android:text="@string/login_pwd"
-                    android:textStyle="bold"
-                    android:textColor="@color/color_1F3F59"
-                    android:textSize="@dimen/iv_26" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="@dimen/iv_50"
-                    android:layout_height="@dimen/iv_50"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/iv_50"
-                    android:src="@drawable/iv_rigth_img" />
-            </RelativeLayout>
 
-            <View
+                        <ImageView
+                            android:id="@+id/image1"
+                            android:layout_width="@dimen/d42"
+                            android:layout_height="@dimen/d42"
+                            android:src="@mipmap/me_pwd" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d6"
+                            android:text="@string/login_pwd"
+                            android:textColor="@color/color_28283C"
+                            android:textSize="@dimen/s15"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_pay_pwd"
+                    android:layout_width="@dimen/d0"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/d15"
+                    android:layout_weight="1"
+                    android:background="@drawable/me_item_bg"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/d42"
+                            android:layout_height="@dimen/d42"
+                            android:src="@mipmap/me_pay" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d6"
+                            android:text="@string/payment_password"
+                            android:textColor="@color/color_28283C"
+                            android:textSize="@dimen/s15"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_20"
-                android:background="@color/color_f7f7fb" />
+                android:layout_height="@dimen/d100"
+                android:layout_marginLeft="@dimen/d16"
+                android:layout_marginTop="@dimen/d15"
+                android:layout_marginRight="@dimen/d16"
+                android:orientation="horizontal">
 
-            <RelativeLayout
-                android:id="@+id/ll_pay_pwd"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_100">
+                <LinearLayout
+                    android:id="@+id/ll_user_feedback"
+                    android:layout_width="@dimen/d0"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/me_item_bg"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/image2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_40"
-                    android:src="@drawable/me_pay" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_10"
-                    android:layout_toRightOf="@id/image2"
-                    android:text="@string/payment_password"
-                    android:textStyle="bold"
-                    android:textColor="@color/color_1F3F59"
-                    android:textSize="@dimen/iv_26" />
 
-                <ImageView
-                    android:layout_width="@dimen/iv_50"
-                    android:layout_height="@dimen/iv_50"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/iv_50"
-                    android:src="@drawable/iv_rigth_img" />
-            </RelativeLayout>
+                        <ImageView
+                            android:layout_width="@dimen/d42"
+                            android:layout_height="@dimen/d42"
+                            android:src="@mipmap/me_user_feedback" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_20"
-                android:background="@color/color_f7f7fb" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d6"
+                            android:text="@string/user_feedback"
+                            android:textColor="@color/color_28283C"
+                            android:textSize="@dimen/s15"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="@dimen/d0"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/d15"
+                    android:layout_weight="1"
+                    android:background="@drawable/me_item_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/d42"
+                            android:layout_height="@dimen/d42"
+                            android:src="@mipmap/userinfo" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d6"
+                            android:text="@string/personal_information"
+                            android:textColor="@color/color_28283C"
+                            android:textSize="@dimen/s15"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/ll_binding_account"
@@ -518,88 +530,6 @@
                     android:src="@drawable/iv_rigth_img" />
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_1"
-                android:background="@color/color_E7EBEE" />
-
-            <RelativeLayout
-                android:id="@+id/ll_my_team"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_100">
-
-                <ImageView
-                    android:id="@+id/image4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_40"
-                    android:src="@drawable/me_my_team" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_10"
-                    android:layout_toRightOf="@id/image4"
-                    android:text="@string/my_team"
-                    android:textStyle="bold"
-                    android:textColor="@color/color_1F3F59"
-                    android:textSize="@dimen/iv_26" />
-
-                <ImageView
-                    android:layout_width="@dimen/iv_50"
-                    android:layout_height="@dimen/iv_50"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/iv_50"
-                    android:src="@drawable/iv_rigth_img" />
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_20"
-                android:background="@color/color_f7f7fb" />
-
-
-            <RelativeLayout
-                android:id="@+id/ll_user_feedback"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_100">
-
-                <ImageView
-                    android:id="@+id/image5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_40"
-                    android:src="@drawable/me_user_feedback" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/iv_10"
-                    android:layout_toRightOf="@id/image5"
-                    android:text="@string/user_feedback"
-                    android:textStyle="bold"
-                    android:textColor="@color/color_1F3F59"
-                    android:textSize="@dimen/iv_26" />
-
-                <ImageView
-                    android:layout_width="@dimen/iv_50"
-                    android:layout_height="@dimen/iv_50"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/iv_50"
-                    android:src="@drawable/iv_rigth_img" />
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_20"
-                android:background="@color/color_f7f7fb" />
-
             <RelativeLayout
                 android:id="@+id/ll_financial_details"
                 android:layout_width="match_parent"
@@ -633,26 +563,30 @@
                     android:src="@drawable/iv_rigth_img" />
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_20"
-                android:background="@color/color_f7f7fb" />
 
-            <TextView
-                android:id="@+id/tv_out_login"
+            <com.meetsl.scardview.SCardView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_68"
-                android:layout_marginLeft="@dimen/iv_154"
-                android:layout_marginTop="@dimen/d18"
-                android:layout_marginRight="@dimen/iv_154"
-                android:layout_marginBottom="@dimen/iv_22"
-                android:background="@drawable/all_btn_bg"
-                android:gravity="center"
-                android:text="@string/out_login"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:textSize="@dimen/iv_32" />
+                android:layout_height="@dimen/d54"
+                android:layout_marginLeft="@dimen/d31"
+                android:layout_marginTop="@dimen/d150"
+                android:layout_marginRight="@dimen/d31"
+                android:layout_marginBottom="@dimen/d50"
+                app:cardBackgroundColor="@color/color_E1E1E6"
+                app:cardCornerRadius="@dimen/d16"
+                app:cardElevation="@dimen/d5"
+                app:cardUseCompatPadding="true">
 
+                <TextView
+                    android:id="@+id/tv_out_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="-5dp"
+                    android:gravity="center"
+                    android:text="@string/out_login"
+                    android:textColor="@color/color_646482"
+                    android:textSize="@dimen/s19"
+                    android:textStyle="bold" />
+            </com.meetsl.scardview.SCardView>
 
         </LinearLayout>
     </ScrollView>

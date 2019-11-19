@@ -3,79 +3,76 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
+    android:gravity="center_vertical"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/d27"
+        android:layout_marginTop="@dimen/d20"
+        android:text="TGM"
+        android:textStyle="bold"
+        android:textColor="@color/color_16263E"
+        android:textSize="@dimen/s19" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/d14"
-        android:layout_marginTop="@dimen/s13"
-        android:layout_marginRight="@dimen/d15">
+        android:layout_marginTop="@dimen/d15"
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:id="@+id/ll_pkb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/image_left_icon"
-                    android:layout_width="@dimen/d15"
-                    android:layout_height="@dimen/d15"
-                    android:src="@drawable/icon_usdt_small" />
-
-                <TextView
-                    android:id="@+id/tv_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/d3"
-                    android:text="TGM"
-                    android:textColor="@color/color_16263E"
-                    android:textSize="@dimen/s13"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
+            android:layout_width="@dimen/d0"
+            android:layout_height="@dimen/d77"
+            android:layout_marginLeft="@dimen/d16"
+            android:layout_weight="1"
+            android:background="@drawable/balance_assets_item_bg"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/d12">
 
             <TextView
                 android:id="@+id/tv_can_use"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/d10"
                 android:text="@string/freeze"
-                android:textColor="@color/color_627B9B"
-                android:textSize="@dimen/s11"
-                android:visibility="visible" />
+                android:textColor="@color/color_9393A8"
+                android:textSize="@dimen/s13" />
 
             <TextView
                 android:id="@+id/tv_assets"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/d12"
+                android:layout_marginTop="@dimen/d4"
                 android:text="0.0"
-                android:textColor="@color/color_1F3F59"
-                android:textSize="@dimen/s14" />
+                android:textColor="@color/color_484859"
+                android:textSize="@dimen/s19" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/image_right_icon"
-            android:layout_width="@dimen/d60"
-            android:layout_height="@dimen/d60"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/d20"
-            android:layout_marginRight="@dimen/d37"
-            android:src="@drawable/icon_usdt_right" />
+        <LinearLayout
+            android:layout_width="@dimen/d0"
+            android:layout_height="@dimen/d77"
+            android:layout_marginLeft="@dimen/d15"
+            android:layout_marginRight="@dimen/d16"
+            android:layout_weight="1"
+            android:background="@drawable/balance_assets_item_bg"
+            android:gravity="center"
+            android:orientation="vertical">
 
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/image_icon"
+                android:layout_width="@dimen/d60"
+                android:layout_height="@dimen/d60"
+                android:src="@mipmap/coin_type_icon_tgm" />
+        </LinearLayout>
+    </LinearLayout>
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/d1"
-        android:background="@color/color_eff2f4"
-        android:layout_marginTop="@dimen/d13"/>
+        android:layout_height="@dimen/d4"
+        android:layout_marginTop="@dimen/d15"
+        android:background="@color/color_f7f7f8" />
 
 </LinearLayout>

@@ -1,53 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:orientation="vertical">
 
-    <LinearLayout
+    <com.meetsl.scardview.SCardView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_60"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/d7"
+        android:layout_marginTop="@dimen/d8"
+        android:layout_marginRight="@dimen/d7"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/d16"
+        app:cardElevation="@dimen/d5"
+        app:cardLightDirection="top"
+        app:cardShadowStartColor="@color/color_301179_alpha_5"
+        app:cardUseCompatPadding="true">
 
-        <TextView
-            android:id="@+id/tv_id"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="00000"
-            android:textColor="@color/color_8b9cae"
-            android:textSize="@dimen/iv_24" />
+            android:layout_marginLeft="@dimen/d16"
+            android:layout_marginTop="@dimen/d10"
+            android:layout_marginRight="@dimen/d8"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="哈哈"
-            android:textColor="@color/color_8b9cae"
-            android:textSize="@dimen/iv_24" />
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_28283C"
+                android:textSize="@dimen/s14"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_time"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="2018/08/06 15:20:10"
-            android:textColor="@color/color_8b9cae"
-            android:textSize="@dimen/iv_24" />
-        <TextView
-            android:id="@+id/tv_performance"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="0.0"
-            android:textColor="@color/color_8b9cae"
-            android:textSize="@dimen/iv_24" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_9393A8"
+                android:textSize="@dimen/s10" />
 
-</RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d15"
+                android:text="总业绩"
+                android:textColor="@color/color_C0C0CC"
+                android:textSize="@dimen/s10"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_performance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d2"
+                android:gravity="center"
+                android:textColor="@color/color_2E3CD9"
+                android:textSize="@dimen/s19"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d23"
+                android:layout_marginBottom="@dimen/d15"
+                android:gravity="right">
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="@dimen/d54"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:textColor="@color/color_C0C0CC"
+                    android:textSize="@dimen/s10"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </com.meetsl.scardview.SCardView>
+
+</LinearLayout>

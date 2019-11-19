@@ -1,66 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_dialog_bg_click"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/d50"
-    android:layout_marginRight="@dimen/d50"
-    android:background="@drawable/dialog_show_bg">
+    android:background="@color/transparent">
 
     <LinearLayout
+        android:id="@+id/ll_dialog_bg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_height="@dimen/d317"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/dialog_show_bg"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/d31"
+        android:paddingRight="@dimen/d31">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d42">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/prompt"
+                android:textColor="@color/color_28283C"
+                android:textSize="@dimen/s19"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/image_close"
+                android:layout_width="@dimen/d31"
+                android:layout_height="@dimen/d31"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/close" />
+
+        </RelativeLayout>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/d18"
-            android:text="@string/prompt"
-            android:textColor="@color/color_303030"
-            android:textSize="@dimen/s19"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d62"
+            android:layout_marginTop="@dimen/d39"
+            android:background="@drawable/exit_dialog_message_bg"
+            android:gravity="center"
+            android:text="@string/are_you_sure_to_log_out"
+            android:textColor="@color/color_646482"
+            android:textSize="@dimen/s15"
             android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/d15"
-            android:text="@string/are_you_sure_to_log_out"
-            android:textColor="@color/color_505050"
-            android:textSize="@dimen/s17" />
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/d38"
-            android:layout_marginTop="@dimen/d20"
-            android:layout_marginBottom="@dimen/d13"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d30">
 
-            <TextView
-                android:id="@+id/tv_cancel"
-                android:layout_width="@dimen/d84"
-                android:layout_height="@dimen/d37"
-                android:background="@drawable/dialog_sure_bg"
-                android:gravity="center"
-                android:text="@string/cancel"
-                android:textColor="@color/color_303030"
-                android:textSize="@dimen/s17" />
+            <com.meetsl.scardview.SCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                app:cardBackgroundColor="@color/color_E1E1E6"
+                app:cardCornerRadius="@dimen/d16"
+                app:cardElevation="@dimen/d5"
+                app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/tv_determine"
-                android:layout_width="@dimen/d84"
-                android:layout_height="@dimen/d37"
-                android:layout_marginLeft="@dimen/d75"
-                android:background="@drawable/dialog_cancel_bg"
-                android:gravity="center"
-                android:text="@string/determine"
-                android:textColor="@color/white"
-                android:textSize="@dimen/s17" />
+                <TextView
+                    android:id="@+id/tv_cancel"
+                    android:layout_width="@dimen/d115"
+                    android:layout_height="@dimen/d50"
+                    android:layout_marginTop="-5dp"
+                    android:gravity="center"
+                    android:text="@string/cancel"
+                    android:textColor="@color/color_9393A8"
+                    android:textSize="@dimen/s19"
+                    android:textStyle="bold" />
+            </com.meetsl.scardview.SCardView>
 
-        </LinearLayout>
+            <com.meetsl.scardview.SCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                app:cardBackgroundColor="@color/color_828BE9"
+                app:cardCornerRadius="@dimen/d16"
+                app:cardElevation="@dimen/d5"
+                app:cardUseCompatPadding="true">
+
+                <TextView
+                    android:id="@+id/tv_determine"
+                    android:layout_width="@dimen/d115"
+                    android:layout_height="@dimen/d50"
+                    android:layout_marginTop="-5dp"
+                    android:gravity="center"
+                    android:text="@string/determine"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/s19"
+                    android:textStyle="bold" />
+            </com.meetsl.scardview.SCardView>
+
+        </RelativeLayout>
 
     </LinearLayout>
 

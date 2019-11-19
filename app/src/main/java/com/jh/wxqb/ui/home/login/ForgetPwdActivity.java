@@ -30,8 +30,6 @@ import butterknife.OnClick;
  */
 public class ForgetPwdActivity extends BaseActivity implements MessageView, LoginView {
 
-    @BindView(R.id.ed_account)
-    EditText edAccount;
     @BindView(R.id.ed_phone)
     EditText edPhone;
     @BindView(R.id.ed_pwd)
@@ -58,7 +56,7 @@ public class ForgetPwdActivity extends BaseActivity implements MessageView, Logi
         loginPresenter = new LoginPresenter(this);
     }
 
-    @OnClick({R.id.tv_code, R.id.ll_is_show_pwd, R.id.tv_confirm})
+    @OnClick({R.id.tv_code, R.id.ll_is_show_pwd, R.id.tv_confirm, R.id.img_back})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_code:
@@ -89,7 +87,10 @@ public class ForgetPwdActivity extends BaseActivity implements MessageView, Logi
                 String phone = edPhone.getText().toString();
                 String code = edCode.getText().toString();
                 String pwd = edPwd.getText().toString();
-                loginPresenter.forgetLoginPwd(phone,pwd,code);
+                loginPresenter.forgetLoginPwd(phone, pwd, code);
+                break;
+            case R.id.img_back:
+                finish();
                 break;
         }
     }
@@ -101,7 +102,7 @@ public class ForgetPwdActivity extends BaseActivity implements MessageView, Logi
             return;
         }
         dismissWaitDialog();
-        LogUtils.e("forgetLoginPwdSuccess==>"+ GsonUtil.GsonString(result));
+        LogUtils.e("forgetLoginPwdSuccess==>" + GsonUtil.GsonString(result));
         Toasts.showShort(result.getMessage());
         finish();
     }
@@ -128,12 +129,6 @@ public class ForgetPwdActivity extends BaseActivity implements MessageView, Logi
     private boolean checkEdit(View v) {
         String str = ((TextView) v).getText().toString();
         switch (v.getId()) {
-//            case R.id.ed_account:
-//                if (StringUtil.isEmpty(str)) {
-//                    Toasts.showShort(R.string.please_input_user_name);
-//                    return false;
-//                }
-//                break;
             case R.id.ed_phone:
                 if (StringUtil.isEmpty(str)) {
                     Toasts.showShort(R.string.please_enter_mobile_number);

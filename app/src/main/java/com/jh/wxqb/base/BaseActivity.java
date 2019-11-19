@@ -2,22 +2,18 @@ package com.jh.wxqb.base;
 
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.githang.statusbar.StatusBarCompat;
-import com.jaeger.library.StatusBarUtil;
+import com.gyf.immersionbar.ImmersionBar;
 import com.jh.wxqb.R;
 import com.jh.wxqb.customview.CustomTitle;
 import com.jh.wxqb.utils.StringUtil;
-import com.jh.wxqb.utils.SystemBarTintManager;
 import com.jh.wxqb.utils.Toasts;
 
 import java.util.Map;
@@ -31,12 +27,6 @@ import butterknife.Unbinder;
  */
 @SuppressWarnings("all")
 public abstract class BaseActivity extends MyAutoLayoutActivity {
-    /**
-     * 方法体 注册添加每个 继承BaseActivity的activity 便于遍历退出
-     * */
-//    {
-//        MyApplication.getInstance().addActivity(this);
-//    }
 
     //全局等待提示
     protected ProgressDialog waitDialog;
@@ -56,11 +46,7 @@ public abstract class BaseActivity extends MyAutoLayoutActivity {
         //初始化Toasts
         Toasts.register(this);
         //设置沉浸式状态栏
-//        initChenQinShi();
-        //改变状态栏颜色（不带透明度）
-//        StatusBarUtil.setColorNoTranslucent(this, Color.parseColor("#ffffff"));
-        StatusBarCompat.setStatusBarColor(this, Color.WHITE, true);
-
+        ImmersionBar.with(this).statusBarDarkFont(true).init();
         //初始化
         init();
     }
@@ -207,43 +193,5 @@ public abstract class BaseActivity extends MyAutoLayoutActivity {
                 Toasts.showShort(R.string.network_connection_timeout);
             }
         });
-    }
-
-    /**
-     * 沉浸式状态栏设置部分
-     */
-    private void initChenQinShi() {
-        //Android4.4及以上版本才能设置此效果
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            //Android5.0版本
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-                        | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-                getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-                //设置状态栏颜色
-                getWindow().setStatusBarColor(getResources().getColor(R.color.me_blue_color));
-                //设置导航栏颜色
-                getWindow().setNavigationBarColor(getResources().getColor(R.color.me_blue_color));
-            } else {
-                //透明状态栏
-                getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                //透明导航栏
-                getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-                //创建状态栏的管理实例
-                SystemBarTintManager tintManager = new SystemBarTintManager(this);
-                //激活状态栏设置
-                tintManager.setStatusBarTintEnabled(true);
-                //设置状态栏颜色
-                tintManager.setTintResource(R.drawable.shape_state_bg);
-                //激活导航栏设置
-                tintManager.setNavigationBarTintEnabled(true);
-                //设置导航栏颜色
-                tintManager.setNavigationBarTintResource(R.drawable.shape_state_bg);
-            }
-        }
     }
 }

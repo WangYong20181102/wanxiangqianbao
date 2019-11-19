@@ -21,6 +21,7 @@ package com.jh.wxqb.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,11 +64,11 @@ public class Toasts {
                     Toast.LENGTH_SHORT);
             LinearLayout linearLayout = (LinearLayout) toast.getView();
             TextView messageTextView = (TextView) linearLayout.getChildAt(0);
-            messageTextView.setTextSize(sContext.getResources().getDimension(R.dimen.s8));
+            messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,16);
         } else {
             LinearLayout linearLayout = (LinearLayout) toast.getView();
             TextView messageTextView = (TextView) linearLayout.getChildAt(0);
-            messageTextView.setTextSize(sContext.getResources().getDimension(R.dimen.s8));
+            messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,16);
             toast.setText(sContext.getResources().getString(resId));
         }
         toast.show();
@@ -84,11 +85,11 @@ public class Toasts {
                     Toast.LENGTH_SHORT);
             LinearLayout linearLayout = (LinearLayout) toast.getView();
             TextView messageTextView = (TextView) linearLayout.getChildAt(0);
-            messageTextView.setTextSize(sContext.getResources().getDimension(R.dimen.s7));
+            messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,16);
         } else {
             LinearLayout linearLayout = (LinearLayout) toast.getView();
             TextView messageTextView = (TextView) linearLayout.getChildAt(0);
-            messageTextView.setTextSize(sContext.getResources().getDimension(R.dimen.s7));
+            messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,16);
             toast.setText(message);
         }
         toast.show();

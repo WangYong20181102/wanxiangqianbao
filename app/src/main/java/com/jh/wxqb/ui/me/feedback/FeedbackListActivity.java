@@ -43,7 +43,6 @@ public class FeedbackListActivity extends BaseActivity implements FeedBackView {
     SwipeMenuRecyclerView shop_recy;
     @BindView(R.id.sw_refresh)
     SwipeRefreshLayout sw_refresh;
-    protected RecyclerView.ItemDecoration mItemDecoration;  //Item之间的间距
     int pageIndex = 1;
     boolean isClear = true;
     private FeedbackListAdapter adapter;
@@ -65,8 +64,8 @@ public class FeedbackListActivity extends BaseActivity implements FeedBackView {
     }
 
     @Subscribe
-    public void udpFeedbackList(String udpFeedbackList){
-        if(udpFeedbackList.equals("udpFeedbackList")){
+    public void udpFeedbackList(String udpFeedbackList) {
+        if (udpFeedbackList.equals("udpFeedbackList")) {
             presenter.userFeedbackList(pageIndex);
         }
     }
@@ -87,26 +86,18 @@ public class FeedbackListActivity extends BaseActivity implements FeedBackView {
         shop_recy.setLoadMoreView(loadMoreView); // 设置LoadMoreView更新监听。
         shop_recy.setLoadMoreListener(mLoadMoreListener);   //上拉加载更多
         sw_refresh.setOnRefreshListener(mRefreshListener);  //下拉刷新
-        mItemDecoration = createItemDecoration(); //获取ItemDecoration对象
-        shop_recy.addItemDecoration(mItemDecoration); //添加每个Item之间的间距
         //初始化适配器
         adapter = new FeedbackListAdapter(this, feedbackListBeen);
         shop_recy.setAdapter(adapter);  //设置适配器
     }
 
 
-    //每个Item之间的间距
-    protected RecyclerView.ItemDecoration createItemDecoration() {
-        //颜色  宽度  高度
-        return new DefaultItemDecoration(Color.rgb(243, 243, 243), WindowManager.LayoutParams.MATCH_PARENT, 1);
-    }
-
     //item点击事件
     private SwipeItemClickListener itemClickListener = new SwipeItemClickListener() {
         @Override
         public void onItemClick(View itemView, int position) {
             Intent intent = new Intent(FeedbackListActivity.this, FeedbackInfoActivity.class);
-            intent.putExtra("id",String.valueOf(feedbackListBeen.get(position).getId()));
+            intent.putExtra("id", String.valueOf(feedbackListBeen.get(position).getId()));
             startActivity(intent);
         }
     };

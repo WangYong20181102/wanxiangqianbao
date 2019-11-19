@@ -17,14 +17,21 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_74"
+        android:layout_height="@dimen/d50"
+        android:layout_marginLeft="@dimen/d31"
+        android:layout_marginTop="@dimen/d23"
+        android:layout_marginRight="@dimen/d31"
+        android:background="@drawable/market_place_top_bg"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <RelativeLayout
             android:id="@+id/ll_dividend"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_width="@dimen/d0"
+            android:layout_height="@dimen/d42"
+            android:layout_marginLeft="@dimen/d2"
+            android:layout_weight="1"
+            android:background="@drawable/current_commission_top_bg">
 
             <TextView
                 android:id="@+id/tv_dividend"
@@ -32,23 +39,17 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/dividend"
-                android:textColor="@color/color_16263E"
-                android:textSize="@dimen/s14" />
-
-            <View
-                android:id="@+id/view_dividend"
-                android:layout_width="@dimen/d27"
-                android:layout_height="@dimen/d2"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:background="@color/color_16263E"
-                android:visibility="visible" />
+                android:textColor="@color/color_28283C"
+                android:textSize="@dimen/s16"
+                android:textStyle="bold" />
         </RelativeLayout>
+
 
         <RelativeLayout
             android:id="@+id/ll_sell"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/d0"
+            android:layout_height="@dimen/d42"
+            android:layout_marginRight="@dimen/d2"
             android:layout_weight="1">
 
             <TextView
@@ -57,27 +58,12 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/sell"
-                android:textColor="@color/color_8C9FAD"
-                android:textSize="@dimen/s14" />
+                android:textColor="@color/color_28283C"
+                android:textSize="@dimen/s16"
+                android:textStyle="bold" />
 
-            <View
-                android:id="@+id/view_sell"
-                android:layout_width="@dimen/d27"
-                android:layout_height="@dimen/d2"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:background="@color/color_16263E"
-                android:visibility="gone" />
         </RelativeLayout>
-
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_1"
-        android:layout_marginLeft="@dimen/iv_20"
-        android:layout_marginRight="@dimen/iv_20"
-        android:background="@color/color_eff2f4" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"

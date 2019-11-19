@@ -21,7 +21,7 @@ import butterknife.BindView;
 public class NationalDepartureActivity extends BaseActivity {
     @BindView(R.id.webView)
     WebView mWebView;
-    private String appUrl = "http://192.168.101.50:8080/vannex/";
+    private static final String appUrl = "http://192.168.101.50:8081/vannex/#/";
 
     @Override
     protected int getLayout() {
@@ -95,7 +95,7 @@ public class NationalDepartureActivity extends BaseActivity {
             mWebView = webView;
         }
 
-        //查看更多新闻
+        //后退
         @JavascriptInterface
         public void blackApp() {
             if (mWebView.canGoBack()) {
@@ -109,9 +109,9 @@ public class NationalDepartureActivity extends BaseActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (mWebView.canGoBack()){
+            if (mWebView.canGoBack()) {
                 mWebView.goBack();
-            }else {
+            } else {
                 finish();
             }
             return false;

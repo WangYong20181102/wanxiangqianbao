@@ -67,7 +67,7 @@
             android:gravity="center"
             android:text="@string/get_code"
             android:background="@drawable/shape_btn_rig_bg"
-            android:textColor="@color/color_131E30"
+            android:textColor="@color/white"
             android:textSize="@dimen/s12" />
 
         <View

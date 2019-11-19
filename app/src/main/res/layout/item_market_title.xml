@@ -16,21 +16,22 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/d15"
             android:layout_marginRight="@dimen/iv_10"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d15"
                 android:text="限价单"
                 android:textColor="@color/color_7E93A2"
-                android:textSize="@dimen/s15"
-                android:layout_marginTop="@dimen/d15"/>
+                android:textSize="@dimen/s15" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/d40"
+                android:layout_height="@dimen/d42"
                 android:layout_marginTop="@dimen/d15"
-                android:background="@drawable/et_bg_line">
+                android:background="@drawable/market_place_et_bg">
 
                 <EditText
                     android:id="@+id/tv_current"
@@ -62,16 +63,16 @@
                 android:id="@+id/tv_cny"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/d12"
+                android:layout_marginTop="@dimen/d8"
                 android:text="≈¥ 0.0CNY"
                 android:textColor="@color/color_7E93A2"
                 android:textSize="@dimen/s12" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/d40"
-                android:layout_marginTop="@dimen/d12"
-                android:background="@drawable/et_bg_line">
+                android:layout_height="@dimen/d42"
+                android:layout_marginTop="@dimen/d16"
+                android:background="@drawable/market_place_et_bg">
 
                 <EditText
                     android:id="@+id/ed_entrust_num"
@@ -101,77 +102,102 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/d20"
+                android:layout_height="@dimen/d42"
+                android:layout_marginTop="-1dp"
+                android:background="@drawable/market_place_et_bg"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:weightSum="4">
 
                 <TextView
                     android:id="@+id/tv_percentage_point1"
                     android:layout_width="@dimen/d0"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:text="25%"
                     android:textColor="@color/color_8b9cae"
                     android:textSize="@dimen/s14" />
 
+                <View
+                    android:layout_width="@dimen/d1"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_E1E1E6" />
+
                 <TextView
                     android:id="@+id/tv_percentage_point2"
                     android:layout_width="@dimen/d0"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="50%"
                     android:textColor="@color/color_8b9cae"
                     android:textSize="@dimen/s14" />
 
+                <View
+                    android:layout_width="@dimen/d1"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_E1E1E6" />
+
                 <TextView
                     android:id="@+id/tv_percentage_point3"
                     android:layout_width="@dimen/d0"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="75%"
                     android:textColor="@color/color_8b9cae"
                     android:textSize="@dimen/s14" />
 
+                <View
+                    android:layout_width="@dimen/d1"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_E1E1E6" />
+
                 <TextView
                     android:id="@+id/tv_percentage_point4"
                     android:layout_width="@dimen/d0"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="right"
+                    android:gravity="center"
                     android:text="100%"
                     android:textColor="@color/color_8b9cae"
                     android:textSize="@dimen/s14" />
 
             </LinearLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/d20"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_marginTop="@dimen/d8">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="@string/expected_to_obtain"
-                    android:textColor="@color/color_7E93A2"
-                    android:textSize="@dimen/s15" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tv_expected"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/d5"
-                    android:text="0.0"
-                    android:textColor="@color/color_03AD8F"
-                    android:textSize="@dimen/s14" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/expected_to_obtain"
+                        android:textColor="@color/color_9393A8"
+                        android:textSize="@dimen/s12" />
+
+                    <TextView
+                        android:id="@+id/tv_expected"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/d8"
+                        android:text="0.0"
+                        android:textColor="@color/color_646482"
+                        android:textSize="@dimen/s12" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/tv_company"
@@ -179,18 +205,58 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/d10"
                     android:text="@string/text_usdt"
-                    android:textColor="@color/color_03AD8F"
-                    android:textSize="@dimen/s14" />
-            </LinearLayout>
+                    android:textColor="@color/color_9393A8"
+                    android:textSize="@dimen/s12" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d23">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/balance"
+                        android:textColor="@color/color_646482"
+                        android:textSize="@dimen/s12" />
+
+                    <TextView
+                        android:id="@+id/tv_current_balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/d8"
+                        android:text="0.0"
+                        android:textColor="@color/color_484859"
+                        android:textSize="@dimen/s12" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/text_usdt"
+                    android:textColor="@color/color_646482"
+                    android:textSize="@dimen/s12" />
+
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/tv_dividends"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/d30"
+                android:layout_height="@dimen/d42"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/d20"
+                android:layout_marginTop="@dimen/d8"
                 android:background="@drawable/market_buy_bg"
                 android:gravity="center"
                 android:text="@string/access_to_dividends"
@@ -198,47 +264,21 @@
                 android:textSize="@dimen/s15"
                 android:textStyle="bold" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/d23"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_balance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/current_balance"
-                    android:textColor="@color/color_02c289"
-                    android:textSize="@dimen/s15"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tv_current_balance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/d5"
-                    android:text="0.0"
-                    android:textColor="@color/color_02c289"
-                    android:textSize="@dimen/s15" />
-            </LinearLayout>
-
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/d25"
-            android:layout_marginRight="@dimen/iv_20"
-            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/d15"
+            android:layout_weight="0.8"
             android:background="@color/white"
             android:orientation="vertical">
 
             <com.jh.wxqb.customview.HandicapView
                 android:id="@+id/handicap_view"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/d340" />
+                android:layout_height="@dimen/d300" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -250,7 +290,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/d23"
                     android:layout_toLeftOf="@+id/rl_shendu_icon"
-                    android:background="@drawable/et_bg_line">
+                    android:background="@drawable/market_place_et_bg">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -258,8 +298,8 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/d15"
                         android:text="交易深度"
-                        android:textColor="@color/color_8599A8"
-                        android:textSize="@dimen/s11" />
+                        android:textColor="@color/color_5E6A82"
+                        android:textSize="@dimen/s10" />
 
                     <ImageView
                         android:layout_width="@dimen/d8"
@@ -276,13 +316,14 @@
                     android:layout_height="@dimen/d23"
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="@dimen/d5"
-                    android:background="@drawable/et_bg_line">
+                    android:layout_marginRight="@dimen/d15"
+                    android:background="@drawable/market_place_et_bg">
 
                     <ImageView
                         android:layout_width="@dimen/d16"
                         android:layout_height="@dimen/d15"
                         android:layout_centerInParent="true"
-                        android:src="@mipmap/market_shendu"/>
+                        android:src="@mipmap/market_shendu" />
                 </RelativeLayout>
 
             </RelativeLayout>
@@ -291,56 +332,38 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_1"
-        android:layout_marginTop="@dimen/iv_50"
-        android:background="@color/color_E7EBEE" />
+        android:layout_height="@dimen/d8"
+        android:layout_marginTop="@dimen/d12"
+        android:background="@color/color_f7f7f8" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/d37"
-        android:gravity="center_vertical">
+        android:layout_height="@dimen/d42"
+        android:layout_marginLeft="@dimen/d15"
+        android:layout_marginTop="@dimen/d12"
+        android:layout_marginRight="@dimen/d15"
+        android:background="@drawable/market_place_bottom_bg"
+        android:orientation="horizontal">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_centerVertical="true"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:background="@drawable/market_place_transaction_bg"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_3"
-                android:layout_alignParentBottom="true"
-                android:background="@color/color_16263E" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chengjiao"
+                android:textColor="@color/color_646482"
+                android:textSize="@dimen/s16"
+                android:textStyle="bold" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <View
-                    android:layout_width="@dimen/iv_6"
-                    android:layout_height="@dimen/iv_26"
-                    android:background="@color/color_16263E"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/iv_20"
-                    android:text="@string/chengjiao"
-                    android:textColor="@color/color_16263E"
-                    android:textSize="@dimen/s16"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-        </RelativeLayout>
-
-        <View
-            android:layout_width="@dimen/iv_2"
-            android:layout_height="@dimen/d23"
-            android:background="@color/color_3E566C" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linear_entrust"
@@ -351,60 +374,34 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <View
-                android:layout_width="@dimen/iv_6"
-                android:layout_height="@dimen/iv_26"
-                android:background="@color/home_text_color"
-                android:visibility="gone" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/iv_20"
                 android:text="@string/my_dividend"
-                android:textColor="@color/color_8C9FAD"
+                android:textColor="@color/color_9393A8"
                 android:textSize="@dimen/s16"
                 android:textStyle="bold" />
 
         </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/ll_sel_more"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/iv_50"
-            android:gravity="center"
-            android:visibility="gone">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/look_at_more"
-                android:textColor="@color/white"
-                android:textSize="@dimen/iv_20" />
-        </RelativeLayout>
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_1"
-        android:background="@color/color_E7EBEE" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_60"
+        android:layout_height="@dimen/d27"
         android:gravity="center"
+        android:layout_marginTop="@dimen/d8"
+        android:layout_marginLeft="@dimen/d15"
+        android:layout_marginRight="@dimen/d15"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:text="@string/time"
-            android:textColor="@color/color_8C9CAE"
-            android:textSize="@dimen/iv_20" />
+            android:textColor="@color/color_CDCFD5"
+            android:textSize="@dimen/s11" />
 
         <LinearLayout
             android:id="@+id/ll_sel_type"
@@ -419,8 +416,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/state"
-                android:textColor="@color/color_8C9CAE"
-                android:textSize="@dimen/iv_20" />
+                android:textColor="@color/color_CDCFD5"
+                android:textSize="@dimen/s11" />
 
         </LinearLayout>
 
@@ -430,8 +427,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/transaction_number"
-            android:textColor="@color/color_8C9CAE"
-            android:textSize="@dimen/iv_20" />
+            android:textColor="@color/color_CDCFD5"
+            android:textSize="@dimen/s11" />
 
         <TextView
             android:layout_width="0dp"
@@ -439,17 +436,17 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/current_price"
-            android:textColor="@color/color_8C9CAE"
-            android:textSize="@dimen/iv_20" />
+            android:textColor="@color/color_CDCFD5"
+            android:textSize="@dimen/s11" />
 
         <TextView
             android:id="@+id/tv_action"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="center_vertical|right"
             android:text="@string/type"
-            android:textColor="@color/color_8C9CAE"
-            android:textSize="@dimen/iv_20" />
+            android:textColor="@color/color_CDCFD5"
+            android:textSize="@dimen/s11" />
     </LinearLayout>
 </LinearLayout>

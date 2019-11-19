@@ -22,6 +22,7 @@
     <string name="please_enter_password">请输入密码</string>
     <string name="please_original_pwd">请输入原密码</string>
     <string name="please_new_pwd">请输入新密码</string>
+    <string name="money">金额</string>
     <string name="incorrect_format_of_password">密码格式不正确</string>
     <string name="please_enter_verification_code">请输入验证码</string>
     <string name="please_set_password">请设置密码</string>
@@ -61,13 +62,16 @@
 
 
     <string name="login">登    錄</string>
+    <string name="welcome_login">欢迎登錄</string>
     <string name="account">用戶名/手機號</string>
     <string name="login_pwd">登錄密碼</string>
     <string name="all_send_car">全民发车</string>
     <string name="forget_pwd">忘記密碼?</string>
-    <string name="confirm_login">確認登錄</string>
+    <string name="forget_password">忘記密碼</string>
+    <string name="confirm_login">登 錄</string>
     <string name="mobile_phone_number">手機號碼</string>
     <string name="new_pwd">新密碼</string>
+    <string name="input_new_pwd">输入新密碼</string>
     <string name="confirm_new_pwd">確認新密碼</string>
     <string name="enter_code">驗證碼</string>
     <string name="get_code">獲取</string>
@@ -76,10 +80,11 @@
     <string name="mine_username">用戶名：</string>
     <string name="confirmation_of_registration">確認註冊</string>
     <string name="register">註    冊</string>
+    <string name="register_account_number">注册账号</string>
     <string name="home">首頁</string>
     <string name="my_news">我的消息</string>
     <string name="news_and_information">新闻資訊</string>
-    <string name="information_list">資訊列表</string>
+    <string name="information_list">公告資訊</string>
     <string name="can_use">可用</string>
     <string name="equivalent_cny">折合(CNY)</string>
     <string name="usdt_tgm">TGM/USDT</string>
@@ -104,12 +109,14 @@
     <string name="personal_information">個人信息</string>
     <string name="my_dividend">交易記錄</string>
     <string name="my_recommendation">我要推薦</string>
+    <string name="invite_friends">邀请好友扩大您的团队</string>
     <string name="payment_password">支付密碼</string>
     <string name="binding_account">綁定郵箱</string>
     <string name="my_team">我的團隊</string>
     <string name="user_feedback">用戶反饋</string>
     <string name="out_login">退出登錄</string>
     <string name="prompt">提示</string>
+    <string name="sure_password">确认交易密码</string>
     <string name="are_you_sure_to_log_out">确定退出登录吗？</string>
     <string name="cancel">取消</string>
     <string name="determine">確定</string>
@@ -138,8 +145,8 @@
     <string name="set_pay_pwd">设置支付密碼</string>
     <string name="please_input_the_email">请输入郵箱</string>
     <string name="modified_after_binding">注：郵箱一經綁定不可修改</string>
-    <string name="feedback_feedback">意見反饋</string>
-    <string name="please_input_your_valuable_opinions">請輸入您寶貴的意見或建議。(800字以內)</string>
+    <string name="feedback_feedback">问题/意见描述</string>
+    <string name="please_input_your_valuable_opinions">请填写您宝贵的意见或建议，以便我们更好的帮助您解决问题。</string>
     <string name="add_image">添加圖片</string>
     <string name="commit_feedback">提交</string>
     <string name="feedback_list">反饋列表</string>
@@ -150,7 +157,7 @@
     <string name="replace_the_head">更換頭像</string>
     <string name="choose_one_from_the_album">從相冊選一張</string>
     <string name="currency_assets">轉出資產</string>
-    <string name="available_assets">可用資產：</string>
+    <string name="available_assets">可用資產</string>
     <string name="please_input_target_address">请输入目標地址</string>
     <string name="target_address">目標地址</string>
     <string name="please_input_amount_of_money">请输入提幣數量</string>
@@ -168,6 +175,8 @@
     <string name="copy_wallet_address">複製錢包地址</string>
     <string name="check_out">確認轉出</string>
     <string name="current_entrustment">當前委託</string>
+    <string name="mine_entrustment">我的委託</string>
+    <string name="look_commission_detail">查看委托详情</string>
     <string name="purchase">購買</string>
     <string name="entrustment_number">數量</string>
     <string name="input_number">請輸入數量</string>
@@ -179,6 +188,7 @@
     <string name="current_usdt_balance">當前 USDT 餘額：</string>
     <string name="current_tgm_balance">當前 TGM 餘額：</string>
     <string name="current_balance">當前餘額：</string>
+    <string name="balance">余额</string>
 
     <string name="access_to_dividends">買入</string>
     <string name="pan_mouth">盤口</string>

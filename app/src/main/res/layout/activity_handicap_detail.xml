@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
-
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,22 +16,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:canBack="true"
-            app:titleText="交易深度" />
+            app:titleText="TGM日线走势图" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/d1"
-            android:background="@color/color_eff2f4" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d54"
+            android:layout_marginTop="-10dp"
+            android:text="TGM DAILY CHART"
+            android:textColor="@color/color_9393A8"
+            android:textSize="@dimen/s14" />
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!--<ScrollView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:scrollbars="none">-->
             <android.support.design.widget.CoordinatorLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -55,42 +55,39 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/d15"
-                                android:layout_marginTop="@dimen/d10"
-                                android:textColor="@color/color_18293D"
-                                android:textSize="@dimen/s15"
-                                android:text="TGM日线走势图"/>
+
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/d330">
+
                                 <com.jh.wxqb.customview.NestedScrollWebView
                                     android:id="@+id/webView"
                                     android:layout_width="match_parent"
+                                    android:layout_marginTop="-10dp"
                                     android:layout_height="@dimen/d330" />
+
                                 <TextView
                                     android:id="@+id/tv_loading"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="加载中..."
                                     android:layout_centerInParent="true"
-                                    android:textColor="@color/color_435973"
                                     android:background="@color/transparent"
+                                    android:text="加载中..."
+                                    android:textColor="@color/color_435973"
                                     android:textSize="@dimen/s20" />
 
                             </RelativeLayout>
 
                             <View
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/d6"
-                                android:background="@color/color_f7f7fb"
-                                android:layout_marginTop="@dimen/d20"/>
+                                android:layout_height="@dimen/d8"
+                                android:layout_marginTop="@dimen/d15"
+                                android:background="@color/color_f7f7fb" />
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/d10"
+                                android:layout_marginTop="@dimen/d18"
                                 android:layout_marginBottom="@dimen/d10"
                                 android:orientation="horizontal">
 
@@ -111,7 +108,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="@dimen/d45"
-                                        android:text="数量(TGM)"
+                                        android:text="价格(USTD)"
                                         android:textColor="@color/color_435973"
                                         android:textSize="@dimen/s11" />
                                 </RelativeLayout>
@@ -125,7 +122,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_centerInParent="true"
-                                        android:text="价格(USTD)"
+                                        android:text="数量(TGM)"
                                         android:textColor="@color/color_435973"
                                         android:textSize="@dimen/s11" />
 
@@ -141,7 +138,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_alignParentRight="true"
                                         android:layout_marginRight="@dimen/d45"
-                                        android:text="数量(TGM)"
+                                        android:text="价格(USTD)"
                                         android:textColor="@color/color_435973"
                                         android:textSize="@dimen/s11" />
 
@@ -172,8 +169,6 @@
                     app:layout_behavior="@string/appbar_scrolling_view_behavior" />
             </android.support.design.widget.CoordinatorLayout>
 
-            <!--</ScrollView>-->
-
         </android.support.v4.widget.SwipeRefreshLayout>
 
     </LinearLayout>
@@ -181,14 +176,9 @@
     <LinearLayout
         android:id="@+id/rl_bottom_sell_buy"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/d56"
+        android:layout_height="@dimen/d58"
         android:layout_alignParentBottom="true"
         android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/d1"
-            android:background="@color/color_eff2f4" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -200,27 +190,27 @@
                 android:id="@+id/tv_buy"
                 android:layout_width="@dimen/d0"
                 android:layout_height="@dimen/d39"
-                android:layout_marginLeft="@dimen/d8"
+                android:layout_marginLeft="@dimen/d33"
                 android:layout_marginRight="@dimen/d4"
                 android:layout_weight="1"
                 android:background="@drawable/bottom_buy_bg"
                 android:gravity="center"
                 android:text="买入"
                 android:textColor="@color/white"
-                android:textSize="@dimen/s15" />
+                android:textSize="@dimen/s16" />
 
             <TextView
                 android:id="@+id/tv_sell"
                 android:layout_width="@dimen/d0"
                 android:layout_height="@dimen/d39"
                 android:layout_marginLeft="@dimen/d4"
-                android:layout_marginRight="@dimen/d8"
+                android:layout_marginRight="@dimen/d33"
                 android:layout_weight="1"
                 android:background="@drawable/bottom_sell_bg"
                 android:gravity="center"
                 android:text="卖出"
                 android:textColor="@color/white"
-                android:textSize="@dimen/s15" />
+                android:textSize="@dimen/s16" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

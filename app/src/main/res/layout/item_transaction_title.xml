@@ -4,44 +4,52 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/d6"
-        android:background="@color/color_eff2f4" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginTop="@dimen/d18"
+        android:layout_marginLeft="@dimen/d16"
+        android:layout_marginTop="@dimen/d15"
+        android:layout_marginRight="@dimen/d16"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <View
-            android:layout_width="@dimen/d3"
-            android:layout_height="@dimen/d17"
-            android:layout_marginLeft="@dimen/d15"
-            android:background="@color/color_18293D" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/d19"
+                android:layout_height="@dimen/d19"
+                android:background="@drawable/home_transaction_icon_bg"
+                android:src="@mipmap/home_transaction_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/d4"
+                android:text="最近成交"
+                android:textColor="@color/color_646482"
+                android:textSize="@dimen/s13"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/d9"
-            android:text="最近成交"
-            android:textColor="@color/color_18293D"
-            android:textSize="@dimen/s15" />
+            android:text="THE RECENT DEAL"
+            android:textColor="@color/color_C0C0CC"
+            android:textSize="@dimen/s9" />
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/d1"
-        android:layout_marginTop="@dimen/d13"
-        android:background="@color/color_eff2f4" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/d16"
         android:layout_marginTop="@dimen/d15"
+        android:layout_marginRight="@dimen/d16"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -49,10 +57,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:text="@string/time"
-            android:textColor="@color/color_8C9CAE"
-            android:textSize="@dimen/iv_20" />
+            android:textColor="@color/color_CDCFD5"
+            android:textSize="@dimen/s11" />
 
         <LinearLayout
             android:id="@+id/ll_sel_type"
@@ -67,8 +75,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/state"
-                android:textColor="@color/color_8C9CAE"
-                android:textSize="@dimen/iv_20" />
+                android:textColor="@color/color_CDCFD5"
+                android:textSize="@dimen/s11" />
 
         </LinearLayout>
 
@@ -78,8 +86,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/transaction_number"
-            android:textColor="@color/color_8C9CAE"
-            android:textSize="@dimen/iv_20" />
+            android:textColor="@color/color_CDCFD5"
+            android:textSize="@dimen/s11" />
 
         <TextView
             android:layout_width="0dp"
@@ -87,18 +95,18 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/current_price"
-            android:textColor="@color/color_8C9CAE"
-            android:textSize="@dimen/iv_20" />
+            android:textColor="@color/color_CDCFD5"
+            android:textSize="@dimen/s11" />
 
         <TextView
             android:id="@+id/tv_action"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="center_vertical|right"
             android:text="@string/type"
-            android:textColor="@color/color_8C9CAE"
-            android:textSize="@dimen/iv_20" />
+            android:textColor="@color/color_CDCFD5"
+            android:textSize="@dimen/s11" />
     </LinearLayout>
 
 </LinearLayout>
