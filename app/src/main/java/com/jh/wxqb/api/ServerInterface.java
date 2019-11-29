@@ -10,23 +10,23 @@ public class ServerInterface {
     public static final int TOKEN_INVALID = 401;
 
     //服务器常量类
-//    public static final String BASE_URL = "http://192.168.101.51:80/";//本地环境
-//    public static final String BASE_WEB_URL = "http://192.168.101.51:80";   //本地环境 首页Web路径   服务器路径去掉最后
-//    public static final String BASE_Q_CARD = "http://192.168.101.51:80";   //推荐二维码
+//    public static final String BASE_URL = "http://192.168.101.72:80/";//本地环境
+//    public static final String BASE_WEB_URL = "http://192.168.101.72:80";   //本地环境 首页Web路径   服务器路径去掉最后
+//    public static final String BASE_Q_CARD = "http://192.168.101.72:80";   //推荐二维码
 
-    public static final String BASE_URL = "http://www.qbmap.com/";  //正式环境18825572827   15767847174  13714173670 13266761427
-    public static final String BASE_WEB_URL = "http://www.qbmap.com";   //正式环境 首页Web路径   服务器路径去掉最后
-    public static final String BASE_Q_CARD = "http://www.qbmap.com";   //推荐二维码
+    public static final String BASE_URL = "https://www.qbmap.com/";  //正式环境18825572827   15767847174  13714173670 13266761427
+    public static final String BASE_WEB_URL = "https://www.qbmap.com";   //正式环境 首页Web路径   服务器路径去掉最后
+    public static final String BASE_Q_CARD = "https://www.qbmap.com";   //推荐二维码
 
 
-//    public static final String BASE_URL = "http://47.52.105.219:80/";  //测试环境18825572827   15767847174  13714173670 13266761427
-//    public static final String BASE_WEB_URL = "http://47.52.105.219:80";   //测试环境 首页Web路径   服务器路径去掉最后
-//    public static final String BASE_Q_CARD = "http://47.52.105.219:80";   //推荐二维码
+//    public static final String BASE_URL = "https://test.tgmmix.com/";  //测试环境18825572827   15767847174  13714173670 13266761427
+//    public static final String BASE_WEB_URL = "https://test.tgmmix.com";   //测试环境 首页Web路径   服务器路径去掉最后
+//    public static final String BASE_Q_CARD = "https://test.tgmmix.com";   //推荐二维码
 
 
     //我要推荐二维码链接路径
     public static final String BASE_WEB_REGISTER_URL = BASE_Q_CARD +
-            "/index.html#/register?webpath=" + BASE_Q_CARD + "&lang=" + MyApplication.getLanuage() + "&tjrId=";
+            "/kline/index.html#/register?webpath=" + BASE_Q_CARD + "&lang=" + MyApplication.getLanuage() + "&tjrId=";
     //手机注册
     public static final String USER_REGISTER = "register.do";
 
@@ -43,7 +43,7 @@ public class ServerInterface {
     //获取用户信息
     public static final String GET_USER_INFO = "userInfo";
 
-    //我的買入
+    //交易记录
     public static final String MY_DIVIDEND = "queryMyCommission";
 
     //停止買入

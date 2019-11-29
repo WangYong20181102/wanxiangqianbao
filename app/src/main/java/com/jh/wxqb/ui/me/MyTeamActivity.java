@@ -71,8 +71,13 @@ public class MyTeamActivity extends BaseActivity implements MeView {
         DefineLoadMoreView loadMoreView = new DefineLoadMoreView(this);
         shop_recy.addFooterView(loadMoreView); // 添加为Footer。
         shop_recy.setLoadMoreView(loadMoreView); // 设置LoadMoreView更新监听。
+
+        //禁止下拉刷新
+        sw_refresh.setRefreshing(false);
+        sw_refresh.setEnabled(false);
+
         shop_recy.setLoadMoreListener(mLoadMoreListener);   //上拉加载更多
-        sw_refresh.setOnRefreshListener(mRefreshListener);  //下拉刷新
+//        sw_refresh.setOnRefreshListener(mRefreshListener);  //下拉刷新
         //初始化适配器
         adapter = new MyTeamAdapter(this, myTeamBeen);
         shop_recy.setAdapter(adapter);  //设置适配器

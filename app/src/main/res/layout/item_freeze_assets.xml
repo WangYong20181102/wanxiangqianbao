@@ -13,7 +13,6 @@
         android:layout_marginLeft="@dimen/d27"
         android:layout_marginTop="@dimen/d20"
         android:text="TGM"
-        android:textStyle="bold"
         android:textColor="@color/color_16263E"
         android:textSize="@dimen/s19" />
 

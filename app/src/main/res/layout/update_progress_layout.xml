@@ -9,41 +9,113 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="@dimen/iv_640"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/d31"
+        android:layout_marginRight="@dimen/d31"
+        android:background="@drawable/home_update_dialog_bg"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <RelativeLayout
-            android:layout_width="@dimen/iv_640"
-            android:layout_height="@dimen/iv_320">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/home_update_dialog_bg" />
 
             <LinearLayout
                 android:id="@+id/ll_bg"
-                android:layout_width="@dimen/iv_600"
-                android:layout_height="@dimen/iv_302"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/iv_18"
-                android:background="@drawable/iv_udp_bg"
+                android:gravity="center_horizontal"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/iv_50"
-                    android:layout_marginTop="@dimen/iv_80"
+                    android:layout_marginTop="@dimen/d30"
                     android:text="@string/new_version"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/iv_40" />
+                    android:textColor="@color/color_28283C"
+                    android:textSize="@dimen/s23"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tv_version"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/iv_50"
-                    android:layout_marginTop="@dimen/iv_20"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/iv_24" />
+                    android:layout_marginTop="@dimen/d42"
+                    android:textColor="@color/color_2E3CD9"
+                    android:textSize="@dimen/s71" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d10"
+                    android:text="版本优化"
+                    android:textColor="@color/color_646482"
+                    android:textSize="@dimen/s15" />
+
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/d30"
+                    android:layout_marginRight="@dimen/d30"
+                    android:lineSpacingMultiplier="1.2"
+                    android:textColor="@color/color_646482"
+                    android:textSize="@dimen/s15" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d40"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_udp"
+                        android:layout_width="@dimen/d150"
+                        android:layout_height="@dimen/d45"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="@dimen/d15"
+                        android:background="@drawable/shape_app_udp_bg"
+                        android:gravity="center"
+                        android:text="立即更新"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/s19"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <com.jh.wxqb.customview.NumberProgressBar
+                        android:id="@+id/number_progress"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/iv_100"
+                        android:layout_marginLeft="@dimen/iv_20"
+                        android:layout_marginRight="@dimen/iv_20"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/update_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginTop="@dimen/iv_30"
+                        android:layout_marginBottom="@dimen/d15"
+                        android:gravity="center_horizontal"
+                        android:text="新版本正在更新,請稍等..."
+                        android:textColor="@color/blue"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/d23"
+                    android:src="@mipmap/home_title_logo" />
             </LinearLayout>
 
 
@@ -52,66 +124,8 @@
                 android:layout_width="@dimen/iv_80"
                 android:layout_height="@dimen/iv_80"
                 android:layout_alignParentRight="true"
-                android:paddingLeft="@dimen/iv_30"
-                android:paddingBottom="@dimen/iv_30"
                 android:src="@drawable/home_wrong" />
         </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="@dimen/iv_600"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/btn_app_udp_bg"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/iv_76"
-                android:layout_marginTop="@dimen/iv_50"
-                android:layout_marginRight="@dimen/iv_76"
-                android:lineSpacingMultiplier="1.2"
-                android:textColor="@color/black_text"
-                android:textSize="@dimen/iv_26" />
-
-            <TextView
-                android:id="@+id/tv_udp"
-                android:layout_width="@dimen/iv_208"
-                android:layout_height="@dimen/iv_78"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/iv_50"
-                android:layout_marginBottom="@dimen/iv_50"
-                android:background="@drawable/shape_app_udp_bg"
-                android:gravity="center"
-                android:text="立即更新"
-                android:textColor="@color/white"
-                android:textSize="@dimen/iv_30"
-                android:visibility="visible" />
-
-            <com.jh.wxqb.customview.NumberProgressBar
-                android:id="@+id/number_progress"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_100"
-                android:layout_marginLeft="@dimen/iv_20"
-                android:layout_marginTop="@dimen/iv_50"
-                android:layout_marginRight="@dimen/iv_20"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/update_tv"
-                android:layout_width="@dimen/iv_635"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center_horizontal"
-                android:layout_marginTop="@dimen/iv_30"
-                android:layout_marginBottom="@dimen/iv_20"
-                android:gravity="center_horizontal"
-                android:text="新版本正在更新,請稍等..."
-                android:textColor="@color/blue"
-                android:textSize="16sp"
-                android:visibility="gone" />
-
-        </LinearLayout>
 
     </LinearLayout>
 

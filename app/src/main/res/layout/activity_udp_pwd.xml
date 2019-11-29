@@ -199,7 +199,7 @@
 
             <com.meetsl.scardview.SCardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/d54"
                 android:layout_marginLeft="@dimen/d31"
                 android:layout_marginTop="@dimen/d42"
                 android:layout_marginRight="@dimen/d31"
@@ -215,7 +215,7 @@
                 <TextView
                     android:id="@+id/tv_confirm"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/d48"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="-3dp"
                     android:gravity="center"
                     android:text="@string/determine"

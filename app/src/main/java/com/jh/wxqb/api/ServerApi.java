@@ -43,7 +43,7 @@ public interface ServerApi {
     @GET(ServerInterface.GET_USER_INFO)
     Call<String> getUserInfo();
 
-    //我的買入
+    //交易记录
     @GET(ServerInterface.MY_DIVIDEND)
     Call<String> myDividend(@Query("pageNum") int pageNum, @Query("type") int type);
 

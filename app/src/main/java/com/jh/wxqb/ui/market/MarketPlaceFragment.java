@@ -87,12 +87,8 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 1:
-                    timingHttpRequest();
-                    break;
-                default:
-                    break;
+            if (msg.what == 1) {
+                timingHttpRequest();
             }
         }
     };

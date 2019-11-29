@@ -57,7 +57,6 @@ public class DividendFragment extends BaseFragment implements MyClicker, MySendL
     private DividendAdapter adapter;
     private List<MeDividend.DataBean.ListBean> meDividends = new ArrayList<>();
     private MySendLetterPresenter presenter;
-    private CancelOrOkDialog dialog;
     private boolean isMaxPageIndex = false; //标识是否是已请求到最大页码。已无数据
     private boolean iMove;//屏幕滑动距离
     private LinearLayoutManager mLinearLayoutManager;
@@ -198,7 +197,7 @@ public class DividendFragment extends BaseFragment implements MyClicker, MySendL
                 map.put("commissonId", String.valueOf(id));
                 switch (actionType) {
                     case 1://取消買入
-                        dialog = new CancelOrOkDialog(mContext, R.string.confirmed_that_dividends) {
+                        CancelOrOkDialog dialog = new CancelOrOkDialog(mContext, R.string.confirmed_that_dividends) {
                             @Override
                             public void ok() {
                                 super.ok();

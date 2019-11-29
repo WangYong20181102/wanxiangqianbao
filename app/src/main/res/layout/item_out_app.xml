@@ -41,7 +41,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/d62"
+            android:layout_height="@dimen/d60"
             android:layout_marginTop="@dimen/d39"
             android:background="@drawable/exit_dialog_message_bg"
             android:gravity="center"
@@ -57,7 +57,7 @@
 
             <com.meetsl.scardview.SCardView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/d48"
                 android:layout_centerVertical="true"
                 app:cardBackgroundColor="@color/color_E1E1E6"
                 app:cardCornerRadius="@dimen/d16"
@@ -67,7 +67,7 @@
                 <TextView
                     android:id="@+id/tv_cancel"
                     android:layout_width="@dimen/d115"
-                    android:layout_height="@dimen/d50"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="-5dp"
                     android:gravity="center"
                     android:text="@string/cancel"
@@ -78,7 +78,7 @@
 
             <com.meetsl.scardview.SCardView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/d48"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 app:cardBackgroundColor="@color/color_828BE9"
@@ -89,7 +89,7 @@
                 <TextView
                     android:id="@+id/tv_determine"
                     android:layout_width="@dimen/d115"
-                    android:layout_height="@dimen/d50"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="-5dp"
                     android:gravity="center"
                     android:text="@string/determine"

@@ -1,17 +1,21 @@
 package com.jh.wxqb.ui.me;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.KeyEvent;
 import android.webkit.JavascriptInterface;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
+import com.gyf.immersionbar.ImmersionBar;
 import com.jh.wxqb.R;
+import com.jh.wxqb.api.ServerInterface;
 import com.jh.wxqb.base.BaseActivity;
-import com.jh.wxqb.ui.home.HomeFragment;
+import com.jh.wxqb.base.MyApplication;
 import com.jh.wxqb.utils.LogUtils;
-import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
 
 import butterknife.BindView;
 
@@ -21,15 +25,27 @@ import butterknife.BindView;
 public class NationalDepartureActivity extends BaseActivity {
     @BindView(R.id.webView)
     WebView mWebView;
-    private static final String appUrl = "http://192.168.101.50:8081/vannex/#/";
+    //全民发车url
+    private String appUrl = ServerInterface.BASE_URL + "start/index.html#/";
 
     @Override
     protected int getLayout() {
         return R.layout.activity_national_departure;
     }
 
+    @SuppressLint({"SetJavaScriptEnabled", "AddJavascriptInterface"})
     @Override
     protected void init() {
+        //设置沉浸式状态栏
+        ImmersionBar.with(this).statusBarDarkFont(false).init();
+
+        //参数拼接
+        if (MyApplication.getToken() != null) {
+            appUrl += "?token=" + MyApplication.getToken().getAccess_token() + "&webpath=" + ServerInterface.BASE_WEB_URL + "&platform=az" + "&lang=" + MyApplication.getLanuage();
+            LogUtils.e("全民发车=====>" + appUrl);
+        }
+
+
         mWebView.getSettings().setJavaScriptEnabled(true);// 支持js
         mWebView.getSettings().setUseWideViewPort(true); //自适应屏幕
         mWebView.setDrawingCacheEnabled(false);
@@ -52,6 +68,7 @@ public class NationalDepartureActivity extends BaseActivity {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
+                showWaitDialog();
             }
 
             //在当前WebView中打开
@@ -66,15 +83,15 @@ public class NationalDepartureActivity extends BaseActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+                dismissWaitDialog();
                 //网页加载完成
-                mWebView.getSettings().setBlockNetworkImage(false);
-//                ((MainActivity) mContext).dismissWaitDialog();
+                if (mWebView != null) {
+                    mWebView.getSettings().setBlockNetworkImage(false);
+                }
             }
 
             @Override
             public void onReceivedError(WebView webView, int errorCode, String description, String s1) {
-//                if (mWebView != null)
-//                    mWebView.loadUrl("www.baidu.com");
             }
         });
         JavaScriptMethod method = new JavaScriptMethod(this, mWebView);
@@ -88,9 +105,9 @@ public class NationalDepartureActivity extends BaseActivity {
     public class JavaScriptMethod {
         private Context mContext;
         private WebView mWebView;
-        public static final String JAVAINTERFACE = "javaInterface";
+        private static final String JAVAINTERFACE = "javaInterface";
 
-        public JavaScriptMethod(Context context, WebView webView) {
+        private JavaScriptMethod(Context context, WebView webView) {
             mContext = context;
             mWebView = webView;
         }
@@ -98,11 +115,17 @@ public class NationalDepartureActivity extends BaseActivity {
         //后退
         @JavascriptInterface
         public void blackApp() {
-            if (mWebView.canGoBack()) {
-                mWebView.goBack();
-            } else {
-                finish();
-            }
+            finish();
+        }
+
+        /**
+         * 设置支付密码
+         */
+        @JavascriptInterface
+        public void setPayPassword() {
+            Intent intent = new Intent(mContext, UdpPwdActivity.class);
+            intent.putExtra("type", "pay");
+            startActivity(intent);
         }
     }
 
@@ -117,5 +140,16 @@ public class NationalDepartureActivity extends BaseActivity {
             return false;
         }
         return false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mWebView != null) {
+            mWebView.clearCache(true);
+            mWebView.clearHistory();
+            mWebView.destroy();
+            mWebView = null;
+        }
     }
 }

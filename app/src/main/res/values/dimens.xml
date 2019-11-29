@@ -711,6 +711,7 @@
     <dimen name="s50">50sp</dimen>
     <dimen name="s55">55sp</dimen>
     <dimen name="s60">60sp</dimen>
+    <dimen name="s71">71sp</dimen>
 
 
 </resources>

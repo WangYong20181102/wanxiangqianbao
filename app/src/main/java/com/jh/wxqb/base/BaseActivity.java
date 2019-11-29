@@ -39,9 +39,9 @@ public abstract class BaseActivity extends MyAutoLayoutActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(getLayout());
         //将当前Activity添加到栈中
         AppManager.getInstance().addActivity(this);
-        setContentView(getLayout());
         mUnBinder = ButterKnife.bind(this);
         //初始化Toasts
         Toasts.register(this);

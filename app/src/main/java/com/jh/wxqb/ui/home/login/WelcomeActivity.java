@@ -11,11 +11,12 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.gyf.immersionbar.ImmersionBar;
 import com.jh.wxqb.R;
+import com.jh.wxqb.base.BaseActivity;
 import com.jh.wxqb.base.MainActivity;
 import com.jh.wxqb.base.MyApplication;
 import com.jh.wxqb.utils.PermissionUtils;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class WelcomeActivity extends BaseActivity {
     private static final int WHAT_DELAY = 0x11;
     private static final int DELAY_TIME = 5000;// 延时时间
     @SuppressLint("HandlerLeak")
@@ -31,21 +32,20 @@ public class WelcomeActivity extends AppCompatActivity {
         }
     };
 
-    @SuppressLint("ResourceAsColor")
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //设置沉浸式状态栏
-        ImmersionBar.with(this).statusBarDarkFont(true).init();
-        setContentView(R.layout.activity_welcome);
-        initView();
+    protected int getLayout() {
+        return R.layout.activity_welcome;
     }
 
-    private void initView() {
+    @Override
+    protected void init() {
         handler.sendEmptyMessageDelayed(WHAT_DELAY, DELAY_TIME);
         PermissionUtils.writerReadSDcard(this);
     }
 
+    /**
+     * 跳转
+     */
     private void goActivity() {
         if (MyApplication.getToken() != null) {
             Intent intent = new Intent(this, MainActivity.class);

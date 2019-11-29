@@ -81,8 +81,8 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
         Intent intent;
         switch (view.getId()) {
             case R.id.ll_message://我的消息
-                intent = new Intent(mContext, MyMessageActivity.class);
-                startActivity(intent);
+//                intent = new Intent(mContext, MyMessageActivity.class);
+//                startActivity(intent);
                 break;
             case R.id.iv_user_img:
 //                intent = new Intent(mContext, ChangeImageActivity.class);
@@ -101,9 +101,8 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
                 startActivity(intent);
                 break;
             case R.id.ll_all_send_car://全民发车
-                Toasts.showShort("活動暫未開始！");
-//                intent = new Intent(mContext, NationalDepartureActivity.class);
-//                startActivity(intent);
+                intent = new Intent(mContext, NationalDepartureActivity.class);
+                startActivity(intent);
                 break;
             case R.id.ll_login_pwd://登录密码
                 intent = new Intent(mContext, UdpPwdActivity.class);

@@ -44,7 +44,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/d3"
                         android:text="TGM"
-                        android:textStyle="bold"
                         android:textColor="@color/color_16263E"
                         android:textSize="@dimen/s19" />
                 </LinearLayout>

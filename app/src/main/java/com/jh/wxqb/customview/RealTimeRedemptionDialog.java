@@ -194,6 +194,7 @@ public class RealTimeRedemptionDialog extends Dialog implements CoinTypeAdapter.
     public void onResult(CoinTypeBean coinTypeBean) {
         optionWindow.dismiss();
         coinType = coinTypeBean.getType();
+        etOutNum.setText("");
 //        if (type == 0) {
         switch (coinType) {
             case 1:

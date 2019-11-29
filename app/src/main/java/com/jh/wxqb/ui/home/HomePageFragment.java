@@ -71,16 +71,13 @@ public class HomePageFragment extends BaseFragment implements HomePagerView {
     private NewsBean newsBeanList;
     //最近成交
     private MarketDividendBottomBean marketDividendBottomBean;
-    private int[] images = {R.mipmap.banner5,R.mipmap.banner4, R.mipmap.banner1, R.mipmap.banner2, R.mipmap.banner3};
+    private int[] images = {R.mipmap.banner5, R.mipmap.banner6, R.mipmap.banner4, R.mipmap.banner1, R.mipmap.banner2, R.mipmap.banner3};
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 100://更新
-                    dialog.setProgress(DownloadService.progress);
-                    break;
-                default:
-                    break;
+            //更新
+            if (msg.what == 100) {
+                dialog.setProgress(DownloadService.progress);
             }
         }
     };
@@ -105,8 +102,8 @@ public class HomePageFragment extends BaseFragment implements HomePagerView {
      */
     private void initData() {
         mImageList = new ArrayList<>();
-        for (int i = 0; i < images.length; i++) {
-            mImageList.add(images[i]);
+        for (int image : images) {
+            mImageList.add(image);
         }
         initViewPager();
     }

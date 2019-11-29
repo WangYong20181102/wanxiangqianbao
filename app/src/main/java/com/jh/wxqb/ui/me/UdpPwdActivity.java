@@ -58,7 +58,6 @@ public class UdpPwdActivity extends BaseActivity implements MessageView, MeView 
     TextView tvGetCode;
     private boolean isShowNewPwd = false;  //表示是否显示新密码
     private boolean isShowConfirmNewPwd = false;  //表示是否显示确认密码
-    private String type;
     private int actionType; // 1为修改登录密码,2为修改交易密码
     private int toastsType; // 1为修改登录密码,2为修改交易密码,3设置交易密码
     private MessagePresenter messagePresenter;
@@ -77,7 +76,7 @@ public class UdpPwdActivity extends BaseActivity implements MessageView, MeView 
     }
 
     public void initView() {
-        type = getIntent().getStringExtra("type");
+        String type = getIntent().getStringExtra("type");
         switch (type) {
             case "login":
                 tvTitle.setTitleText(R.string.udp_login_pwd);

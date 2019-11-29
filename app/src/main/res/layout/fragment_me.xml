@@ -61,7 +61,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="@dimen/d8"
                 android:layout_marginRight="@dimen/d16"
-                android:src="@mipmap/mine_news" />
+                android:src="@mipmap/mine_news"
+                android:visibility="gone"/>
         </RelativeLayout>
 
         <LinearLayout
@@ -246,7 +247,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/d62"
+                    android:layout_marginLeft="@dimen/d65"
                     android:layout_marginTop="@dimen/d6"
                     android:text="@string/all_send_car"
                     android:textColor="@color/white"

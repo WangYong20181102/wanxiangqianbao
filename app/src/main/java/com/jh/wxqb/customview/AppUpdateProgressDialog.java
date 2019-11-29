@@ -2,7 +2,10 @@ package com.jh.wxqb.customview;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,6 +45,24 @@ public class AppUpdateProgressDialog extends Dialog {
     private void initLayout() {
         this.setContentView(R.layout.update_progress_layout);
         getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+        //获取当前Activity所在的窗体
+        Window dialogWindow = getWindow();
+        //设置Dialog从窗体底部弹出
+        dialogWindow.getDecorView().setPadding(0, 0, 0, 0);
+
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+        //设置宽
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        //设置高
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        dialogWindow.setAttributes(lp);
+        //显示对话框
+        dialogWindow.setGravity(Gravity.CENTER);
+
+
+
         numberProgressBar = findViewById(R.id.number_progress);
         ivClose = findViewById(R.id.iv_close);
         updateTv = findViewById(R.id.update_tv);
