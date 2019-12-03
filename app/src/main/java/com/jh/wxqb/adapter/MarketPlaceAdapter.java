@@ -482,7 +482,7 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                             if (buyListBean != null) {
                                 if (buyListBean.getSellList() != null) {
                                     if (buyListBean.getSellList().size() > 0) {
-                                        if (Double.valueOf(titleHolder.tvCurrent.getText().toString()) > buyListBean.getSellList().get(buyListBean.getSellList().size() - 1).getAmountPrice().doubleValue()) {
+                                        if (Double.valueOf(titleHolder.tvCurrent.getText().toString()) > buyListBean.getSellList().get(0).getAmountPrice().doubleValue()) {
                                             Toasts.showShort("买入单价须等于或小于卖1单价");
                                             return;
                                         }

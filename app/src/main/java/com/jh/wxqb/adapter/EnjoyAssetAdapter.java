@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.jh.wxqb.R;
 import com.jh.wxqb.bean.AssetManagementBean;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import butterknife.BindView;
@@ -72,7 +73,7 @@ public class EnjoyAssetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
             }
             //数量
-            ((MyViewHolder) holder).tvAssets.setText(item.getDividendAssets() + "");
+            ((MyViewHolder) holder).tvAssets.setText(new BigDecimal(item.getDividendAssets()).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue() + "");
         }
     }
 

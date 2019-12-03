@@ -27,6 +27,7 @@ public class NationalDepartureActivity extends BaseActivity {
     WebView mWebView;
     //全民发车url
     private String appUrl = ServerInterface.BASE_URL + "start/index.html#/";
+//    private String appUrl = "http://192.168.101.71:8080/start#/";
 
     @Override
     protected int getLayout() {
@@ -57,6 +58,7 @@ public class NationalDepartureActivity extends BaseActivity {
         settings.setDisplayZoomControls(false); //隐藏原生的缩放控件
         settings.setCacheMode(WebSettings.LOAD_NO_CACHE); //关闭webview中缓存
         settings.setAllowFileAccess(true); //设置可以访问文件
+        settings.setTextZoom(100);
         settings.setJavaScriptCanOpenWindowsAutomatically(true); //支持通过JS打开新窗口
         settings.setLoadsImagesAutomatically(true); //支持自动加载图片
         settings.setDefaultTextEncodingName("utf-8");//设置编码格式

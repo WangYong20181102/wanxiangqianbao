@@ -116,10 +116,10 @@ public class DownloadService extends Service {
         try {
             dowUrl = intent.getStringExtra("URL");
             LogUtils.e("dowUrl=>" + dowUrl);
-            if (dowUrl.contains("https")) {
-                dowUrl = dowUrl.replace("https", "http");
-            }
-            LogUtils.e("替换后=>" + dowUrl);
+//            if (dowUrl.contains("https")) {
+//                dowUrl = dowUrl.replace("https", "http");
+//            }
+//            LogUtils.e("替换后=>" + dowUrl);
             createNotification(NOTIFY_DOW_ID);
             new Thread(startDownload).start();
         } catch (Exception e) {
@@ -200,7 +200,7 @@ public class DownloadService extends Service {
                 if (!dir.exists()) {
                     dir.mkdirs();
                 }
-                downFile = new File(CoreKeys.down_file + "paixin.apk");
+                downFile = new File(CoreKeys.down_file + "vannex.apk");
 
                 fos = new FileOutputStream(downFile);
                 byte buf[] = new byte[1024 * 1024];
