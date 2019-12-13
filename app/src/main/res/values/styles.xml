@@ -131,4 +131,8 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">@dimen/s12</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

@@ -127,6 +127,8 @@ public interface Biz {
 
     //k线图
     void getKChatLineData(OnBaseListener listener);
+    //行情数据请求
+    void getQuotesDateRequest(OnBaseListener listener);
 
 
 }

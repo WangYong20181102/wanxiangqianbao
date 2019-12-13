@@ -2,6 +2,8 @@ package com.jh.wxqb.ui.me;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.jh.wxqb.R;
@@ -19,6 +21,7 @@ import com.jh.wxqb.ui.me.view.MeView;
 import com.jh.wxqb.utils.AgainLoginUtil;
 import com.jh.wxqb.utils.GsonUtil;
 import com.jh.wxqb.utils.LogUtils;
+import com.jh.wxqb.utils.MoveDistanceUtils;
 import com.jh.wxqb.utils.Toasts;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 
@@ -45,6 +48,8 @@ public class MyTeamActivity extends BaseActivity implements MeView {
     private MyTeamAdapter adapter;
     private List<MyTeamBean.DataBean.TeamInfoBean> myTeamBeen = new ArrayList<>();
     private MePresenter mePresenter;
+    private boolean iMove;//屏幕滑动距离
+    private GridLayoutManager gridLayoutManager;
 
     @Override
     protected int getLayout() {
@@ -64,9 +69,10 @@ public class MyTeamActivity extends BaseActivity implements MeView {
      */
     public void initRecyclerView() {
         //是否开启加载更多
-        shop_recy.loadMoreFinish(false, true);
+        shop_recy.loadMoreFinish(false, false);
         //设置布局管理器
-        shop_recy.setLayoutManager(new GridLayoutManager(this, 2));
+        gridLayoutManager = new GridLayoutManager(this, 2);
+        shop_recy.setLayoutManager(gridLayoutManager);
         // 自定义的核心就是DefineLoadMoreView类。
         DefineLoadMoreView loadMoreView = new DefineLoadMoreView(this);
         shop_recy.addFooterView(loadMoreView); // 添加为Footer。
@@ -76,12 +82,50 @@ public class MyTeamActivity extends BaseActivity implements MeView {
         sw_refresh.setRefreshing(false);
         sw_refresh.setEnabled(false);
 
-        shop_recy.setLoadMoreListener(mLoadMoreListener);   //上拉加载更多
+//        shop_recy.setLoadMoreListener(mLoadMoreListener);   //上拉加载更多
+//        shop_recy.addOnScrollListener(onScrollListener);
 //        sw_refresh.setOnRefreshListener(mRefreshListener);  //下拉刷新
+
+        new MoveDistanceUtils().setOnMoveDistanceListener(shop_recy, new MoveDistanceUtils.OnMoveDistanceListener() {
+            @Override
+            public void onMoveDistance(boolean b) {
+                iMove = b;
+            }
+        });
+
+
         //初始化适配器
         adapter = new MyTeamAdapter(this, myTeamBeen);
         shop_recy.setAdapter(adapter);  //设置适配器
     }
+
+
+    //滑动事件
+    private RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {
+        @Override
+        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            //滑动加载更多
+            super.onScrollStateChanged(recyclerView, newState);
+            if (adapter != null) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE && gridLayoutManager.findLastVisibleItemPosition() == adapter.getItemCount()) {
+                    if (iMove) {
+                        //加载更多
+                        shop_recy.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                isClear = false;
+                                pageIndex = pageIndex + 1;
+                                mePresenter.myTeam(pageIndex);
+                                shop_recy.loadMoreFinish(false, true);
+                            }
+                        }, 1000);
+                    }
+                }
+            }
+
+        }
+    };
+
 
     //上拉加载更多
     private SwipeMenuRecyclerView.LoadMoreListener mLoadMoreListener = new SwipeMenuRecyclerView.LoadMoreListener() {

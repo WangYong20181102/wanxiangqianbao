@@ -123,7 +123,9 @@ public class CurrentEntrustmentActivity extends BaseActivity implements View.OnC
                                 isClear = false;
                                 pageIndex = pageIndex + 1;
                                 marketPresenter.myDividend(pageIndex, type);
-                                shop_recy.loadMoreFinish(false, true);
+                                if (shop_recy != null) {
+                                    shop_recy.loadMoreFinish(false, true);
+                                }
                             }
                         }, 1000);
                     }

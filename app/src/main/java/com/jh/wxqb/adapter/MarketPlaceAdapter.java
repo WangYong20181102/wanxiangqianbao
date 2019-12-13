@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -25,6 +26,7 @@ import com.jh.wxqb.bean.MarketDividendBottomBean;
 import com.jh.wxqb.bean.MarketDividendTitleBean;
 import com.jh.wxqb.customview.CancelOrOkDialog;
 import com.jh.wxqb.customview.HandicapView;
+import com.jh.wxqb.customview.LengthFilter;
 import com.jh.wxqb.ui.market.CurrentEntrustmentActivity;
 import com.jh.wxqb.ui.market.HandicapDetailActivity;
 import com.jh.wxqb.ui.market.MoreBusinessActivity;
@@ -80,11 +82,12 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private boolean bPrices;
     //选中状态
     private boolean bSelect = false;
+    private BigDecimal buyPrices;
 
     public MarketPlaceAdapter(Context mContext, String type,
                               MarketDividendTitleBean.DataBean.ListBean buyListBean,
                               List<MarketDividendBottomBean.DataBean.ListBean> listBeen,
-                              CurrentPriceBean currentPriceBean, int showType) {
+                              CurrentPriceBean currentPriceBean, int showType,BigDecimal buyPrices) {
         this.mActivity = (Activity) mContext;
         this.mContext = mContext;
         this.type = type;
@@ -92,6 +95,7 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         this.listBeen = listBeen;
         this.showType = showType;
         this.currentPriceBean = currentPriceBean;
+        this.buyPrices = buyPrices;
         bPrices = true;
         inflater = LayoutInflater.from(mContext);
     }
@@ -108,7 +112,7 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public void updateList(Context mContext, String type,
                            MarketDividendTitleBean.DataBean.ListBean buyListBean,
                            List<MarketDividendBottomBean.DataBean.ListBean> listBeen,
-                           CurrentPriceBean currentPriceBean, int showType) {
+                           CurrentPriceBean currentPriceBean, int showType,BigDecimal buyPrices) {
 
         this.mActivity = (Activity) mContext;
         this.mContext = mContext;
@@ -117,6 +121,7 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         this.listBeen = listBeen;
         this.showType = showType;
         this.currentPriceBean = currentPriceBean;
+        this.buyPrices = buyPrices;
     }
 
     @Override
@@ -354,6 +359,8 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             public void afterTextChanged(Editable editable) {
             }
         });
+        //小数点位数限制
+        holder.tvCurrent.setFilters(new InputFilter[] {new LengthFilter()});
         holder.tvCurrent.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -380,7 +387,7 @@ public class MarketPlaceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         //盘口
         if (buyListBean != null) {
-            titleHolder.handicapView.updateData(buyListBean);
+            titleHolder.handicapView.updateData(buyListBean,buyPrices);
         }
 
         holder.tvDividends.setOnClickListener(this);

@@ -226,19 +226,6 @@ public class MarketFragment extends BaseFragment implements MarketView {
             case "udpCurrentBusinessList":
                 marketPresenter.dividendMarketTopDividend(1, 1, type);
                 break;
-            case "udpPurchaseOrder":
-                map = new HashMap<>();
-                switch (viewType) {
-                    case "dividend":
-                        map.put("coinType", coinType);
-                        map.put("transactionType", transactionType);
-                        break;
-                    case "sell":
-                        map.put("transactionType", "2");
-                        break;
-                }
-                marketPresenter.getCurrentPrice(map);
-                break;
         }
     }
 

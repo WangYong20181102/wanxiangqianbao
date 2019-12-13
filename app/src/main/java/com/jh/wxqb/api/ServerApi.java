@@ -180,6 +180,9 @@ public interface ServerApi {
     //折线图
     @GET(ServerInterface.GET_ECHARTS)
     Call<String> getLineFigureData();
+    //行情
+    @GET(ServerInterface.GET_QUOTES)
+    Call<String> getQuotesDate();
 
 
 }

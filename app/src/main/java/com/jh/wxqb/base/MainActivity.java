@@ -16,8 +16,10 @@ import com.jh.wxqb.ui.assets.AssetsFragment;
 import com.jh.wxqb.ui.home.HomePageFragment;
 import com.jh.wxqb.ui.market.MarketPlaceFragment;
 import com.jh.wxqb.ui.me.MeFragment;
+import com.jh.wxqb.ui.quotes.QuotesFragment;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 
@@ -34,8 +36,12 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     TextView tvHome;
     @BindView(R.id.iv_market)
     ImageView ivMarket;
+    @BindView(R.id.iv_quotes)
+    ImageView ivQuotes;
     @BindView(R.id.tv_market)
     TextView tvMarket;
+    @BindView(R.id.tv_quotes)
+    TextView tvQuotes;
     @BindView(R.id.iv_assets)
     ImageView ivAssets;
     @BindView(R.id.tv_assets)
@@ -54,6 +60,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     @Override
     protected void init() {
+        EventBus.getDefault().register(this);
         initListener();
         initFragment();
     }
@@ -66,11 +73,12 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     private void initFragment() {
         ArrayList<Fragment> fragmentList = new ArrayList<>();
         HomePageFragment homeFragment = new HomePageFragment();
-//        MarketFragment marketFragment = new MarketFragment();
+        QuotesFragment quotesFragment = new QuotesFragment();
         MarketPlaceFragment marketFragment = new MarketPlaceFragment();
         AssetsFragment assetsFragment = new AssetsFragment();
         MeFragment meFragment = new MeFragment();
         fragmentList.add(homeFragment);
+        fragmentList.add(quotesFragment);
         fragmentList.add(marketFragment);
         fragmentList.add(assetsFragment);
         fragmentList.add(meFragment);
@@ -78,27 +86,33 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         layout_home.setAdapter(adapter);
     }
 
-    @OnClick({R.id.ll_home, R.id.ll_market, R.id.ll_assets, R.id.ll_me})
+    @OnClick({R.id.ll_home, R.id.ll_quotes, R.id.ll_market, R.id.ll_assets, R.id.ll_me})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.ll_home:
+            case R.id.ll_home://首页
                 setTabSelection(0);
                 EventBus.getDefault().post("pauseTimer");//暂停交易市场数据请求
                 EventBus.getDefault().post("homeResumeTimer");//开启首页轮播
                 break;
-            case R.id.ll_market:
+            case R.id.ll_quotes://行情
                 setTabSelection(1);
+                EventBus.getDefault().post("pauseTimer");//暂停交易市场数据请求
+                EventBus.getDefault().post("homePauseTimer");//暂停首页轮播
+                EventBus.getDefault().post("updateCoinTypeQuotes");//币种行情
+                break;
+            case R.id.ll_market://交易市场
+                setTabSelection(2);
                 EventBus.getDefault().post("homePauseTimer");//暂停首页轮播
                 EventBus.getDefault().post("resumeTimer");//开启交易市场数据请求
                 break;
-            case R.id.ll_assets:
-                setTabSelection(2);
+            case R.id.ll_assets://资产管理
+                setTabSelection(3);
                 EventBus.getDefault().post("homePauseTimer");//暂停首页轮播
                 EventBus.getDefault().post("pauseTimer");//暂停交易市场数据请求
                 EventBus.getDefault().post("udpAssestData");
                 break;
-            case R.id.ll_me:
-                setTabSelection(3);
+            case R.id.ll_me://我的
+                setTabSelection(4);
                 EventBus.getDefault().post("homePauseTimer");//暂停首页轮播
                 EventBus.getDefault().post("pauseTimer");//暂停交易市场数据请求
                 EventBus.getDefault().post("udpHome");
@@ -115,14 +129,18 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
                 tvHome.setTextColor(ContextCompat.getColor(this, R.color.new_home_text_color));
                 break;
             case 1:
+                ivQuotes.setImageResource(R.mipmap.routes_true);
+                tvQuotes.setTextColor(ContextCompat.getColor(this, R.color.new_home_text_color));
+                break;
+            case 2:
                 ivMarket.setImageResource(R.mipmap.market_true);
                 tvMarket.setTextColor(ContextCompat.getColor(this, R.color.new_home_text_color));
                 break;
-            case 2:
+            case 3:
                 ivAssets.setImageResource(R.mipmap.assets_true);
                 tvAssets.setTextColor(ContextCompat.getColor(this, R.color.new_home_text_color));
                 break;
-            case 3:
+            case 4:
                 ivMe.setImageResource(R.mipmap.me_true);
                 tvMe.setTextColor(ContextCompat.getColor(this, R.color.new_home_text_color));
                 break;
@@ -132,11 +150,13 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     private void clearSelection() {
         ivHome.setImageResource(R.mipmap.home_false);
+        ivQuotes.setImageResource(R.mipmap.routes_false);
         ivMarket.setImageResource(R.mipmap.market_false);
         ivAssets.setImageResource(R.mipmap.assets_false);
         ivMe.setImageResource(R.mipmap.me_false);
 
         tvHome.setTextColor(ContextCompat.getColor(this, R.color.home_tv_no_click));
+        tvQuotes.setTextColor(ContextCompat.getColor(this, R.color.home_tv_no_click));
         tvMarket.setTextColor(ContextCompat.getColor(this, R.color.home_tv_no_click));
         tvAssets.setTextColor(ContextCompat.getColor(this, R.color.home_tv_no_click));
         tvMe.setTextColor(ContextCompat.getColor(this, R.color.home_tv_no_click));
@@ -146,6 +166,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
     }
+
 
     @Override
     public void onPageSelected(int position) {
@@ -157,6 +178,16 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     }
 
+    @Subscribe
+    public void upMain(String type) {
+        switch (type) {
+            case "clickToMarketPlace":
+                setTabSelection(2);
+                EventBus.getDefault().post("homePauseTimer");//暂停首页轮播
+                EventBus.getDefault().post("resumeTimer");//开启交易市场数据请求
+                break;
+        }
+    }
 
     /**
      * 2次退出效果
@@ -174,5 +205,12 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
             return false;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+
     }
 }

@@ -1,5 +1,6 @@
 package com.jh.wxqb.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.jh.wxqb.R;
 import com.jh.wxqb.bean.MyTeamBean;
+import com.jh.wxqb.utils.TimeUtil;
 import com.zhy.autolayout.utils.AutoUtils;
 
 import java.math.BigDecimal;
@@ -38,7 +40,7 @@ public class MyTeamAdapter extends RecyclerView.Adapter<MyTeamAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //设置自适应布局
-        View view = inflater.inflate(R.layout.item_my_team,parent,false);
+        View view = inflater.inflate(R.layout.item_my_team, parent, false);
         return new ViewHolder(view);
     }
 
@@ -75,12 +77,13 @@ public class MyTeamAdapter extends RecyclerView.Adapter<MyTeamAdapter.ViewHolder
             ButterKnife.bind(this, v);
         }
 
+        @SuppressLint("SetTextI18n")
         public void refurbish(final int position) {
             tvId.setText(item.getUserId());
             tvName.setText(item.getUserName());
-            tvTime.setText(item.getCreateTime());
-            BigDecimal one=new BigDecimal("1");
-            tvPerformance.setText(String.valueOf(item.getSum().divide(one,1,BigDecimal.ROUND_DOWN).doubleValue()));
+            tvTime.setText(TimeUtil.getTime(Long.parseLong(item.getCreateTime())));
+            BigDecimal one = new BigDecimal("1");
+            tvPerformance.setText("¥ " + item.getSum().divide(one, 1, BigDecimal.ROUND_DOWN).doubleValue());
         }
     }
 

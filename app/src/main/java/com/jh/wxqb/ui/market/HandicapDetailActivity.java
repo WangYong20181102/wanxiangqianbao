@@ -35,7 +35,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * 盘口详情
+ * 交易深度
  */
 public class HandicapDetailActivity extends BaseActivity implements MarketView {
     @BindView(R.id.swipe_refresh)

@@ -41,6 +41,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.jetbrains.annotations.NotNull;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -78,6 +79,10 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
     private MarketPlaceAdapter adapter;
     private CurrentPriceBean currentPriceBean;
     private MarketDividendTitleBean.DataBean.ListBean buyListBeen;
+    /**
+     * 最新成交价格
+     */
+    private BigDecimal buyPrices = BigDecimal.valueOf(0);
     private List<MarketDividendBottomBean.DataBean.ListBean> listBeen = new ArrayList<>();
     private int type = 0; //全部
     private String viewType = "dividend";   //dividend：買入  sell：卖出
@@ -141,7 +146,7 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
         marketPresenter.getCurrentPrice(map);
     }
 
-    @OnClick({ R.id.ll_active_assets, R.id.ll_repurchase_assets})
+    @OnClick({R.id.ll_active_assets, R.id.ll_repurchase_assets})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_active_assets:
@@ -176,7 +181,7 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
                 break;
         }
         if (adapter != null) {
-            adapter.setCurrentPrice(currentPriceBean, viewType,1);
+            adapter.setCurrentPrice(currentPriceBean, viewType, 1);
             adapter.notifyItemRangeChanged(0, 1);
         }
     }
@@ -198,19 +203,19 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
             case "udpCurrentBusinessList":
                 marketPresenter.dividendMarketTopDividend(1, 1, type);
                 break;
-            case "udpPurchaseOrder":
-                map = new HashMap<>();
-                switch (viewType) {
-                    case "dividend":
-                        map.put("coinType", "1");
-                        map.put("transactionType", "1");
-                        break;
-                    case "sell":
-                        map.put("transactionType", "2");
-                        break;
-                }
-                marketPresenter.getCurrentPrice(map);
-                break;
+//            case "udpPurchaseOrder":
+//                map = new HashMap<>();
+//                switch (viewType) {
+//                    case "dividend":
+//                        map.put("coinType", "1");
+//                        map.put("transactionType", "1");
+//                        break;
+//                    case "sell":
+//                        map.put("transactionType", "2");
+//                        break;
+//                }
+//                marketPresenter.getCurrentPrice(map);
+//                break;
             case "pauseTimer":
                 onPause();
                 break;
@@ -280,7 +285,7 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
         //初始化适配器
         shop_recy.setFocusableInTouchMode(false);
         shop_recy.setItemAnimator(null);
-        adapter = new MarketPlaceAdapter(mContext, viewType, buyListBeen, listBeen, currentPriceBean,0);
+        adapter = new MarketPlaceAdapter(mContext, viewType, buyListBeen, listBeen, currentPriceBean, 0, buyPrices);
         shop_recy.setAdapter(adapter);  //设置适配器
     }
 
@@ -291,6 +296,7 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
 //        }
         LogUtils.e("dividendMarketDividendSuccess==>" + GsonUtil.GsonString(result));
         if (result.getData().getList() != null) {
+            buyPrices = result.getData().getBuyPrice();
             buyListBeen = null;
             buyListBeen = result.getData().getList();
             upDataAdapter();
@@ -334,10 +340,10 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
      */
     private void upDataAdapter() {
         if (adapter == null) {
-            adapter = new MarketPlaceAdapter(mContext, viewType, buyListBeen, listBeen, currentPriceBean,0);
+            adapter = new MarketPlaceAdapter(mContext, viewType, buyListBeen, listBeen, currentPriceBean, 0, buyPrices);
             shop_recy.setAdapter(adapter);  //设置适配器
         } else {
-            adapter.updateList(mContext, viewType, buyListBeen, listBeen, currentPriceBean,0);
+            adapter.updateList(mContext, viewType, buyListBeen, listBeen, currentPriceBean, 0, buyPrices);
             //指定刷新，防止輸入框失去焦點
             int itemCount;
             if (listBeen.size() >= 5) {
@@ -373,7 +379,7 @@ public class MarketPlaceFragment extends BaseFragment implements MarketView {
             return;
         }
         if (adapter != null) {
-            adapter.setCurrentPrice(currentPriceBean, viewType,0);
+            adapter.setCurrentPrice(currentPriceBean, viewType, 0);
             adapter.notifyItemRangeChanged(0, 1);
         }
     }

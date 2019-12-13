@@ -75,14 +75,14 @@ public class MyTeamBean {
             private String createTime;
             private String userName;
             private String userId;
-            private BigDecimal sum;
+            private BigDecimal activeAsset;
 
             public BigDecimal getSum() {
-                return sum;
+                return activeAsset;
             }
 
-            public void setSum(BigDecimal sum) {
-                this.sum = sum;
+            public void setSum(BigDecimal activeAsset) {
+                this.activeAsset = activeAsset;
             }
 
             public String getCreateTime() {

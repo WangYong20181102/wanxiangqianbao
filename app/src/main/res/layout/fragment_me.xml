@@ -262,6 +262,41 @@
                     android:layout_marginRight="@dimen/d16"
                     android:src="@mipmap/show_more_right" />
             </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/ll_van_nex_mall"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d54"
+                android:layout_marginLeft="@dimen/d16"
+                android:layout_marginTop="@dimen/d20"
+                android:layout_marginRight="@dimen/d16"
+                android:background="@drawable/mine_van_nex_mall">
+
+                <ImageView
+                    android:layout_width="@dimen/d29"
+                    android:layout_height="@dimen/d24"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/d16"
+                    android:src="@mipmap/shangcheng" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/d65"
+                    android:layout_marginTop="@dimen/d6"
+                    android:text="@string/van_nex_mall"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/s18"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="@dimen/d23"
+                    android:layout_height="@dimen/d23"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/d16"
+                    android:src="@mipmap/show_more_right" />
+            </RelativeLayout>
 
 
             <LinearLayout

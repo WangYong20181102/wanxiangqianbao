@@ -54,6 +54,15 @@ public class MarketDividendTitleBean {
         private int pageSize;
         private ListBean list = null;
         private String quoteChange;
+        private BigDecimal buyPrice;
+
+        public BigDecimal getBuyPrice() {
+            return buyPrice;
+        }
+
+        public void setBuyPrice(BigDecimal buyPrice) {
+            this.buyPrice = buyPrice;
+        }
 
         public String getQuoteChange() {
             return quoteChange;

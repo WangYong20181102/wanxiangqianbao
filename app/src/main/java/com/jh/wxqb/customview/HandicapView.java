@@ -69,6 +69,10 @@ public class HandicapView extends View implements HandicapViewInterface {
      * 背景的矩形
      */
     private Rect rect;
+    /**
+     *最新成交价格
+     */
+    private BigDecimal buyPrice;
 
     private BigDecimal nowPrice = new BigDecimal(0);
 
@@ -238,18 +242,17 @@ public class HandicapView extends View implements HandicapViewInterface {
 
         if (buyList != null && buyList.size() > 0) {
             measureTopViewHeight(nowPricePadding, nowPriceLineHeight);
-            BigDecimal onePrice = buyList.get(0).getAmountPrice();
-            if (onePrice == null) {
-                onePrice = BigDecimal.valueOf(0);
+            if (buyPrice == null) {
+                buyPrice = BigDecimal.valueOf(0);
             }
             titlePaint.setTextSize(nowPriceSize);
             titlePaint.setColor(ContextCompat.getColor(context, R.color.color_03AD8F));
             titlePaint.getTextBounds(nowPrice.toPlainString(), 0, nowPrice.toPlainString().length(), rect);
             int h = titleViewHeight + topViewHeight + nowPricePadding + rect.height();
-            canvas.drawText(String.valueOf(new BigDecimal(String.valueOf(onePrice)).setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue()), textPaddingStart, h, titlePaint);
+            canvas.drawText(String.valueOf(new BigDecimal(String.valueOf(buyPrice)).setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue()), textPaddingStart, h, titlePaint);
             //cny
-            BigDecimal multiply1 = onePrice.multiply(rate);
-            String cny = String.valueOf(new BigDecimal(String.valueOf(multiply1)).setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue());
+            BigDecimal multiply1 = buyPrice.multiply(rate);
+            String cny = String.valueOf(new BigDecimal(String.valueOf(multiply1)).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue());
             titlePaint.setTextSize(aboutPriceSize);
             titlePaint.setColor(ContextCompat.getColor(context, R.color.color_9393A8));
             titlePaint.getTextBounds(nowPrice.toPlainString(), 0, nowPrice.toPlainString().length(), rect);
@@ -542,7 +545,8 @@ public class HandicapView extends View implements HandicapViewInterface {
      * 聚合数据 刷新页面
      */
     @Override
-    public void updateData(MarketDividendTitleBean.DataBean.ListBean listBeans) {
+    public void updateData(MarketDividendTitleBean.DataBean.ListBean listBeans,BigDecimal buyPrices) {
+        this.buyPrice = buyPrices;
         List<MarketDividendTitleBean.DataBean.ListBean.BuyListBean> buyListBeans = listBeans.getBuyList();
         List<MarketDividendTitleBean.DataBean.ListBean.SellListBean> sellListBeans = listBeans.getSellList();
         if (buyListBeans != null) {

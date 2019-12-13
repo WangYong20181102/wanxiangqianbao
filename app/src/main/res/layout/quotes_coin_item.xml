@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/d10"
+    android:layout_marginRight="@dimen/d10"
+    android:orientation="vertical">
+
+    <com.meetsl.scardview.SCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/d16"
+        app:cardElevation="@dimen/d5"
+        app:cardShadowStartColor="@color/color_301179_alpha_5"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:id="@+id/ll_news_click"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d65"
+            android:layout_marginTop="-5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/d10"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_coin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TGM"
+                        android:textColor="@color/color_484859"
+                        android:textSize="@dimen/s15"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/d5"
+                        android:text="/"
+                        android:textColor="@color/color_C0C0CC"
+                        android:textSize="@dimen/s10" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="USDT"
+                        android:textColor="@color/color_C0C0CC"
+                        android:textSize="@dimen/s10" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_volume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d10"
+                    android:text="24H量 0.0"
+                    android:textColor="@color/color_646482"
+                    android:textSize="@dimen/s12"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/d135"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_prices"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.0"
+                    android:textColor="@color/color_484859"
+                    android:textSize="@dimen/s15"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_equivalent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d10"
+                    android:text="¥0.0"
+                    android:textColor="@color/color_646482"
+                    android:textSize="@dimen/s12"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_ups_and_downs"
+                android:layout_width="@dimen/d77"
+                android:layout_height="@dimen/d31"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/d10"
+                android:background="@drawable/quotes_rate_stop"
+                android:gravity="center"
+                android:text="+0.0%"
+                android:textColor="@color/color_7E93A2"
+                android:textSize="@dimen/d14"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </com.meetsl.scardview.SCardView>
+
+</LinearLayout>

@@ -59,7 +59,7 @@
                 android:layout_marginTop="@dimen/d2"
                 android:gravity="center"
                 android:textColor="@color/color_2E3CD9"
-                android:textSize="@dimen/s19"
+                android:textSize="@dimen/s18"
                 android:textStyle="bold" />
 
             <LinearLayout

@@ -1409,5 +1409,39 @@ public class BizImpl extends BaseBiz implements Biz {
         });
     }
 
+    /**
+     * 行情数据请求
+     * @param listener
+     */
+    @Override
+    public void getQuotesDateRequest(final OnBaseListener listener) {
+        getStringRetrofit().create(ServerApi.class).getQuotesDate().enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (call != null) {
+                    if (response.body() != null) {
+                        LogUtils.e("行情数据==>" + GsonUtil.GsonString(response.body()));
+                        if (response.isSuccessful()) {
+                            listener.onResponse(response.body());
+                        } else {
+                            listener.onFailure(response.message(), response.raw().code());
+                        }
+                    } else {
+                        listener.onFailure("网络异常,请稍后再试", response.raw().code());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                if (call.isExecuted()) {
+                    call.cancel();
+                }
+                LogUtils.e("服务器未响应请求失败==>" + GsonUtil.GsonString(t.getMessage()));
+                listener.onFailure("网络异常,请稍后再试", 0);
+            }
+        });
+    }
+
 
 }

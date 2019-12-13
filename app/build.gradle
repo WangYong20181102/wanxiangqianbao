@@ -8,8 +8,8 @@ android {
         applicationId "com.jh.wxqb"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 12
-        versionName "3.8"
+        versionCode 13
+        versionName "3.9"
         resValue "string", "tray__authority", "com.jh.wxqb.tray"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

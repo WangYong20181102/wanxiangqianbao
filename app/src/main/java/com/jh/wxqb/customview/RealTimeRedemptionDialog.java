@@ -39,6 +39,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * 实时兑换
+ */
 public class RealTimeRedemptionDialog extends Dialog implements CoinTypeAdapter.OnItemResultListener, TextWatcher {
 
     @BindView(R.id.tv_title)

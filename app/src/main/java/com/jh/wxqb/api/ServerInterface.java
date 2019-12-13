@@ -9,12 +9,18 @@ public class ServerInterface {
     public static final int LOGIN_INVALID = 9009;
     public static final int TOKEN_INVALID = 401;
 
-    //服务器常量类
-//    public static final String BASE_URL = "http://192.168.101.72:80/";//本地环境
-//    public static final String BASE_WEB_URL = "http://192.168.101.72:80";   //本地环境 首页Web路径   服务器路径去掉最后
-//    public static final String BASE_Q_CARD = "http://192.168.101.72:80";   //推荐二维码
 
-    public static final String BASE_URL = "https://www.qbmap.com/";  //正式环境18825572827   15767847174  13714173670 13266761427
+    //van nex mall
+    public static final String BASE_VAN_NEX_MALL = "http://www.vannexmall.com";
+
+
+    //服务器常量类
+//    public static final String BASE_URL = "http://192.168.101.123:80/";//本地环境
+//    public static final String BASE_WEB_URL = "http://192.168.101.123:80";   //本地环境 首页Web路径   服务器路径去掉最后
+//    public static final String BASE_Q_CARD = "http://192.168.101.123:80";   //推荐二维码
+
+
+    public static final String BASE_URL = "https://www.qbmap.com/";  //正式环境
     public static final String BASE_WEB_URL = "https://www.qbmap.com";   //正式环境 首页Web路径   服务器路径去掉最后
     public static final String BASE_Q_CARD = "https://www.qbmap.com";   //推荐二维码
 
@@ -62,7 +68,8 @@ public class ServerInterface {
     public static final String BANDING_EMAIL = "updateEmail";
 
     //我的團隊
-    public static final String MY_TEAM = "rTeamInfo";
+//    public static final String MY_TEAM = "rTeamInfo";
+    public static final String MY_TEAM = "myTeamInfo";
 
     //查询用户上传的头像
     public static final String SEL_USER_IMAGE = "imgAddress";
@@ -137,6 +144,8 @@ public class ServerInterface {
     public static final String GET_ECHARTS = "getEcharts";
     //新闻资讯
     public static final String GET_NOTICE = "notice";
+    //行情
+    public static final String GET_QUOTES = "getQuotesData";
 
 
 }

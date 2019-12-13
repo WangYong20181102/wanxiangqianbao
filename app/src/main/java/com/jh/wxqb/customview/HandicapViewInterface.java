@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 
 import com.jh.wxqb.bean.MarketDividendTitleBean;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface HandicapViewInterface {
@@ -45,12 +46,12 @@ public interface HandicapViewInterface {
     /**
      * 设置数据(socket 抓到数据后更新盘口显示)
      */
-    void updateData(MarketDividendTitleBean.DataBean.ListBean listBeans);
+    void updateData(MarketDividendTitleBean.DataBean.ListBean listBeans, BigDecimal buyPrices);
 
     /**
      * 设置数据(socket 抓到数据后更新盘口显示)
      */
-    void updateData(MarketDividendTitleBean.DataBean.ListBean.BuyListBean buyListBean,MarketDividendTitleBean.DataBean.ListBean.SellListBean sellListBean);
+    void updateData(MarketDividendTitleBean.DataBean.ListBean.BuyListBean buyListBean, MarketDividendTitleBean.DataBean.ListBean.SellListBean sellListBean);
 
 
 }

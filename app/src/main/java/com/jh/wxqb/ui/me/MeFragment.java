@@ -76,7 +76,7 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
         return view;
     }
 
-    @OnClick({R.id.ll_message, R.id.iv_user_img, R.id.ll_userinfo, R.id.ll_my_dividend, R.id.ll_my_recommendation, R.id.ll_all_send_car, R.id.ll_login_pwd, R.id.ll_pay_pwd, R.id.ll_binding_account, R.id.ll_my_team, R.id.ll_user_feedback, R.id.ll_financial_details, R.id.tv_out_login})
+    @OnClick({R.id.ll_message, R.id.iv_user_img, R.id.ll_van_nex_mall,R.id.ll_userinfo, R.id.ll_my_dividend, R.id.ll_my_recommendation, R.id.ll_all_send_car, R.id.ll_login_pwd, R.id.ll_pay_pwd, R.id.ll_binding_account, R.id.ll_my_team, R.id.ll_user_feedback, R.id.ll_financial_details, R.id.tv_out_login})
     public void onViewClicked(View view) {
         Intent intent;
         switch (view.getId()) {
@@ -88,7 +88,7 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
 //                intent = new Intent(mContext, ChangeImageActivity.class);
 //                startActivity(intent);
                 break;
-            case R.id.ll_userinfo:
+            case R.id.ll_userinfo://个人信息
                 intent = new Intent(mContext, UserInfoActivity.class);
                 startActivity(intent);
                 break;
@@ -102,6 +102,11 @@ public class MeFragment extends BaseFragment implements View.OnClickListener, Me
                 break;
             case R.id.ll_all_send_car://全民发车
                 intent = new Intent(mContext, NationalDepartureActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.ll_van_nex_mall://van nex mall
+//                Toasts.showShort("暂未开放此功能！");
+                intent = new Intent(mContext, VanNexMallActivity.class);
                 startActivity(intent);
                 break;
             case R.id.ll_login_pwd://登录密码

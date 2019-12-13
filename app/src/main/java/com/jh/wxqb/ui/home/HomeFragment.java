@@ -244,10 +244,6 @@ public class HomeFragment extends BaseFragment implements HomeView, MyWebView.IS
             MyApplication.setUserBean(result.getData().getInfo());
             LogUtils.e("本地用户信息==>" + GsonUtil.GsonString(MyApplication.getUserBean()));
             EventBus.getDefault().post("udpMe");
-//            EventBus.getDefault().post("udpWithdrawMoney");
-            EventBus.getDefault().post("udpTurnOut");
-            EventBus.getDefault().post("udpPurchaseOrder");
-//            EventBus.getDefault().post("udpAssestNum");
         }
     }
 

@@ -11,12 +11,6 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/ll_bottom" />
 
-
-    <!--<View-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="@dimen/d1"-->
-    <!--android:background="@color/color_E7EBEE"-->
-    <!--android:layout_above="@+id/ll_bottom"/>-->
     <LinearLayout
         android:id="@+id/ll_bottom"
         android:layout_width="match_parent"
@@ -50,6 +44,31 @@
                 android:text="@string/home"
                 android:textStyle="bold"
                 android:textColor="@color/new_home_text_color"
+                android:textSize="@dimen/tv_20" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_quotes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_quotes"
+                android:layout_width="@dimen/d23"
+                android:layout_height="@dimen/d23"
+                android:layout_marginTop="@dimen/d3"
+                android:src="@mipmap/routes_false"
+                app:layout_auto_baseheight="width" />
+
+            <TextView
+                android:id="@+id/tv_quotes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dividend_quotes"
+                android:textStyle="bold"
+                android:textColor="@color/home_tv_no_click"
                 android:textSize="@dimen/tv_20" />
         </LinearLayout>
 
